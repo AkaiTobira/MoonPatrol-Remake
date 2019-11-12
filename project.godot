@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Nowy projekt gry"
+config/name="MoonPatrol:Remaster"
 run/main_scene="res://Scenes/Root.tscn"
 config/icon="res://icon.png"
 

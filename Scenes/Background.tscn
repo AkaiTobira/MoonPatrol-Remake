@@ -18,6 +18,7 @@ build_mode = 1
 polygon = PoolVector2Array( 150.018, -94.569, 149.248, -208.499, 155.788, -220.15, 157.712, 100.924, -73.8775, 103.513, -153.895, 100.924, -155.049, -143.766, -156.588, -251.222, -149.663, -282.294, -148.509, -94.569 )
 
 [node name="Back1" type="ParallaxLayer" parent="."]
+visible = false
 motion_offset = Vector2( 1, 0 )
 motion_mirroring = Vector2( 1000, 0 )
 
@@ -27,6 +28,7 @@ scale = Vector2( 3.35939, 3.19384 )
 texture = ExtResource( 2 )
 
 [node name="Back2" type="ParallaxLayer" parent="."]
+visible = false
 motion_offset = Vector2( 1, 0 )
 motion_mirroring = Vector2( 1000, 0 )
 

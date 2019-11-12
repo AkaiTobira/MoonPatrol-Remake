@@ -16,10 +16,11 @@ func handle_gravity(delta):
 	if jump != 0 : jump += Gravity*delta
 
 func handle_friction(delta):
-	if right_shift != 0: right_shift = max( right_shift - Friction * delta, 0 )
+	if right_shift != 0 and !jump: right_shift = max( right_shift - Friction * delta, 0 )
 
 func handle_move(delta):
-	if !jump: position = Vector2( base_position_x  + right_shift, position.y )
+	#if !jump: 
+	position = Vector2( base_position_x  + right_shift, position.y )
 	if ( move_and_collide( Vector2(0, 1 * jump) * delta ) ) : jump = 0
 
 func _process(delta):
