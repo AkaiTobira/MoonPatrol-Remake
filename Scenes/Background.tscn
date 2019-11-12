@@ -12,6 +12,14 @@ scroll_base_offset = Vector2( 10, 0 )
 scroll_ignore_camera_zoom = true
 script = ExtResource( 1 )
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 505.495, 504.689 )
+scale = Vector2( 3.35939, 0.998225 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+polygon = PoolVector2Array( 150.018, -94.569, 149.248, -208.499, 155.788, -220.15, 157.712, 100.924, -73.8775, 103.513, -153.895, 100.924, -155.049, -143.766, -156.588, -251.222, -149.663, -282.294, -148.509, -94.569 )
+
 [node name="Back1" type="ParallaxLayer" parent="."]
 editor/display_folded = true
 motion_offset = Vector2( 1, 0 )
@@ -40,4 +48,5 @@ motion_mirroring = Vector2( 1000, 0 )
 [node name="Sprite" type="Sprite" parent="Back3"]
 position = Vector2( 505.495, 504.689 )
 scale = Vector2( 3.35939, 0.998225 )
+z_index = 2
 texture = SubResource( 1 )
