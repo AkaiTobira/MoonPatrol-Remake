@@ -1,10 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/BackgroundControll.gd" type="Script" id=1]
-
-[sub_resource type="StreamTexture" id=1]
-flags = 4
-load_path = "res://.import/rektangel-png-3.png-85a1066e3ec52ab5cb1367c9434b95b4.stex"
+[ext_resource path="res://Textures/rektangel-png-3.png" type="Texture" id=2]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 scroll_offset = Vector2( 100, 0 )
@@ -21,27 +18,24 @@ build_mode = 1
 polygon = PoolVector2Array( 150.018, -94.569, 149.248, -208.499, 155.788, -220.15, 157.712, 100.924, -73.8775, 103.513, -153.895, 100.924, -155.049, -143.766, -156.588, -251.222, -149.663, -282.294, -148.509, -94.569 )
 
 [node name="Back1" type="ParallaxLayer" parent="."]
-editor/display_folded = true
 motion_offset = Vector2( 1, 0 )
 motion_mirroring = Vector2( 1000, 0 )
 
 [node name="Sprite" type="Sprite" parent="Back1"]
 position = Vector2( 505.495, 300.497 )
 scale = Vector2( 3.35939, 3.19384 )
-texture = SubResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Back2" type="ParallaxLayer" parent="."]
-editor/display_folded = true
 motion_offset = Vector2( 1, 0 )
 motion_mirroring = Vector2( 1000, 0 )
 
 [node name="Sprite" type="Sprite" parent="Back2"]
 position = Vector2( 505.495, 416.163 )
 scale = Vector2( 3.35939, 1.95012 )
-texture = SubResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Back3" type="ParallaxLayer" parent="."]
-editor/display_folded = true
 motion_offset = Vector2( 1, 0 )
 motion_mirroring = Vector2( 1000, 0 )
 
@@ -49,4 +43,4 @@ motion_mirroring = Vector2( 1000, 0 )
 position = Vector2( 505.495, 504.689 )
 scale = Vector2( 3.35939, 0.998225 )
 z_index = 2
-texture = SubResource( 1 )
+texture = ExtResource( 2 )
