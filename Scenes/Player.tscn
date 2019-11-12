@@ -11,6 +11,7 @@ extents = Vector2( 107.713, 47.3795 )
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 200, 350 )
 script = ExtResource( 1 )
+Friction = 300.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
