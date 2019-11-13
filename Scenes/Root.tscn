@@ -12,6 +12,8 @@
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 115.567, 451.887 )
 scale = Vector2( 0.75, 0.75 )
+Gravity = 150.0
+MaxJump = 350.0
 Friction = 100.0
 
 [node name="Hole_Spawner" parent="." instance=ExtResource( 3 )]

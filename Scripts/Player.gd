@@ -5,6 +5,8 @@ export var MaxJump   =  300.0
 export var Friction  =  100.0
 export var MoveSpeed =  200.0
 
+onready var missle = load( "res://Scenes/Missle.tscn" )
+
 var directions = { "left" : Vector2(-1,0), "right" : Vector2(1,0) }
 var direction  = Vector2(0,0)
 
@@ -51,12 +53,31 @@ func process_moves(delta):
 	if should_stop_near_right_border(): return
 	move_horizontal(delta)
 
+func shoot_forward():
+	var forward_missle        = missle.instance()
+	forward_missle.position   = position + Vector2(30,0)
+	forward_missle.life_range = 300 
+	forward_missle.direction  = Vector2(1,0)
+	get_parent().call_deferred("add_child", forward_missle)  
+
+func shoot_up():
+	var up_missle        = missle.instance()
+	up_missle.position   = position + Vector2(-30,-30)
+	up_missle.life_range = 400 
+	up_missle.direction  = Vector2(0,-1)
+	get_parent().call_deferred("add_child", up_missle)
+
+func shoot(): 
+	shoot_forward()
+	shoot_up()
+
 # warning-ignore:unused_argument
 func _process(delta):
-	if Input.is_action_just_pressed("ui_select") and jump == 0: jump = MaxJump
+	if Input.is_action_just_pressed("ui_up") and jump == 0: jump = MaxJump
 	direction  = Vector2(0,0)
 	if Input.is_action_pressed("ui_right") : direction = directions["right"]
 	if Input.is_action_pressed("ui_left")  and position.x >= base_position_x:  direction = directions["left"]
+	if Input.is_action_just_pressed("ui_accept"): shoot()
 
 func _physics_process(delta):
 	process_moves(delta)
