@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Textures/rektangel-png-3.png" type="Texture" id=2]
+[ext_resource path="res://Textures/the_car.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 57.0101, 39.7715 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 107.713, 47.3795 )
@@ -14,12 +15,16 @@ script = ExtResource( 1 )
 Friction = 300.0
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -1.51838, -19.75 )
+scale = Vector2( 0.62283, 0.601695 )
 texture = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, -4 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
