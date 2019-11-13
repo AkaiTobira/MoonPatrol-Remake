@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Hole_Spawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Rock_Spawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scripts/Rock_Spawner.gd" type="Script" id=5]
 
 [node name="Root" type="Node2D"]
 
@@ -16,7 +15,8 @@ scale = Vector2( 0.75, 0.75 )
 Friction = 100.0
 
 [node name="Hole_Spawner" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1144.84, 493.215 )
+scale = Vector2( 0.949715, 1.15578 )
 
 [node name="Rock_Spawner" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1281.28, 450 )
-script = ExtResource( 5 )
+position = Vector2( 1130.37, 450.777 )
