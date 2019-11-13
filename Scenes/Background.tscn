@@ -48,3 +48,13 @@ position = Vector2( 151.551, 0 )
 scale = Vector2( 2.04862, 1 )
 build_mode = 1
 polygon = PoolVector2Array( 148.311, -30.6444, 147.614, 105.587, -149.321, 106.527, -148.82, -30.96, -3.45476, -28.6742 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Back3"]
+position = Vector2( 505, 505 )
+scale = Vector2( 3.35939, 0.998225 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back3/StaticBody2D2"]
+position = Vector2( 19.262, 0 )
+scale = Vector2( 0.364871, 1 )
+build_mode = 1
+polygon = PoolVector2Array( 300.785, -22.0141, 147.614, 105.587, -149.321, 106.527, -155.719, 33.4861, -423.293, 2.40594, 272.762, -94.1644 )
