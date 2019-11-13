@@ -10,8 +10,8 @@ func _ready():
 
 func spawn():
 	var instance = hole.instance() 
-	instance.position = Vector2(position.x, 450)
-	get_parent().add_child(instance)
+	instance.position = position
+	#get_parent().add_child(instance)
 
 func _process(delta):
 	timer += delta

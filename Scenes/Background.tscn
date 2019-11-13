@@ -39,10 +39,12 @@ scale = Vector2( 1.56543, 1.52162 )
 z_index = 2
 texture = ExtResource( 4 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 505.495, 504.689 )
+[node name="StaticBody2D" type="StaticBody2D" parent="Back3"]
+position = Vector2( 505, 505 )
 scale = Vector2( 3.35939, 0.998225 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back3/StaticBody2D"]
+position = Vector2( 151.551, 0 )
+scale = Vector2( 2.04862, 1 )
 build_mode = 1
-polygon = PoolVector2Array( 156.97, -25.9698, 157.712, 100.924, -153.895, 100.924, -154.626, -25.9698 )
+polygon = PoolVector2Array( 148.311, -30.6444, 147.614, 105.587, -149.321, 106.527, -148.82, -30.96, -3.45476, -28.6742 )
