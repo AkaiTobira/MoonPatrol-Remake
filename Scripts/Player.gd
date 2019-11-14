@@ -6,16 +6,18 @@ export var Friction  =  100.0
 export var MoveSpeed =  200.0
 
 onready var missle = load( "res://Scenes/Missle.tscn" )
+onready var fmissle = load( "res://Scenes/Missle_forward.tscn" )
+var forward_missle = null
+
 
 var directions = { "left" : Vector2(-1,0), "right" : Vector2(1,0) }
 var direction  = Vector2(0,0)
 
 var jump            = 100.0
-var right_border    = 800.0
+var right_border    = 300.0
 var base_position_x = position.x
 var on_ground       = false
 
-func _ready(): pass
 
 func move_verticall(delta):
 	var jump_force  = calculate_jump_force(delta)
@@ -54,8 +56,10 @@ func process_moves(delta):
 	move_horizontal(delta)
 
 func shoot_forward():
-	var forward_missle        = missle.instance()
+	if forward_missle: return
+	forward_missle            = fmissle.instance()
 	forward_missle.position   = position + Vector2(30,0)
+	forward_missle.scale      = Vector2( 1, 0.5 )
 	forward_missle.life_range = 300 
 	forward_missle.direction  = Vector2(1,0)
 	get_parent().call_deferred("add_child", forward_missle)  

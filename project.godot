@@ -19,6 +19,11 @@ config/name="MoonPatrol:Remaster"
 run/main_scene="res://Scenes/Root.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
