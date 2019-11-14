@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/BackgroundControll.gd" type="Script" id=1]
-[ext_resource path="res://Textures/rektangel-png-3.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Background_sky.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Background_fill.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Background_road.png" type="Texture" id=4]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 scroll_offset = Vector2( 100, 0 )
@@ -9,40 +11,52 @@ scroll_base_offset = Vector2( 10, 0 )
 scroll_ignore_camera_zoom = true
 script = ExtResource( 1 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 505.495, 504.689 )
-scale = Vector2( 3.35939, 0.998225 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-build_mode = 1
-polygon = PoolVector2Array( 150.018, -94.569, 149.248, -208.499, 155.788, -220.15, 157.712, 100.924, -73.8775, 103.513, -153.895, 100.924, -155.049, -143.766, -156.588, -251.222, -149.663, -282.294, -148.509, -94.569 )
-
 [node name="Back1" type="ParallaxLayer" parent="."]
-visible = false
 motion_offset = Vector2( 1, 0 )
 motion_mirroring = Vector2( 1000, 0 )
 
 [node name="Sprite" type="Sprite" parent="Back1"]
-position = Vector2( 505.495, 300.497 )
-scale = Vector2( 3.35939, 3.19384 )
+position = Vector2( 498.559, 291.528 )
+scale = Vector2( 1.56976, 1.47783 )
 texture = ExtResource( 2 )
 
 [node name="Back2" type="ParallaxLayer" parent="."]
-visible = false
 motion_offset = Vector2( 1, 0 )
 motion_mirroring = Vector2( 1000, 0 )
 
 [node name="Sprite" type="Sprite" parent="Back2"]
-position = Vector2( 505.495, 416.163 )
-scale = Vector2( 3.35939, 1.95012 )
-texture = ExtResource( 2 )
+position = Vector2( 498.595, 317.85 )
+scale = Vector2( 1.56277, 1.42448 )
+texture = ExtResource( 3 )
 
 [node name="Back3" type="ParallaxLayer" parent="."]
 motion_offset = Vector2( 1, 0 )
 motion_mirroring = Vector2( 1000, 0 )
 
 [node name="Sprite" type="Sprite" parent="Back3"]
-position = Vector2( 505.495, 504.689 )
-scale = Vector2( 3.35939, 0.998225 )
+position = Vector2( 495.858, 305.628 )
+scale = Vector2( 1.56543, 1.52162 )
 z_index = 2
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Back3"]
+position = Vector2( 505, 505 )
+scale = Vector2( 3.35939, 0.998225 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back3/StaticBody2D"]
+position = Vector2( 151.551, 0 )
+scale = Vector2( 2.04862, 1 )
+build_mode = 1
+polygon = PoolVector2Array( 148.311, -30.6444, 147.614, 105.587, -149.321, 106.527, -148.82, -30.96, -3.45476, -28.6742 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Back3"]
+position = Vector2( 505, 505 )
+scale = Vector2( 3.35939, 0.998225 )
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back3/StaticBody2D2"]
+position = Vector2( 19.262, 0 )
+scale = Vector2( 0.364871, 1 )
+build_mode = 1
+polygon = PoolVector2Array( 300.785, -22.0141, 147.614, 105.587, -149.321, 106.527, -155.719, 33.4861, -423.293, 2.40594, 272.762, -94.1644 )
