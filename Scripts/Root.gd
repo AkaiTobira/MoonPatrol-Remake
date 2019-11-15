@@ -8,6 +8,7 @@ var dict                = {}
 
 var current_level  = "1"
 var level_list     = []
+var time_whole     = 0
 var time           = 0
 var time_reduciton = 0
 
@@ -70,7 +71,10 @@ func process_spawn():
 			update_log()
 
 func update_time(delta):
-	time += delta
+	time       += delta
+	time_whole += delta
+	
+	$MainTimeCounter.text = "TIME SINCE BEGIN : " + str(stepify(time_whole, 0.1)) 
 	$Time.text = "TIME :" + str(stepify(time, 0.1)) + " -" + str(stepify(time_reduciton, 0.1))
 	
 func process_segment_end():

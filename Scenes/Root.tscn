@@ -30,6 +30,12 @@ margin_right = 120.0
 margin_bottom = 15.0
 text = "Time : "
 
+[node name="MainTimeCounter" type="RichTextLabel" parent="."]
+margin_left = 137.0
+margin_right = 358.0
+margin_bottom = 15.0
+text = "Time : "
+
 [node name="SpawnLog" type="RichTextLabel" parent="."]
 margin_top = 15.0
 margin_right = 120.0
