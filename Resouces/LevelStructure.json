@@ -37,11 +37,12 @@
 	  "4" : {
 			"duration" : 12,
 			"spawn_times": {
-				"2"    : "Hole",
-				"1.1"  : "Rock",
-				"6"    : "Hole",
-				"8.2"  : "Rock",
-				"11"   : "Rock",
+				"2"    : "Mine",
+				"1.1"  : "Mine",
+				"6"    : "Mine",
+				"6.3"  : "Mine",
+				"8.2"  : "Mine",
+				"11"   : "Mine",
 				}
 	  }
 	}

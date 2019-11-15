@@ -56,6 +56,9 @@ func spawn_item(item_to_spawn):
 		"Hole" : 
 			$Hole_Spawner.spawn()
 			loger.append( "\n Hole : " + str(stepify(time, 0.1)) )
+		"Mine" : 
+			$Mine_Spawner.spawn()
+			loger.append( "\n Mine : " + str(stepify(time, 0.1)) )
 		_ :
 			print( "ERROR : not found" ,time , " is " , item_to_spawn , " And this is unknown" )
 			assert(true == false)
