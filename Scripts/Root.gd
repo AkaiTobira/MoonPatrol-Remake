@@ -15,6 +15,9 @@ var time_reduciton = 0
 var loger = []
 var MAX_LOG_INFO = 8
 
+var current_letter = 64
+var next_letter    = 65
+
 func _ready():
 	load_level_structure()
 	current_level   = dict["start_segment"]
@@ -46,7 +49,10 @@ func update_segment_index():
 func get_next_segment():
 	update_segment_index()
 	current_segment = dict["level_structure"][current_level].duplicate(true)
-	loger.append("\n Segment :" + current_level ) 
+	$Checkpoint_Spawner.spawn(char(next_letter))
+	current_letter = next_letter
+	next_letter    = next_letter + 1
+	loger.append("\n Segment :" + current_level + " : " + char(next_letter)  ) 
 
 func spawn_item(item_to_spawn):
 	match item_to_spawn:

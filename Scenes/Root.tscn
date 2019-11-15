@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Root.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Hole_Spawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Rock_Spawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Mine_Spawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Checkpoint_Spawner.tscn" type="PackedScene" id=7]
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 1 )
@@ -20,7 +21,7 @@ MaxJump = 350.0
 Friction = 100.0
 
 [node name="Hole_Spawner" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1144.84, 493.215 )
+position = Vector2( 1144.84, 492.215 )
 scale = Vector2( 0.949715, 1.15578 )
 
 [node name="Rock_Spawner" parent="." instance=ExtResource( 5 )]
@@ -28,6 +29,9 @@ position = Vector2( 1130.37, 450.777 )
 
 [node name="Mine_Spawner" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1134.34, 471.86 )
+
+[node name="Checkpoint_Spawner" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1138.99, 545.101 )
 
 [node name="Time" type="RichTextLabel" parent="."]
 margin_right = 120.0
