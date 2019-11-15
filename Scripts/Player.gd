@@ -9,7 +9,6 @@ onready var missle = load( "res://Scenes/Missle.tscn" )
 onready var fmissle = load( "res://Scenes/Missle_forward.tscn" )
 var forward_missle = null
 
-
 var directions = { "left" : Vector2(-1,0), "right" : Vector2(1,0) }
 var direction  = Vector2(0,0)
 
@@ -17,6 +16,8 @@ var jump            = 100.0
 var right_border    = 450.0
 onready var base_position_x = position.x
 var on_ground       = false
+
+var bakcground_speed_multipler = 0
 
 func move_verticall(delta):
 	var jump_force  = calculate_jump_force(delta)
@@ -53,6 +54,12 @@ func process_moves(delta):
 	if !on_ground: return
 	if should_stop_near_right_border(): return
 	move_horizontal(delta)
+	update_backgound_multipler()
+
+func update_backgound_multipler():
+	var offset = 50
+	var full_range = right_border - base_position_x - offset
+	bakcground_speed_multipler =  min( max( (position.x-base_position_x - offset)/full_range, 0 ), 1 )
 
 func shoot_forward():
 	if forward_missle: return
