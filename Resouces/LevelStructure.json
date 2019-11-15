@@ -1,0 +1,48 @@
+{
+  "start_segment"   : "1",
+  "fixed_segment"   : false,
+  "random_order"    : true,
+  "level_structure" : {
+	  "1" : {
+			"duration" : 12,
+			"spawn_times": {
+				"2"    : "Rock",
+				"0.7"  : "Rock",
+				"1.1"  : "Rock",
+				"6"    : "Rock",
+				"8.2"  : "Rock",
+				"11"   : "Rock",
+				}
+			},
+	  "2" : {
+			"duration" : 12,
+			"spawn_times": {
+				"2"    : "Hole",
+				"1.1"  : "Hole",
+				"6"    : "Hole",
+				"8.2"  : "Hole",
+				"11"   : "Hole",
+				}
+	  },
+	  "3" : {
+			"duration" : 12,
+			"spawn_times": {
+				"2"    : "Hole",
+				"1.1"  : "Rock",
+				"6"    : "Hole",
+				"8.2"  : "Rock",
+				"11"   : "Rock",
+				}
+	  },
+	  "4" : {
+			"duration" : 12,
+			"spawn_times": {
+				"2"    : "Hole",
+				"1.1"  : "Rock",
+				"6"    : "Hole",
+				"8.2"  : "Rock",
+				"11"   : "Rock",
+				}
+	  }
+	}
+}

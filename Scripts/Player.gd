@@ -14,10 +14,9 @@ var directions = { "left" : Vector2(-1,0), "right" : Vector2(1,0) }
 var direction  = Vector2(0,0)
 
 var jump            = 100.0
-var right_border    = 300.0
-var base_position_x = position.x
+var right_border    = 450.0
+onready var base_position_x = position.x
 var on_ground       = false
-
 
 func move_verticall(delta):
 	var jump_force  = calculate_jump_force(delta)

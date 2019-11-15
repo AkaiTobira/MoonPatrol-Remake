@@ -10,11 +10,12 @@ func _ready():
 
 func spawn():
 	var instance = rock.instance() 
+	instance.fixed_y_pos = position.y
 	instance.position = position
 	get_parent().add_child(instance)
 
 func _process(delta):
-	timer += delta
+#	timer += delta
 	if timer > timer_max:
 		spawn()
 		timer_max = randi()%7 + 5

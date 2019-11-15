@@ -8,4 +8,6 @@ var lifed_range   = 0
 func _physics_process(delta):
 	lifed_range += SPEED * delta
 	var output = move_and_collide( direction * SPEED * delta )
-	if output or lifed_range > life_range: call_deferred("queue_free")
+	if output or lifed_range > life_range: on_delete()
+
+func on_delete(): call_deferred("queue_free")
