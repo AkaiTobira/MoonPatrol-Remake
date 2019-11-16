@@ -49,3 +49,10 @@ margin_top = 15.0
 margin_right = 120.0
 margin_bottom = 227.0
 text = "Spawn log:"
+
+[node name="Score" type="RichTextLabel" parent="."]
+margin_left = 135.0
+margin_top = 15.0
+margin_right = 318.0
+margin_bottom = 39.0
+text = "Score :"

@@ -83,7 +83,7 @@ func shoot():
 
 # warning-ignore:unused_argument
 func _process(delta):
-	if Input.is_action_just_pressed("ui_up") and jump == 0: jump = MaxJump
+	if Input.is_action_just_pressed("ui_up") and on_ground: jump = MaxJump
 	direction  = Vector2(0,0)
 	if Input.is_action_pressed("ui_right") : direction = directions["right"]
 	if Input.is_action_pressed("ui_left")  and position.x >= base_position_x:  direction = directions["left"]

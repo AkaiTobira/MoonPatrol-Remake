@@ -3,7 +3,8 @@ extends Node2D
 onready var rock = load( "res://Scenes/Rock.tscn" )
 
 func _ready():
-	get_child(0).SPEED = 0
+	get_child(0).SPEED      = 0
+	get_child(0).add_points = false
 
 func spawn():
 	var instance = rock.instance() 

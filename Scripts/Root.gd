@@ -8,15 +8,20 @@ var dict                = {}
 
 var current_level  = "1"
 var level_list     = []
+
+var points         = 0
+
 var time_whole     = 0
 var time           = 0
 var time_reduciton = 0
 
-var loger = []
+var loger        = []
 var MAX_LOG_INFO = 8
 
 var current_letter = 64
 var next_letter    = 65
+
+
 
 func _ready():
 	load_level_structure()
@@ -84,7 +89,7 @@ func update_time(delta):
 	time_whole += delta
 	
 	$MainTimeCounter.text = "TIME SINCE BEGIN : " + str(stepify(time_whole, 0.1)) 
-	$Time.text = "TIME :" + str(stepify(time, 0.1)) + " -" + str(stepify(time_reduciton, 0.1))
+	$Time.text = "TIME :" + str(stepify(time, 0.1)) + " +" + str(stepify(time_reduciton, 0.1))
 	
 func process_segment_end():
 	if time + time_reduciton > current_segment["duration"]: 
@@ -101,8 +106,12 @@ func update_move_speed(delta):
 		if obstacle.is_in_group("obstalces"):
 			obstacle.set_speed_multipler( player_multipler )
 
+func update_points():
+	$Score.text = "SCORE :" + str(points)
+
 func _process(delta):
 	update_time(delta)
 	update_move_speed(delta)
+	update_points()
 	process_spawn()
 	process_segment_end()
