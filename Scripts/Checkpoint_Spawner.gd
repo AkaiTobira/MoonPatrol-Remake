@@ -3,8 +3,8 @@ extends Node2D
 onready var checkpoint = load( "res://Scenes/Checkpoint.tscn" )
 
 func _ready():
-	get_child(0).SPEED      = 0
-
+	get_child(0).SPEED          = 0
+	get_child(0).is_not_reached = false
 
 func spawn( letter ):
 	var instance         = checkpoint.instance() 

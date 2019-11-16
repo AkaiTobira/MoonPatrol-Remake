@@ -18,7 +18,7 @@ position = Vector2( 180, 451.887 )
 scale = Vector2( 0.6, 0.6 )
 Gravity = 150.0
 MaxJump = 350.0
-Friction = 100.0
+Friction = 90.0
 
 [node name="Hole_Spawner" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1144.84, 492.215 )

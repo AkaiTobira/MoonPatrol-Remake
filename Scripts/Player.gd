@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 export var Gravity   =  100.0
 export var MaxJump   =  300.0
-export var Friction  =  100.0
-export var MoveSpeed =  200.0
+export var Friction  =  90.0
+export var MoveSpeed =  130.0
 
 onready var missle = load( "res://Scenes/Missle.tscn" )
 onready var fmissle = load( "res://Scenes/Missle_forward.tscn" )
@@ -15,9 +15,15 @@ var direction  = Vector2(0,0)
 var jump            = 100.0
 var right_border    = 450.0
 onready var base_position_x = position.x
+onready var base_position_y = position.y
 var on_ground       = false
 
 var bakcground_speed_multipler = 0
+
+var player_good_mode = false
+
+func reset_position():
+	position = Vector2(base_position_x, base_position_y)
 
 func move_verticall(delta):
 	var jump_force  = calculate_jump_force(delta)
@@ -51,7 +57,7 @@ func should_stop_near_right_border():
 
 func process_moves(delta):
 	on_ground = move_verticall(delta)
-	if !on_ground: return
+	#if !on_ground: return
 	if should_stop_near_right_border(): return
 	move_horizontal(delta)
 	update_backgound_multipler()
@@ -86,7 +92,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_up") and on_ground: jump = MaxJump
 	direction  = Vector2(0,0)
 	if Input.is_action_pressed("ui_right") : direction = directions["right"]
-	if Input.is_action_pressed("ui_left")  and position.x >= base_position_x:  direction = directions["left"]
+	#if Input.is_action_pressed("ui_left")  and position.x >= base_position_x:  direction = directions["left"]
 	if Input.is_action_just_pressed("ui_accept"): shoot()
 
 func _physics_process(delta):
@@ -94,4 +100,5 @@ func _physics_process(delta):
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("obstalces"):
+		if not player_good_mode: get_parent().reload_from_checkpoint()
 		print( "RIP, player died" )

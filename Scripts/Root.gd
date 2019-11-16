@@ -2,7 +2,7 @@ extends Node2D
  
 #TODO when restarts will be enabled
 # warning-ignore:unused_class_variable
-var background_settings = {} 
+var background_settings = []
 var current_segment     = {}
 var dict                = {}
 
@@ -12,21 +12,21 @@ var level_list     = []
 var points         = 0
 
 var time_whole     = 0
-var time           = 0
+var time           = -5
 var time_reduciton = 0
 
-var loger        = []
-var MAX_LOG_INFO = 8
+var loger          = []
+var MAX_LOG_INFO   = 8
 
 var current_letter = 64
+var player_letter  = 0
 var next_letter    = 65
-
-
 
 func _ready():
 	load_level_structure()
 	current_level   = dict["start_segment"]
 	parse_level_list()
+	player_reached_next_letter()
 	current_segment = dict["level_structure"][current_level].duplicate(true)
 
 func parse_level_list():
@@ -59,8 +59,8 @@ func get_next_segment():
 	next_letter    = next_letter + 1
 	loger.append("\n Segment :" + current_level + " : " + char(next_letter)  ) 
 
-func spawn_item(item_to_spawn):
-	match item_to_spawn:
+func spawn_obstacle(obstacle_to_spawn):
+	match obstacle_to_spawn:
 		"Rock" : 
 			$Rock_Spawner.spawn()
 			loger.append( "\n Rock : " + str(stepify(time, 0.1)) )
@@ -71,7 +71,7 @@ func spawn_item(item_to_spawn):
 			$Mine_Spawner.spawn()
 			loger.append( "\n Mine : " + str(stepify(time, 0.1)) )
 		_ :
-			print( "ERROR : not found" ,time , " is " , item_to_spawn , " And this is unknown" )
+			print( "ERROR : not found" ,time , " is " , obstacle_to_spawn , " And this is unknown" )
 			assert(true == false)
 
 func process_spawn():
@@ -79,8 +79,8 @@ func process_spawn():
 	for timer in current_segment["spawn_times"] :
 		var nmb_time = float(timer)
 		if nmb_time <= parsed_time:
-			var item_to_spawn = current_segment["spawn_times"][timer] 
-			spawn_item(item_to_spawn)
+			var obstacle_to_spawn = current_segment["spawn_times"][timer] 
+			spawn_obstacle(obstacle_to_spawn)
 			current_segment["spawn_times"].erase(timer)
 			update_log()
 
@@ -94,8 +94,7 @@ func update_time(delta):
 func process_segment_end():
 	if time + time_reduciton > current_segment["duration"]: 
 		get_next_segment()
-		time           = 0
-		time_reduciton = 0 
+		reset_timers(-5)
 
 func update_move_speed(delta):
 	var player_multipler = $Player.bakcground_speed_multipler
@@ -105,6 +104,38 @@ func update_move_speed(delta):
 	for obstacle in get_children():
 		if obstacle.is_in_group("obstalces"):
 			obstacle.set_speed_multipler( player_multipler )
+
+func player_reached_next_letter():
+	player_letter = current_letter
+	background_settings = $ParallaxBackground.get_backgoround_info()
+
+func clean_scene():
+	for obstacle in get_children():
+		if obstacle.is_in_group("obstalces"):
+			obstacle.call_deferred( "queue_free" )
+	$Player.reset_position()
+
+func create_current_checkpoint_mark():
+	var checkpoint_marker =  load( "res://Scenes/Checkpoint.tscn" ).instance()
+	checkpoint_marker.set_letter(char(player_letter))
+	checkpoint_marker.fixed_y_pos = $Checkpoint_Spawner.position.y
+	checkpoint_marker.position.x  = $Player.base_position_x + 150
+	call_deferred("add_child", checkpoint_marker ) 
+
+func reload_level():
+	$ParallaxBackground.set_backgoround_info(background_settings)
+	loger.append("\n Player dead \n reload from : " + str(current_level) )
+	current_segment = dict["level_structure"][current_level].duplicate(true)
+
+func reset_timers( default = 0 ):
+	time           = default
+	time_reduciton = 0
+
+func reload_from_checkpoint():
+	reset_timers()
+	clean_scene()
+	create_current_checkpoint_mark()
+	reload_level()
 
 func update_points():
 	$Score.text = "SCORE :" + str(points)
