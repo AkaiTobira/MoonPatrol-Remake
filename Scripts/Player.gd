@@ -85,7 +85,7 @@ func shoot_forward():
 func shoot_up():
 	var up_missle        = missle.instance()
 	up_missle.position   = position + Vector2(-30,-30)
-	up_missle.life_range = 400 
+	up_missle.life_range = 600 
 	up_missle.direction  = Vector2(0,-1)
 	get_parent().call_deferred("add_child", up_missle)
 

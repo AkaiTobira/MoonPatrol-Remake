@@ -137,7 +137,7 @@ func reset_timers( default = 0 ):
 func reload_from_checkpoint():
 	reset_timers()
 	clean_scene()
-	create_current_checkpoint_mark()
+	if player_letter != 64: create_current_checkpoint_mark()
 	reload_level()
 	play_world()
 
