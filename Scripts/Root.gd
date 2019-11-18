@@ -1,7 +1,5 @@
 extends Node2D
  
-#TODO when restarts will be enabled
-# warning-ignore:unused_class_variable
 var background_settings = []
 var current_segment     = {}
 var dict                = {}
@@ -21,6 +19,8 @@ var MAX_LOG_INFO   = 8
 var current_letter = 64
 var player_letter  = 0
 var next_letter    = 65
+
+var pause          = false
 
 func _ready():
 	load_level_structure()
@@ -42,9 +42,9 @@ func load_level_structure():
 	assert( dict != null )
 
 func update_log():
-	$SpawnLog.text = "SPAWN LOG"
+	$UI/SpawnLog.text = "SPAWN LOG"
 	while len(loger) > MAX_LOG_INFO: loger.pop_front()
-	for text in loger: $SpawnLog.text += text
+	for text in loger: $UI/SpawnLog.text += text
 	
 func update_segment_index():
 	if dict["fixed_segment"]: return
@@ -85,11 +85,12 @@ func process_spawn():
 			update_log()
 
 func update_time(delta):
+	if pause: return
 	time       += delta
 	time_whole += delta
 	
-	$MainTimeCounter.text = "TIME SINCE BEGIN : " + str(stepify(time_whole, 0.1)) 
-	$Time.text = "TIME :" + str(stepify(time, 0.1)) + " +" + str(stepify(time_reduciton, 0.1))
+	$UI/MainTimeCounter.text = "TIME SINCE BEGIN : " + str(stepify(time_whole, 0.1)) 
+	$UI/Time.text = "TIME :" + str(stepify(time, 0.1)) + " +" + str(stepify(time_reduciton, 0.1))
 	
 func process_segment_end():
 	if time + time_reduciton > current_segment["duration"]: 
@@ -107,6 +108,8 @@ func update_move_speed(delta):
 
 func player_reached_next_letter():
 	player_letter = current_letter
+	loger.append( "\n Player point : " + char(player_letter) )
+	update_log()
 	background_settings = $ParallaxBackground.get_backgoround_info()
 
 func clean_scene():
@@ -136,13 +139,30 @@ func reload_from_checkpoint():
 	clean_scene()
 	create_current_checkpoint_mark()
 	reload_level()
+	play_world()
 
 func update_points():
-	$Score.text = "SCORE :" + str(points)
+	$UI/Score.text = "SCORE :" + str(points)
+
+func play_world():
+	pause = false
+	$ParallaxBackground.play()
+	$Player.play()
+
+func pause_world():
+	pause = true
+	$ParallaxBackground.stop()
+	$Player.stop()
+	for obstacle in get_children():
+		if obstacle.is_in_group("obstalces"):
+			obstacle.call_deferred( "stop" )
 
 func _process(delta):
 	update_time(delta)
+	if pause: return
 	update_move_speed(delta)
 	update_points()
 	process_spawn()
 	process_segment_end()
+	
+#https://strategywiki.org/wiki/Moon_Patrol/Walkthrough

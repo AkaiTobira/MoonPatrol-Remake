@@ -10,14 +10,27 @@ scroll_offset = Vector2( 100, 0 )
 scroll_base_offset = Vector2( 10, 0 )
 scroll_ignore_camera_zoom = true
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 692.078, 881.355 ]
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 505, 718 )
+scale = Vector2( 3.35939, 0.998225 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 151.551, 15.3606 )
+scale = Vector2( 2.04862, 1.50686 )
+build_mode = 1
+polygon = PoolVector2Array( 149.811, -27.2175, 149.811, 99.173, -147.991, 100.724, -147.652, -28.7683 )
 
 [node name="Back1" type="ParallaxLayer" parent="."]
 motion_offset = Vector2( 1, 0 )
 motion_mirroring = Vector2( 1000, 0 )
 
 [node name="Sprite" type="Sprite" parent="Back1"]
-position = Vector2( 498.559, 291.528 )
-scale = Vector2( 1.56976, 1.47783 )
+position = Vector2( 638.426, 437.669 )
+scale = Vector2( 2.00685, 2.20854 )
 texture = ExtResource( 2 )
 
 [node name="Back2" type="ParallaxLayer" parent="."]
@@ -25,8 +38,8 @@ motion_offset = Vector2( 1, 0 )
 motion_mirroring = Vector2( 1000, 0 )
 
 [node name="Sprite" type="Sprite" parent="Back2"]
-position = Vector2( 498.595, 317.85 )
-scale = Vector2( 1.56277, 1.42448 )
+position = Vector2( 498.981, 456.475 )
+scale = Vector2( 1.56398, 2.11761 )
 texture = ExtResource( 3 )
 
 [node name="Back3" type="ParallaxLayer" parent="."]
@@ -34,20 +47,10 @@ motion_offset = Vector2( 1, 0 )
 motion_mirroring = Vector2( 1000, 0 )
 
 [node name="Sprite" type="Sprite" parent="Back3"]
-position = Vector2( 495.858, 305.628 )
-scale = Vector2( 1.56543, 1.52162 )
+position = Vector2( 606.051, 441.838 )
+scale = Vector2( 1.90978, 2.20267 )
 z_index = 2
 texture = ExtResource( 4 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Back3"]
-position = Vector2( 505, 505 )
-scale = Vector2( 3.35939, 0.998225 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back3/StaticBody2D"]
-position = Vector2( 151.551, 0 )
-scale = Vector2( 2.04862, 1 )
-build_mode = 1
-polygon = PoolVector2Array( 148.311, -30.6444, 147.614, 105.587, -149.321, 106.527, -148.82, -30.96, -3.45476, -28.6742 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Back3"]
 position = Vector2( 505, 505 )
@@ -56,7 +59,7 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back3/StaticBody2D2"]
-position = Vector2( 19.262, 0 )
+position = Vector2( 68.4715, 548.616 )
 scale = Vector2( 0.364871, 1 )
 build_mode = 1
 polygon = PoolVector2Array( 300.785, -22.0141, 147.614, 105.587, -149.321, 106.527, -155.719, 33.4861, -423.293, 2.40594, 272.762, -94.1644 )

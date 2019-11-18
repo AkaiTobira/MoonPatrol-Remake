@@ -1,58 +1,87 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Root.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Hole_Spawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Rock_Spawner.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Mine_Spawner.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Checkpoint_Spawner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Textures/Black_holder.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/BigFont1.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Hole_Spawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Rock_Spawner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Mine_Spawner.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Checkpoint_Spawner.tscn" type="PackedScene" id=9]
 
 [node name="Root" type="Node2D"]
+position = Vector2( 450, 4.5 )
 script = ExtResource( 1 )
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
+[node name="UI" type="Node2D" parent="."]
+position = Vector2( -450, 0 )
+z_index = 10
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 180, 451.887 )
-scale = Vector2( 0.6, 0.6 )
-Gravity = 150.0
-MaxJump = 350.0
-Friction = 90.0
+[node name="Black_Holder_Left" type="Sprite" parent="UI"]
+position = Vector2( 222.929, 545.587 )
+scale = Vector2( 0.700018, 3.23606 )
+texture = ExtResource( 2 )
 
-[node name="Hole_Spawner" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1144.84, 492.215 )
-scale = Vector2( 0.949715, 1.15578 )
+[node name="Black_Holder_Right" type="Sprite" parent="UI"]
+position = Vector2( 1696.15, 515.368 )
+scale = Vector2( 0.700018, 3.23606 )
+z_index = 2
+texture = ExtResource( 2 )
 
-[node name="Rock_Spawner" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1130.37, 450.777 )
-
-[node name="Mine_Spawner" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1134.34, 471.86 )
-
-[node name="Checkpoint_Spawner" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1138.99, 545.101 )
-
-[node name="Time" type="RichTextLabel" parent="."]
-margin_right = 120.0
-margin_bottom = 15.0
+[node name="Time" type="RichTextLabel" parent="UI"]
+margin_left = 25.4346
+margin_top = 67.6809
+margin_right = 461.435
+margin_bottom = 114.681
+custom_fonts/normal_font = ExtResource( 3 )
 text = "Time : "
 
-[node name="MainTimeCounter" type="RichTextLabel" parent="."]
-margin_left = 137.0
-margin_right = 358.0
-margin_bottom = 15.0
+[node name="MainTimeCounter" type="RichTextLabel" parent="UI"]
+margin_left = 25.0
+margin_top = 18.0
+margin_right = 949.0
+margin_bottom = 72.0
+custom_fonts/normal_font = ExtResource( 3 )
 text = "Time : "
 
-[node name="SpawnLog" type="RichTextLabel" parent="."]
-margin_top = 15.0
-margin_right = 120.0
-margin_bottom = 227.0
+[node name="SpawnLog" type="RichTextLabel" parent="UI"]
+margin_left = 22.0
+margin_top = 177.0
+margin_right = 575.0
+margin_bottom = 1076.0
+custom_fonts/normal_font = ExtResource( 3 )
 text = "Spawn log:"
 
-[node name="Score" type="RichTextLabel" parent="."]
-margin_left = 135.0
-margin_top = 15.0
-margin_right = 318.0
-margin_bottom = 39.0
+[node name="Score" type="RichTextLabel" parent="UI"]
+margin_left = 26.0
+margin_top = 124.0
+margin_right = 712.0
+margin_bottom = 172.0
+custom_fonts/normal_font = ExtResource( 3 )
 text = "Score :"
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 4 )]
+offset = Vector2( 450, 200 )
+transform = Transform2D( 1, 0, 0, 1, 450, 200 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 129.473, 687.842 )
+scale = Vector2( 0.6, 0.6 )
+Gravity = 300.0
+MaxJump = 550.0
+Friction = 70.0
+MaxMoveSpeed = 140.0
+
+[node name="Hole_Spawner" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1144.84, 900.215 )
+scale = Vector2( 0.949715, 1.15578 )
+
+[node name="Rock_Spawner" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1130.37, 858.777 )
+
+[node name="Mine_Spawner" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1134.34, 879.86 )
+
+[node name="Checkpoint_Spawner" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1138.99, 953.101 )

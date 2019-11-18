@@ -6,6 +6,7 @@ export var SPEDD_MULTIPLER_2 = 2.0
 export var SPEDD_MULTIPLER_3 = 3.0
 
 var player_speed = 1
+var pause = false 
 
 func _ready(): pass
 
@@ -25,7 +26,14 @@ func set_backgoround_info( info ):
 	$Back2.motion_offset.x = info[1]
 	$Back3.motion_offset.x = info[2]
 	
+func play():
+	pause = false
+
+func stop():
+	pause = true	
+
 func _process(delta): 
+	if pause: return 
 	move_background($Back1, SPEDD_MULTIPLER_1 * player_speed * SPEED * delta)
 	move_background($Back2, SPEDD_MULTIPLER_2 * player_speed * SPEED * delta)
 	move_background($Back3, SPEDD_MULTIPLER_3 * player_speed * SPEED * delta)

@@ -7,11 +7,15 @@ var fixed_y_pos      = 0
 var points_jump_over = 80
 var points_destroy   = 100
 var add_points       = true
+var pause            = false
 
 onready var player = get_node("/root/Root/Player")
 
 func set_speed_multipler( player_multipler ):
 	speed_multipler = 1 + player_multipler
+
+func play() : pause = false
+func stop(): pause = true
 
 func grant_points():
 	if !player: return 
@@ -21,6 +25,7 @@ func grant_points():
 	
 # warning-ignore:unused_argument
 func _physics_process(delta):
+	if pause: return
 # warning-ignore:return_value_discarded
 	move_and_slide( Vector2(-1, 0 ) * SPEED * speed_multipler )
 	position.y = fixed_y_pos
