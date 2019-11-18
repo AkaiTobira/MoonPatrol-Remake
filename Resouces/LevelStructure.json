@@ -6,6 +6,7 @@
 	  "1" : {
 			"duration" : 12,
 			"spawn_times": {
+				"-3"    : "Rock",
 				"2"    : "Rock",
 				"0.7"  : "Rock",
 				"1.1"  : "Rock",

@@ -14,9 +14,9 @@ var direction  = Vector2(0,0)
 
 var jump            = 1.0
 
-var right_border    = 450.0
-onready var base_position_x = position.x
-onready var base_position_y = position.y
+var right_border    = 800.0
+onready var base_position_x = position.x 
+onready var base_position_y = position.y 
 var on_ground       = false
 
 var bakcground_speed_multipler = 0
@@ -29,33 +29,30 @@ func reset_position():
 
 func move_verticall(delta):
 	var jump_force  = calculate_jump_force(delta)
+	
 	if !test_move( get_transform(), jump_force * delta ):
 # warning-ignore:return_value_discarded
-		move_and_collide( jump_force * delta )
+		var k = move_and_collide( jump_force * delta )
 		return false
 	return true
 
 func move_horizontal(delta):
-	
 	var speed    = calculate_speed()
 	var friction = calculate_friction()
-	#print( friction + speed )
-# warning-ignore:return_value_discarded
 	move_and_collide( ( friction + speed) * delta )
 
 func calculate_jump_force(delta):
-	if jump == 0 : return Vector2(0, Gravity)
+	if jump == 0 : return Vector2( Gravity/9 * (1-bakcground_speed_multipler), Gravity)
 	jump = max( jump - Gravity*delta, 0 )
-	return Vector2(0, - jump) + Vector2(0, Gravity)
+	return Vector2(0, - jump) + Vector2(Gravity/9*(1-bakcground_speed_multipler), Gravity)
 
 var move_speed = 0.0
 func calculate_speed():
-	if position.x < right_border: return Vector2(1,0) * move_speed #* exmaple_multipler
+	if position.x < right_border: return Vector2(1,0) * move_speed
 	return Vector2(0,0)
 
 func calculate_friction():
-	#if !on_ground : return Vector2(-Friction/2,0)
-	if position.x > base_position_x: return Vector2( -Friction, 0 ) # * (1-exmaple_multipler)
+	if position.x > base_position_x: return Vector2( -Friction, 0 ) 
 	return Vector2(0,0)
 
 func should_stop_near_right_border():
@@ -104,15 +101,10 @@ func _process(delta):
 	if Input.is_action_pressed("ui_right") : 
 		direction = directions["right"]
 		move_speed = min( move_speed + 2*MaxMoveSpeed* delta, MaxMoveSpeed )
-	else: move_speed = max( move_speed - 2*MaxMoveSpeed* delta, 0 )
-	
-	#print( move_speed, " ", jump ) 
-	
-	#if Input.is_action_pressed("ui_left")  and position.x >= base_position_x:  direction = directions["left"]
+	else: move_speed = max( move_speed - 2*MaxMoveSpeed* delta, 30 )
 	if Input.is_action_just_pressed("ui_accept"): shoot()
 
 func _physics_process(delta):
-	#print(position)
 	if pause: return
 	process_moves(delta)
 

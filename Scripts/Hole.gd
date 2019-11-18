@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var SPEED = 100
+export var SPEED = 130
 
 var points          = 50
 var add_points      = true
