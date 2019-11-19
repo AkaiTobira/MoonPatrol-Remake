@@ -71,11 +71,11 @@ Friction = 70.0
 MaxMoveSpeed = 150.0
 
 [node name="Hole_Spawner" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1594.84, 900.215 )
+position = Vector2( 1594.84, 909.215 )
 scale = Vector2( 0.949715, 1.15578 )
 
 [node name="Rock_Spawner" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1580.37, 858.777 )
+position = Vector2( 1580.37, 868.777 )
 
 [node name="Mine_Spawner" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1584.34, 879.86 )

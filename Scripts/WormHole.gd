@@ -5,11 +5,13 @@ export var SPEED = 130
 var speed_multipler  = 1
 var fixed_y_pos      = 0
 var points_jump_over = 50
-var points_destroy   = 100
 var add_points       = true
 var pause            = false
 
 onready var player = get_node("/root/Root/Player")
+
+func _ready():
+	$AnimationPlayer.seek(rand_range(0, $AnimationPlayer.get_current_animation_length() ))
 
 func set_speed_multipler( player_multipler ):
 	speed_multipler = 1 + player_multipler
@@ -33,9 +35,16 @@ func _physics_process(delta):
 	if add_points : grant_points()
 	if position.x < -100 : call_deferred("queue_free")
 
+func add_points_base_animation_moment( base ):
+	if 2 <= base   and base  <= 3: get_parent().points += 300
+	elif 1 <= base and base  <= 2: get_parent().points += 500
+	elif 3 <= base and base  <= 4: get_parent().points += 500
+	else: get_parent().points += 800
+
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("missle"):
-		get_parent().points += points_destroy
+		var current_animation_position = $AnimationPlayer.current_animation_position
+		add_points_base_animation_moment(current_animation_position)
 		body.on_delete()
-		call_deferred("queue_free")
-
+		$AnimationPlayer.call_deferred("queue_free")
+		$Worm.call_deferred("queue_free")

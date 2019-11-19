@@ -17,7 +17,6 @@ func grant_points():
 		get_parent().points += points
 		add_points = false
 
-
 func play() : pause = false
 func stop(): pause = true
 

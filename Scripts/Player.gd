@@ -31,7 +31,7 @@ func move_verticall(delta):
 	var jump_force  = calculate_jump_force(delta)
 	
 	if !test_move( get_transform(), jump_force * delta ):
-# warning-ignore:return_value_discarded
+# warning-ignore:unused_variable
 		var k = move_and_collide( jump_force * delta )
 		return false
 	return true
@@ -39,12 +39,13 @@ func move_verticall(delta):
 func move_horizontal(delta):
 	var speed    = calculate_speed()
 	var friction = calculate_friction()
+# warning-ignore:return_value_discarded
 	move_and_collide( ( friction + speed) * delta )
 
 func calculate_jump_force(delta):
-	if jump == 0 : return Vector2( Gravity/9 * (1-bakcground_speed_multipler), Gravity)
+	if jump == 0 : return Vector2(0, Gravity)
 	jump = max( jump - Gravity*delta, 0 )
-	return Vector2(0, - jump) + Vector2(Gravity/9*(1-bakcground_speed_multipler), Gravity)
+	return Vector2(0, - jump) + Vector2(0, Gravity)
 
 var move_speed = 0.0
 func calculate_speed():
@@ -60,7 +61,7 @@ func should_stop_near_right_border():
 
 func process_moves(delta):
 	on_ground = move_verticall(delta)
-	if !on_ground: return
+	#if !on_ground: return
 	if should_stop_near_right_border(): return
 	move_horizontal(delta)
 	update_backgound_multipler()

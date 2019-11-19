@@ -61,15 +61,24 @@ func get_next_segment():
 
 func spawn_obstacle(obstacle_to_spawn):
 	match obstacle_to_spawn:
-		"Rock" : 
-			$Rock_Spawner.spawn()
-			loger.append( "\n Rock : " + str(stepify(time, 0.1)) )
+		"RockB" : 
+			$Rock_Spawner.spawn( obstacle_to_spawn )
+			loger.append( "\n RockB : " + str(stepify(time, 0.1)) )
+		"RockS" : 
+			$Rock_Spawner.spawn( obstacle_to_spawn )
+			loger.append( "\n RockS : " + str(stepify(time, 0.1)) )
 		"Hole" : 
-			$Hole_Spawner.spawn()
+			$Hole_Spawner.spawn( obstacle_to_spawn)
 			loger.append( "\n Hole : " + str(stepify(time, 0.1)) )
+		"HoleB" : 
+			$Hole_Spawner.spawn( obstacle_to_spawn)
+			loger.append( "\n HoleB : " + str(stepify(time, 0.1)) )
 		"Mine" : 
 			$Mine_Spawner.spawn()
 			loger.append( "\n Mine : " + str(stepify(time, 0.1)) )
+		"Worm" :
+			$Hole_Spawner.spawn( obstacle_to_spawn)
+			loger.append( "\n Worm : " + str(stepify(time, 0.1)) )
 		_ :
 			print( "ERROR : not found" ,time , " is " , obstacle_to_spawn , " And this is unknown" )
 			assert(true == false)

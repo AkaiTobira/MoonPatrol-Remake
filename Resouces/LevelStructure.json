@@ -1,37 +1,36 @@
 {
-  "start_segment"   : "1",
+  "start_segment"   : "5",
   "fixed_segment"   : false,
   "random_order"    : true,
   "level_structure" : {
 	  "1" : {
 			"duration" : 12,
 			"spawn_times": {
-				"2"    : "Rock",
-				"0.7"  : "Rock",
-				"1.1"  : "Rock",
-				"6"    : "Rock",
-				"8.2"  : "Rock",
-				"11"   : "Rock",
+				"2"    : "RockS",
+				"0.7"  : "RockS",
+				"1.1"  : "RockS",
+				"6"    : "RockB",
+				"8.2"  : "RockB",
+				"11"   : "RockS"
 				}
 			},
 	  "2" : {
 			"duration" : 12,
 			"spawn_times": {
-				"2"    : "Hole",
-				"1.1"  : "Hole",
-				"6"    : "Hole",
-				"8.2"  : "Hole",
-				"11"   : "Hole",
+				"1.1"    : "HoleB",
+				"6"      : "HoleB",
+				"9.2"    : "HoleB",
+				"11.9"   : "HoleB"
 				}
 	  },
 	  "3" : {
 			"duration" : 12,
 			"spawn_times": {
 				"2"    : "Hole",
-				"1.1"  : "Rock",
+				"1.1"  : "RockB",
 				"6"    : "Hole",
-				"8.2"  : "Rock",
-				"11"   : "Rock",
+				"8.2"  : "RockB",
+				"11"   : "RockB"
 				}
 	  },
 	  "4" : {
@@ -42,8 +41,19 @@
 				"6"    : "Mine",
 				"6.3"  : "Mine",
 				"8.2"  : "Mine",
-				"11"   : "Mine",
+				"11"   : "Mine"
 				}
-	  }
+	  },
+	  "5" : {
+		  "duration" : 30,
+		  "spawn_times": {
+			"0"  : "Worm",
+			"10" : "Worm",
+			"15" : "Worm",
+			"20" : "Worm",
+			"25" : "Worm",
+			"30" : "Worm"
+	  		}
+		}
 	}
 }
