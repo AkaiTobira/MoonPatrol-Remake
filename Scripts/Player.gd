@@ -14,7 +14,8 @@ var direction  = Vector2(0,0)
 
 var jump            = 1.0
 
-var right_border    = 800.0
+export var move_borders = Vector2( 500, 800 )
+
 onready var base_position_x = position.x 
 onready var base_position_y = position.y 
 var on_ground       = false
@@ -49,15 +50,15 @@ func calculate_jump_force(delta):
 
 var move_speed = 0.0
 func calculate_speed():
-	if position.x < right_border: return Vector2(1,0) * move_speed
+	if position.x < move_borders.y: return Vector2(1,0) * move_speed
 	return Vector2(0,0)
 
 func calculate_friction():
-	if position.x > base_position_x: return Vector2( -Friction, 0 ) 
+	if position.x > move_borders.x: return Vector2( -Friction, 0 ) 
 	return Vector2(0,0)
 
 func should_stop_near_right_border():
-	return position.x >= right_border and direction == directions["right"]
+	return position.x >=  move_borders.y and direction == directions["right"]
 
 func process_moves(delta):
 	on_ground = move_verticall(delta)
@@ -67,9 +68,9 @@ func process_moves(delta):
 	update_backgound_multipler()
 
 func update_backgound_multipler():
-	var offset = 50
-	var full_range = right_border - base_position_x - offset
-	bakcground_speed_multipler =  min( max( (position.x-base_position_x - offset)/full_range, 0 ), 1 )
+	#var offset = 50
+	var full_range =  move_borders.y - base_position_x #- offset
+	bakcground_speed_multipler =  min( max( (position.x-base_position_x )/full_range, 0 ), 1 )
 
 func shoot_forward():
 	if forward_missle: return
