@@ -1,5 +1,5 @@
 # MoonPatrol-Remake
-Remake of Atari Moon Patrol
+Remake of Irem Corp. Moon Patrol
 
 
 Online version of game : https://archive.org/details/arcade_mpatrol
