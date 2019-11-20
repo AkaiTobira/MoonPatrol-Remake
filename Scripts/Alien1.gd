@@ -3,7 +3,7 @@ extends KinematicBody2D
 # warning-ignore:unused_class_variable
 onready var player = get_node("/root/Root/Player")
 onready var operative_space = { "LT" : Vector2(max( player.move_borders.x - 100, 450 ), 300 ), 
-                                "RD" : Vector2(player.move_borders.y + 100, 600 ) }
+                                "RD" : Vector2(player.move_borders.y + 200, 600 ) }
 
 var direction  = Vector2(1, 0)
 var move_speed = 300
@@ -13,13 +13,18 @@ var point_in_space_over_player = Vector2(0, 0)
 func _ready(): 
 	point_in_space_over_player = get_point_in_space()
 	direction                  = (point_in_space_over_player - position).normalized()
+	get_parent().get_node("Sprite5").position  = operative_space["LT"]
+	get_parent().get_node("Sprite6").position  = operative_space["LT"]
+	get_parent().get_node("Sprite7").position  = operative_space["RD"]
+	get_parent().get_node("Sprite8").position  = operative_space["RD"]
 
 func get_cubic_triple():
 	relative_point = Vector2(0,0)
-	var INTERPOLATION_SPACING = 170
+	var INTERPOLATION_SPACING_V = 80
+	var INTERPOLATION_SPACING_H = 80
 	var g1 = Vector2(0, 0)
-	var g3 = Vector2(0, INTERPOLATION_SPACING)   * sign(direction.y) * -1
-	var g2 = Vector2(0, INTERPOLATION_SPACING/2) * sign(direction.y) * -1 + sign(direction.x) * Vector2(INTERPOLATION_SPACING, 0) 
+	var g3 = Vector2(0, INTERPOLATION_SPACING_V)   * sign(direction.y) * -1  
+	var g2 = Vector2(0, INTERPOLATION_SPACING_V/2) * sign(direction.y) * -1 + sign(direction.x) * Vector2(INTERPOLATION_SPACING_H, 0) 
 	
 	#Temporal for debuug
 	get_parent().get_node("Sprite").position  = position + g1
@@ -34,6 +39,20 @@ func get_bezier_interpolate_point( triple_points, t ):
 	return  on_AB * invert_t + on_BC*t
 
 func get_point_in_space():
+	var rt = position
+	while (rt - position).length_squared() < 9000: 
+		var lenght = randi()%100 + 300
+		var dir    = position + (Vector2(1,0) * sign(direction.x ) * lenght)
+		print( dir.rotated(rad2deg( -90 )) ,  " " ,  dir.rotated(rad2deg( 90 )) )
+		
+		
+		
+		rt = dir.rotated( deg2rad( randi()%90 * -1 if randi() %2 == 0 else 1 ) )  
+		rt.y = max( min( rt.y, operative_space["LT"].y ), operative_space["RD"].y )
+		rt.x = max( min( rt.x, operative_space["RD"].x ), operative_space["LT"].x )
+	return rt
+	print( rt )
+	
 	return Vector2( randi() % int( operative_space["RD"].x - operative_space["LT"].x ) + int(operative_space["LT"].x),
 	                randi() % int( operative_space["RD"].y - operative_space["LT"].y ) + int(operative_space["LT"].y) )
 

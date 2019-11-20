@@ -103,3 +103,19 @@ texture = ExtResource( 11 )
 [node name="Sprite4" type="Sprite" parent="."]
 z_index = 200
 texture = ExtResource( 11 )
+
+[node name="Sprite5" type="Sprite" parent="."]
+z_index = 200
+texture = ExtResource( 11 )
+
+[node name="Sprite7" type="Sprite" parent="."]
+z_index = 200
+texture = ExtResource( 11 )
+
+[node name="Sprite8" type="Sprite" parent="."]
+z_index = 200
+texture = ExtResource( 11 )
+
+[node name="Sprite6" type="Sprite" parent="."]
+z_index = 200
+texture = ExtResource( 11 )
