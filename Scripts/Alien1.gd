@@ -1,11 +1,11 @@
 extends KinematicBody2D
 
+# warning-ignore:unused_class_variable
 onready var player = get_node("/root/Root/Player")
 onready var operative_space = { "LT" : Vector2(max( player.move_borders.x - 100, 450 ), 300 ), 
                                 "RD" : Vector2(player.move_borders.y + 100, 600 ) }
 
 var direction  = Vector2(1, 0)
-var velocity   = Vector2(0, 0)
 var move_speed = 300
 
 var point_in_space_over_player = Vector2(0, 0) 
@@ -16,26 +16,22 @@ func _ready():
 
 func get_cubic_triple():
 	relative_point = Vector2(0,0)
-	var roz = 170
-	var g1 = Vector2(0,0)# position = Vector2(0,0)
-	get_parent().get_node("Sprite").position = position
-	var g3 = Vector2(0, roz) * sign(direction.y) * -1
-	get_parent().get_node("Sprite3").position = position + Vector2(0, roz) * sign(direction.y) * -1
-	var g2 = Vector2(0, roz/2) * sign(direction.y) * -1 + sign(direction.x) * Vector2( roz, 0 ) 
-	get_parent().get_node("Sprite2").position = position + Vector2(0, roz/2) * sign(direction.y) * -1 + sign(direction.x) * Vector2( roz, 0 )
-	return { "a" : g1, "b" : g2, "c" : g3 }
+	var INTERPOLATION_SPACING = 170
+	var g1 = Vector2(0, 0)
+	var g3 = Vector2(0, INTERPOLATION_SPACING)   * sign(direction.y) * -1
+	var g2 = Vector2(0, INTERPOLATION_SPACING/2) * sign(direction.y) * -1 + sign(direction.x) * Vector2(INTERPOLATION_SPACING, 0) 
+	
+	#Temporal for debuug
+	get_parent().get_node("Sprite").position  = position + g1
+	get_parent().get_node("Sprite3").position = position + g2
+	get_parent().get_node("Sprite2").position = position + g3
+	return { "a" : g1, "b" : g2, "c" : g3, "relative": Vector2(0,0) }
 
-func get_bezier_point( triple_points, t ):
-	
+func get_bezier_interpolate_point( triple_points, t ):
 	var invert_t = 1.0-t
-	
-	var v = triple_points["a"]*invert_t + triple_points["b"]*t
-	var g = triple_points["b"]*invert_t + triple_points["c"]*t
-	
-	var z = v * invert_t + g*t
-	print( "X + ", z, " t=", t , triple_points )
-	return  z
-	
+	var on_AB = triple_points["a"]*invert_t + triple_points["b"]*t
+	var on_BC = triple_points["b"]*invert_t + triple_points["c"]*t
+	return  on_AB * invert_t + on_BC*t
 
 func get_point_in_space():
 	return Vector2( randi() % int( operative_space["RD"].x - operative_space["LT"].x ) + int(operative_space["LT"].x),
@@ -47,44 +43,40 @@ var distance2      = 1000000
 var distance3      = 1000000
 
 var relative_point = Vector2(0,0)
+
+func process_linear_move(delta):
+	var distance_v = (point_in_space_over_player - position)
+	direction      = distance_v.normalized()
+	
+	var velocity_t = direction * move_speed
+	var distance   = distance_v.length()
+	if (velocity_t * delta).length() > distance : 
+		velocity_t     = direction * distance
+		current_triple = get_cubic_triple()
+		#THIS PART IS STILL TO REFACTOR ... and everything below
+		var p2 = get_bezier_interpolate_point( current_triple, 0.3 )
+		distance2 = (p2 - current_triple["a"]).length() + (current_triple["c"] - p2).length()
+		distance3 = distance2 
+		move_free = false
+# warning-ignore:return_value_discarded
+	move_and_slide( velocity_t )
+
+func process_dodge(delta):
+	var velocity_multipler = 1.0
+	if distance3 < move_speed*delta : 
+		velocity_multipler = distance3/move_speed*delta
+		move_free = true
+		point_in_space_over_player = get_point_in_space()
+		get_parent().get_node("Sprite4").position = point_in_space_over_player
+	distance3 = max( distance3 - ( move_speed * delta), 0 )
+	var t = distance3/distance2
+	var p3 = get_bezier_interpolate_point( current_triple, 1.0-t )
+	var velocity_t = (p3 - current_triple["relative"]).normalized() * move_speed
+	current_triple["relative"] += velocity_t* velocity_multipler*delta
+# warning-ignore:return_value_discarded
+	move_and_slide( velocity_t* velocity_multipler )
+	direction  = velocity_t.normalized()	
+
 func _physics_process(delta):
-	
-	if move_free: 
-		var distance   = (point_in_space_over_player - position).length()
-		var velocity_t = (point_in_space_over_player - position).normalized() * move_speed
-		if (velocity_t * delta).length() > distance : 
-			direction  = velocity_t.normalized()
-			velocity_t = velocity_t.normalized() * distance
-			point_in_space_over_player = get_point_in_space()
-			current_triple = get_cubic_triple()
-			
-			var p2 = get_bezier_point( current_triple, 0.5 )
-		#	print( p2, current_triple, position )
-			distance2 = (p2 - current_triple["a"]).length() + (current_triple["c"] - p2).length()
-		#	print( distance2 )
-			distance3 = distance2 
-			
-			move_free = false
-		move_and_slide( velocity_t )
-	else:
-		var velocity_multipler = 1.0
-		if distance3 < move_speed*delta : 
-			velocity_multipler = distance3/move_speed*delta
-			move_free = true
-			point_in_space_over_player = get_point_in_space()
-			get_parent().get_node("Sprite4").position = point_in_space_over_player
-		distance3 = max( distance3 - ( move_speed * delta), 0 )
-		var t = distance3/distance2
-		var p3 = get_bezier_point( current_triple, 1.0-t )
-		#print( t, " ", p3, " ", p3 - relative_point, " ", relative_point )
-		var velocity_t = (p3 - relative_point).normalized() * move_speed
-		relative_point += velocity_t* velocity_multipler*delta
-		move_and_slide( velocity_t* velocity_multipler )
-		direction  = velocity_t.normalized()		
-		#print( get_bezier_point( current_triple, 0.5 ) )
-		return 
-	
-	#print( get_bezier_point( { "a": Vector2(0,0), "b" : Vector2(1,2), "c" : Vector2(2,0) }, 0.5 ) )
-	#var distance2 = (point_in_space_over_player - position).length_squared()
-	#print( distance )#, " ", distance2 ) 
-	#print( get_point_in_space() )
+	if move_free: process_linear_move(delta)
+	else: process_dodge(delta)
