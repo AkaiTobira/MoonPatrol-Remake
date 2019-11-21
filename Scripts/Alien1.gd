@@ -45,7 +45,7 @@ func get_point_in_space():
 	var attempts = 0
 	while (rt - position).length_squared() < 40000: 
 		if attempts > 10 : return get_start_point()
-		var lenght = randi()%200 + 200
+		var lenght = randi()%300 + 200
 		var dir    = position + (Vector2(1,0) * sign(direction.x ) * lenght)
 		rt = dir.rotated( deg2rad( randi()%90 * -1 if randi() %2 == 0 else 1 ) )
 		rt.x = max( min( rt.x, operative_space["RD"].x ), operative_space["LT"].x )
