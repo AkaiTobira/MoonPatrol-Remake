@@ -20,6 +20,8 @@ var current_letter = 64
 var player_letter  = 0
 var next_letter    = 65
 
+var active_squats = [ 0 ]
+
 var pause          = false
 
 func _ready():
@@ -54,34 +56,10 @@ func update_segment_index():
 func get_next_segment():
 	update_segment_index()
 	current_segment = dict["level_structure"][current_level].duplicate(true)
-	$Checkpoint_Spawner.spawn(char(next_letter))
+	$Spawners.spawn_checkpoint(char(next_letter))
 	current_letter = next_letter
 	next_letter    = next_letter + 1
 	loger.append("\n Segment :" + current_level + " : " + char(next_letter)  ) 
-
-func spawn_obstacle(obstacle_to_spawn):
-	match obstacle_to_spawn:
-		"RockB" : 
-			$Rock_Spawner.spawn( obstacle_to_spawn )
-			loger.append( "\n RockB : " + str(stepify(time, 0.1)) )
-		"RockS" : 
-			$Rock_Spawner.spawn( obstacle_to_spawn )
-			loger.append( "\n RockS : " + str(stepify(time, 0.1)) )
-		"Hole" : 
-			$Hole_Spawner.spawn( obstacle_to_spawn)
-			loger.append( "\n Hole : " + str(stepify(time, 0.1)) )
-		"HoleB" : 
-			$Hole_Spawner.spawn( obstacle_to_spawn)
-			loger.append( "\n HoleB : " + str(stepify(time, 0.1)) )
-		"Mine" : 
-			$Mine_Spawner.spawn()
-			loger.append( "\n Mine : " + str(stepify(time, 0.1)) )
-		"Worm" :
-			$Hole_Spawner.spawn( obstacle_to_spawn)
-			loger.append( "\n Worm : " + str(stepify(time, 0.1)) )
-		_ :
-			print( "ERROR : not found" ,time , " is " , obstacle_to_spawn , " And this is unknown" )
-			assert(true == false)
 
 func process_spawn():
 	var parsed_time = stepify(time + time_reduciton, 0.1)
@@ -89,7 +67,8 @@ func process_spawn():
 		var nmb_time = float(timer)
 		if nmb_time <= parsed_time:
 			var obstacle_to_spawn = current_segment["spawn_times"][timer] 
-			spawn_obstacle(obstacle_to_spawn)
+			loger.append( "\n " + obstacle_to_spawn + ": " + str(stepify(time, 0.1)) )
+			$Spawners.spawn_obstacle(obstacle_to_spawn)
 			current_segment["spawn_times"].erase(timer)
 			update_log()
 
@@ -166,6 +145,14 @@ func pause_world():
 		if obstacle.is_in_group("obstalces"):
 			obstacle.call_deferred( "stop" )
 
+func register_new_squat(size_of_squat):
+	for i in range( len( active_squats ) ):
+		if active_squats[i] == 0 : 
+			active_squats[i] = size_of_squat
+			return i
+	active_squats.append(size_of_squat)
+	return len( active_squats) - 1
+
 func _process(delta):
 	update_time(delta)
 	if pause: return
@@ -173,5 +160,3 @@ func _process(delta):
 	update_points()
 	process_spawn()
 	process_segment_end()
-	
-#https://strategywiki.org/wiki/Moon_Patrol/Walkthrough

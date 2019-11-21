@@ -1,6 +1,6 @@
 {
-  "start_segment"   : "5",
-  "fixed_segment"   : false,
+  "start_segment"   : "6",
+  "fixed_segment"   : true,
   "random_order"    : true,
   "level_structure" : {
 	  "1" : {
@@ -23,6 +23,8 @@
 				"11.9"   : "HoleB"
 				}
 	  },
+
+
 	  "3" : {
 			"duration" : 12,
 			"spawn_times": {
@@ -33,6 +35,14 @@
 				"11"   : "RockB"
 				}
 	  },
+	  "6" : {
+		"duration" : 30,
+		"spawn_times": {
+			"2"    :  "4_ABCD_Alien1",
+			"10"   :  "3_ABC_Alien1",
+			"20"   :  "5_AEBCD_Alien1"
+			}
+  	},
 	  "4" : {
 			"duration" : 12,
 			"spawn_times": {
@@ -44,10 +54,26 @@
 				"11"   : "Mine"
 				}
 	  },
+	  "test" : {
+		"duration" : 2,
+		"spawn_times": {
+			"0.1"  : "RockS",
+			"0.2"  : "RockB",
+			"0.3"  : "Hole",
+			"0.4"  : "HoleB",
+			"0.5"  : "Worm",
+			"0.6"  : "Mine",
+			"0.7"  :  "4_ABCD_Alien1"
+			}
+	  },
 	  "5" : {
 		  "duration" : 30,
 		  "spawn_times": {
-			"0"  : "Worm",
+			"0.2" : "9_BBBBBBBBB_Alien1",
+			"0.3" : "9_BBBBBBBBB_Alien1",
+			"0.4" : "9_BBBBBBBBB_Alien1",
+			"0.7" : "9_BBBBBBBBB_Alien1",
+			"0"   : "Worm",
 			"10" : "Worm",
 			"15" : "Worm",
 			"20" : "Worm",

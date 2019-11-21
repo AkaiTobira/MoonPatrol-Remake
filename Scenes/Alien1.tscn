@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Alien1.gd" type="Script" id=1]
 [ext_resource path="res://Textures/SillyAsianAlien.png" type="Texture" id=2]
 
-[node name="Alien1" type="KinematicBody2D"]
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 34.7102
+height = 254.554
+
+[node name="Alien1" type="KinematicBody2D" groups=[
+"obstacles",
+]]
 scale = Vector2( 0.3, 0.3 )
 script = ExtResource( 1 )
 
@@ -12,3 +18,14 @@ texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 87.9668, 10.1813, 112.409, 30.4332, 155.706, 73.032, 117.297, 92.5856, -98.4904, 91.1889, -156.453, 70.937, -114.552, 25.5448, -69.1601, -7.27725, -12.5944, -17.054, 26.5127, -9.37228 )
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -3.76561, 59.4964 )
+rotation = 1.5708
+shape = SubResource( 1 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

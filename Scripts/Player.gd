@@ -8,6 +8,7 @@ export var MaxMoveSpeed =  130.0
 onready var missle  = load( "res://Scenes/Missle.tscn" )
 onready var fmissle = load( "res://Scenes/Missle_forward.tscn" )
 var forward_missle  = null
+var fire_up_missles = 0
 
 var directions = { "left" : Vector2(-1,0), "right" : Vector2(1,0) }
 var direction  = Vector2(0,0)
@@ -82,6 +83,8 @@ func shoot_forward():
 	get_parent().call_deferred("add_child", forward_missle)  
 
 func shoot_up():
+	if fire_up_missles > 3 : return
+	fire_up_missles     += 1
 	var up_missle        = missle.instance()
 	up_missle.position   = position + Vector2(-30,-30)
 	up_missle.life_range = 600 
