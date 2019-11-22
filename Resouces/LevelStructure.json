@@ -8,6 +8,7 @@
 		  "duration" : 5,
 		  "spawn_times": {
 			"2"    : "RockS",
+			"1"    : "1_A_Alien2",
 		  }
 
 	  },
@@ -15,6 +16,7 @@
 		"duration" : 5,
 		"spawn_times": {
 		  "2"    : "RockB",
+		  "1"    : "1_A_Alien2",
 		}
 
 	},
@@ -22,6 +24,7 @@
 		"duration" : 5,
 		"spawn_times": {
 		  "2"    : "Hole",
+		  "1"    : "1_A_Alien2",
 		}
 
 	},
@@ -38,6 +41,7 @@
 		"duration" : 5,
 		"spawn_times": {
 		  "2"    : "1_A_Alien1",
+		  "1"    : "1_A_Alien2",
 		}
 
 	},
@@ -45,6 +49,7 @@
 		"duration" : 5,
 		"spawn_times": {
 		  "2"    : "HoleB",
+		  "1"    : "1_A_Alien2",
 		}
 
 	},
@@ -52,12 +57,14 @@
 		"duration" : 5,
 		"spawn_times": {
 		  "2"    : "Worm",
+		  "1"    : "1_A_Alien2",
 		}
 	},
 	"3" : {
 		"duration" : 5,
 		"spawn_times": {
 		  "2"    : "Mine",
+		  "1"    : "1_A_Alien2",
 		}
 
 	}
