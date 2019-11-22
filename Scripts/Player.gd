@@ -113,10 +113,13 @@ func _physics_process(delta):
 	if pause: return
 	process_moves(delta)
 
+func on_dead():
+	if not player_good_mode: 
+		get_parent().pause_world()
+		print( "Here should be break but since player has no animation it isn't" )
+		get_parent().reload_from_checkpoint()
+
 func _on_Area2D_body_entered(body):
-	if body.is_in_group("obstalces"):
-		if not player_good_mode: 
-			get_parent().pause_world()
-			print( "Here should be break but since player has no animation it isn't" )
-			get_parent().reload_from_checkpoint()
+	if body.is_in_group("obstalces") or body.is_in_group("enemy_missle"):
+		on_dead()
 		print( "RIP, player died" )

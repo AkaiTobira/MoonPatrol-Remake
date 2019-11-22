@@ -16,11 +16,11 @@ var time_reduciton = 0
 var loger          = []
 var MAX_LOG_INFO   = 8
 
-var current_letter = 64
-var player_letter  = 0
-var next_letter    = 65
 
-var active_squats = [ 0 ]
+var player_letter  = 0
+var next_letter    = 64
+
+var active_squats = [ ]
 
 var pause          = false
 
@@ -29,6 +29,7 @@ func _ready():
 	current_level   = dict["start_segment"]
 	parse_level_list()
 	player_reached_next_letter()
+	current_level   = dict["start_segment"]
 	current_segment = dict["level_structure"][current_level].duplicate(true)
 
 func parse_level_list():
@@ -56,10 +57,6 @@ func update_segment_index():
 func get_next_segment():
 	update_segment_index()
 	current_segment = dict["level_structure"][current_level].duplicate(true)
-	$Spawners.spawn_checkpoint(char(next_letter))
-	current_letter = next_letter
-	next_letter    = next_letter + 1
-	loger.append("\n Segment :" + current_level + " : " + char(next_letter)  ) 
 
 func process_spawn():
 	var parsed_time = stepify(time + time_reduciton, 0.1)
@@ -81,8 +78,8 @@ func update_time(delta):
 	$UI/Time.text = "TIME :" + str(stepify(time, 0.1)) + " +" + str(stepify(time_reduciton, 0.1))
 	
 func process_segment_end():
-	if time + time_reduciton > current_segment["duration"]: 
-		get_next_segment()
+	if time + time_reduciton > current_segment["duration"]:
+		$Spawners.spawn_checkpoint(char(next_letter))
 		reset_timers(-5)
 
 func update_move_speed(delta):
@@ -95,13 +92,19 @@ func update_move_speed(delta):
 			obstacle.set_speed_multipler( player_multipler )
 
 func player_reached_next_letter():
-	player_letter = current_letter
+	#if player_letter == current_letter: return
+	get_next_segment()
+	player_letter  = next_letter
+	next_letter    = next_letter + 1
+	loger.append("\n Segment :" + current_level + " : " + char(next_letter)  ) 
 	loger.append( "\n Player point : " + char(player_letter) )
 	update_log()
 	background_settings = $ParallaxBackground.get_backgoround_info()
 
 func clean_scene():
 	for obstacle in get_children():
+		if obstacle.is_in_group("enemy_missle"):
+			obstacle.call_deferred( "queue_free" )
 		if obstacle.is_in_group("obstalces"):
 			obstacle.call_deferred( "queue_free" )
 	$Player.reset_position()
@@ -109,7 +112,8 @@ func clean_scene():
 func create_current_checkpoint_mark():
 	var checkpoint_marker =  load( "res://Scenes/Checkpoint.tscn" ).instance()
 	checkpoint_marker.set_letter(char(player_letter))
-	checkpoint_marker.fixed_y_pos = $Checkpoint_Spawner.position.y
+	checkpoint_marker.is_not_reached = false
+	checkpoint_marker.fixed_y_pos = $Spawners/Checkpoint_Spawner.position.y
 	checkpoint_marker.position.x  = $Player.base_position_x + 150
 	call_deferred("add_child", checkpoint_marker ) 
 
@@ -117,6 +121,8 @@ func reload_level():
 	$ParallaxBackground.set_backgoround_info(background_settings)
 	loger.append("\n Player dead \n reload from : " + str(current_level) )
 	current_segment = dict["level_structure"][current_level].duplicate(true)
+	next_letter     = player_letter + 1
+	update_log()
 
 func reset_timers( default = 0 ):
 	time           = default
@@ -147,14 +153,17 @@ func pause_world():
 
 func register_new_squat(size_of_squat):
 	for i in range( len( active_squats ) ):
-		if active_squats[i] == 0 : 
-			active_squats[i] = size_of_squat
+		if active_squats[i][0] == 0 : 
+			active_squats[i] = [ size_of_squat, false ]
 			return i
-	active_squats.append(size_of_squat)
+	active_squats.append([size_of_squat, false])
 	return len( active_squats) - 1
 
 func _process(delta):
 	update_time(delta)
+	
+	#if Input.is_action_just_pressed("ui_accept"): reload_from_checkpoint()
+	
 	if pause: return
 	update_move_speed(delta)
 	update_points()

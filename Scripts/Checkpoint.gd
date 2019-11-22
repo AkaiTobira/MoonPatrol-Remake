@@ -23,6 +23,7 @@ func save_checkpoint():
 
 # warning-ignore:unused_argument
 func _process(delta):
+	get_parent().get_node("Sprite2").position = position + Vector2(0, -50 )
 	position = Vector2( position.x - 1 * SPEED * speed_multipler * delta, fixed_y_pos)
 	if is_not_reached : save_checkpoint()
 	if position.x < -100 : call_deferred("queue_free")
