@@ -123,14 +123,14 @@ func move_to_target_pos(delta):
 
 func change_to_avoid():
 	current_triple   = get_checkpoints()
-	var farest_point = get_bezier_interpolate_point( current_triple, 0.3 )
+	var farest_point = get_bezier_interpolate_point( current_triple, 0.5 )
 	full_avoid_distance = (farest_point - current_triple["a"]).length() + (current_triple["c"] - farest_point).length()
 	left_avoid_distance = full_avoid_distance
 	avoid = true
 
 func get_checkpoints():
 	var INTERPOLATION_SPACING_V = 80
-	var INTERPOLATION_SPACING_H = 80
+	var INTERPOLATION_SPACING_H = 200
 	var g1 = Vector2(0, 0)
 	var g3 = Vector2(0, INTERPOLATION_SPACING_V)   * sign(direction.y) * -1
 	var g2 = Vector2(0, INTERPOLATION_SPACING_V/2) * sign(direction.y) * -1 + sign(direction.x) * Vector2(INTERPOLATION_SPACING_H, 0)
@@ -168,10 +168,11 @@ func get_next_target_point():
 	return new_position
 
 func generate_new_position_point(new_position):
+	var new_positon_y = new_position.y
 	var lenght = randi()%300 + 200
 	var dir    = position + (Vector2(1,0) * sign(direction.x ) * lenght)
 	new_position = dir.rotated( deg2rad( randi()%90 * -1 if randi() %2 == 0 else 1 ) )
-	new_position = fit_in_operative_space(new_position)
+	new_position = fit_in_operative_space(Vector2( new_position.x, new_positon_y))
 	return new_position
 
 func fit_in_operative_space(position):
