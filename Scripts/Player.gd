@@ -5,8 +5,8 @@ export var MaxJump      =  60.0
 export var Friction     =  50.0
 export var MaxMoveSpeed =  130.0
 
-onready var missle  = load( "res://Scenes/Missle.tscn" )
-onready var fmissle = load( "res://Scenes/Missle_forward.tscn" )
+onready var missle  = load( "res://Scenes/ProjectTiles/Missle.tscn" )
+onready var fmissle = load( "res://Scenes/ProjectTiles/Missle_forward.tscn" )
 var forward_missle  = null
 var fire_up_missles = 0
 

@@ -1,7 +1,5 @@
 extends Node2D
 
-
-
 func _ready():
 	get_child(0).SPEED          = 0
 	get_child(0).set_process(false)

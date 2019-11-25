@@ -2,15 +2,15 @@ extends Node2D
 
 
 onready var obstacles = {
-	"Hole"  :  load( "res://Scenes/Hole.tscn" ),
-	"HoleB" :  load( "res://Scenes/HugeHole.tscn" ),
-	"Worm"  :  load( "res://Scenes/WormHole.tscn" ),
-	"RockB" :  load( "res://Scenes/Rock.tscn" ),
-	"RockS" :  load( "res://Scenes/SmallRock.tscn" ),
-	"Mine"  :  load( "res://Scenes/Mine.tscn" ),
+	"Hole"  :  load( "res://Scenes/Obstacles/Hole.tscn" ),
+	"HoleB" :  load( "res://Scenes/Obstacles/HugeHole.tscn" ),
+	"Worm"  :  load( "res://Scenes/Obstacles/WormHole.tscn" ),
+	"RockB" :  load( "res://Scenes/Obstacles/Rock.tscn" ),
+	"RockS" :  load( "res://Scenes/Obstacles/SmallRock.tscn" ),
+	"Mine"  :  load( "res://Scenes/Obstacles/Mine.tscn" ),
 	"checkpoint":  load( "res://Scenes/Checkpoint.tscn" ),
-	"Alien1"    :  load( "res://Scenes/Alien1.tscn" ),
-	"Alien2"    :  load( "res://Scenes/Alien2.tscn" ),
+	"Alien1"    :  load( "res://Scenes/Enemies/Alien1.tscn" ),
+	"Alien2"    :  load( "res://Scenes/Enemies/Alien2.tscn" ),
 }
 
 func spawn_obstacle( obstacle_to_spawn ):

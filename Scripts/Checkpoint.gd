@@ -2,8 +2,11 @@ extends Sprite
 
 export var SPEED = 100
 
+onready var player = get_node("/root/Root/Player")
+
+var is_not_reached  = true
 var speed_multipler = 1
-var fixed_y_pos = 0
+var fixed_y_pos     = 0
 
 func set_speed_multipler( player_multipler ):
 	speed_multipler = 1 + player_multipler
@@ -11,9 +14,7 @@ func set_speed_multipler( player_multipler ):
 func set_letter(letter):
 	$Label.text = letter
 
-onready var player = get_node("/root/Root/Player")
 
-var is_not_reached = true
 
 func save_checkpoint():
 	if !player: return 
