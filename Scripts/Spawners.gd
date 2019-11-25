@@ -11,6 +11,7 @@ onready var obstacles = {
 	"checkpoint":  load( "res://Scenes/Checkpoint.tscn" ),
 	"Alien1"    :  load( "res://Scenes/Enemies/Alien1.tscn" ),
 	"Alien2"    :  load( "res://Scenes/Enemies/Alien2.tscn" ),
+	"Bomber"    :  load( "res://Scenes/Enemies/Bomber.tscn" )
 }
 
 func spawn_obstacle( obstacle_to_spawn ):

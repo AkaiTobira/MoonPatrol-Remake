@@ -1,12 +1,14 @@
 extends KinematicBody2D
 
-onready var player = get_node("/root/Root/Player")
+onready var player                   = get_node("/root/Root/Player")
+onready var previous_player_position = player.position
 onready var operative_space = { "LT" : Vector2(max( player.move_borders.x - 100, 450 ), 300 ),
                                 "RD" : Vector2(player.move_borders.y + 300, 450 ) }
 
 #kamikaze variables
 var KAMIKAZE_PROBABILITY = 5
 var KAMIKAZE_ENABLED     = true
+
 #shooting variables
 var current_precision = 250
 var MAX_PRECISION     = 250
@@ -14,10 +16,12 @@ var PRECISION_UPDATE  = 30
 var SHOOT_PROBABILITY = 320
 var precision_update_timer        = 0
 var max_precision_update_timer    = 1
-onready var previous_player_position = player.position
+
+
 #move variables
 var move_speed           = 250
 var direction            = Vector2(1, 0)
+var DISTANCE_FOR_NEW_POINT = 200
 var target_move_point    = Vector2(0, 0)
 var avoid                = false
 var current_triple       = {}
@@ -29,11 +33,9 @@ var squat_id   = -1
 var POINTS_FOR_SQUAT_DESTROY = 0
 
 #Life duration
-var life_timer    = 0
-var LIFE_TIME     = 12
-var is_dead = false
-
-
+var life_timer = 0
+var LIFE_TIME  = 12
+var is_dead    = false
 
 func _ready():
 	target_move_point = get_start_point()
@@ -89,14 +91,14 @@ func create_missle():
 	
 func get_missle_target():
 	var missle_target = player.position
-	var disruption    = (current_precision - randi()% current_precision)
-	missle_target.x   += disruption if randi()%2 else -disruption
+	var disruption    = (current_precision - randi()% int(current_precision/2))
+	missle_target.x   += ( disruption if randi()%2 else -disruption )
 	return missle_target 
 
 func update_precision():
 	if precision_update_timer < max_precision_update_timer: return
 	precision_update_timer = 0 
-	if is_player_moved(): current_precision = max( 1, current_precision - PRECISION_UPDATE )
+	if is_player_moved(): current_precision = max( 2, current_precision - PRECISION_UPDATE )
 	else: current_precision = min( MAX_PRECISION, current_precision + PRECISION_UPDATE )
 	previous_player_position = player.position 
 
@@ -169,7 +171,7 @@ func get_next_target_point():
 
 func generate_new_position_point(new_position):
 	var new_positon_y = new_position.y
-	var lenght = randi()%300 + 200
+	var lenght = randi()%300 + DISTANCE_FOR_NEW_POINT
 	var dir    = position + (Vector2(1,0) * sign(direction.x ) * lenght)
 	new_position = dir.rotated( deg2rad( randi()%90 * -1 if randi() %2 == 0 else 1 ) )
 	new_position = fit_in_operative_space(Vector2( new_position.x, new_positon_y))

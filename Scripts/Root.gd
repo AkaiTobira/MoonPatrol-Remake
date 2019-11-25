@@ -124,8 +124,9 @@ func reload_from_checkpoint():
 
 func clean_scene():
 	for obstacle in get_children():
-		if obstacle.is_in_group("enemy_missle"):
-			obstacle.call_deferred( "queue_free" )
+	#Temp disabling
+	#	if obstacle.is_in_group("enemy_missle"):
+	#		obstacle.call_deferred( "queue_free" )
 		if obstacle.is_in_group("obstalces"):
 			obstacle.call_deferred( "queue_free" )
 	$Player.reset_position()

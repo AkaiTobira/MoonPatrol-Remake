@@ -32,6 +32,7 @@
 	"4" : {
 		"duration" : 5,
 		"spawn_times": {
+		  "1"    : "1_B_Bomber",
 		  "2"    : "1_A_Alien2",
 		  "2.2"    : "1_B_Alien1",
 		}

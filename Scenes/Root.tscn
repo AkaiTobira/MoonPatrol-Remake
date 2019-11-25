@@ -74,7 +74,6 @@ Friction = 200.0
 MaxMoveSpeed = 300.0
 
 [node name="Spawners" type="Node2D" parent="."]
-editor/display_folded = true
 script = ExtResource( 6 )
 
 [node name="Hole_Spawner" parent="Spawners" instance=ExtResource( 7 )]
