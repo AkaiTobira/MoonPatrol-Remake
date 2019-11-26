@@ -47,3 +47,13 @@ func process_bombing(delta):
 		bomb.velocity   = velocity_t
 		bomb.direction  = velocity_t.normalized()
 	pass
+	
+func on_destroy():
+	if bomb: bomb.bomber = null
+	.on_destroy()
+	print( "Destroyed" )
+	
+func on_dead():
+	if bomb: bomb.bomber = null
+	.on_dead()
+	print( "RunAway" )

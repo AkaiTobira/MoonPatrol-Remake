@@ -29,7 +29,7 @@ func spawn_hole():
 	on_delete()
 
 func on_delete():
-	if is_instance_valid(bomber) : 
+	if bomber: 
 		bomber.bomb = null
 		get_parent().active_squats[bomber.squat_id][1] = false
 	call_deferred("queue_free")
