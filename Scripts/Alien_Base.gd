@@ -61,9 +61,9 @@ func select_life_end_point():
 
 func enable_kamikaze_atack():
 	if not KAMIKAZE_ENABLED: return
-	if not get_parent().active_squats[squat_id][1]:
+	if not get_parent().get_node("Squat_controller").active_squats[squat_id][1]:
 		if randi()%KAMIKAZE_PROBABILITY == 0: 
-			get_parent().active_squats[squat_id][1] = true
+			get_parent().get_node("Squat_controller").active_squats[squat_id][1] = true
 			target_move_point = Common.player.position + Vector2( randi()%20 * -1 if randi()%2 == 0 else 1, 10 ) 
 
 func on_dead():

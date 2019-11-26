@@ -3,7 +3,6 @@
 [ext_resource path="res://Scripts/Rock.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_old/rock.png" type="Texture" id=2]
 
-
 [node name="SmallRock" type="KinematicBody2D" groups=[
 "obstalces",
 ]]

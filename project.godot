@@ -19,6 +19,10 @@ config/name="Moon Patrol : Remake"
 run/main_scene="res://Scenes/Root.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Common="*res://Scripts/Common.gd"
+
 [display]
 
 window/size/width=1920

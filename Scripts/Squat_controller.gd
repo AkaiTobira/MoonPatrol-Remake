@@ -4,8 +4,8 @@ var active_squats = [ ]
 var bomber_squats = [ ]
 
 func fill_squat( index, squat, valid ):
+	if valid != "Bomber": return
 	bomber_squats[index]    = squat
-	if valid != "Bomber": return 
 	squat[0].is_squat_lider = true
 	for alien in len(squat):
 		squat[alien].number_in_squat = alien+1
@@ -19,11 +19,7 @@ func _process(delta):
 				if not first_active: first_active = bomber_squats[i][j]
 				bomber_squats[i][j].lider = first_active
 				bomber_squats[i][j].is_squat_lider = false
-		first_active.is_squat_lider = true
-				
-			
-	#print( bomber_squats )
-	pass
+		if first_active : first_active.is_squat_lider = true
 
 func register_new_squat(size_of_squat):
 	for i in range( len( active_squats ) ):
