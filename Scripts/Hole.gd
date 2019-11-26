@@ -7,20 +7,23 @@ var add_points      = true
 var pause           = false
 
 var speed_multipler = 1
-var fixed_y_pos     = 0
+var fixed_y_pos = 0
+
+onready var player = get_node("/root/Root/Player")
 
 func grant_points():
-	if !Common.player: return 
-	if Common.player.position.x > position.x:
+	if !player: return 
+	if player.position.x > position.x:
 		get_parent().points += points
 		add_points = false
 
-func play(): pause = false
+func play() : pause = false
 func stop(): pause = true
 
 func set_speed_multipler( player_multipler ):
 	speed_multipler = 1 + player_multipler
-
+	
+# warning-ignore:unused_argument
 func _physics_process(delta):
 	if pause: return 
 # warning-ignore:return_value_discarded

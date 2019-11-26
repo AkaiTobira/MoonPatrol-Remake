@@ -1,12 +1,14 @@
 extends ParallaxBackground
 
-export var SPEED             = 30.0
+export var SPEED = 30.0
 export var SPEDD_MULTIPLER_1 = 1.0
 export var SPEDD_MULTIPLER_2 = 2.0
 export var SPEDD_MULTIPLER_3 = 3.0
 
 var player_speed = 1
-var pause        = false 
+var pause = false 
+
+func _ready(): pass
 
 func set_speed_multipler( multipler ):
 	player_speed = 1 + multipler
@@ -23,9 +25,12 @@ func set_backgoround_info( info ):
 	$Back1.motion_offset.x = info[0]
 	$Back2.motion_offset.x = info[1]
 	$Back3.motion_offset.x = info[2]
+	
+func play():
+	pause = false
 
-func play(): pause = false
-func stop(): pause = true	
+func stop():
+	pause = true	
 
 func _process(delta): 
 	if pause: return 
