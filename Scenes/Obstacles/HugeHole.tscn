@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Hole.gd" type="Script" id=1]
-[ext_resource path="res://Textures/hole.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Placeholders_old/hole.png" type="Texture" id=2]
+
 
 [node name="Hole" type="KinematicBody2D" groups=[
 "obstalces",
 ]]
-scale = Vector2( 0.75, 0.75 )
+scale = Vector2( 1.8, 0.75 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 1 )
@@ -15,4 +16,4 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -32.2401, -63.3107, -62.2812, -21.9381, -28.8142, 28.6578, -2.46216, 41.3068, 26.7886, 16.7994, 31.7955, -25.3638, 16.7746, -62.5202 )
+polygon = PoolVector2Array( -34.0151, -47.8729, -65.6375, -23.2777, -31.1558, 29.4263, -0.763143, 41.3725, 23.3736, 31.1831, 67.5864, -24.6831, 18.2103, -52.0892 )

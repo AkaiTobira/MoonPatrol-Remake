@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/WormHole.gd" type="Script" id=1]
-[ext_resource path="res://Textures/hole.png" type="Texture" id=2]
-[ext_resource path="res://Textures/rock.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Placeholders_old/hole.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Placeholders_old/rock.png" type="Texture" id=3]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "GoUp"
