@@ -24,7 +24,7 @@ func set_speed_multipler( player_multipler ):
 func _physics_process(delta):
 	if pause: return 
 # warning-ignore:return_value_discarded
-	move_and_slide( Vector2(-1, 0 ) * SPEED * speed_multipler * delta )
+	move_and_slide( Vector2(-1, 0 ) * SPEED * speed_multipler )
 	position.y = fixed_y_pos
 	
 	if add_points : grant_points()
