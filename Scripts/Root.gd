@@ -15,7 +15,6 @@ var time_reduciton = 0
 #system variavles
 var loger          = []
 var MAX_LOG_INFO   = 8
-var active_squats = [ ]
 var pause          = false
 
 func _ready():
@@ -134,11 +133,3 @@ func pause_world():
 	for obstacle in get_children():
 		if obstacle.is_in_group("obstalces"):
 			obstacle.call_deferred( "stop" )
-
-func register_new_squat(size_of_squat):
-	for i in range( len( active_squats ) ):
-		if active_squats[i][0] == 0 : 
-			active_squats[i] = [ size_of_squat, false ]
-			return i
-	active_squats.append([size_of_squat, false])
-	return len( active_squats) - 1

@@ -68,7 +68,7 @@ func enable_kamikaze_atack():
 
 func on_dead():
 	call_deferred( "queue_free" )
-	get_parent().active_squats[squat_id][0] -= 1
+	get_parent().get_node("Squat_controller").active_squats[squat_id][0] -= 1
 
 func process_shooting():
 	update_precision()
@@ -182,8 +182,9 @@ func calculate_avoid_velocity(delta):
 
 func on_destroy():
 	call_deferred( "queue_free" )
-	get_parent().active_squats[squat_id][0] -= 1
-	if get_parent().active_squats[squat_id][0] == 0:
+	var node = get_parent().get_node("Squat_controller")
+	node.active_squats[squat_id][0] -= 1
+	if node.active_squats[squat_id][0] == 0:
 		get_parent().points += POINTS_FOR_SQUAT_DESTROY
 		#TODO add text levitating in place of destroyed enemy
 		print( squat_id, " Squad is is_dead " )

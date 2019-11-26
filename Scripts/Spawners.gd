@@ -35,9 +35,14 @@ func is_flying(obstacle):
 
 func spawn_flying(enemy):
 	var number_of_enemies = int(enemy[0])
-	var squat_id = get_parent().register_new_squat(number_of_enemies)
+	var squat_controller = get_parent().get_node("Squat_controller")
+	var squat_id = squat_controller.register_new_squat(number_of_enemies)
+	var squat = []
 	for spawner in number_of_enemies:
 		var spawner_id = enemy[2 + spawner]
 		assert( spawner_id in [ "A", "B", "C", "D", "E" ] )
-		var instance = Common.get_instance(enemy.right(2 + number_of_enemies + 1))
+		var obstacle_name = enemy.right(2 + number_of_enemies + 1)
+		var instance = Common.get_instance(obstacle_name)
+		squat.append( instance )
+		squat_controller.fill_squat( squat_id, squat, obstacle_name )
 		get_node("Alien_Spawner" + spawner_id).spawn(instance, squat_id, number_of_enemies)
