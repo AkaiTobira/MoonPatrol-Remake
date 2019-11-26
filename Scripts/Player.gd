@@ -4,27 +4,25 @@ export var Gravity      =  900.0
 export var MaxJump      =  60.0
 export var Friction     =  50.0
 export var MaxMoveSpeed =  130.0
-
-onready var missle  = load( "res://Scenes/ProjectTiles/Missle.tscn" )
-onready var fmissle = load( "res://Scenes/ProjectTiles/Missle_forward.tscn" )
-var forward_missle  = null
-var fire_up_missles = 0
-
-var directions = { "left" : Vector2(-1,0), "right" : Vector2(1,0) }
-var direction  = Vector2(0,0)
-
-var jump            = 1.0
-
 export var move_borders = Vector2( 500, 800 )
 
 onready var base_position_x = position.x 
 onready var base_position_y = position.y 
+
+#moving variables
+var directions = { "left" : Vector2(-1,0), "right" : Vector2(1,0) }
+var direction  = Vector2(0,0)
+var jump            = 1.0
 var on_ground       = false
 
-var bakcground_speed_multipler = 0
+#shooting variables
+var forward_missle  = null
+var fire_up_missles = 0
 
-var player_good_mode = false
-var pause            = false
+#system variables
+var bakcground_speed_multipler = 0
+var player_good_mode           = false
+var pause                      = false
 
 func reset_position():
 	position = Vector2(base_position_x, base_position_y)
@@ -75,7 +73,7 @@ func update_backgound_multipler():
 
 func shoot_forward():
 	if forward_missle: return
-	forward_missle            = fmissle.instance()
+	forward_missle            = Common.get_instance("PFmissle")
 	forward_missle.position   = position + Vector2(30,0)
 	forward_missle.scale      = Vector2( 1, 0.5 )
 	forward_missle.life_range = 300 
@@ -85,7 +83,7 @@ func shoot_forward():
 func shoot_up():
 	if fire_up_missles > 3 : return
 	fire_up_missles     += 1
-	var up_missle        = missle.instance()
+	var up_missle        = Common.get_instance("PUmissle")
 	up_missle.position   = position + Vector2(-30,-30)
 	up_missle.life_range = 600 
 	up_missle.direction  = Vector2(0,-1)
@@ -98,7 +96,6 @@ func shoot():
 func play() : pause = false
 func stop(): pause = true
 
-# warning-ignore:unused_argument
 func _process(delta):
 	if pause: return
 	if Input.is_action_just_pressed("ui_up") and on_ground: jump = MaxJump

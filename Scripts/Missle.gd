@@ -11,5 +11,5 @@ func _physics_process(delta):
 	if output or lifed_range > life_range: on_delete()
 
 func on_delete(): 
-	get_parent().get_node("Player").fire_up_missles -= 1
+	Common.player.fire_up_missles -= 1
 	call_deferred("queue_free")

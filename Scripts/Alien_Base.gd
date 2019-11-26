@@ -1,9 +1,8 @@
 extends KinematicBody2D
 
-onready var player                   = get_node("/root/Root/Player")
-onready var previous_player_position = player.position
-onready var operative_space = { "LT" : Vector2(max( player.move_borders.x - 100, 450 ), 300 ),
-                                "RD" : Vector2(player.move_borders.y + 300, 450 ) }
+onready var previous_player_position = Vector2(0,0)
+var operative_space = { "LT" : Vector2(450, 300),
+                        "RD" : Vector2(750, 450) }
 
 #kamikaze variables
 var KAMIKAZE_PROBABILITY = 5
@@ -16,7 +15,6 @@ var PRECISION_UPDATE  = 30
 var SHOOT_PROBABILITY = 320
 var precision_update_timer        = 0
 var max_precision_update_timer    = 1
-
 
 #move variables
 var move_speed           = 250
@@ -66,7 +64,7 @@ func enable_kamikaze_atack():
 	if not get_parent().active_squats[squat_id][1]:
 		if randi()%KAMIKAZE_PROBABILITY == 0: 
 			get_parent().active_squats[squat_id][1] = true
-			target_move_point = player.position + Vector2( randi()%20 * -1 if randi()%2 == 0 else 1, 10 ) 
+			target_move_point = Common.player.position + Vector2( randi()%20 * -1 if randi()%2 == 0 else 1, 10 ) 
 
 func on_dead():
 	call_deferred( "queue_free" )
@@ -79,18 +77,18 @@ func process_shooting():
 	create_missle()
 
 func is_far_from_player():
-	if position.x > player.position.x + 200: return true
-	if position.x < player.position.x - 200: return true
+	if position.x > Common.player.position.x + 200: return true
+	if position.x < Common.player.position.x - 200: return true
 	return false
-	
+
 func create_missle():
-	var missle_instance = preload("res://Scenes/ProjectTiles/Enemy_missle.tscn").instance()
+	var missle_instance = Common.get_instance("Emissle")
 	missle_instance.position  = position - ( direction.x * 70 ) * Vector2(1,0)
 	missle_instance.direction = (get_missle_target() - missle_instance.position).normalized()
 	get_parent().call_deferred( "add_child", missle_instance )
-	
+
 func get_missle_target():
-	var missle_target = player.position
+	var missle_target = Common.player.position
 	var disruption    = (current_precision - randi()% int(current_precision/2))
 	missle_target.x   += ( disruption if randi()%2 else -disruption )
 	return missle_target 
@@ -100,11 +98,11 @@ func update_precision():
 	precision_update_timer = 0 
 	if is_player_moved(): current_precision = max( 2, current_precision - PRECISION_UPDATE )
 	else: current_precision = min( MAX_PRECISION, current_precision + PRECISION_UPDATE )
-	previous_player_position = player.position 
+	previous_player_position = Common.player.position 
 
 func is_player_moved():
-	var is_in_limit_from_left  = player.position.x > (previous_player_position.x - 10)
-	var is_in_limit_from_right = player.position.x < (previous_player_position.x + 10)
+	var is_in_limit_from_left  = Common.player.position.x > (previous_player_position.x - 10)
+	var is_in_limit_from_right = Common.player.position.x < (previous_player_position.x + 10)
 	return is_in_limit_from_left and is_in_limit_from_right
 
 func process_move(delta):
@@ -125,7 +123,7 @@ func move_to_target_pos(delta):
 
 func change_to_avoid():
 	current_triple   = get_checkpoints()
-	var farest_point = get_bezier_interpolate_point( current_triple, 0.5 )
+	var farest_point = Common.get_bezier_interpolate_point( current_triple, 0.5 )
 	full_avoid_distance = (farest_point - current_triple["a"]).length() + (current_triple["c"] - farest_point).length()
 	left_avoid_distance = full_avoid_distance
 	avoid = true
@@ -136,14 +134,7 @@ func get_checkpoints():
 	var g1 = Vector2(0, 0)
 	var g3 = Vector2(0, INTERPOLATION_SPACING_V)   * sign(direction.y) * -1
 	var g2 = Vector2(0, INTERPOLATION_SPACING_V/2) * sign(direction.y) * -1 + sign(direction.x) * Vector2(INTERPOLATION_SPACING_H, 0)
-
 	return { "a" : g1, "b" : g2, "c" : g3, "relative": Vector2(0,0) }
-
-func get_bezier_interpolate_point( triple_points, t ):
-	var invert_t = 1.0-t
-	var on_AB = triple_points["a"]*invert_t + triple_points["b"]*t
-	var on_BC = triple_points["b"]*invert_t + triple_points["c"]*t
-	return  on_AB * invert_t + on_BC*t
 
 func move_avoiding(delta):
 	var velocity_multipler = 1.0
@@ -159,7 +150,7 @@ func move_avoiding(delta):
 func change_to_simple_move():
 	avoid              = false
 	target_move_point = get_next_target_point()
-	
+
 func get_next_target_point():
 	var new_position = position
 	var attempts = 0
@@ -186,8 +177,8 @@ func fit_in_operative_space(position):
 func calculate_avoid_velocity(delta):
 	left_avoid_distance  = max( left_avoid_distance - ( move_speed * delta), 0 )
 	var t          = left_avoid_distance/full_avoid_distance
-	var next_point = get_bezier_interpolate_point( current_triple, 1.0-t )
-	return  (next_point - current_triple["relative"]).normalized() * move_speed
+	var next_point = Common.get_bezier_interpolate_point( current_triple, 1.0-t )
+	return (next_point - current_triple["relative"]).normalized() * move_speed
 
 func on_destroy():
 	call_deferred( "queue_free" )
