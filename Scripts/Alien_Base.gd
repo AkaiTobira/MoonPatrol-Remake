@@ -29,6 +29,7 @@ var left_avoid_distance  = 1
 # Squat info
 var squat_id   = -1
 var POINTS_FOR_SQUAT_DESTROY = 0
+var POINTS_FOR_DESTROY       = 100
 
 #Life duration
 var life_timer = 0
@@ -52,6 +53,8 @@ func process_dead():
 	select_life_end_point()
 	if target_move_point.distance_to( position ) < 3: on_dead()
 
+func set_speed_multipler( player_multipler ): pass
+
 func select_life_end_point():
 	if is_dead : return
 	target_move_point = Vector2( -100 if randi() % 2 == 0 else 2000, position.y )
@@ -61,14 +64,14 @@ func select_life_end_point():
 
 func enable_kamikaze_atack():
 	if not KAMIKAZE_ENABLED: return
-	if not get_parent().get_node("Squat_controller").active_squats[squat_id][1]:
+	if not SquatController.is_sqaut_special_active( squat_id ):
 		if randi()%KAMIKAZE_PROBABILITY == 0: 
-			get_parent().get_node("Squat_controller").active_squats[squat_id][1] = true
+			SquatController.switch_sqaut_special_active( squat_id, true )
 			target_move_point = Common.player.position + Vector2( randi()%20 * -1 if randi()%2 == 0 else 1, 10 ) 
 
 func on_dead():
 	call_deferred( "queue_free" )
-	get_parent().get_node("Squat_controller").active_squats[squat_id][0] -= 1
+	SquatController.reduce_number_of_squad(squat_id)
 
 func process_shooting():
 	update_precision()
@@ -182,13 +185,12 @@ func calculate_avoid_velocity(delta):
 
 func on_destroy():
 	call_deferred( "queue_free" )
-	var node = get_parent().get_node("Squat_controller")
-	node.active_squats[squat_id][0] -= 1
-	if node.active_squats[squat_id][0] == 0:
+	SquatController.reduce_number_of_squad(squat_id)
+	if !SquatController.is_squat_active(squat_id):
 		get_parent().points += POINTS_FOR_SQUAT_DESTROY
 		#TODO add text levitating in place of destroyed enemy
 		print( squat_id, " Squad is is_dead " )
-	get_parent().points += 100
+	get_parent().points += POINTS_FOR_DESTROY
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("missle"):

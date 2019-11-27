@@ -35,4 +35,3 @@ func _on_Area2D_body_entered(body):
 		get_parent().points += points_destroy
 		body.on_delete()
 		call_deferred("queue_free")
-

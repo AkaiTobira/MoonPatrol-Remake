@@ -8,8 +8,6 @@ var points_jump_over = 50
 var add_points       = true
 var pause            = false
 
-onready var player = get_node("/root/Root/Player")
-
 func _ready():
 	$AnimationPlayer.seek(rand_range(0, $AnimationPlayer.get_current_animation_length() ))
 
@@ -20,8 +18,8 @@ func play(): pause = false
 func stop(): pause = true
 
 func grant_points():
-	if !player: return 
-	if player.position.x > position.x:
+	if !Common.player: return 
+	if Common.player.position.x > position.x:
 		get_parent().points += points_jump_over
 		add_points = false
 	

@@ -1,7 +1,31 @@
 extends Node2D
 
-var active_squats = [ ]
-var bomber_squats = [ ]
+var active_squats = []
+var bomber_squats = []
+
+func clear():
+	active_squats = []
+	bomber_squats = []
+
+func is_squat_active(squat_id):
+	if len(active_squats) <= squat_id: return false
+	return active_squats[squat_id][0] != 0
+
+func reduce_number_of_squad(squat_id):
+	if len(active_squats) <= squat_id: return
+	active_squats[squat_id][0] -= 1
+
+func switch_sqaut_special_active( squat_id, value ):
+	if len(active_squats) <= squat_id: return
+	active_squats[squat_id][1] = value
+
+func is_sqaut_special_active( squat_id ):
+	if len(active_squats) <= squat_id: return false
+	return active_squats[squat_id][1] 
+
+func bomber_destroyed( squat_id, numer_id ):
+	if len(active_squats) <= squat_id: return
+	SquatController.bomber_squats[squat_id][numer_id] = null
 
 func fill_squat( index, squat, valid ):
 	if valid != "Bomber": return

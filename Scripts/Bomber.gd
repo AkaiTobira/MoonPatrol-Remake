@@ -16,6 +16,7 @@ func _ready():
 	move_speed             = 350
 	PRECISION_UPDATE       = 0
 	SHOOT_PROBABILITY      = 250
+	POINTS_FOR_DESTROY     = 200
 	KAMIKAZE_ENABLED       = false
 	LIFE_TIME              = 12
 	
@@ -47,24 +48,24 @@ func update_move_log():
 
 func process_bombing():
 	if can_shoot():
-		get_parent().get_node("Squat_controller").active_squats[squat_id][1] = true
+		SquatController.switch_sqaut_special_active( squat_id, true )
 		bomb = Common.get_instance("Bomb")
 		bomb.calculate_path( self )
 		get_parent().call_deferred( "add_child", bomb )
 
 func can_shoot():
 	if bomb != null : return false
-	if get_parent().get_node("Squat_controller").active_squats[squat_id][1]: return false
+	if SquatController.is_sqaut_special_active( squat_id ): return false
 	if position.x < Common.player.move_borders.y : return false
 	if randi()%SHOOT_PROBABILITY != 0 : return false
 	return true
 
 func on_destroy():
-	if bomb: bomb.bomber = null
-	get_parent().get_node("Squat_controller").bomber_squats[squat_id][number_in_squat-1] = null
+	if is_instance_valid(bomb) and bomb.get("bomber"): bomb.bomber = null
+	SquatController.bomber_destroyed( squat_id, number_in_squat-1 )
 	.on_destroy()
 
 func on_dead():
-	if bomb: bomb.bomber = null
-	get_parent().get_node("Squat_controller").bomber_squats[squat_id][number_in_squat-1] = null
+	if is_instance_valid(bomb) and bomb.get("bomber"): bomb.bomber = null
+	SquatController.bomber_destroyed( squat_id, number_in_squat-1 )
 	.on_dead()

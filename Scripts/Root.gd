@@ -102,10 +102,10 @@ func reload_from_checkpoint():
 	play_world()
 
 func clean_scene():
+	SquatController.clear()
 	for obstacle in get_children():
-	#Temp disabling
-	#	if obstacle.is_in_group("enemy_missle"):
-	#		obstacle.call_deferred( "queue_free" )
+		if obstacle.is_in_group("enemy_missle"):
+			obstacle.call_deferred( "queue_free" )
 		if obstacle.is_in_group("obstalces"):
 			obstacle.call_deferred( "queue_free" )
 	$Player.reset_position()
