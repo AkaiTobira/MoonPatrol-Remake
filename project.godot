@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Common="*res://Scripts/Common.gd"
+SquatController="*res://Scripts/Squat_controller.gd"
 
 [display]
 
