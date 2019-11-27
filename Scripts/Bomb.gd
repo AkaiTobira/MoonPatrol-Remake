@@ -54,7 +54,7 @@ func spawn_hole():
 	on_delete()
 
 func on_delete():
-	if is_instance_valid(bomber) or bomber.get("bomb"): 
+	if is_instance_valid(bomber) or not bomber or bomber.get("bomb"): 
 		bomber.bomb = null
 		SquatController.switch_sqaut_special_active( bomber.squat_id, false )
 	call_deferred("queue_free")

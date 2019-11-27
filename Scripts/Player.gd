@@ -21,7 +21,7 @@ var fire_up_missles = 0
 
 #system variables
 var bakcground_speed_multipler = 0
-var player_good_mode           = false
+var player_good_mode           = true
 var pause                      = false
 
 func reset_position():

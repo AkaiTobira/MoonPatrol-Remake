@@ -31,6 +31,7 @@ func player_reached_next_letter():
 	loger.append( "\n Player point : " + char(player_letter) )
 	update_log()
 	background_settings = $ParallaxBackground.get_backgoround_info()
+	if player_letter%5 == 4 and player_letter > 65  : update_segment()
 
 func get_next_segment():
 	update_segment_index()
@@ -45,6 +46,16 @@ func update_log():
 	$UI/SpawnLog.text = "SPAWN LOG"
 	while len(loger) > MAX_LOG_INFO: loger.pop_front()
 	for text in loger: $UI/SpawnLog.text += text
+
+func update_segment():
+	clean_scene()
+	Common.switch_to_next_segment()
+	current_level   = Common.get_start_id()
+	current_segment = Common.get_level_segment(current_level)
+	pause_world()
+	print ( " here is going next level and summary but it is not implemented " )
+	$Spawners.spawn_reached_checkpoint( char(player_letter) )
+	play_world()
 
 func _process(delta):
 	update_time(delta)
@@ -112,7 +123,7 @@ func clean_scene():
 
 func spawn_checpoint():
 	if player_letter != 64:
-			$Spawners.spawn_reached_checkpoint( char(player_letter) )
+		$Spawners.spawn_reached_checkpoint( char(player_letter) )
 
 func reload_level_info():
 	$ParallaxBackground.set_backgoround_info(background_settings)
