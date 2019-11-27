@@ -119,7 +119,7 @@ func clean_scene():
 			obstacle.call_deferred( "queue_free" )
 		if obstacle.is_in_group("obstalces"):
 			obstacle.call_deferred( "queue_free" )
-	$Player.reset_position()
+	$Player.reset()
 
 func spawn_checpoint():
 	if player_letter != 64:

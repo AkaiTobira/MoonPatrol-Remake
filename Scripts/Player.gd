@@ -24,7 +24,9 @@ var bakcground_speed_multipler = 0
 var player_good_mode           = true
 var pause                      = false
 
-func reset_position():
+func reset():
+	forward_missle  = null
+	fire_up_missles = 0 
 	position = Vector2(base_position_x, base_position_y)
 
 func move_verticall(delta):
