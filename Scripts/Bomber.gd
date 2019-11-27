@@ -15,12 +15,12 @@ func _ready():
 	DISTANCE_FOR_NEW_POINT = 400
 	move_speed             = 350
 	PRECISION_UPDATE       = 0
-	SHOOT_PROBABILITY      = 250
+	SHOOT_PROBABILITY      = 1
 	POINTS_FOR_DESTROY     = 200
 	KAMIKAZE_ENABLED       = false
 	LIFE_TIME              = 12
 	
-	for i in range(70): move_log.append(Vector2(0,0))
+	for i in range(76): move_log.append(Vector2(0,0))
 		
 
 func _physics_process(delta):
@@ -43,14 +43,14 @@ func follow_lider(delta):
 
 func update_move_log():
 	move_log.append(position)
-	if move_log.size() > 70: move_log.pop_front()
+	if move_log.size() > 76: move_log.pop_front()
 	steps+=1
 
 func process_bombing():
 	if can_shoot():
-		SquatController.switch_sqaut_special_active( squat_id, true )
 		bomb = Common.get_instance("Bomb")
 		bomb.calculate_path( self )
+		SquatController.fire_bomb(squat_id, bomb)
 		get_parent().call_deferred( "add_child", bomb )
 
 func can_shoot():
@@ -61,11 +61,9 @@ func can_shoot():
 	return true
 
 func on_destroy():
-	if is_instance_valid(bomb) and bomb.get("bomber"): bomb.bomber = null
 	SquatController.bomber_destroyed( squat_id, number_in_squat-1 )
 	.on_destroy()
 
 func on_dead():
-	if is_instance_valid(bomb) and bomb.get("bomber"): bomb.bomber = null
 	SquatController.bomber_destroyed( squat_id, number_in_squat-1 )
 	.on_dead()

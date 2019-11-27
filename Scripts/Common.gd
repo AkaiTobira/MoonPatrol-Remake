@@ -1,5 +1,8 @@
 extends Node
 
+var level_jsons = {} 
+
+var sqgment_id = 1
 var level_json = {}
 var level_list = []
 
@@ -23,35 +26,44 @@ var objects = {
 }
 
 func _ready():
-	load_level_structure()
+	load_level_structure( "LevelStructure1", 1 )
+	load_level_structure( "LevelStructure2", 2 )
+	load_level_structure( "LevelStructure3", 3 )
+	load_level_structure( "LevelStructure4", 4 )
+	load_level_structure( "LevelStructure5", 5 )
+	load_level_structure( "LevelStructure6", 6 )
+
+func switch_to_next_segment():
+	if sqgment_id < 6 : sqgment_id += 1
+	parse_level_list() 
 
 func register_player( node ):
 	player = node
 	assert( player != null )
 
 func parse_level_list():
-	for level in level_json["level_structure"].keys():
-		if level == level_json["start_segment"]: continue
+	for level in level_jsons[sqgment_id]["level_structure"].keys():
+		if level == level_jsons[sqgment_id]["start_segment"]: continue
 		level_list.append(level)
 
-func load_level_structure():
+func load_level_structure( file_name, segment_index ):
 	var file = File.new()
-	file.open("res://Resouces/LevelStructure.json", file.READ)
-	level_json = parse_json(file.get_as_text())
+	file.open("res://Resouces/" + file_name + ".json", file.READ)
+	level_jsons[segment_index] = parse_json(file.get_as_text())
 	file.close()
 	assert( level_json != null )
 
 func is_level_fixed():
-	return level_json["fixed_segment"]
+	return level_jsons[sqgment_id]["fixed_segment"]
 
 func is_randomized():
-	return level_json["random_order"]
+	return level_jsons[sqgment_id]["random_order"]
 
 func get_start_id():
-	return level_json["start_segment"]
+	return level_jsons[sqgment_id]["start_segment"]
 
 func get_level_segment( level_id ):
-	return level_json["level_structure"][level_id].duplicate(true)
+	return level_jsons[sqgment_id]["level_structure"][level_id].duplicate(true)
 
 func get_instance( object_name ):
 	return objects[object_name].instance()

@@ -2,14 +2,14 @@ extends KinematicBody2D
 
 var direction     = Vector2(0,1)
 var SPEED         = 0
-var bomber        = null
 var triple_points = {}
 var max_distance  = 1
 var left_distance = 1
+var squat_id      = 0
 
 func calculate_path( mother_ship ): 
-	bomber   = mother_ship
 	position = mother_ship.position
+	squat_id = mother_ship.squat_id
 	triple_points = { 
 		"a" : Vector2(0,0), 
 		"b" : Vector2(min( Common.player.position.x - 250 + randi()%200, 1150 ),
@@ -54,7 +54,5 @@ func spawn_hole():
 	on_delete()
 
 func on_delete():
-	if is_instance_valid(bomber) or bomber.get("bomb"): 
-		bomber.bomb = null
-		SquatController.switch_sqaut_special_active( bomber.squat_id, false )
+	SquatController.bomb_exploded( squat_id )
 	call_deferred("queue_free")
