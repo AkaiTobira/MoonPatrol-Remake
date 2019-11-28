@@ -1,5 +1,7 @@
 extends Node
 
+var high_score = 0
+
 var level_jsons = {} 
 
 var sqgment_id = 1
@@ -53,7 +55,7 @@ func calculate_average(segment_index):
 	for i in level_jsons[segment_index]["level_structure"]:
 		records[ segment_index ]["avg"] += level_jsons[segment_index]["level_structure"][i]["duration"] + 5
 	records[ segment_index ]["avg"] /= len( level_jsons[segment_index]["level_structure"] )
-	records[ segment_index ]["avg"]  = int( records[ segment_index ]["avg"] ) * 5
+	records[ segment_index ]["avg"]  = (int( records[ segment_index ]["avg"] ) * 5) - 5
 	records[ segment_index ]["top"]  = records[ segment_index ]["avg"]  
 
 func parse_level_list():

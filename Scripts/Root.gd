@@ -63,17 +63,17 @@ func update_segment():
 #	print ( " here is going next level and summary but it is not implemented " )
 #	$Spawners.spawn_reached_checkpoint( char(player_letter) )
 
-
-func _process(delta):
-	
-	if Input.is_action_just_pressed("ui_accept"): 
+func restart_game():
+		if points > Common.high_score: Common.high_score = points 
 		clean_scene()
 		Common.sqgment_id = 1
 		next_letter   = 64
 		player_letter  = next_letter
 		next_letter    = next_letter + 1
 		reload_from_checkpoint()
-	
+
+func _process(delta):
+#	if Input.is_action_just_pressed("ui_accept"): 
 	if pause: return
 	update_time(delta)
 	update_move_speed(delta)
@@ -98,7 +98,9 @@ func update_move_speed(delta):
 			obstacle.set_speed_multipler( player_multipler )
 
 func update_points():
-	$UI/Score.text = "SCORE :" + str(points)
+	if points > Common.high_score: Common.high_score = points 
+	$UI/Score.text     = "SCORE :"     + str(points)
+	$UI/HighScore.text = "HIGHSCORE :" + str(Common.high_score)
 
 func process_spawn():
 	var parsed_time = stepify(time_segment + time_reduciton, 0.1)

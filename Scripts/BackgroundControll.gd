@@ -18,7 +18,7 @@ func move_background( node, speed ):
 
 var textures = {
 	"Background_1" : preload("res://Textures/Placeholders_old/Background_fill.png" ),
-	"Background_2" : preload("res://Textures/Placeholders_old/Background_fill2.png" ),
+	"Background_2" : preload("res://Textures/Placeholders_old/Background_fill2.png" )
 }
 
 func load_bakcground_fill( b_name ):
