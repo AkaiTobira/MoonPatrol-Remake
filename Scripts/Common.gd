@@ -85,8 +85,8 @@ func get_instance( object_name ):
 	return objects[object_name].instance()
 
 
-func set_new_top_record_to_previous_segment( top ):
-	records[sqgment_id - 1]["top"] = top
+func set_new_top_record( top ):
+	records[sqgment_id ]["top"] = top
 
 #unused
 func new_top( id, value ):
