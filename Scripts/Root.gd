@@ -48,25 +48,39 @@ func update_log():
 	for text in loger: $UI/SpawnLog.text += text
 
 func update_segment():
+	pause_world()
+	$Summary.start_typing_sequences( player_letter, { "takes_time"   : time_whole, 
+	                                                  "top_time"     : Common.get_record_info()[0], 
+													  "average_time" : Common.get_record_info()[1] } )
 	clean_scene()
 	Common.switch_to_next_segment()
 	current_level   = Common.get_start_id()
 	current_segment = Common.get_level_segment(current_level)
-	pause_world()
-	print ( " here is going next level and summary but it is not implemented " )
-	$Spawners.spawn_reached_checkpoint( char(player_letter) )
-	play_world()
+	loger = ["","","","","","","",""]
+	update_log()
+	time_whole = 0
+#	print ( " here is going next level and summary but it is not implemented " )
+#	$Spawners.spawn_reached_checkpoint( char(player_letter) )
+
 
 func _process(delta):
-	update_time(delta)
+	
+	if Input.is_action_just_pressed("ui_accept"): 
+		clean_scene()
+		Common.sqgment_id = 1
+		next_letter   = 64
+		player_letter  = next_letter
+		next_letter    = next_letter + 1
+		reload_from_checkpoint()
+	
 	if pause: return
+	update_time(delta)
 	update_move_speed(delta)
 	update_points()
 	process_spawn()
 	handle_segment_end()
 
 func update_time(delta):
-	if pause: return
 	time_segment += delta
 	time_whole   += delta
 	

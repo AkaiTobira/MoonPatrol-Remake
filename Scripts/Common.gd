@@ -5,6 +5,14 @@ var level_jsons = {}
 var sqgment_id = 1
 var level_json = {}
 var level_list = []
+var records    = { 
+				1 : { "top": 0, "avg":0 },
+				2 : { "top": 0, "avg":0 },
+				3 : { "top": 0, "avg":0 },
+				4 : { "top": 0, "avg":0 },
+				5 : { "top": 0, "avg":0 },
+				6 : { "top": 0, "avg":0 },
+}
 
 onready var player = get_node( "/root/Root/Player" )
 
@@ -41,6 +49,13 @@ func register_player( node ):
 	player = node
 	assert( player != null )
 
+func calculate_average(segment_index):
+	for i in level_jsons[segment_index]["level_structure"]:
+		records[ segment_index ]["avg"] += level_jsons[segment_index]["level_structure"][i]["duration"] + 5
+	records[ segment_index ]["avg"] /= len( level_jsons[segment_index]["level_structure"] )
+	records[ segment_index ]["avg"]  = int( records[ segment_index ]["avg"] ) * 5
+	records[ segment_index ]["top"]  = records[ segment_index ]["avg"]  
+
 func parse_level_list():
 	for level in level_jsons[sqgment_id]["level_structure"].keys():
 		if level == level_jsons[sqgment_id]["start_segment"]: continue
@@ -52,6 +67,7 @@ func load_level_structure( file_name, segment_index ):
 	level_jsons[segment_index] = parse_json(file.get_as_text())
 	file.close()
 	assert( level_json != null )
+	calculate_average(segment_index)
 
 func is_level_fixed():
 	return level_jsons[sqgment_id]["fixed_segment"]
@@ -67,6 +83,18 @@ func get_level_segment( level_id ):
 
 func get_instance( object_name ):
 	return objects[object_name].instance()
+
+
+func set_new_top_record_to_previous_segment( top ):
+	records[sqgment_id - 1]["top"] = top
+
+#unused
+func new_top( id, value ):
+	 records[id]["top"] = value
+
+func get_record_info():
+	if not records[sqgment_id]["top"]: records[sqgment_id]["top"] = records[sqgment_id]["avg"]
+	return [ records[sqgment_id]["top"], records[sqgment_id]["avg"] ]
 
 func get_bezier_interpolate_point( triple_points, t ):
 	var invert_t = 1.0-t
