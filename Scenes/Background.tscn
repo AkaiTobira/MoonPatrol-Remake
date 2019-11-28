@@ -5,7 +5,6 @@
 [ext_resource path="res://Textures/Placeholders_old/Background_fill.png" type="Texture" id=3]
 [ext_resource path="res://Textures/Placeholders_old/Background_road.png" type="Texture" id=4]
 
-
 [node name="ParallaxBackground" type="ParallaxBackground"]
 scroll_offset = Vector2( 100, 0 )
 scroll_base_offset = Vector2( 10, 0 )

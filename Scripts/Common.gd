@@ -84,6 +84,8 @@ func get_level_segment( level_id ):
 func get_instance( object_name ):
 	return objects[object_name].instance()
 
+func get_segment_texture():
+	return level_jsons[sqgment_id]["bakcground"]
 
 func set_new_top_record( top ):
 	records[sqgment_id ]["top"] = top

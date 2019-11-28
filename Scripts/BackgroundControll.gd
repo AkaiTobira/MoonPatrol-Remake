@@ -16,6 +16,14 @@ func move_background( node, speed ):
 	if node.motion_offset.x < -node.motion_mirroring.x: 
 		node.motion_offset.x += node.motion_mirroring.x
 
+var textures = {
+	"Background_1" : preload("res://Textures/Placeholders_old/Background_fill.png" ),
+	"Background_2" : preload("res://Textures/Placeholders_old/Background_fill2.png" ),
+}
+
+func load_bakcground_fill( b_name ):
+	$Back2/Sprite.texture = textures[b_name]
+
 func get_backgoround_info():
 	return [ $Back1.motion_offset.x, $Back2.motion_offset.x, $Back3.motion_offset.x ]
 

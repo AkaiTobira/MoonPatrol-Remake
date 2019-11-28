@@ -2,6 +2,7 @@
 	"start_segment"   : "10",
 	"fixed_segment"   : true,
 	"random_order"    : true,
+	"bakcground"      : "Background_2",
 	"level_structure" : {
   
 	  "10" : {

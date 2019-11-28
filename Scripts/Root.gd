@@ -59,6 +59,7 @@ func update_segment():
 	loger = ["","","","","","","",""]
 	update_log()
 	time_whole = 0
+	$ParallaxBackground.load_bakcground_fill( Common.get_segment_texture() )
 #	print ( " here is going next level and summary but it is not implemented " )
 #	$Spawners.spawn_reached_checkpoint( char(player_letter) )
 
