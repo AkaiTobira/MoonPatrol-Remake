@@ -34,9 +34,10 @@ var states = [ "Reach", "YTime", "ATime", "Ttime", "Bonus", "Record", "NRecord" 
 
 func reset():
 	texts["Reach"] = "Time to reach point " + '"' + str(char(reached_letter)) + '"'
-	
-	if timers["takes_time"] < timers["top_time"]: 
-		states   = [ "Reach", "YTime", "ATime", "Ttime", "Bonus", "Record" ]
+	seconds = 0.2
+	if timers["takes_time"] < timers["average_time"]: 
+		states          = [ "Reach", "YTime", "ATime", "Ttime", "Bonus", "Record" ]
+		aditonal_points = 1000
 		Common.set_new_top_record( timers["takes_time"] )
 	else: states = [ "Reach", "YTime", "ATime", "Ttime", "NBonus" ]
 	for child in get_children():
@@ -49,7 +50,7 @@ func _process(delta):
 	timer += delta
 	
 	if timer > seconds:
-		if letter_index == len(texts[ states[state_index] ]): 
+		if not is_over and letter_index == len(texts[ states[state_index] ]): 
 			if state_index == 1: $YourTime.text    = ": " + ("%03d" % timers["takes_time"])
 			if state_index == 2: $AverageTime.text = ": " + ("%03d" % timers["average_time"])
 			if state_index == 3: $TopRecord.text   = ": " + ("%03d" % timers["top_time"])
@@ -57,9 +58,9 @@ func _process(delta):
 			state_index += 1
 			letter_index = 0
 		if state_index == len( states ) : 
-			get_parent().play_world()
-			hide()
-			set_process(false)
+			update_score()
+			seconds = 0.5
+			timer   = 0
 			is_over = true
 			
 		if is_over: return
@@ -67,3 +68,20 @@ func _process(delta):
 		child.text = texts[ states[state_index] ].left(letter_index + 1)
 		letter_index += 1
 		timer = 0
+
+func update_score():
+	if timers["takes_time"] <= timers["average_time"]:
+		timers["average_time"] -= 1
+		aditonal_points += 100
+		$YourTime.text    = ": " + ("%03d" % timers["takes_time"])
+		$AverageTime.text = ": " + ("%03d" % timers["average_time"])
+		$TopRecord.text   = ": " + ("%03d" % timers["top_time"])
+		$BonusPoint.text  = ": " + ("%04d" % aditonal_points)
+		
+		if timers["takes_time"] == timers["average_time"]: seconds = 3
+		return
+	get_parent().points += aditonal_points
+	get_parent().play_world()
+	hide()
+	set_process(false)
+
