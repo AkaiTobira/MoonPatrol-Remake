@@ -3,7 +3,7 @@ extends ParallaxBackground
 export var SPEED             = 30.0
 export var SPEDD_MULTIPLER_1 = 1.0
 export var SPEDD_MULTIPLER_2 = 2.0
-export var SPEDD_MULTIPLER_3 = 3.0
+export var SPEDD_MULTIPLER_3 = 3.5
 
 var player_speed = 1
 var pause        = false 

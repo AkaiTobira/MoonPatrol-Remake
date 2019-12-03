@@ -1,18 +1,20 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Root.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Summary.gd" type="Script" id=2]
 [ext_resource path="res://Textures/Placeholders_old/Black_holder.png" type="Texture" id=3]
 [ext_resource path="res://Fonts/BigFont1.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scripts/Spawners.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/Spawners/Hole_Spawner.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Spawners/Rock_Spawner.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/Spawners/Mine_Spawner.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/Spawners/Checkpoint_Spawner.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/Spawners/Alien_Spawner.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Textures/Placeholders_old/Missle.png" type="Texture" id=13]
+[ext_resource path="res://Textures/Placeholders_old/Base.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Base.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/Spawners.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/Spawners/Hole_Spawner.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Spawners/Rock_Spawner.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Spawners/Mine_Spawner.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Spawners/Checkpoint_Spawner.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Spawners/Alien_Spawner.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Textures/Placeholders_old/Missle.png" type="Texture" id=15]
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 1 )
@@ -119,6 +121,7 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
 [node name="UI" type="Node2D" parent="."]
+editor/display_folded = true
 z_index = 10
 
 [node name="Black_Holder_Left" type="Sprite" parent="UI"]
@@ -173,9 +176,16 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = "Score :"
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
+SPEDD_MULTIPLER_3 = 4.0
 
-[node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 609.01, 855.975 )
+[node name="Base" type="Sprite" parent="."]
+position = Vector2( 912.936, 746.748 )
+texture = ExtResource( 6 )
+flip_h = true
+script = ExtResource( 7 )
+
+[node name="Player" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1035.3, 858.148 )
 scale = Vector2( 0.6, 0.6 )
 Gravity = 320.0
 MaxJump = 588.0
@@ -184,38 +194,38 @@ MaxMoveSpeed = 300.0
 
 [node name="Spawners" type="Node2D" parent="."]
 editor/display_folded = true
-script = ExtResource( 7 )
+script = ExtResource( 9 )
 
-[node name="Hole_Spawner" parent="Spawners" instance=ExtResource( 8 )]
+[node name="Hole_Spawner" parent="Spawners" instance=ExtResource( 10 )]
 position = Vector2( 1594.84, 900.215 )
 scale = Vector2( 0.949715, 1.15578 )
 
-[node name="Rock_Spawner" parent="Spawners" instance=ExtResource( 9 )]
+[node name="Rock_Spawner" parent="Spawners" instance=ExtResource( 11 )]
 position = Vector2( 1580.37, 858.777 )
 
-[node name="Mine_Spawner" parent="Spawners" instance=ExtResource( 10 )]
+[node name="Mine_Spawner" parent="Spawners" instance=ExtResource( 12 )]
 position = Vector2( 1584.34, 879.86 )
 
-[node name="Checkpoint_Spawner" parent="Spawners" instance=ExtResource( 11 )]
+[node name="Checkpoint_Spawner" parent="Spawners" instance=ExtResource( 13 )]
 position = Vector2( 1588.99, 953.101 )
 
-[node name="Alien_SpawnerD" parent="Spawners" instance=ExtResource( 12 )]
+[node name="Alien_SpawnerD" parent="Spawners" instance=ExtResource( 14 )]
 position = Vector2( 1885.29, 356.368 )
 
-[node name="Alien_SpawnerC" parent="Spawners" instance=ExtResource( 12 )]
+[node name="Alien_SpawnerC" parent="Spawners" instance=ExtResource( 14 )]
 position = Vector2( 1510.72, 93.8405 )
 
-[node name="Alien_SpawnerB" parent="Spawners" instance=ExtResource( 12 )]
+[node name="Alien_SpawnerB" parent="Spawners" instance=ExtResource( 14 )]
 position = Vector2( 977.297, 85.8518 )
 
-[node name="Alien_SpawnerE" parent="Spawners" instance=ExtResource( 12 )]
+[node name="Alien_SpawnerE" parent="Spawners" instance=ExtResource( 14 )]
 position = Vector2( 485.033, 82.1506 )
 
-[node name="Alien_SpawnerA" parent="Spawners" instance=ExtResource( 12 )]
+[node name="Alien_SpawnerA" parent="Spawners" instance=ExtResource( 14 )]
 position = Vector2( 294.981, 377.636 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 13 )
+texture = ExtResource( 15 )
 
 [node name="Sprite2" type="Sprite" parent="."]
-texture = ExtResource( 13 )
+texture = ExtResource( 15 )
