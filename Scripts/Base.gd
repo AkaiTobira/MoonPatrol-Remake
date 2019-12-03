@@ -8,8 +8,7 @@ extends Sprite
 func _ready():
 	pass # Replace with function body.
 
-
-var background_speed = 0
 func _process(delta):
 	var background = get_parent().get_node("ParallaxBackground")
-	position.x = position.x - background.SPEDD_MULTIPLER_3 * background.player_speed * background.SPEED * delta
+	if position.x > 0:
+		position.x = position.x - background.SPEDD_MULTIPLER_3 * background.player_speed * background.SPEED * delta
