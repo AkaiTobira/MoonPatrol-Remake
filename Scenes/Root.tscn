@@ -159,6 +159,16 @@ margin_bottom = 1130.0
 custom_fonts/normal_font = ExtResource( 4 )
 text = "Spawn log:"
 
+[node name="Welcomer" type="RichTextLabel" parent="UI"]
+margin_left = 644.821
+margin_top = 454.523
+margin_right = 1294.82
+margin_bottom = 499.523
+custom_fonts/normal_font = ExtResource( 4 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Beginner course Go !"
+
 [node name="Score" type="RichTextLabel" parent="UI"]
 margin_left = 26.0
 margin_top = 124.0
@@ -179,21 +189,21 @@ text = "Score :"
 SPEDD_MULTIPLER_3 = 4.0
 
 [node name="Base" type="Sprite" parent="."]
-position = Vector2( 912.936, 746.748 )
+position = Vector2( 776.347, 743.249 )
 texture = ExtResource( 6 )
 flip_h = true
 script = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1035.3, 858.148 )
-scale = Vector2( 0.6, 0.6 )
+position = Vector2( 915.418, 866.642 )
+scale = Vector2( 0.9, 0.7 )
 Gravity = 320.0
 MaxJump = 588.0
 Friction = 200.0
 MaxMoveSpeed = 300.0
+move_borders = Vector2( 650, 900 )
 
 [node name="Spawners" type="Node2D" parent="."]
-editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="Hole_Spawner" parent="Spawners" instance=ExtResource( 10 )]

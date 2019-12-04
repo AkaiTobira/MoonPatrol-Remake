@@ -6,8 +6,8 @@ export var Friction     =  50.0
 export var MaxMoveSpeed =  130.0
 export var move_borders = Vector2( 500, 800 )
 
-onready var base_position_x = position.x 
-onready var base_position_y = position.y 
+onready var base_position_x = 766.49
+onready var base_position_y = 858.148
 
 #moving variables
 var directions = { "left" : Vector2(-1,0), "right" : Vector2(1,0) }
@@ -95,7 +95,7 @@ func shoot():
 	shoot_forward()
 	shoot_up()
 
-func play() : pause = false
+func play(): pause = false
 func stop(): pause = true
 
 func _process(delta):

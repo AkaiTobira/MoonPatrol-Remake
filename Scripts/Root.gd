@@ -8,20 +8,26 @@ var background_settings = []
 var current_segment     = {}
 var next_letter    = 64
 
-var time_whole     = 0
-var time_segment   = -5
+var intro_timer       = 0
+var intro_time_lenght = 5
+
+
+var time_whole     = - 10
+var time_segment   = - 10
 var time_reduciton = 0
 
 #system variavles
 var loger          = []
 var MAX_LOG_INFO   = 8
 var pause          = false
+var intro_end      = false
 
 func _ready():
 	player_reached_next_letter()
 	current_level   = Common.get_start_id()
 	current_segment = Common.get_level_segment(current_level)
 	Common.register_player( $Player )
+	pause_world()
 
 func player_reached_next_letter():
 	get_next_segment()
@@ -72,21 +78,36 @@ func restart_game():
 		next_letter    = next_letter + 1
 		reload_from_checkpoint()
 
+func check_intro():
+	if intro_timer < intro_time_lenght: return
+	if intro_end : return
+	turn_down_intro()
+
 func _process(delta):
 #	if Input.is_action_just_pressed("ui_accept"): 
-	if pause: return
+
 	update_time(delta)
+	check_intro()
+	if pause: return
 	update_move_speed(delta)
 	update_points()
 	process_spawn()
 	handle_segment_end()
 
 func update_time(delta):
+	intro_timer  += delta
+	if pause: return
 	time_segment += delta
 	time_whole   += delta
-	
+
 	$UI/MainTimeCounter.text = "TIME SINCE BEGIN : " + str(stepify(time_whole, 0.1)) 
 	$UI/Time.text = "TIME :" + str(stepify(time_segment, 0.1)) + " +" + str(stepify(time_reduciton, 0.1))
+
+func turn_down_intro():
+	$UI/Welcomer.visible = false
+	intro_end            = true
+	$Base.play()
+	play_world()
 
 func update_move_speed(delta):
 	var player_multipler = $Player.bakcground_speed_multipler

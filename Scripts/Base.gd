@@ -1,14 +1,16 @@
 extends Sprite
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var pause = true
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func stop(): pause = true
+func play(): pause = false
 
 func _process(delta):
+	if pause: return
 	var background = get_parent().get_node("ParallaxBackground")
-	if position.x > 0:
+	get_parent().get_node("Player").stop()
+	if position.x > 200:
 		position.x = position.x - background.SPEDD_MULTIPLER_3 * background.player_speed * background.SPEED * delta
+	else:
+		get_parent().get_node("Player").play()
+		call_deferred( "queu_free" )

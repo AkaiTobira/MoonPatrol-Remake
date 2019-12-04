@@ -1,10 +1,12 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Alien_Spawner.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Enemies/Alien1.tscn" type="PackedScene" id=2]
-
+[ext_resource path="res://Textures/Placeholders_old/SillyAsianAlien.png" type="Texture" id=2]
 
 [node name="Alien_Spawner" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Alien1" parent="." instance=ExtResource( 2 )]
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1.99081, -8.2476 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 2 )

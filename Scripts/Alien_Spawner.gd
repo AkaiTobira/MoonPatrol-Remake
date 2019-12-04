@@ -1,8 +1,5 @@
 extends Node2D
 
-func _ready():
-	get_child(0).set_physics_process(false)
-	get_child(0).get_node("CollisionPolygon2D").disabled = true
 
 func spawn(instance, squat_id, number_of_enemies):
 	instance.squat_id = squat_id

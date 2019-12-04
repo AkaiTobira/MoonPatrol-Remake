@@ -16,7 +16,7 @@ var records    = {
 				6 : { "top": 0, "avg":0 },
 }
 
-onready var player = get_node( "/root/Root/Player" )
+onready var player# = get_node( "/root/Root/Player" )
 
 var objects = {
 	"Hole"       :  preload( "res://Scenes/Obstacles/Hole.tscn" ),
