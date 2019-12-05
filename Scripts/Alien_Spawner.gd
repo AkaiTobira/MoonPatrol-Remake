@@ -11,9 +11,8 @@ func spawn(instance, squat_id, number_of_enemies, path_node):
 		instance.POINTS_FOR_SQUAT_DESTROY = 1000
 	instance.position = position
 	
-	if randi()%2 == 0:
-		var index = randi()%path_node.get_child_count()
-		var path = path_node.get_child(index).curve.get_baked_points()
+	if path_node:
+		var path = path_node.curve.get_baked_points()
 		instance.position = path[0]
 		instance.set_fixed_path(path)
 	else: instance.position = position

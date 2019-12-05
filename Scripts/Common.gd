@@ -68,7 +68,7 @@ func load_level_structure( file_name, segment_index ):
 	file.open("res://Resouces/" + file_name + ".json", file.READ)
 	level_jsons[segment_index] = parse_json(file.get_as_text())
 	file.close()
-	assert( level_json != null )
+	assert( level_jsons[segment_index] != null )
 	calculate_average(segment_index)
 
 func is_level_fixed():

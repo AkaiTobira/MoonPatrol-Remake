@@ -234,33 +234,30 @@ move_borders = Vector2( 650, 900 )
 [node name="Paths" type="Node2D" parent="."]
 
 [node name="Alien1" type="Node2D" parent="Paths"]
-editor/display_folded = true
 
-[node name="1" type="Path2D" parent="Paths/Alien1"]
+[node name="a" type="Path2D" parent="Paths/Alien1"]
 curve = SubResource( 1 )
 
-[node name="2" type="Path2D" parent="Paths/Alien1"]
+[node name="b" type="Path2D" parent="Paths/Alien1"]
 curve = SubResource( 2 )
 
-[node name="3" type="Path2D" parent="Paths/Alien1"]
+[node name="c" type="Path2D" parent="Paths/Alien1"]
 curve = SubResource( 3 )
 
-[node name="4" type="Path2D" parent="Paths/Alien1"]
+[node name="d" type="Path2D" parent="Paths/Alien1"]
 curve = SubResource( 4 )
 
-[node name="5" type="Path2D" parent="Paths/Alien1"]
+[node name="e" type="Path2D" parent="Paths/Alien1"]
 curve = SubResource( 5 )
 
 [node name="Alien2" type="Node2D" parent="Paths"]
-editor/display_folded = true
 
-[node name="1" type="Path2D" parent="Paths/Alien2"]
+[node name="a" type="Path2D" parent="Paths/Alien2"]
 curve = SubResource( 1 )
 
 [node name="Bomber" type="Node2D" parent="Paths"]
-editor/display_folded = true
 
-[node name="1" type="Path2D" parent="Paths/Bomber"]
+[node name="a" type="Path2D" parent="Paths/Bomber"]
 curve = SubResource( 1 )
 
 [node name="Spawners" type="Node2D" parent="."]
