@@ -119,6 +119,13 @@ func on_dead():
 		get_parent().reload_from_checkpoint()
 
 func _on_Area2D_body_entered(body):
-	if body.is_in_group("obstalces") or body.is_in_group("enemy_missle"):
+	if body.is_in_group("alien"):
 		on_dead()
-		print( "RIP, player died" )
+		print( "RIP, player died by kamikaze" )
+	if body.is_in_group("obstalces"):
+		on_dead()
+		print( "RIP, player died by obstacles" )
+	if body.is_in_group("enemy_missle"):
+		on_dead()
+		print( "RIP, player died by missle" )
+

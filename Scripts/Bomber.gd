@@ -21,7 +21,6 @@ func _ready():
 	LIFE_TIME              = 12
 	
 	for i in range(76): move_log.append(Vector2(0,0))
-		
 
 func _physics_process(delta):
 	update_times(delta)

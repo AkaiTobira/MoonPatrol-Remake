@@ -8,9 +8,11 @@
 	  "10" : {
 		  "duration" : 2,
 		  "spawn_times": {
-			"0.1"  : "1_A_Alien1",
-			"0.2"  : "1_A_Alien2",
-			"1"    : "5_AABCE_Bomber",
+			"0.1"  : "2_AB_Alien1",
+			"0.2"  : "2_AB_Alien2",
+			"1.5"  : "2_AB_Alien1",
+			"0.5"  : "2_AB_Alien2",
+			"1"    : "3_ABC_Bomber",
 		  }
 	  },
   

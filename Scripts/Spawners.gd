@@ -43,5 +43,6 @@ func spawn_flying(enemy):
 		assert( spawner_id in [ "A", "B", "C", "D", "E" ] )
 		var instance = Common.get_instance(obstacle_name)
 		squat.append( instance )
-		get_node("Alien_Spawner" + spawner_id).spawn(instance, squat_id, number_of_enemies)
+		var path_node = get_node("/root/Root/Paths/" + obstacle_name)
+		get_node("Alien_Spawner" + spawner_id).spawn(instance, squat_id, number_of_enemies, path_node)
 	SquatController.fill_squat( squat_id, squat, obstacle_name )

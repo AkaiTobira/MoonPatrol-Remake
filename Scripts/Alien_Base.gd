@@ -36,6 +36,14 @@ var life_timer = 0
 var LIFE_TIME  = 12
 var is_dead    = false
 
+
+var path = null
+var is_following_fixed_path = false
+
+func set_fixed_path( fixed_path ):
+	path = fixed_path
+	is_following_fixed_path = true
+
 func _ready():
 	target_move_point = get_start_point()
 	direction         = (target_move_point - position).normalized()
@@ -109,8 +117,24 @@ func is_player_moved():
 	return is_in_limit_from_left and is_in_limit_from_right
 
 func process_move(delta):
+	if is_following_fixed_path: 
+		process_path(delta)
+		return
+	
 	if not avoid: move_to_target_pos(delta)
 	else: move_avoiding(delta)
+
+var path_index = 0
+func process_path(delta):
+	if path_index == (path.size() - 1): 
+		is_following_fixed_path = false
+		return
+	var target = path[path_index]
+	if position.distance_to(target) < 10:
+		path_index = min(  path_index + 1, path.size() - 1 )
+		target = path[path_index]
+	var velocity = (target - position).normalized() * move_speed
+	velocity = move_and_slide(velocity)
 
 func move_to_target_pos(delta):
 	var distance_v = (target_move_point - position)
