@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scripts/Root.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Summary.gd" type="Script" id=2]
@@ -15,12 +15,44 @@
 [ext_resource path="res://Scenes/Spawners/Checkpoint_Spawner.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/Spawners/Alien_Spawner.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Textures/Placeholders_old/Missle.png" type="Texture" id=15]
+[ext_resource path="res://Textures/GUI/panel new 1.png" type="Texture" id=16]
+[ext_resource path="res://Textures/buggy.png" type="Texture" id=17]
+[ext_resource path="res://Fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=18]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 14
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 14
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 14
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 14
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 14
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 64
+font_data = ExtResource( 18 )
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Summary" type="Node2D" parent="."]
-editor/display_folded = true
 visible = false
 z_index = 1
 script = ExtResource( 2 )
@@ -121,7 +153,6 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
 [node name="UI" type="Node2D" parent="."]
-editor/display_folded = true
 z_index = 10
 
 [node name="Black_Holder_Left" type="Sprite" parent="UI"]
@@ -226,9 +257,11 @@ position = Vector2( 1885.29, 356.368 )
 position = Vector2( 1510.72, 93.8405 )
 
 [node name="Alien_SpawnerB" parent="Spawners" instance=ExtResource( 14 )]
+visible = false
 position = Vector2( 977.297, 85.8518 )
 
 [node name="Alien_SpawnerE" parent="Spawners" instance=ExtResource( 14 )]
+visible = false
 position = Vector2( 485.033, 82.1506 )
 
 [node name="Alien_SpawnerA" parent="Spawners" instance=ExtResource( 14 )]
@@ -239,3 +272,131 @@ texture = ExtResource( 15 )
 
 [node name="Sprite2" type="Sprite" parent="."]
 texture = ExtResource( 15 )
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="GUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -11.5241
+margin_top = 5.01053
+margin_right = -11.5242
+margin_bottom = 5.01038
+
+[node name="Distance" type="TextureRect" parent="GUI/Control"]
+margin_left = 1111.1
+margin_top = -19.6429
+margin_right = 1352.1
+margin_bottom = 129.357
+rect_scale = Vector2( 1.4, 1.2 )
+texture = ExtResource( 16 )
+
+[node name="TextureRect" type="TextureRect" parent="GUI/Control/Distance"]
+anchor_left = 0.21
+anchor_top = 0.151
+anchor_right = 0.21
+anchor_bottom = 0.151
+margin_left = 31.3971
+margin_top = 8.19934
+margin_right = 95.3971
+margin_bottom = 72.1993
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 17 )
+
+[node name="XLabel" type="Label" parent="GUI/Control/Distance"]
+margin_left = 121.295
+margin_top = 45.0784
+margin_right = 133.295
+margin_bottom = 65.0784
+custom_fonts/font = SubResource( 1 )
+text = "X"
+
+[node name="LifeLabel" type="Label" parent="GUI/Control/Distance"]
+margin_left = 140.04
+margin_top = 42.8884
+margin_right = 168.04
+margin_bottom = 62.8884
+custom_fonts/font = SubResource( 2 )
+text = "3"
+
+[node name="DistanceLabel" type="Label" parent="GUI/Control/Distance"]
+margin_left = 51.0022
+margin_top = 75.1402
+margin_right = 111.002
+margin_bottom = 89.1402
+custom_fonts/font = SubResource( 3 )
+text = "Distance:"
+
+[node name="DistanceBar" type="ProgressBar" parent="GUI/Control/Distance"]
+margin_left = 50.0
+margin_top = 94.19
+margin_right = 194.0
+margin_bottom = 114.19
+
+[node name="ScoreBoard" type="TextureRect" parent="GUI/Control"]
+margin_left = 475.813
+margin_top = -17.3783
+margin_right = 716.813
+margin_bottom = 131.622
+rect_scale = Vector2( 1.4, 1.2 )
+texture = ExtResource( 16 )
+
+[node name="ScoreLabels" type="Label" parent="GUI/Control/ScoreBoard"]
+margin_left = 35.4791
+margin_top = 39.2002
+margin_right = 121.479
+margin_bottom = 128.2
+custom_fonts/font = SubResource( 4 )
+text = "HI SCORE:
+SCORE:
+TIME:
+"
+
+[node name="HiScoreResult" type="Label" parent="GUI/Control/ScoreBoard"]
+margin_left = 129.409
+margin_top = 37.6862
+margin_right = 212.409
+margin_bottom = 57.6862
+custom_fonts/font = SubResource( 5 )
+text = "0"
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="ScoreResult" type="Label" parent="GUI/Control/ScoreBoard"]
+margin_left = 128.801
+margin_top = 59.0173
+margin_right = 212.801
+margin_bottom = 79.0173
+custom_fonts/font = SubResource( 6 )
+text = "0"
+valign = 1
+uppercase = true
+
+[node name="GTime" type="Label" parent="GUI/Control/ScoreBoard"]
+margin_left = 128.986
+margin_top = 80.5296
+margin_right = 213.986
+margin_bottom = 100.53
+custom_fonts/font = SubResource( 7 )
+text = "0"
+
+[node name="Warnings" type="TextureRect" parent="GUI/Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -196.728
+margin_top = -24.4702
+margin_right = 44.2719
+margin_bottom = 124.53
+rect_scale = Vector2( 1.7, 1.7 )
+texture = ExtResource( 16 )
+
+[node name="Checkpoint" type="Label" parent="GUI/Control/Warnings"]
+margin_left = 73.3333
+margin_top = 34.3333
+margin_right = 158.333
+margin_bottom = 112.333
+custom_fonts/font = SubResource( 8 )
+text = "A"
+align = 1
+valign = 1
