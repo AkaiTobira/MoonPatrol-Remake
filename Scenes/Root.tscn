@@ -248,7 +248,6 @@ text = "Score :"
 SPEDD_MULTIPLER_3 = 4.0
 
 [node name="Base" type="Sprite" parent="."]
-visible = false
 position = Vector2( 776.347, 743.249 )
 texture = ExtResource( 6 )
 flip_h = true

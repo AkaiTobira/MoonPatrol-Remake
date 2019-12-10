@@ -27,6 +27,8 @@ func spawn_reached_checkpoint(letter):
 
 func spawn_ground(obstacle_to_spawn):
 	match obstacle_to_spawn:
+		"Rock2" : 
+			$Rock_Spawner.spawn( Common.get_instance(obstacle_to_spawn) )
 		"RockB" : 
 			$Rock_Spawner.spawn( Common.get_instance(obstacle_to_spawn) )
 		"RockS" : 

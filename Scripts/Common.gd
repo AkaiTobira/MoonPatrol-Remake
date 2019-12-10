@@ -26,6 +26,7 @@ var objects = {
 	"Worm"       :  preload( "res://Scenes/Obstacles/WormHole.tscn" ),
 	"RockB"      :  preload( "res://Scenes/Obstacles/Rock.tscn" ),
 	"RockS"      :  preload( "res://Scenes/Obstacles/SmallRock.tscn" ),
+	"Rock2"      :  preload( "res://Scenes/Obstacles/DoubleRock.tscn" ),
 	"Mine"       :  preload( "res://Scenes/Obstacles/Mine.tscn" ),
 	"checkpoint" :  preload( "res://Scenes/Checkpoint.tscn" ),
 	"Alien1"     :  preload( "res://Scenes/Enemies/Alien1.tscn" ),
