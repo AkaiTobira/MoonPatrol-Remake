@@ -256,10 +256,9 @@ script = ExtResource( 7 )
 [node name="Player" parent="." instance=ExtResource( 8 )]
 position = Vector2( 915.418, 866.642 )
 scale = Vector2( 0.9, 0.7 )
-Gravity = 320.0
-MaxJump = 588.0
-Friction = 200.0
-MaxMoveSpeed = 100.0
+Gravity = 200.0
+Friction = 0.0
+MaxMoveSpeed = 120.0
 move_borders = Vector2( 650, 900 )
 
 [node name="Paths" type="Node2D" parent="."]

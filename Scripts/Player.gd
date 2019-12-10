@@ -22,8 +22,14 @@ var pause                      = false
 
 # warning-ignore:unused_class_variable
 var relative_x = 0
+var relative_y = 0
+var is_jumping = false
+
+
 var force      = 0
-var on_floor   = false
+var on_floor   = true
+var floor_y    = 0
+
 var controller = null
 
 func _ready():
@@ -66,29 +72,26 @@ func stop():
 
 func _physics_process(delta):
 	if pause: return
-	new_moves(delta)
+	process_move(delta)
 	#process_moves(delta)
 
 #Whole function is to refactor but it is work
-func new_moves(delta):
+func process_move(delta):
 	var middle_point     = ( move_borders.x + move_borders.y )/2
 	var movable_distance = move_borders.y - move_borders.x
+	var target_pos = Vector2( middle_point + (relative_x * movable_distance)/100, 
+	                          relative_y )
+# warning-ignore:return_value_discarded
+	move_and_slide( Vector2(target_pos.x, position.y) - position )
 
-	if not on_floor:
-		var collision = move_and_collide( Vector2(0, -force ) * delta )
+	var gravity_reducer = min( 1, ( Vector2(position.x, target_pos.y) - position ).length() / MaxJump + 0.3 )
+	if is_jumping: move_and_slide( ( Vector2(position.x, target_pos.y) - position ).normalized() * Gravity * gravity_reducer  )
+	else:
+		var collision = move_and_collide( Vector2(0, Gravity) * delta * gravity_reducer )
 		if collision:
 			if collision.collider.is_in_group("floor"): on_floor = true
 
-	var target_pos = Vector2( middle_point + (relative_x * movable_distance)/100, position.y )
-# warning-ignore:return_value_discarded
-	move_and_slide( target_pos - position )
-
-	#fix for not straight road
-	if !test_move( get_transform(), Vector2(0, 1 ) ) and on_floor:
-# warning-ignore:return_value_discarded
-		move_and_slide( Vector2( 0, Gravity) )
-
-	bakcground_speed_multipler = 1 + relative_x/100
+	bakcground_speed_multipler = 2 + relative_x/100
 
 func on_dead():
 	if not player_good_mode: 
