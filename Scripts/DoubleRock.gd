@@ -9,6 +9,8 @@ var points_destroy   = 100
 var add_points       = true
 var pause            = false
 
+var rocks            = 2
+
 func set_speed_multipler( player_multipler ):
 	speed_multipler = 1 + player_multipler
 
@@ -35,4 +37,12 @@ func _on_Area2D_body_entered(body):
 	if body.is_in_group("missle"):
 		get_parent().points += points_destroy
 		body.on_delete()
+		$CollisionPolygon2D.disabled = true
+		$Area2D.call_deferred("queue_free")
+
+func _on_Area2D2_body_entered(body):
+	if body.is_in_group("missle"):
+		get_parent().points += points_destroy
+		body.on_delete()
 		call_deferred("queue_free")
+	pass # Replace with function body.

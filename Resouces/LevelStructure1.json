@@ -1,27 +1,44 @@
 {
-	"start_segment"   : "10",
+	"start_segment"   : "11",
 	"fixed_segment"   : true,
 	"random_order"    : true,
 	"bakcground"      : "Background_1",
 	"level_structure" : {
-  
-	  "10" : {
-		  "duration" : 2,
-		  "spawn_times": {
-			"0.1"  : "1_A_Alien1",
-			"0.2"  : "1_A_Alien2",
-			"1"    : "5_AABCE_Bomber",
-		  }
-	  },
-  
 
+	  "11" : {
+		"duration" : 8, 
+		"spawn_times": {
+			"0.8"  : "2_1A_Bomber",
+			"0.1"  : "Rock2"
+		}
+	  },
+
+	  "10" : {
+	    "duration" : 2,
+		"spawn_times": {
+		  "0.1"  : "7_ABCDE12_Alien1",
+		  "0.3"  : "7_abcde12_Alien1",
+		  "0.5"  : "7_ABCDE12_Alien2",
+		  "0.8"  : "3_a12_Alien2",
+		  "1.2"  : "3_a12_Bomber",
+		  "1.5"  : "3_ABC_Bomber",
+		}
+	  },
+	  "9" : {
+	    "duration" : 10,
+		"spawn_times": {
+		  "0"    : "1_A_Alien2",
+		  "1"    : "1_1_Alien2",
+		  "5"    : "1_2_Alien2",
+		  "6"    : "1_a_Alien2"
+ 		}
+	  },
 	  "1" : {
 		  "duration" : 5,
 		  "spawn_times": {
 			"2"    : "RockS",
 			"1"    : "1_A_Alien2",
 		  }
-
 	  },
 	  "8" : {
 		"duration" : 5,
@@ -29,18 +46,15 @@
 		  "2"    : "RockB",
 		  "1"    : "1_A_Alien2",
 		}
-
-	},
+	  },
 	  "2" : {
 		"duration" : 5,
 		"spawn_times": {
 		  "2"    : "Hole",
 		  "1"    : "1_A_Alien2",
 		}
-
-	},
-
-	"4" : {
+	  },
+	  "4" : {
 		"duration" : 12,
 		"spawn_times": {
 		  "1"    : "1_B_Bomber",
@@ -53,41 +67,35 @@
 		  "3.4"    : "HoleB",
 		  "5.5"    : "RockB",
 		  "5.6"    : "RockS"
-
 		}
-
-	},
-
-	"5" : {
+	  },
+	  "5" : {
 		"duration" : 5,
 		"spawn_times": {
 		  "2"    : "1_A_Alien1",
 		  "1"    : "1_A_Alien2",
 		}
-
-	},
-	"6" : {
+	  },
+	  "6" : {
 		"duration" : 5,
 		"spawn_times": {
 		  "2"    : "HoleB",
 		  "1"    : "1_A_Alien2",
 		}
-
-	},
-	"7" : {
+	  },
+	  "7" : {
 		"duration" : 5,
 		"spawn_times": {
 		  "2"    : "Worm",
 		  "1"    : "1_A_Alien2",
 		}
-	},
-	"3" : {
+	  },
+	  "3" : {
 		"duration" : 5,
 		"spawn_times": {
 		  "2"    : "Mine",
 		  "1"    : "1_A_Alien2",
 		}
-
-	}
-  }
+	  }
+    }
 }

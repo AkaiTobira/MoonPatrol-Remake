@@ -1,0 +1,98 @@
+class MoveLeft:
+    _init_( player ):
+        save_somehow_player
+ 
+    update():
+        player.range = max( -100, player.position - 1 * delta * move_speed )    
+
+    handle_input():
+        if key_presed == Shoot : push_state( Shoot )
+        if key_presed == Up    : push_state( Jump  ) 
+        if key_presed != Left  : remove_from_stack()
+
+class MoveRight:
+    _init_( player ):
+        save_somehow_player
+ 
+    update():
+        player.range = min( 100, player.position + 1 * delta * move_speed )    
+
+    handle_input():
+        if key_presed != Right : 
+            remove_from_stack()
+            return
+        if key_presed == Shoot : push_state( Shoot )
+        if key_presed == Up    : push_state( JumpRight  ) 
+
+
+class JumpRight:
+    _init_( player ):
+        save_somehow_player
+        player.force =  200 + player.position 
+
+    update():
+        player.range = min( 100, player.position + 1 * delta * move_speed ) 
+        player.force -= gravity
+        if player.on_floor(): remove_from_stack
+            remove_from_stack()
+
+    handle_input():
+        if key_presed == Shoot : push_state( Shoot )
+
+class JumpLeft:
+    _init_( player ):
+        save_somehow_player
+        player.force =  200 + player.position 
+
+    update():
+        player.range = max( -100, player.position - 1 * delta * move_speed ) 
+        player.force -= gravity
+        if player.on_floor(): remove_from_stack
+
+
+    handle_input():
+        if key_presed == Shoot : push_state( Shoot )
+
+class Shoot:
+
+    _init_(player):
+        save_somehow_player
+
+    update():
+        create_missle()
+        remove_from_stack
+
+    handle_input(): pass
+
+    create_missle():
+        if less_than_requiared_missle_right : shoot()
+        if less_than_requiared_missle_up    : shoot()
+
+
+class JumpIdle:
+    _init_( player ):
+        save_somehow_player
+        player.force =  200 + player.position 
+
+    update():
+        if player.position < 0   : player.position = min( 0, player.position + 1 * delta * move_speed )
+        elif player.position > 0 : player.position = max( 0, player.position - 1 * delta * move_speed )
+        player.force -= gravity
+        if player.on_floor(): remove_from_stack
+
+    handle_input():
+        if key_presed == Shoot : push_state( Shoot )
+
+class Idle:
+    _init_( player ):
+        save_somehow_player
+ 
+    update():
+        if player.position < 0   : player.position = min( 0, player.position + 1 * delta * move_speed )
+        elif player.position > 0 : player.position = max( 0, player.position - 1 * delta * move_speed )
+
+    handle_input():
+        if key_presed == Shoot : push_state( Shoot )
+        if key_presed == Up    : push_state( JumpIdle  ) 
+        if key_presed == Right : push_state( MoveRight )
+        if key_presed == Left  : push_state( MoveLeft )

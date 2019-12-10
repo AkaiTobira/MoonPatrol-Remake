@@ -1,10 +1,12 @@
 extends Node
 
+# warning-ignore:unused_class_variable
 var high_score = 0
 
 var level_jsons = {} 
 
 var sqgment_id = 1
+# warning-ignore:unused_class_variable
 var level_json = {}
 var level_list = []
 var records    = { 
@@ -21,9 +23,11 @@ onready var player# = get_node( "/root/Root/Player" )
 var objects = {
 	"Hole"       :  preload( "res://Scenes/Obstacles/Hole.tscn" ),
 	"HoleB"      :  preload( "res://Scenes/Obstacles/HugeHole.tscn" ),
+	"BHole"      :  preload( "res://Scenes/Obstacles/BombHole.tscn" ),
 	"Worm"       :  preload( "res://Scenes/Obstacles/WormHole.tscn" ),
 	"RockB"      :  preload( "res://Scenes/Obstacles/Rock.tscn" ),
 	"RockS"      :  preload( "res://Scenes/Obstacles/SmallRock.tscn" ),
+	"Rock2"      :  preload( "res://Scenes/Obstacles/DoubleRock.tscn" ),
 	"Mine"       :  preload( "res://Scenes/Obstacles/Mine.tscn" ),
 	"checkpoint" :  preload( "res://Scenes/Checkpoint.tscn" ),
 	"Alien1"     :  preload( "res://Scenes/Enemies/Alien1.tscn" ),
@@ -68,7 +72,7 @@ func load_level_structure( file_name, segment_index ):
 	file.open("res://Resouces/" + file_name + ".json", file.READ)
 	level_jsons[segment_index] = parse_json(file.get_as_text())
 	file.close()
-	assert( level_json != null )
+	assert( level_jsons[segment_index] != null )
 	calculate_average(segment_index)
 
 func is_level_fixed():

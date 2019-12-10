@@ -106,6 +106,8 @@ func update_time(delta):
 	$UI/MainTimeCounter.text = "TIME SINCE BEGIN : " + str(stepify(time_whole, 0.1)) 
 	$UI/Time.text = "TIME :" + str(stepify(time_segment, 0.1)) + " +" + str(stepify(time_reduciton, 0.1))
 	$GUI/Control/ScoreBoard/GTime.text = str(stepify(time_whole,0.1))
+	$GUI/Control/Distance/DistanceBar.value = time_whole
+	$GUI/Control/Warnings/ShortDistanceBar.value = time_segment
 	
 
 func turn_down_intro():

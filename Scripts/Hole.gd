@@ -21,6 +21,7 @@ func stop(): pause = true
 func set_speed_multipler( player_multipler ):
 	speed_multipler = 1 + player_multipler
 
+# warning-ignore:unused_argument
 func _physics_process(delta):
 	if pause: return 
 # warning-ignore:return_value_discarded

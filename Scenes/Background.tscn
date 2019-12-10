@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/BackgroundControll.gd" type="Script" id=1]
-[ext_resource path="res://Textures/bg_1_1.png" type="Texture" id=2]
+[ext_resource path="res://Textures/GUI/bg_1_1.png" type="Texture" id=2]
 [ext_resource path="res://Textures/Placeholders_old/Background_fill.png" type="Texture" id=3]
 [ext_resource path="res://Textures/Placeholders_old/Background_road.png" type="Texture" id=4]
 
@@ -42,7 +42,9 @@ scale = Vector2( 1.90978, 2.20267 )
 z_index = 2
 texture = ExtResource( 4 )
 
-[node name="StaticBody2D2" type="KinematicBody2D" parent="Back3"]
+[node name="StaticBody2D2" type="KinematicBody2D" parent="Back3" groups=[
+"floor",
+]]
 position = Vector2( -1015.71, 780.088 )
 scale = Vector2( 3.35939, 0.998225 )
 motion/sync_to_physics = true
@@ -53,7 +55,9 @@ scale = Vector2( 0.364871, 1 )
 build_mode = 1
 polygon = PoolVector2Array( 300.785, -22.0141, 147.614, 105.587, -149.321, 106.527, -155.719, 33.4861, -423.293, 2.40594, 272.762, -94.1644 )
 
-[node name="StaticBody2D" type="KinematicBody2D" parent="."]
+[node name="StaticBody2D" type="KinematicBody2D" parent="." groups=[
+"floor",
+]]
 position = Vector2( 450, 200 )
 z_index = 10
 motion/sync_to_physics = true
@@ -61,4 +65,4 @@ motion/sync_to_physics = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2( 646.09, 746.727 )
 scale = Vector2( 1, 0.941706 )
-polygon = PoolVector2Array( 1266.5, -70.6114, 1263.73, 152.638, -662.983, 148.094, -659.023, -46.1941 )
+polygon = PoolVector2Array( 1266.5, -70.6114, 1263.73, 152.638, -662.983, 148.094, -658.804, -59.8505 )

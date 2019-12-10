@@ -20,8 +20,8 @@ func _ready():
 	KAMIKAZE_ENABLED       = false
 	LIFE_TIME              = 12
 	
+# warning-ignore:unused_variable
 	for i in range(76): move_log.append(Vector2(0,0))
-		
 
 func _physics_process(delta):
 	update_times(delta)
@@ -35,7 +35,7 @@ func _physics_process(delta):
 		else: process_move(delta)
 	update_move_log()
 
-var index = 0
+#var index = 0
 func follow_lider(delta):
 	target_move_point = lider.move_log[ number_in_squat * 15 ] 
 	move_to_target_pos(delta)
