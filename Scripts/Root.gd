@@ -28,6 +28,7 @@ func _ready():
 	current_segment = Common.get_level_segment(current_level)
 	Common.register_player( $Player )
 	pause_world()
+	
 
 func player_reached_next_letter():
 	get_next_segment()
@@ -38,6 +39,7 @@ func player_reached_next_letter():
 	update_log()
 	background_settings = $ParallaxBackground.get_backgoround_info()
 	if player_letter%5 == 4 and player_letter > 65  : update_segment()
+	$GUI/Control/Warnings/Checkpoint.text = char(next_letter)
 
 func get_next_segment():
 	update_segment_index()
@@ -68,7 +70,8 @@ func update_segment():
 	$ParallaxBackground.load_bakcground_fill( Common.get_segment_texture() )
 #	print ( " here is going next level and summary but it is not implemented " )
 #	$Spawners.spawn_reached_checkpoint( char(player_letter) )
-
+	
+	
 func restart_game():
 		if points > Common.high_score: Common.high_score = points 
 		clean_scene()
@@ -102,6 +105,8 @@ func update_time(delta):
 
 	$UI/MainTimeCounter.text = "TIME SINCE BEGIN : " + str(stepify(time_whole, 0.1)) 
 	$UI/Time.text = "TIME :" + str(stepify(time_segment, 0.1)) + " +" + str(stepify(time_reduciton, 0.1))
+	$GUI/Control/ScoreBoard/GTime.text = str(stepify(time_whole,0.1))
+	
 
 func turn_down_intro():
 	$UI/Welcomer.visible = false
@@ -122,6 +127,9 @@ func update_points():
 	if points > Common.high_score: Common.high_score = points 
 	$UI/Score.text     = "SCORE :"     + str(points)
 	$UI/HighScore.text = "HIGHSCORE :" + str(Common.high_score)
+	$GUI/Control/ScoreBoard/ScoreResult.text = str(points)
+	$GUI/Control/ScoreBoard/HiScoreResult.text = str(Common.high_score)
+	
 
 func process_spawn():
 	var parsed_time = stepify(time_segment + time_reduciton, 0.1)
