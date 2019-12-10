@@ -16,6 +16,7 @@ func grant_points():
 		get_parent().points += points
 		add_points = false
 
+# warning-ignore:unused_argument
 func _physics_process(delta):
 # warning-ignore:return_value_discarded
 	move_and_slide( Vector2(-1, 0 ) * SPEED * speed_multipler )

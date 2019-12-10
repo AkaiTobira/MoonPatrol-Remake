@@ -1,19 +1,15 @@
 extends KinematicBody2D
 
+# warning-ignore:unused_class_variable
 export var Gravity      =  900.0
+# warning-ignore:unused_class_variable
 export var MaxJump      =  60.0
+# warning-ignore:unused_class_variable
 export var Friction     =  50.0
+# warning-ignore:unused_class_variable
 export var MaxMoveSpeed =  130.0
 export var move_borders = Vector2( 500, 800 )
 
-onready var base_position_x = 766.49
-onready var base_position_y = 858.148
-
-#moving variables
-var directions = { "left" : Vector2(-1,0), "right" : Vector2(1,0) }
-var direction  = Vector2(0,0)
-var jump            = 1.0
-var on_ground       = false
 
 #shooting variables
 var forward_missle  = null
@@ -24,57 +20,28 @@ var bakcground_speed_multipler = 0
 var player_good_mode           = true
 var pause                      = false
 
+# warning-ignore:unused_class_variable
+var relative_x = 0
+var force      = 0
+var on_floor   = false
+var controller = null
+
+func _ready():
+	calculate_relative()
+	controller = load( "res://Scripts/PlayerControlSFSM.gd" ).new()
+	add_child(controller)
+
+func calculate_relative():
+	var middle_point     = ( move_borders.x + move_borders.y )/2
+	var movable_distance = move_borders.y - move_borders.x
+	relative_x = (position.x - middle_point)/movable_distance  * 100
+
 func reset():
 	forward_missle  = null
 	fire_up_missles = 0 
-	position = Vector2(base_position_x, base_position_y)
-
-func move_verticall(delta):
-	var jump_force  = calculate_jump_force(delta)
-	
-	if !test_move( get_transform(), jump_force * delta ):
-# warning-ignore:unused_variable
-		var k = move_and_collide( jump_force * delta )
-		return false
-	return true
-
-func move_horizontal(delta):
-	var speed    = calculate_speed()
-	var friction = calculate_friction()
-# warning-ignore:return_value_discarded
-	move_and_collide( ( friction + speed) * delta )
-
-func calculate_jump_force(delta):
-	if jump == 0 : return Vector2(0, Gravity)
-	jump = max( jump - Gravity*delta, 0 )
-	return Vector2(0, - jump) + Vector2(0, Gravity)
-
-var move_speed = 0.0
-func calculate_speed():
-	if position.x < move_borders.y: return Vector2(1,0) * move_speed
-	return Vector2(0,0)
-
-func calculate_friction():
-	if position.x > move_borders.x: return Vector2( -Friction, 0 ) 
-	return Vector2(0,0)
-
-func should_stop_near_right_border():
-	return position.x >=  move_borders.y and direction == directions["right"]
-
-func process_moves(delta):
-	on_ground = move_verticall(delta)
-	#if !on_ground: return
-	if should_stop_near_right_border(): return
-	move_horizontal(delta)
-	update_backgound_multipler()
-
-func update_backgound_multipler():
-	#var offset = 50
-	var full_range =  move_borders.y - base_position_x #- offset
-	bakcground_speed_multipler =  min( max( (position.x-base_position_x )/full_range, 0 ), 1 )
+	relative_x = 0
 
 func shoot_forward():
-	if forward_missle: return
 	forward_missle            = Common.get_instance("PFmissle")
 	forward_missle.position   = position + Vector2(30,0)
 	forward_missle.scale      = Vector2( 1, 0.5 )
@@ -83,34 +50,45 @@ func shoot_forward():
 	get_parent().call_deferred("add_child", forward_missle)  
 
 func shoot_up():
-	if fire_up_missles > 3 : return
-	fire_up_missles     += 1
 	var up_missle        = Common.get_instance("PUmissle")
 	up_missle.position   = position + Vector2(-30,-30)
 	up_missle.life_range = 600 
 	up_missle.direction  = Vector2(0,-1)
 	get_parent().call_deferred("add_child", up_missle)
 
-func shoot(): 
-	shoot_forward()
-	shoot_up()
-
-func play(): pause = false
-func stop(): pause = true
-
-func _process(delta):
-	if pause: return
-	if Input.is_action_just_pressed("ui_up") and on_ground: jump = MaxJump
-	direction  = Vector2(0,0)
-	if Input.is_action_pressed("ui_right") : 
-		direction = directions["right"]
-		move_speed = min( move_speed + 2*MaxMoveSpeed* delta, MaxMoveSpeed )
-	else: move_speed = max( move_speed - 2*MaxMoveSpeed* delta, 30 )
-	if Input.is_action_just_pressed("ui_accept"): shoot()
+func play(): 
+	pause = false
+	controller.play()
+	
+func stop(): 
+	pause = true
+	controller.stop()
 
 func _physics_process(delta):
 	if pause: return
-	process_moves(delta)
+	new_moves(delta)
+	#process_moves(delta)
+
+#Whole function is to refactor but it is work
+func new_moves(delta):
+	var middle_point     = ( move_borders.x + move_borders.y )/2
+	var movable_distance = move_borders.y - move_borders.x
+
+	if not on_floor:
+		var collision = move_and_collide( Vector2(0, -force ) * delta )
+		if collision:
+			if collision.collider.is_in_group("floor"): on_floor = true
+
+	var target_pos = Vector2( middle_point + (relative_x * movable_distance)/100, position.y )
+# warning-ignore:return_value_discarded
+	move_and_slide( target_pos - position )
+
+	#fix for not straight road
+	if !test_move( get_transform(), Vector2(0, 1 ) ) and on_floor:
+# warning-ignore:return_value_discarded
+		move_and_slide( Vector2( 0, Gravity) )
+
+	bakcground_speed_multipler = 1 + relative_x/100
 
 func on_dead():
 	if not player_good_mode: 

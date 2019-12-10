@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Scripts/Root.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Summary.gd" type="Script" id=2]
@@ -19,65 +19,66 @@
 [ext_resource path="res://Textures/buggy.png" type="Texture" id=17]
 [ext_resource path="res://Fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=18]
 
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 18 )
-
-[sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 18 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 14
-font_data = ExtResource( 18 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 14
-font_data = ExtResource( 18 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 14
-font_data = ExtResource( 18 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 14
-font_data = ExtResource( 18 )
-
-[sub_resource type="DynamicFont" id=7]
-size = 14
-font_data = ExtResource( 18 )
-
-[sub_resource type="DynamicFont" id=8]
-size = 64
-font_data = ExtResource( 18 )
-
-[sub_resource type="Curve2D" id=9]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 1587.87, 133.677, 0, 0, 0, 0, 1393.34, 218.02, 0, 0, 0, 0, 1246.42, 273.796, 0, 0, 0, 0, 1110.38, 340.454, 0, 0, 0, 0, 960.738, 388.067, 0, 0, 0, 0, 839.664, 430.239, 0, 0, 0, 0, 717.231, 460.167, 0, 0, 0, 0, 577.112, 452.005, 0, 0, 0, 0, 530.859, 382.625, 0, 0, 0, 0, 521.337, 309.165, 0, 0, 0, 0, 548.544, 241.147, 0, 0, 0, 0, 597.518, 220.741, 0, 0, 0, 0, 710.429, 220.741, 0, 0, 0, 0, 749.88, 247.948, 0, 0, 0, 0, 808.376, 301.003, 0, 0, 0, 0, 774.366, 457.446, 0, 0, 0, 0, 736.276, 484.654, 0, 0, 0, 0, 575.752, 505.059, 0, 0, 0, 0, 518.616, 476.491, 0, 0, 0, 0, 488.688, 388.067, 0, 0, 0, 0, 484.607, 303.724, 0, 0, 0, 0, 525.418, 204.416, 0, 0, 0, 0, 647.852, 150.002, 0, 0, 0, 0, 802.934, 173.128, 0, 0, 0, 0, 873.674, 215.299, 0, 0, 0, 0, 864.151, 403.031, 0, 0, 0, 0, 808.376, 515.942, 0, 0, 0, 0, 695.465, 532.267, 0, 0, 0, 0, 534.941, 526.825, 0, 0, 0, 0, 457.399, 515.942, 0, 0, 0, 0, 329.524, 513.221, 0, 0, 0, 0, 303.677, 513.221 )
-}
-
-[sub_resource type="Curve2D" id=10]
+[sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 285.393, 407.17, 0, 0, 0, 0, 413.963, 424.703, 0, 0, 0, 0, 478.247, 455.871, 0, 0, 0, 0, 826.943, 518.208, 0, 0, 0, 0, 936.032, 500.675, 0, 0, 0, 0, 1095.77, 393.534, 0, 0, 0, 0, 1058.76, 237.693, 0, 0, 0, 0, 906.811, 179.252, 0, 0, 0, 0, 706.165, 268.861, 0, 0, 0, 0, 684.737, 370.158, 0, 0, 0, 0, 791.878, 561.064, 0, 0, 0, 0, 949.668, 527.948, 0, 0, 0, 0, 1013.95, 457.819, 0, 0, 0, 0, 998.368, 323.406, 0, 0, 0, 0, 893.175, 274.705, 0, 0, 0, 0, 770.45, 401.326, 0, 0, 0, 0, 910.707, 465.611, 0, 0, 0, 0, 1000.32, 420.807, 0, 0, 0, 0, 902.915, 352.626, 0, 0, 0, 0, 600.972, 348.73 )
 }
 
-[sub_resource type="Curve2D" id=11]
+[sub_resource type="Curve2D" id=2]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 544.48, 91.5914, 0, 0, 0, 0, 626.297, 255.225, 0, 0, 0, 0, 680.841, 321.458, 0, 0, 0, 0, 836.683, 376.002, 0, 0, 0, 0, 895.123, 329.25, 0, 0, 0, 0, 887.331, 224.057, 0, 0, 0, 0, 702.269, 194.836, 0, 0, 0, 0, 546.428, 229.901, 0, 0, 0, 0, 427.599, 307.821, 0, 0, 0, 0, 449.027, 440.287, 0, 0, 0, 0, 486.039, 490.935, 0, 0, 0, 0, 552.272, 555.22, 0, 0, 0, 0, 663.309, 555.22, 0, 0, 0, 0, 842.527, 529.896, 0, 0, 0, 0, 941.876, 461.715, 0, 0, 0, 0, 980.836, 372.106, 0, 0, 0, 0, 961.356, 261.069, 0, 0, 0, 0, 873.695, 196.784, 0, 0, 0, 0, 743.178, 148.084, 0, 0, 0, 0, 641.881, 161.72, 0, 0, 0, 0, 563.96, 226.005, 0, 0, 0, 0, 546.428, 319.51, 0, 0, 0, 0, 556.168, 362.366, 0, 0, 0, 0, 624.349, 428.599, 0, 0, 0, 0, 735.386, 459.767, 0, 0, 0, 0, 793.826, 455.871, 0, 0, 0, 0, 887.331, 432.495, 0, 0, 0, 0, 996.42, 364.314, 0, 0, 0, 0, 1019.8, 278.601, 0, 0, 0, 0, 914.603, 183.148, 0, 0, 0, 0, 754.866, 138.344, 0, 0, 0, 0, 700.321, 179.252, 0, 0, 0, 0, 735.386, 294.185, 0, 0, 0, 0, 766.554, 305.873 )
 }
 
-[sub_resource type="Curve2D" id=12]
+[sub_resource type="Curve2D" id=3]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 1869.22, 352.626, 0, 0, 0, 0, 1693.9, 387.69, 0, 0, 0, 0, 1520.52, 422.755, 0, 0, 0, 0, 1331.56, 434.443, 0, 0, 0, 0, 1173.78, 471.455, 0, 0, 0, 0, 1037.41, 490.935, 0, 0, 0, 0, 827.028, 487.039, 0, 0, 0, 0, 692.615, 430.547, 0, 0, 0, 0, 640.018, 370.158, 0, 0, 0, 0, 663.394, 245.485, 0, 0, 0, 0, 702.355, 190.94, 0, 0, 0, 0, 778.327, 153.928, 0, 0, 0, 0, 951.701, 151.98, 0, 0, 0, 0, 1076.37, 165.616, 0, 0, 0, 0, 1109.49, 229.901, 0, 0, 0, 0, 1099.75, 329.25, 0, 0, 0, 0, 977.025, 555.22, 0, 0, 0, 0, 809.496, 568.856, 0, 0, 0, 0, 657.55, 553.272, 0, 0, 0, 0, 852.352, 416.911, 0, 0, 0, 0, 945.857, 385.742, 0, 0, 0, 0, 914.689, 305.873, 0, 0, 0, 0, 735.471, 278.601, 0, 0, 0, 0, 663.394, 282.497, 0, 0, 0, 0, 511.449, 329.25, 0, 0, 0, 0, 587.422, 422.755, 0, 0, 0, 0, 717.939, 465.611, 0, 0, 0, 0, 749.107, 508.467, 0, 0, 0, 0, 595.214, 526, 0, 0, 0, 0, 482.229, 438.339, 0, 0, 0, 0, 544.565, 282.497, 0, 0, 0, 0, 521.189, 241.589, 0, 0, 0, 0, 351.711, 196.784, 0, 0, 0, 0, 345.867, 194.836, 0, 0, 0, 0, 453.008, 338.99, 0, 0, 0, 0, 638.07, 342.886, 0, 0, 0, 0, 801.704, 280.549, 0, 0, 0, 0, 856.248, 303.925, 0, 0, 0, 0, 743.263, 356.522 )
 }
 
-[sub_resource type="Curve2D" id=13]
+[sub_resource type="Curve2D" id=4]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 984.817, 107.176, 0, 0, 0, 0, 961.441, 142.24, 0, 0, 0, 0, 922.481, 202.628, 0, 0, 0, 0, 901.053, 264.965, 0, 0, 0, 0, 842.612, 356.522, 0, 0, 0, 0, 786.12, 413.015, 0, 0, 0, 0, 708.199, 434.443, 0, 0, 0, 0, 636.122, 438.339, 0, 0, 0, 0, 569.889, 450.027, 0, 0, 0, 0, 491.969, 424.703, 0, 0, 0, 0, 509.501, 393.534, 0, 0, 0, 0, 597.162, 393.534, 0, 0, 0, 0, 745.211, 393.534, 0, 0, 0, 0, 854.3, 391.586, 0, 0, 0, 0, 945.857, 391.586, 0, 0, 0, 0, 990.661, 395.482, 0, 0, 0, 0, 918.585, 448.079, 0, 0, 0, 0, 805.6, 450.027, 0, 0, 0, 0, 715.991, 451.975, 0, 0, 0, 0, 597.162, 451.975, 0, 0, 0, 0, 486.125, 451.975, 0, 0, 0, 0, 435.476, 440.287, 0, 0, 0, 0, 456.904, 395.482, 0, 0, 0, 0, 523.137, 372.106, 0, 0, 0, 0, 585.474, 368.21, 0, 0, 0, 0, 686.771, 354.574, 0, 0, 0, 0, 776.379, 338.99, 0, 0, 0, 0, 871.832, 311.718, 0, 0, 0, 0, 992.609, 237.693, 0, 0, 0, 0, 996.506, 188.992, 0, 0, 0, 0, 916.637, 167.564, 0, 0, 0, 0, 838.716, 153.928, 0, 0, 0, 0, 649.758, 163.668, 0, 0, 0, 0, 567.941, 185.096, 0, 0, 0, 0, 507.553, 210.421, 0, 0, 0, 0, 548.461, 241.589, 0, 0, 0, 0, 649.758, 224.057, 0, 0, 0, 0, 733.523, 214.317, 0, 0, 0, 0, 828.976, 208.473, 0, 0, 0, 0, 914.689, 208.473, 0, 0, 0, 0, 990.661, 222.109, 0, 0, 0, 0, 1070.53, 218.213, 0, 0, 0, 0, 1006.25, 163.668, 0, 0, 0, 0, 928.325, 146.136, 0, 0, 0, 0, 788.068, 161.72, 0, 0, 0, 0, 659.498, 175.356, 0, 0, 0, 0, 569.889, 188.992, 0, 0, 0, 0, 490.021, 235.745, 0, 0, 0, 0, 548.461, 261.069, 0, 0, 0, 0, 762.743, 239.641, 0, 0, 0, 0, 813.392, 231.849, 0, 0, 0, 0, 815.34, 233.797 )
 }
+
+[sub_resource type="Curve2D" id=5]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1587.87, 133.677, 0, 0, 0, 0, 1393.34, 218.02, 0, 0, 0, 0, 1246.42, 273.796, 0, 0, 0, 0, 1110.38, 340.454, 0, 0, 0, 0, 960.738, 388.067, 0, 0, 0, 0, 839.664, 430.239, 0, 0, 0, 0, 717.231, 460.167, 0, 0, 0, 0, 577.112, 452.005, 0, 0, 0, 0, 530.859, 382.625, 0, 0, 0, 0, 521.337, 309.165, 0, 0, 0, 0, 548.544, 241.147, 0, 0, 0, 0, 597.518, 220.741, 0, 0, 0, 0, 710.429, 220.741, 0, 0, 0, 0, 749.88, 247.948, 0, 0, 0, 0, 808.376, 301.003, 0, 0, 0, 0, 774.366, 457.446, 0, 0, 0, 0, 736.276, 484.654, 0, 0, 0, 0, 575.752, 505.059, 0, 0, 0, 0, 518.616, 476.491, 0, 0, 0, 0, 488.688, 388.067, 0, 0, 0, 0, 484.607, 303.724, 0, 0, 0, 0, 525.418, 204.416, 0, 0, 0, 0, 647.852, 150.002, 0, 0, 0, 0, 802.934, 173.128, 0, 0, 0, 0, 873.674, 215.299, 0, 0, 0, 0, 864.151, 403.031, 0, 0, 0, 0, 808.376, 515.942, 0, 0, 0, 0, 695.465, 532.267, 0, 0, 0, 0, 534.941, 526.825, 0, 0, 0, 0, 457.399, 515.942, 0, 0, 0, 0, 329.524, 513.221, 0, 0, 0, 0, 303.677, 513.221 )
+}
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 14
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 14
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 14
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 14
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 14
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 64
+font_data = ExtResource( 18 )
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Summary" type="Node2D" parent="."]
+editor/display_folded = true
 visible = false
 z_index = 1
 script = ExtResource( 2 )
@@ -178,6 +179,7 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
 [node name="UI" type="Node2D" parent="."]
+editor/display_folded = true
 z_index = 10
 
 [node name="Black_Holder_Left" type="Sprite" parent="UI"]
@@ -258,37 +260,38 @@ scale = Vector2( 0.9, 0.7 )
 Gravity = 320.0
 MaxJump = 588.0
 Friction = 200.0
-MaxMoveSpeed = 300.0
+MaxMoveSpeed = 100.0
 move_borders = Vector2( 650, 900 )
 
 [node name="Paths" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Alien1" type="Node2D" parent="Paths"]
 
 [node name="a" type="Path2D" parent="Paths/Alien1"]
-curve = SubResource( 10 )
+curve = SubResource( 1 )
 
 [node name="b" type="Path2D" parent="Paths/Alien1"]
-curve = SubResource( 11 )
+curve = SubResource( 2 )
 
 [node name="c" type="Path2D" parent="Paths/Alien1"]
-curve = SubResource( 12 )
+curve = SubResource( 3 )
 
 [node name="d" type="Path2D" parent="Paths/Alien1"]
-curve = SubResource( 13 )
+curve = SubResource( 4 )
 
 [node name="e" type="Path2D" parent="Paths/Alien1"]
-curve = SubResource( 9 )
+curve = SubResource( 5 )
 
 [node name="Alien2" type="Node2D" parent="Paths"]
 
 [node name="a" type="Path2D" parent="Paths/Alien2"]
-curve = SubResource( 10 )
+curve = SubResource( 1 )
 
 [node name="Bomber" type="Node2D" parent="Paths"]
 
 [node name="a" type="Path2D" parent="Paths/Bomber"]
-curve = SubResource( 10 )
+curve = SubResource( 1 )
 
 [node name="Spawners" type="Node2D" parent="."]
 editor/display_folded = true
@@ -365,7 +368,7 @@ margin_left = 121.295
 margin_top = 45.0784
 margin_right = 133.295
 margin_bottom = 65.0784
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 6 )
 text = "X"
 
 [node name="LifeLabel" type="Label" parent="GUI/Control/Distance"]
@@ -373,7 +376,7 @@ margin_left = 140.04
 margin_top = 42.8884
 margin_right = 168.04
 margin_bottom = 62.8884
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 7 )
 text = "3"
 
 [node name="DistanceLabel" type="Label" parent="GUI/Control/Distance"]
@@ -381,7 +384,7 @@ margin_left = 51.0022
 margin_top = 75.1402
 margin_right = 111.002
 margin_bottom = 89.1402
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 8 )
 text = "Distance:"
 
 [node name="DistanceBar" type="ProgressBar" parent="GUI/Control/Distance"]
@@ -403,7 +406,7 @@ margin_left = 35.4791
 margin_top = 39.2002
 margin_right = 121.479
 margin_bottom = 128.2
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 9 )
 text = "HI SCORE:
 SCORE:
 TIME:
@@ -414,7 +417,7 @@ margin_left = 129.409
 margin_top = 37.6862
 margin_right = 212.409
 margin_bottom = 57.6862
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 10 )
 text = "0"
 valign = 1
 autowrap = true
@@ -425,7 +428,7 @@ margin_left = 128.801
 margin_top = 59.0173
 margin_right = 212.801
 margin_bottom = 79.0173
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 11 )
 text = "0"
 valign = 1
 uppercase = true
@@ -435,7 +438,7 @@ margin_left = 128.986
 margin_top = 80.5296
 margin_right = 213.986
 margin_bottom = 100.53
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 12 )
 text = "0"
 
 [node name="Warnings" type="TextureRect" parent="GUI/Control"]
@@ -453,7 +456,7 @@ margin_left = 73.3333
 margin_top = 34.3333
 margin_right = 158.333
 margin_bottom = 112.333
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 13 )
 text = "A"
 align = 1
 valign = 1

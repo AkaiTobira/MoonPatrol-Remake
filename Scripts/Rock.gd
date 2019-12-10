@@ -21,6 +21,7 @@ func grant_points():
 		get_parent().points += points_jump_over
 		add_points = false
 
+# warning-ignore:unused_argument
 func _physics_process(delta):
 	if pause: return
 # warning-ignore:return_value_discarded

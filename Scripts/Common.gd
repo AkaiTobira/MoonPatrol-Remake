@@ -1,10 +1,12 @@
 extends Node
 
+# warning-ignore:unused_class_variable
 var high_score = 0
 
 var level_jsons = {} 
 
 var sqgment_id = 1
+# warning-ignore:unused_class_variable
 var level_json = {}
 var level_list = []
 var records    = { 

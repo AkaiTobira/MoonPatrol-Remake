@@ -61,6 +61,7 @@ func process_dead():
 	select_life_end_point()
 	if target_move_point.distance_to( position ) < 3: on_dead()
 
+# warning-ignore:unused_argument
 func set_speed_multipler( player_multipler ): pass
 
 func select_life_end_point():
@@ -125,6 +126,7 @@ func process_move(delta):
 	else: move_avoiding(delta)
 
 var path_index = 0
+# warning-ignore:unused_argument
 func process_path(delta):
 	if path_index == (path.size() - 1): 
 		is_following_fixed_path = false

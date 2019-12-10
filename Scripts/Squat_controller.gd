@@ -46,6 +46,7 @@ func bomb_exploded( index ):
 	bombs[index] = null
 	active_squats[index][1] = false
 
+# warning-ignore:unused_argument
 func _process(delta):
 	for i in len( active_squats ):
 		if active_squats[i][0] == 0: continue
