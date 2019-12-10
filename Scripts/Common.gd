@@ -23,6 +23,7 @@ onready var player# = get_node( "/root/Root/Player" )
 var objects = {
 	"Hole"       :  preload( "res://Scenes/Obstacles/Hole.tscn" ),
 	"HoleB"      :  preload( "res://Scenes/Obstacles/HugeHole.tscn" ),
+	"BHole"      :  preload( "res://Scenes/Obstacles/BombHole.tscn" ),
 	"Worm"       :  preload( "res://Scenes/Obstacles/WormHole.tscn" ),
 	"RockB"      :  preload( "res://Scenes/Obstacles/Rock.tscn" ),
 	"RockS"      :  preload( "res://Scenes/Obstacles/SmallRock.tscn" ),

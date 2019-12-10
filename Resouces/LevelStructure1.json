@@ -1,9 +1,18 @@
 {
-	"start_segment"   : "9",
+	"start_segment"   : "11",
 	"fixed_segment"   : true,
 	"random_order"    : true,
 	"bakcground"      : "Background_1",
 	"level_structure" : {
+
+	  "11" : {
+		"duration" : 8, 
+		"spawn_times": {
+			"0.8"  : "2_1A_Bomber",
+			"0.1"  : "Rock2"
+		}
+	  },
+
 	  "10" : {
 	    "duration" : 2,
 		"spawn_times": {

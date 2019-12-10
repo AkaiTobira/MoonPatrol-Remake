@@ -46,7 +46,8 @@ func process_collisions( object ):
 	spawn_hole()
 
 func spawn_hole():
-	var hole = Common.get_instance("Hole")
+	var hole = Common.get_instance("BHole")
+	hole.squat_id = squat_id
 	hole.position = position
 	hole.position.y = get_parent().get_node("Spawners/Hole_Spawner").position.y
 	hole.fixed_y_pos = get_parent().get_node("Spawners/Hole_Spawner").position.y
@@ -54,5 +55,4 @@ func spawn_hole():
 	on_delete()
 
 func on_delete():
-	SquatController.bomb_exploded( squat_id )
 	call_deferred("queue_free")
