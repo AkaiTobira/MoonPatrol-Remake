@@ -48,7 +48,7 @@ func reset():
 	relative_x = 0
 
 func shoot_forward():
-	forward_missle            = Common.get_instance("PFmissle")
+	forward_missle            = Utilities.get_instance("PFmissle")
 	forward_missle.position   = position + Vector2(30,0)
 	forward_missle.scale      = Vector2( 1, 0.5 )
 	forward_missle.life_range = 300 
@@ -56,7 +56,7 @@ func shoot_forward():
 	get_parent().call_deferred("add_child", forward_missle)  
 
 func shoot_up():
-	var up_missle        = Common.get_instance("PUmissle")
+	var up_missle        = Utilities.get_instance("PUmissle")
 	up_missle.position   = position + Vector2(-30,-30)
 	up_missle.life_range = 600 
 	up_missle.direction  = Vector2(0,-1)
@@ -64,11 +64,9 @@ func shoot_up():
 
 func play(): 
 	pause = false
-	controller.play()
 	
 func stop(): 
 	pause = true
-	controller.stop()
 
 func _physics_process(delta):
 	if pause: return
@@ -85,13 +83,14 @@ func process_move(delta):
 	move_and_slide( Vector2(target_pos.x, position.y) - position )
 
 	var gravity_reducer = min( 1, ( Vector2(position.x, target_pos.y) - position ).length() / MaxJump + 0.3 )
+# warning-ignore:return_value_discarded
 	if is_jumping: move_and_slide( ( Vector2(position.x, target_pos.y) - position ).normalized() * Gravity * gravity_reducer  )
 	else:
 		var collision = move_and_collide( Vector2(0, Gravity) * delta * gravity_reducer )
 		if collision:
 			if collision.collider.is_in_group("floor"): on_floor = true
 
-	bakcground_speed_multipler = 2 + relative_x/100
+	bakcground_speed_multipler = 1 + ( relative_x/200 )
 
 func on_dead():
 	if not player_good_mode: 

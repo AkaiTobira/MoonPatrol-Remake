@@ -21,9 +21,10 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Common="*res://Scripts/Common.gd"
+LevelParser="*res://Scripts/LevelParser.gd"
 SquatController="*res://Scripts/Squat_controller.gd"
 Flow="*res://Scripts/FlowController.gd"
+Utilities="*res://Scripts/Utilities.gd"
 
 [display]
 

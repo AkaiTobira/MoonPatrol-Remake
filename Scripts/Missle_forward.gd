@@ -11,5 +11,5 @@ func _physics_process(delta):
 	if output or lifed_range > life_range: on_delete()
 
 func on_delete():
-	Common.player.forward_missle = null
+	Utilities.player.forward_missle = null
 	call_deferred("queue_free")	

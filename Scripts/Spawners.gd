@@ -17,30 +17,30 @@ func spawn_obstacle( obstacle_to_spawn ):
 	else : spawn_ground( obstacle_to_spawn )
 
 func spawn_checkpoint( letter ):
-	$Checkpoint_Spawner.spawn( Common.get_instance("checkpoint"), letter )
+	$Checkpoint_Spawner.spawn( Utilities.get_instance("checkpoint"), letter )
 
 func spawn_reached_checkpoint(letter):
-	var instance = Common.get_instance("checkpoint")
+	var instance = Utilities.get_instance("checkpoint")
 	instance.is_not_reached = false
 	$Checkpoint_Spawner.spawn( instance, letter)
-	instance.position.x  = Common.player.base_position_x + 150
+	instance.position.x  = Utilities.player.base_position_x + 150
 
 func spawn_ground(obstacle_to_spawn):
 	match obstacle_to_spawn:
 		"Rock2" : 
-			$Rock_Spawner.spawn( Common.get_instance(obstacle_to_spawn) )
+			$Rock_Spawner.spawn( Utilities.get_instance(obstacle_to_spawn) )
 		"RockB" : 
-			$Rock_Spawner.spawn( Common.get_instance(obstacle_to_spawn) )
+			$Rock_Spawner.spawn( Utilities.get_instance(obstacle_to_spawn) )
 		"RockS" : 
-			$Rock_Spawner.spawn( Common.get_instance(obstacle_to_spawn) )
+			$Rock_Spawner.spawn( Utilities.get_instance(obstacle_to_spawn) )
 		"Hole" : 
-			$Hole_Spawner.spawn( Common.get_instance(obstacle_to_spawn) )
+			$Hole_Spawner.spawn( Utilities.get_instance(obstacle_to_spawn) )
 		"HoleB" : 
-			$Hole_Spawner.spawn( Common.get_instance(obstacle_to_spawn) )
+			$Hole_Spawner.spawn( Utilities.get_instance(obstacle_to_spawn) )
 		"Mine" : 
-			$Mine_Spawner.spawn( Common.get_instance(obstacle_to_spawn) )
+			$Mine_Spawner.spawn( Utilities.get_instance(obstacle_to_spawn) )
 		"Worm" :
-			$Hole_Spawner.spawn( Common.get_instance(obstacle_to_spawn) )
+			$Hole_Spawner.spawn( Utilities.get_instance(obstacle_to_spawn) )
 		_ :
 			assert(true == false)
 
@@ -72,7 +72,7 @@ func spawn_flying(enemy):
 	for spawner in number_of_enemies:
 		var spawner_id = enemy[2 + spawner]
 		validate_id(spawner_id, obstacle_name)
-		var instance = Common.get_instance(obstacle_name)
+		var instance = Utilities.get_instance(obstacle_name)
 		squat.append( instance )
 		
 		if spawner_id in possible_spawners:

@@ -12,19 +12,19 @@ func calculate_path( mother_ship ):
 	squat_id = mother_ship.squat_id
 	triple_points = { 
 		"a" : Vector2(0,0), 
-		"b" : Vector2(min( Common.player.position.x - 250 + randi()%200, 1150 ),
-		              Common.player.position.y - position.y),
-		"c" : 2 * ( Vector2( 0, Common.player.position.y - position.y) ), 
+		"b" : Vector2(min( Utilities.player.position.x - 250 + randi()%200, 1150 ),
+		              Utilities.player.position.y - position.y),
+		"c" : 2 * ( Vector2( 0, Utilities.player.position.y - position.y) ), 
 		"relative" : Vector2(0,0) 
 	} 
-	var farest_point = Common.get_bezier_interpolate_point( triple_points, 0.5 )
+	var farest_point = Utilities.get_bezier_interpolate_point( triple_points, 0.5 )
 	max_distance = (farest_point - triple_points["a"]).length() + (triple_points["c"] - farest_point).length()
 	left_distance = max_distance
 
 func update_direction(delta):
 	left_distance  = max( left_distance - ( SPEED * delta), 0 )
 	var t          = left_distance/max_distance
-	var next_point = Common.get_bezier_interpolate_point( triple_points, 1.0-t )
+	var next_point = Utilities.get_bezier_interpolate_point( triple_points, 1.0-t )
 	var velocity_t = (next_point - triple_points["relative"]).normalized()
 	triple_points["relative"] += velocity_t*delta * SPEED
 	direction  = velocity_t.normalized()
@@ -46,7 +46,7 @@ func process_collisions( object ):
 	spawn_hole()
 
 func spawn_hole():
-	var hole = Common.get_instance("BHole")
+	var hole = Utilities.get_instance("BHole")
 	hole.squat_id = squat_id
 	hole.position = position
 	hole.position.y = get_parent().get_node("Spawners/Hole_Spawner").position.y

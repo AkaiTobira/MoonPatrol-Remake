@@ -11,14 +11,15 @@ func set_speed_multipler( player_multipler ):
 	speed_multipler = 1 + player_multipler
 
 func grant_points():
-	if !Common.player: return 
-	if Common.player.position.x > position.x:
+	if !Utilities.player: return 
+	if Utilities.player.position.x > position.x:
 		get_parent().points += points
 		add_points = false
 
 # warning-ignore:unused_argument
 func _physics_process(delta):
 # warning-ignore:return_value_discarded
+	if Flow.world_is_paused : return 
 	move_and_slide( Vector2(-1, 0 ) * SPEED * speed_multipler )
 	position.y = fixed_y_pos
 	

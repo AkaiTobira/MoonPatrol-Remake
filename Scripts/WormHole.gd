@@ -6,7 +6,6 @@ var speed_multipler  = 1
 var fixed_y_pos      = 0
 var points_jump_over = 50
 var add_points       = true
-var pause            = false
 
 func _ready():
 	$AnimationPlayer.seek(rand_range(0, $AnimationPlayer.get_current_animation_length() ))
@@ -14,18 +13,15 @@ func _ready():
 func adapt_speed( speed ):
 	SPEED = speed
 
-func play(): pause = false
-func stop(): pause = true
-
 func grant_points():
-	if !Common.player: return 
-	if Common.player.position.x > position.x:
+	if !Utilities.player: return 
+	if Utilities.player.position.x > position.x:
 		get_parent().points += points_jump_over
 		add_points = false
 	
 # warning-ignore:unused_argument
 func _physics_process(delta):
-	if pause: return
+	if Flow.world_is_paused: return
 # warning-ignore:return_value_discarded
 	move_and_slide( Vector2(-1, 0 ) * SPEED * speed_multipler )
 	position.y = fixed_y_pos

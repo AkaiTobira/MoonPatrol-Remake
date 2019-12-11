@@ -3,10 +3,6 @@ extends Node
 var stack = []
 # warning-ignore:unused_class_variable
 var move_speed = 0
-var pause      = false 
-
-func stop(): pause = true
-func play(): pause = false
 
 func _ready(): 
 	stack.push_front( Idle.new(stack) )
@@ -17,7 +13,7 @@ func _exit_tree(): #FOR GOD SAKE THIS GODOT SHOULD DO!!!
 		stack.pop_front()
 
 func _process(delta):
-	if pause: return
+	if Flow.world_is_paused: return
 	while stack[0].is_over : stack.pop_front()
 	stack[0].update(delta)
 	stack[0].handle_input()
@@ -35,8 +31,8 @@ class MoveLeft extends State:
 	func _init(s_stack).(s_stack): pass
 
 	func update(delta):
-		var move_speed = Common.player.MaxMoveSpeed
-		Common.player.relative_x = max( -100, Common.player.relative_x - 1 * delta * move_speed )	
+		var move_speed = Utilities.player.MaxMoveSpeed
+		Utilities.player.relative_x = max( -100, Utilities.player.relative_x - 1 * delta * move_speed )	
 
 	func handle_input():
 		if !Input.is_action_pressed("ui_left") : is_over = true
@@ -48,8 +44,8 @@ class MoveRight extends State:
 	func _init(s_stack).(s_stack): pass
 	
 	func update(delta):
-		var move_speed = Common.player.MaxMoveSpeed
-		Common.player.relative_x = min( 100, Common.player.relative_x + 1 * delta * move_speed )	
+		var move_speed = Utilities.player.MaxMoveSpeed
+		Utilities.player.relative_x = min( 100, Utilities.player.relative_x + 1 * delta * move_speed )	
 
 	func handle_input():
 		if !Input.is_action_pressed("ui_right") : is_over = true
@@ -61,17 +57,17 @@ class JumpRight extends State:
 	var target_hight  = 0 
 	
 	func _init(s_stack).(s_stack):
-		target_hight = Common.player.position.y - (Common.player.MaxJump + (Common.player.relative_x * Common.player.MaxJump/200))
-		Common.player.is_jumping = true
-		Common.player.on_floor   = false
-		Common.player.relative_y = target_hight
-		gravity                  = Common.player.Gravity
+		target_hight = Utilities.player.position.y - (Utilities.player.MaxJump + (Utilities.player.relative_x * Utilities.player.MaxJump/200))
+		Utilities.player.is_jumping = true
+		Utilities.player.on_floor   = false
+		Utilities.player.relative_y = target_hight
+		gravity                  = Utilities.player.Gravity
 
 	func update(delta ):
-		var move_speed = Common.player.MaxMoveSpeed
-		Common.player.relative_x = min( 100, Common.player.relative_x + 1 * delta * move_speed ) 
-		if abs( Common.player.position.y - target_hight) < gravity*delta : Common.player.is_jumping = false
-		if Common.player.on_floor: is_over = true 
+		var move_speed = Utilities.player.MaxMoveSpeed
+		Utilities.player.relative_x = min( 100, Utilities.player.relative_x + 1 * delta * move_speed ) 
+		if abs( Utilities.player.position.y - target_hight) < gravity*delta : Utilities.player.is_jumping = false
+		if Utilities.player.on_floor: is_over = true 
 
 	func handle_input():
 		if Input.is_action_just_pressed("ui_accept"): stack.push_front( Shoot.new(stack) )
@@ -81,17 +77,17 @@ class JumpLeft extends State:
 	var target_hight  = 0 
 	
 	func _init(s_stack).(s_stack):
-		target_hight = Common.player.position.y - (Common.player.MaxJump + (Common.player.relative_x * Common.player.MaxJump/200))
-		Common.player.is_jumping = true
-		Common.player.on_floor   = false
-		Common.player.relative_y = target_hight
-		gravity                  = Common.player.Gravity
+		target_hight = Utilities.player.position.y - (Utilities.player.MaxJump + (Utilities.player.relative_x * Utilities.player.MaxJump/200))
+		Utilities.player.is_jumping = true
+		Utilities.player.on_floor   = false
+		Utilities.player.relative_y = target_hight
+		gravity                  = Utilities.player.Gravity
 
 	func update(delta):
-		var move_speed = Common.player.MaxMoveSpeed
-		Common.player.relative_x = max( -100, Common.player.relative_x - 1 * delta * move_speed ) 
-		if abs( Common.player.position.y - target_hight) < gravity*delta : Common.player.is_jumping = false
-		if Common.player.on_floor: is_over = true 
+		var move_speed = Utilities.player.MaxMoveSpeed
+		Utilities.player.relative_x = max( -100, Utilities.player.relative_x - 1 * delta * move_speed ) 
+		if abs( Utilities.player.position.y - target_hight) < gravity*delta : Utilities.player.is_jumping = false
+		if Utilities.player.on_floor: is_over = true 
 
 	func handle_input():
 		if Input.is_action_just_pressed("ui_accept"): stack.push_front( Shoot.new(stack) )
@@ -101,17 +97,17 @@ class Shoot extends State:
 	func _init(s_stack).(s_stack): pass	
 
 	func can_shoot_forward():
-		return !Common.player.forward_missle
+		return !Utilities.player.forward_missle
 
 	func can_shoot_up():
-		return Common.player.fire_up_missles < 3
+		return Utilities.player.fire_up_missles < 3
 
 # warning-ignore:unused_argument
 	func update(delta):
-		if can_shoot_forward()    : Common.player.shoot_forward()
+		if can_shoot_forward()    : Utilities.player.shoot_forward()
 		if can_shoot_up():
-			Common.player.fire_up_missles += 1
-			Common.player.shoot_up()
+			Utilities.player.fire_up_missles += 1
+			Utilities.player.shoot_up()
 		is_over = true
 		
 	func handle_input(): pass
@@ -121,22 +117,22 @@ class JumpIdle extends State:
 	var target_hight  = 0 
 	
 	func _init(s_stack).(s_stack):
-		target_hight = Common.player.position.y - (Common.player.MaxJump + (Common.player.relative_x * Common.player.MaxJump/200))
+		target_hight = Utilities.player.position.y - (Utilities.player.MaxJump + (Utilities.player.relative_x * Utilities.player.MaxJump/200))
 		
-		Common.player.is_jumping = true
+		Utilities.player.is_jumping = true
 		
-		Common.player.on_floor   = false
-		Common.player.relative_y = target_hight
-		gravity                  = Common.player.Gravity
+		Utilities.player.on_floor   = false
+		Utilities.player.relative_y = target_hight
+		gravity                  = Utilities.player.Gravity
 
 	func update(delta):
-		var move_speed = Common.player.MaxMoveSpeed
-		if Common.player.relative_x < 0   : Common.player.relative_x = min( 0, Common.player.relative_x + 1 * delta * move_speed )
-		elif Common.player.relative_x > 0 : Common.player.relative_x = max( 0, Common.player.relative_x - 1 * delta * move_speed )
+		var move_speed = Utilities.player.MaxMoveSpeed
+		if Utilities.player.relative_x < 0   : Utilities.player.relative_x = min( 0, Utilities.player.relative_x + 1 * delta * move_speed )
+		elif Utilities.player.relative_x > 0 : Utilities.player.relative_x = max( 0, Utilities.player.relative_x - 1 * delta * move_speed )
 		
-		if abs( Common.player.position.y - target_hight) < gravity*delta : Common.player.is_jumping = false
+		if abs( Utilities.player.position.y - target_hight) < gravity*delta : Utilities.player.is_jumping = false
 			
-		if Common.player.on_floor: is_over = true 
+		if Utilities.player.on_floor: is_over = true 
 
 	func handle_input():
 		if Input.is_action_just_pressed("ui_accept"): stack.push_front( Shoot.new(stack) )
@@ -147,9 +143,9 @@ class Idle extends State:
 	func _init(s_stack).(s_stack): pass
 
 	func update(delta):
-		var move_speed = Common.player.MaxMoveSpeed
-		if Common.player.relative_x < 0   : Common.player.relative_x = min( 0, Common.player.relative_x + 1 * delta * move_speed )
-		elif Common.player.relative_x > 0 : Common.player.relative_x = max( 0, Common.player.relative_x - 1 * delta * move_speed )
+		var move_speed = Utilities.player.MaxMoveSpeed
+		if Utilities.player.relative_x < 0   : Utilities.player.relative_x = min( 0, Utilities.player.relative_x + 1 * delta * move_speed )
+		elif Utilities.player.relative_x > 0 : Utilities.player.relative_x = max( 0, Utilities.player.relative_x - 1 * delta * move_speed )
 
 	func handle_input():
 		if Input.is_action_just_pressed("ui_accept"): stack.push_front( Shoot.new(stack) )

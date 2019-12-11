@@ -12,19 +12,13 @@ func play_intro_objects():
 
 func play_world():
 	world_is_paused = false
-	main_node.get_node("ParallaxBackground").play()
-	Common.player.play()
+	Utilities.player.play()
 
 func pause_world( lenght_of_pause ):
 	pause_end   = lenght_of_pause
 	pause_timer = 0 
 	world_is_paused = true
-	
-	main_node.get_node("ParallaxBackground").stop()
-	Common.player.stop()
-	for obstacle in get_children():
-		if obstacle.is_in_group("obstalces"):
-			obstacle.call_deferred( "stop" )
+	Utilities.player.stop()
 
 func clean_scene():
 	SquatController.clear()
@@ -33,9 +27,9 @@ func clean_scene():
 			obstacle.call_deferred( "queue_free" )
 		if obstacle.is_in_group("obstalces"):
 			obstacle.call_deferred( "queue_free" )
-	Common.player.reset()
+	Utilities.player.reset()
 
-func summarize( letter, additional_points, avg_time, top_time ):
+func summarize( letter, avg_time, top_time ):
 	pause_world( 100000 )
 	main_node.get_node("Summary").start_typing_sequences( letter , { "takes_time"   : main_node.timer_summary,
 																	 "top_time"     : top_time,

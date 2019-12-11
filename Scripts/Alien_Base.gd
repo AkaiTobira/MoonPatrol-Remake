@@ -62,8 +62,6 @@ func process_dead():
 	if target_move_point.distance_to( position ) < 3: on_dead()
 
 # warning-ignore:unused_argument
-func set_speed_multipler( player_multipler ): pass
-
 func adapt_speed( speed ): pass
 
 func select_life_end_point():
@@ -78,7 +76,7 @@ func enable_kamikaze_atack():
 	if not SquatController.is_sqaut_special_active( squat_id ):
 		if randi()%KAMIKAZE_PROBABILITY == 0: 
 			SquatController.switch_sqaut_special_active( squat_id, true )
-			target_move_point = Common.player.position + Vector2( randi()%20 * -1 if randi()%2 == 0 else 1, 10 ) 
+			target_move_point = Utilities.player.position + Vector2( randi()%20 * -1 if randi()%2 == 0 else 1, 10 ) 
 
 func on_dead():
 	call_deferred( "queue_free" )
@@ -91,18 +89,18 @@ func process_shooting():
 	create_missle()
 
 func is_far_from_player():
-	if position.x > Common.player.position.x + 200: return true
-	if position.x < Common.player.position.x - 200: return true
+	if position.x > Utilities.player.position.x + 200: return true
+	if position.x < Utilities.player.position.x - 200: return true
 	return false
 
 func create_missle():
-	var missle_instance = Common.get_instance("Emissle")
+	var missle_instance = Utilities.get_instance("Emissle")
 	missle_instance.position  = position - ( direction.x * 70 ) * Vector2(1,0)
 	missle_instance.direction = (get_missle_target() - missle_instance.position).normalized()
 	get_parent().call_deferred( "add_child", missle_instance )
 
 func get_missle_target():
-	var missle_target = Common.player.position
+	var missle_target = Utilities.player.position
 	var disruption    = (current_precision - randi()% int(current_precision/2))
 	missle_target.x   += ( disruption if randi()%2 else -disruption )
 	return missle_target 
@@ -112,11 +110,11 @@ func update_precision():
 	precision_update_timer = 0 
 	if is_player_moved(): current_precision = max( 2, current_precision - PRECISION_UPDATE )
 	else: current_precision = min( MAX_PRECISION, current_precision + PRECISION_UPDATE )
-	previous_player_position = Common.player.position 
+	previous_player_position = Utilities.player.position 
 
 func is_player_moved():
-	var is_in_limit_from_left  = Common.player.position.x > (previous_player_position.x - 10)
-	var is_in_limit_from_right = Common.player.position.x < (previous_player_position.x + 10)
+	var is_in_limit_from_left  = Utilities.player.position.x > (previous_player_position.x - 10)
+	var is_in_limit_from_right = Utilities.player.position.x < (previous_player_position.x + 10)
 	return is_in_limit_from_left and is_in_limit_from_right
 
 func process_move(delta):
@@ -154,7 +152,7 @@ func move_to_target_pos(delta):
 
 func change_to_avoid():
 	current_triple   = get_checkpoints()
-	var farest_point = Common.get_bezier_interpolate_point( current_triple, 0.5 )
+	var farest_point = Utilities.get_bezier_interpolate_point( current_triple, 0.5 )
 	full_avoid_distance = (farest_point - current_triple["a"]).length() + (current_triple["c"] - farest_point).length()
 	left_avoid_distance = full_avoid_distance
 	avoid = true
@@ -208,7 +206,7 @@ func fit_in_operative_space(position):
 func calculate_avoid_velocity(delta):
 	left_avoid_distance  = max( left_avoid_distance - ( move_speed * delta), 0 )
 	var t          = left_avoid_distance/full_avoid_distance
-	var next_point = Common.get_bezier_interpolate_point( current_triple, 1.0-t )
+	var next_point = Utilities.get_bezier_interpolate_point( current_triple, 1.0-t )
 	return (next_point - current_triple["relative"]).normalized() * move_speed
 
 func on_destroy():

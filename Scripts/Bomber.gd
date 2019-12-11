@@ -9,8 +9,8 @@ var steps           = 0
 
 func _ready():
 	._ready()
-	operative_space = { "LT" : Vector2(max( Common.player.move_borders.x - 100, 550 ), 300 ),
-                        "RD" : Vector2(Common.player.move_borders.y + 800, 400 ) }
+	operative_space = { "LT" : Vector2(max( Utilities.player.move_borders.x - 100, 550 ), 300 ),
+                        "RD" : Vector2(Utilities.player.move_borders.y + 800, 400 ) }
 	MAX_PRECISION          = 500
 	DISTANCE_FOR_NEW_POINT = 400
 	move_speed             = 350
@@ -48,7 +48,7 @@ func update_move_log():
 
 func process_bombing():
 	if can_shoot():
-		bomb = Common.get_instance("Bomb")
+		bomb = Utilities.get_instance("Bomb")
 		bomb.calculate_path( self )
 		SquatController.fire_bomb(squat_id, bomb)
 		get_parent().call_deferred( "add_child", bomb )
@@ -56,7 +56,7 @@ func process_bombing():
 func can_shoot():
 	if bomb != null : return false
 	if SquatController.is_sqaut_special_active( squat_id ): return false
-	if position.x < Common.player.move_borders.y : return false
+	if position.x < Utilities.player.move_borders.y : return false
 	if randi()%SHOOT_PROBABILITY != 0 : return false
 	return true
 

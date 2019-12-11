@@ -1,47 +1,47 @@
 {
-	"start_segment"     : "D",
-	"end_segment"       : "H",
-	"avr_time"          : 5,
+	"start_segment"     : "0",
+	"end_segment"       : "D",
+	"avr_time"          : 20,
 	"additional_points" : 1000,
 	"fixed_segment"     : false,
 	"level_structure"   : {
-		"D" : {
+		"0" : {
 			"0" :{
 					"0"    : "!RockS",
 					"2"    : "RockS",
 					"0.5"  : "^Rise_4",
 					"1"    : "1_A_Alien2",
-					"0.1"    : "@E"
+					"5"    : "@A"
 			}
 		},
-	  "E" : {
+	  "A" : {
 		  "0" :{
 				  "0"    : "!RockS",
 				  "2"    : "RockS",
 				  "0.5"  : "^Rise_4",
 				  "1"    : "1_A_Alien2",
-				  "0.1"    : "@F"
+				  "5"    : "@B"
 		  }
 	  },
-	  "F" : {
+	  "B" : {
 		  "0" :{
 			  "0"    : "!Hole",
 			  "2"    : "HoleB",
 			  "1"    : "1_A_Alien1",
-			  "0.1"    : "@G"
+			  "5"    : "@C"
 		  },
 		  "1" : {
 			  "0"    : "!Hole",
 			  "1"    : "1_A_Alien1",
-			  "0.1"    : "@G"
+			  "5"    : "@C"
 		  }
 	  },
-	  "G" : {
+	  "C" : {
 		  "0" :{
 			  "2"    : "RockS",
 			  "0.5"  : "^Fall_4",
 			  "1"    : "1_A_Bomber",
-			  "0.1"    : "@H"
+			  "5"    : "@D"
 		  }
 	  }
 	}

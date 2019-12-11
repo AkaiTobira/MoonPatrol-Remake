@@ -15,8 +15,8 @@ func adapt_speed( speed ):
 	SPEED = speed
 
 func grant_points():
-	if !Common.player: return 
-	if Common.player.position.x > position.x:
+	if !Utilities.player: return 
+	if Utilities.player.position.x > position.x:
 		SquatController.bomb_exploded( squat_id )
 		get_parent().points += points
 		add_points = false

@@ -38,7 +38,7 @@ func reset():
 	if timers["takes_time"] < timers["average_time"]: 
 		states          = [ "Reach", "YTime", "ATime", "Ttime", "Bonus", "Record" ]
 		aditonal_points = 1000
-		Common.save_top_record( timers["takes_time"] )
+		LevelParser.save_top_record( timers["takes_time"] )
 	else: states = [ "Reach", "YTime", "ATime", "Ttime", "NBonus" ]
 	for child in get_children():
 		if child.name == "Sprite": continue
@@ -54,7 +54,7 @@ func _process(delta):
 			if state_index == 1: $YourTime.text    = ": " + ("%03d" % timers["takes_time"])
 			if state_index == 2: $AverageTime.text = ": " + ("%03d" % timers["average_time"])
 			if state_index == 3: $TopRecord.text   = ": " + ("%03d" % timers["top_time"])
-			if states[state_index] == "Bonus": $BonusPoint.text  = ": " + ("%04d" % aditonal_points )
+			if states[state_index] == "Bonus": $BonusPoint.text  = ": " + ("%04d" % LevelParser.get_additional_points() )
 			state_index += 1
 			letter_index = 0
 		if state_index == len( states ) : 
