@@ -11,6 +11,9 @@ var fixed_y_pos     = 0
 
 var squat_id        = -1 
 
+func adapt_speed( speed ):
+	SPEED = speed
+
 func grant_points():
 	if !Common.player: return 
 	if Common.player.position.x > position.x:

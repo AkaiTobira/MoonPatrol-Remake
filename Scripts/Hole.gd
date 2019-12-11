@@ -18,8 +18,8 @@ func grant_points():
 func play(): pause = false
 func stop(): pause = true
 
-func set_speed_multipler( player_multipler ):
-	speed_multipler = 1 + player_multipler
+func adapt_speed( speed ):
+	SPEED = speed
 
 # warning-ignore:unused_argument
 func _physics_process(delta):

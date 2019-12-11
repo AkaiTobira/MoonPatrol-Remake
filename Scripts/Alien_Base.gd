@@ -64,6 +64,8 @@ func process_dead():
 # warning-ignore:unused_argument
 func set_speed_multipler( player_multipler ): pass
 
+func adapt_speed( speed ): pass
+
 func select_life_end_point():
 	if is_dead : return
 	target_move_point = Vector2( -100 if randi() % 2 == 0 else 2000, position.y )

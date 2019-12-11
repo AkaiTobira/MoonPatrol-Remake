@@ -11,8 +11,8 @@ var pause            = false
 func _ready():
 	$AnimationPlayer.seek(rand_range(0, $AnimationPlayer.get_current_animation_length() ))
 
-func set_speed_multipler( player_multipler ):
-	speed_multipler = 1 + player_multipler
+func adapt_speed( speed ):
+	SPEED = speed
 
 func play(): pause = false
 func stop(): pause = true

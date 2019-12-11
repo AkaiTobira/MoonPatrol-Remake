@@ -35,8 +35,11 @@ func set_backgoround_info( info ):
 func play(): pause = false
 func stop(): pause = true	
 
+var road_speed =  SPEDD_MULTIPLER_3 * player_speed * SPEED
+
 func _process(delta): 
 	if pause: return 
+	road_speed =  SPEDD_MULTIPLER_3 * player_speed * SPEED
 	move_background($Back1, SPEDD_MULTIPLER_1 * player_speed * SPEED * delta)
 	move_background($Back2, SPEDD_MULTIPLER_2 * player_speed * SPEED * delta)
 	move_background($Back3, SPEDD_MULTIPLER_3 * player_speed * SPEED * delta)

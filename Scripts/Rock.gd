@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var SPEED = 130
+var SPEED = 130
 
 var speed_multipler  = 1
 var fixed_y_pos      = 0
@@ -9,8 +9,8 @@ var points_destroy   = 100
 var add_points       = true
 var pause            = false
 
-func set_speed_multipler( player_multipler ):
-	speed_multipler = 1 + player_multipler
+func adapt_speed( speed ):
+	SPEED = speed
 
 func play(): pause = false
 func stop(): pause = true

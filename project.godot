@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 Common="*res://Scripts/Common.gd"
 SquatController="*res://Scripts/Squat_controller.gd"
+Flow="*res://Scripts/FlowController.gd"
 
 [display]
 

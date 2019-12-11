@@ -3,22 +3,7 @@ extends Node
 # warning-ignore:unused_class_variable
 var high_score = 0
 
-var level_jsons = {} 
-
-var sqgment_id = 1
-# warning-ignore:unused_class_variable
-var level_json = {}
-var level_list = []
-var records    = { 
-				1 : { "top": 0, "avg":0 },
-				2 : { "top": 0, "avg":0 },
-				3 : { "top": 0, "avg":0 },
-				4 : { "top": 0, "avg":0 },
-				5 : { "top": 0, "avg":0 },
-				6 : { "top": 0, "avg":0 },
-}
-
-onready var player# = get_node( "/root/Root/Player" )
+onready var player
 
 var objects = {
 	"Hole"       :  preload( "res://Scenes/Obstacles/Hole.tscn" ),
@@ -40,69 +25,92 @@ var objects = {
 }
 
 func _ready():
-	load_level_structure( "LevelStructure1", 1 )
-	load_level_structure( "LevelStructure2", 2 )
-	load_level_structure( "LevelStructure3", 3 )
-	load_level_structure( "LevelStructure4", 4 )
-	load_level_structure( "LevelStructure5", 5 )
-	load_level_structure( "LevelStructure6", 6 )
-
-func switch_to_next_segment():
-	if sqgment_id < 6 : sqgment_id += 1
-	parse_level_list() 
+	current_active_index = 0
+	load_structure("LevelStructure1", 0 )
+	load_structure("LevelStructure2", 1 )
+	load_structure("LevelStructure3", 2 )
+	load_structure("LevelStructure4", 3 )
+	load_structure("LevelStructure5", 4 )
+	load_structure("LevelStructure6", 5 )
+	current_active_letter = new_json[current_active_index]["start_segment"]
 
 func register_player( node ):
 	player = node
 	assert( player != null )
 
-func calculate_average(segment_index):
-	for i in level_jsons[segment_index]["level_structure"]:
-		records[ segment_index ]["avg"] += level_jsons[segment_index]["level_structure"][i]["duration"] + 5
-	records[ segment_index ]["avg"] /= len( level_jsons[segment_index]["level_structure"] )
-	records[ segment_index ]["avg"]  = (int( records[ segment_index ]["avg"] ) * 5) - 5
-	records[ segment_index ]["top"]  = records[ segment_index ]["avg"]  
-
-func parse_level_list():
-	for level in level_jsons[sqgment_id]["level_structure"].keys():
-		if level == level_jsons[sqgment_id]["start_segment"]: continue
-		level_list.append(level)
-
-func load_level_structure( file_name, segment_index ):
-	var file = File.new()
-	file.open("res://Resouces/" + file_name + ".json", file.READ)
-	level_jsons[segment_index] = parse_json(file.get_as_text())
-	file.close()
-	assert( level_jsons[segment_index] != null )
-	calculate_average(segment_index)
-
-func is_level_fixed():
-	return level_jsons[sqgment_id]["fixed_segment"]
-
-func is_randomized():
-	return level_jsons[sqgment_id]["random_order"]
-
-func get_start_id():
-	return level_jsons[sqgment_id]["start_segment"]
-
-func get_level_segment( level_id ):
-	return level_jsons[sqgment_id]["level_structure"][level_id].duplicate(true)
-
 func get_instance( object_name ):
 	return objects[object_name].instance()
 
-func get_segment_texture():
-	return level_jsons[sqgment_id]["bakcground"]
-
-func set_new_top_record( top ):
-	records[sqgment_id ]["top"] = top
+func get_segment_texture(): pass
+#	return level_jsons[sqgment_id]["bakcground"]
 
 #unused
 func new_top( id, value ):
 	 records[id]["top"] = value
 
-func get_record_info():
-	if not records[sqgment_id]["top"]: records[sqgment_id]["top"] = records[sqgment_id]["avg"]
-	return [ records[sqgment_id]["top"], records[sqgment_id]["avg"] ]
+
+######################################################################################
+
+var new_json = {}
+var records  = { 
+				0 : { "top": 0, "avg":0 },
+				2 : { "top": 0, "avg":0 },
+				3 : { "top": 0, "avg":0 },
+				4 : { "top": 0, "avg":0 },
+				5 : { "top": 0, "avg":0 },
+				1 : { "top": 0, "avg":0 },
+				6 : { "top": 0, "avg":0 }
+}
+
+var current_active_index  = -1
+var current_active_letter = ""
+var max_segments          = 6
+var level_structure = {}
+
+func load_structure(file_name, segment_index):
+	var file = File.new()
+	file.open("res://Resouces/" + file_name + ".json", file.READ)
+	new_json[segment_index] = parse_json(file.get_as_text())
+	file.close()
+	assert( new_json[segment_index] != null )
+	generate_level_segment_orded( segment_index )
+
+func generate_level_segment_orded( segment_index ):
+	randomize()
+	level_structure[segment_index] = {}
+	for letter in new_json[segment_index]["level_structure"].keys():
+		var temp = new_json[segment_index]["level_structure"][letter]
+		level_structure[segment_index][letter] = str(randi()%len(temp.keys())) 
+
+func get_active_spawn_times():
+	var selected_variant = level_structure[current_active_index][current_active_letter]
+	return new_json[current_active_index]["level_structure"][current_active_letter][selected_variant].duplicate(true)
+	
+func reached_next_letter( letter ):
+	if new_json[current_active_index]["end_segment"] == letter:
+		reached_next_segment( current_active_letter )
+		Flow.summarize( letter, 
+						new_json[current_active_index]["additional_points"],  
+						new_json[current_active_index]["avr_time"],
+						get_top_record()
+						)
+		return
+	current_active_letter = letter
+
+func get_top_record():
+	if not records[current_active_index]["top"]: records[current_active_index]["top"] = new_json[current_active_index]["avr_time"]
+	return records[current_active_index]["top"]
+
+func reached_next_segment( backup_letter ):
+	if max_segments > current_active_index + 1 : 
+		current_active_index += 1
+		current_active_letter = new_json[current_active_index]["start_segment"]
+	else: current_active_letter = backup_letter
+ 
+func save_top_record( new_time ):
+	if records[ current_active_index ]["top"] < new_time :  records[ current_active_index ]["top"] = new_time
+
+##############################################
 
 func get_bezier_interpolate_point( triple_points, t ):
 	var invert_t = 1.0-t

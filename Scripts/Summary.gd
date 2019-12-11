@@ -33,12 +33,12 @@ var aditonal_points = 0
 var states = [ "Reach", "YTime", "ATime", "Ttime", "Bonus", "Record", "NRecord" ]
 
 func reset():
-	texts["Reach"] = "Time to reach point " + '"' + str(char(reached_letter)) + '"'
+	texts["Reach"] = "Time to reach point " + '"' + reached_letter + '"'
 	seconds = 0.2
 	if timers["takes_time"] < timers["average_time"]: 
 		states          = [ "Reach", "YTime", "ATime", "Ttime", "Bonus", "Record" ]
 		aditonal_points = 1000
-		Common.set_new_top_record( timers["takes_time"] )
+		Common.save_top_record( timers["takes_time"] )
 	else: states = [ "Reach", "YTime", "ATime", "Ttime", "NBonus" ]
 	for child in get_children():
 		if child.name == "Sprite": continue
@@ -81,7 +81,7 @@ func update_score():
 		if timers["takes_time"] == timers["average_time"]: seconds = 3
 		return
 	get_parent().points += aditonal_points
-	get_parent().play_world()
+	Flow.play_world()
 	hide()
 	set_process(false)
 

@@ -1,91 +1,48 @@
 {
-	"start_segment"   : "10",
-	"fixed_segment"   : true,
-	"random_order"    : true,
-	"bakcground"      : "Background_1",
-	"level_structure" : {
-  
-	  "10" : {
-		  "duration" : 2,
-		  "spawn_times": {
-			"1"    : "1_B_Bomber",
+	"start_segment"     : "D",
+	"end_segment"       : "H",
+	"avr_time"          : 5,
+	"additional_points" : 1000,
+	"fixed_segment"     : false,
+	"level_structure"   : {
+		"D" : {
+			"0" :{
+					"0"    : "!RockS",
+					"2"    : "RockS",
+					"0.5"  : "^Rise_4",
+					"1"    : "1_A_Alien2",
+					"0.1"    : "@E"
+			}
+		},
+	  "E" : {
+		  "0" :{
+				  "0"    : "!RockS",
+				  "2"    : "RockS",
+				  "0.5"  : "^Rise_4",
+				  "1"    : "1_A_Alien2",
+				  "0.1"    : "@F"
 		  }
 	  },
-  
-
-	  "1" : {
-		  "duration" : 5,
-		  "spawn_times": {
-			"2"    : "RockS",
-			"1"    : "1_A_Alien2",
+	  "F" : {
+		  "0" :{
+			  "0"    : "!Hole",
+			  "2"    : "HoleB",
+			  "1"    : "1_A_Alien1",
+			  "0.1"    : "@G"
+		  },
+		  "1" : {
+			  "0"    : "!Hole",
+			  "1"    : "1_A_Alien1",
+			  "0.1"    : "@G"
 		  }
-
 	  },
-	  "8" : {
-		"duration" : 5,
-		"spawn_times": {
-		  "2"    : "RockB",
-		  "1"    : "1_A_Alien2",
-		}
-
-	},
-	  "2" : {
-		"duration" : 5,
-		"spawn_times": {
-		  "2"    : "Hole",
-		  "1"    : "1_A_Alien2",
-		}
-
-	},
-
-	"4" : {
-		"duration" : 12,
-		"spawn_times": {
-		  "1"    : "1_B_Bomber",
-		  "1.5"  : "3_ABC_Bomber",
-		  "2"    : "1_A_Alien1",
-		  "3"    : "1_A_Alien2",
-		  "3.1"    : "Worm",
-		  "3.2"    : "Mine",
-		  "3.3"    : "Hole",
-		  "3.4"    : "HoleB",
-		  "5.5"    : "RockB",
-		  "5.6"    : "RockS"
-
-		}
-
-	},
-
-	"5" : {
-		"duration" : 5,
-		"spawn_times": {
-		  "2"    : "1_A_Alien1",
-		  "1"    : "1_A_Alien2",
-		}
-
-	},
-	"6" : {
-		"duration" : 5,
-		"spawn_times": {
-		  "2"    : "HoleB",
-		  "1"    : "1_A_Alien2",
-		}
-
-	},
-	"7" : {
-		"duration" : 5,
-		"spawn_times": {
-		  "2"    : "Worm",
-		  "1"    : "1_A_Alien2",
-		}
-	},
-	"3" : {
-		"duration" : 5,
-		"spawn_times": {
-		  "2"    : "Mine",
-		  "1"    : "1_A_Alien2",
-		}
-
+	  "G" : {
+		  "0" :{
+			  "2"    : "RockS",
+			  "0.5"  : "^Fall_4",
+			  "1"    : "1_A_Bomber",
+			  "0.1"    : "@H"
+		  }
+	  }
 	}
   }
-}

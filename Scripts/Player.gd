@@ -17,7 +17,7 @@ var fire_up_missles = 0
 
 #system variables
 var bakcground_speed_multipler = 0
-var player_good_mode           = true
+var player_good_mode           = false
 var pause                      = false
 
 # warning-ignore:unused_class_variable
@@ -95,7 +95,7 @@ func process_move(delta):
 
 func on_dead():
 	if not player_good_mode: 
-		get_parent().pause_world()
+		Flow.pause_world(3)
 		print( "Here should be break but since player has no animation it isn't" )
 		get_parent().reload_from_checkpoint()
 
