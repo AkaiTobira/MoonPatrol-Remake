@@ -49,6 +49,7 @@ func get_active_spawn_times():
 	return json_levels[current_active_index]["level_structure"][current_active_letter][selected_variant].duplicate(true)
 	
 func reached_next_letter( letter ):
+	if json_levels[current_active_index]["fixed_segment"] : return
 	if json_levels[current_active_index]["end_segment"] == letter:
 		reached_next_segment( current_active_letter )
 		Flow.summarize( letter, 

@@ -179,7 +179,6 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
 [node name="UI" type="Node2D" parent="."]
-editor/display_folded = true
 z_index = 10
 
 [node name="Black_Holder_Left" type="Sprite" parent="UI"]
@@ -218,7 +217,6 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = "Spawn log:"
 
 [node name="Welcomer" type="RichTextLabel" parent="UI"]
-visible = false
 margin_left = 644.821
 margin_top = 454.523
 margin_right = 1294.82
@@ -245,6 +243,9 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = "Score :"
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
+SPEED = null
+SPEDD_MULTIPLER_1 = null
+SPEDD_MULTIPLER_2 = null
 SPEDD_MULTIPLER_3 = 4.0
 
 [node name="Base" type="Sprite" parent="."]
@@ -257,6 +258,7 @@ script = ExtResource( 7 )
 position = Vector2( 915.418, 866.642 )
 scale = Vector2( 0.9, 0.7 )
 Gravity = 200.0
+MaxJump = null
 Friction = 0.0
 MaxMoveSpeed = 120.0
 move_borders = Vector2( 650, 900 )
