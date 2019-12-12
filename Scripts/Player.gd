@@ -92,6 +92,9 @@ func process_move(delta):
 
 	bakcground_speed_multipler = 1 + ( relative_x/200 )
 
+func wheel_on_floor():
+	return $Whell1.on_floor or $Whell2.on_floor
+
 func on_dead():
 	if not player_good_mode: 
 		Flow.pause_world(3)
