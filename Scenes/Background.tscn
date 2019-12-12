@@ -36,33 +36,20 @@ texture = ExtResource( 3 )
 motion_offset = Vector2( 1, 0 )
 motion_mirroring = Vector2( 1000, 0 )
 
-[node name="Sprite" type="Sprite" parent="Back3"]
-position = Vector2( 1056.05, 641.838 )
-scale = Vector2( 1.90978, 2.20267 )
-z_index = 2
-texture = ExtResource( 4 )
-
-[node name="StaticBody2D2" type="KinematicBody2D" parent="Back3" groups=[
-"floor",
-]]
-position = Vector2( -1015.71, 780.088 )
-scale = Vector2( 3.35939, 0.998225 )
-motion/sync_to_physics = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back3/StaticBody2D2"]
-position = Vector2( 79.0001, 537.714 )
-scale = Vector2( 0.364871, 1 )
-build_mode = 1
-polygon = PoolVector2Array( 300.785, -22.0141, 147.614, 105.587, -149.321, 106.527, -155.719, 33.4861, -423.293, 2.40594, 272.762, -94.1644 )
-
-[node name="StaticBody2D" type="KinematicBody2D" parent="." groups=[
+[node name="StaticBody2D" type="StaticBody2D" parent="Back3" groups=[
 "floor",
 ]]
 position = Vector2( 450, 200 )
 z_index = 10
-motion/sync_to_physics = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back3/StaticBody2D"]
 position = Vector2( 646.09, 746.727 )
 scale = Vector2( 1, 0.941706 )
-polygon = PoolVector2Array( 1266.5, -70.6114, 1263.73, 152.638, -662.983, 148.094, -658.804, -59.8505 )
+polygon = PoolVector2Array( 1339.25, -66.6362, 1355.12, 140.605, -662.983, 148.094, -658.804, -59.8505, -536.66, -76.0146, -486.693, -50.4673, -438.577, -66.1887, -405.266, -56.3629, -362.702, -68.1539, -273.872, -54.3977, -210.951, -68.1539, -159.134, -56.3629, -75.8562, -66.1887, -35.1426, -81.9102, -1.83142, -64.2235, 46.2847, -52.4325, 99.9525, -62.2584, 144.367, -48.5021, 199.886, -60.2932, 273.911, -52.4325, 352.484, -54.8128, 468.582, -70.006, 579.649, -43.0477, 614.556, -64.9513, 712.659, -49.7581, 776.396, -71.6909, 885.877, -46.4175, 955.69, -61.5815, 1068.34, -61.5815, 1152.44, -39.6779, 1209.56, -59.8967, 1272.61, -49.7873 )
+one_way_collision_margin = 128.0
+
+[node name="Sprite" type="Sprite" parent="Back3"]
+position = Vector2( 1056.05, 639.787 )
+scale = Vector2( 1.90978, 2.20267 )
+z_index = 2
+texture = ExtResource( 4 )

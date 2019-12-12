@@ -49,7 +49,7 @@ func reset():
 
 func shoot_forward():
 	forward_missle            = Utilities.get_instance("PFmissle")
-	forward_missle.position   = position + Vector2(30,0)
+	forward_missle.position   = position + Vector2(50,0)
 	forward_missle.scale      = Vector2( 1, 0.5 )
 	forward_missle.life_range = 300 
 	forward_missle.direction  = Vector2(1,0)

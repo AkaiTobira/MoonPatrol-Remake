@@ -18,6 +18,7 @@ var objects = {
 	"PUmissle"   :  preload( "res://Scenes/ProjectTiles/Missle.tscn" ),
 	"PFmissle"   :  preload( "res://Scenes/ProjectTiles/Missle_forward.tscn" ),
 	"Bomb"       :  preload( "res://Scenes/ProjectTiles/Bomb.tscn" ),
+	"IRoad"      :  preload( "res://Scenes/Inclined_Road.tscn" ),
 	"Emissle"    :  preload( "res://Scenes/ProjectTiles/Enemy_missle.tscn" )
 }
 

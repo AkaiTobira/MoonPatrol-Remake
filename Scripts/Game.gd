@@ -14,12 +14,12 @@ func _ready():
 	Utilities.register_player($Player)
 	set_of_spawns = LevelParser.get_active_spawn_times()
 	Flow.main_node = self 
-	Flow.pause_world(3)
+#	Flow.pause_world(3)
 
 func process_intro():
 	if not play_intro : return
 	play_intro = false
-	Flow.play_intro_objects()
+#	Flow.play_intro_objects()
 
 func process_timers(delta):
 	timer_for_segment += delta
@@ -36,7 +36,7 @@ func process_spawn():
 
 func parse_keyword( keyword ):
 	if   keyword[0] == "!": print( "Its a warning,       ignore for now" )
-	elif keyword[0] == "^": print( "Its a RoadConroller, ignore for now" )
+	elif keyword[0] == "^": $ParallaxBackground.handle_keyword(keyword)
 	elif keyword[0] == "@": $Spawners.spawn_checkpoint( keyword[1] )
 	else : $Spawners.spawn_obstacle(keyword)
 
@@ -51,7 +51,8 @@ func _process(delta):
 	process_player_speed()
 	process_GUI()
 	
-func process_GUI(): pass
+func process_GUI(): 
+	$UI/Time.text = str( stepify(timer_for_segment + timer_reduction, 0.1) )
 	
 func process_player_speed():
 	var player_multipler = $Player.bakcground_speed_multipler
