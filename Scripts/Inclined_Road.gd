@@ -16,6 +16,27 @@ var should_fall = false
 func start_fall():
 	should_fall = true
 	
+func set_info( info ): pass
+##	if not info: return
+##	state       = info[0]
+##	position    = info[1]
+##	should_fall = info[2]
+#
+##	$StaticBody2D2.position = info[3][0]
+#	$StaticBody2D3.position = info[3][1]
+#	$StaticBody2D4.position = info[3][2]
+#
+#	$End_fall_mark.position = info[4][0]
+#	$End_high_mark.position = info[4][1]
+#	$End_rise_mark.position = info[4][2]
+#
+#	$ParallaxBackground/ParallaxLayer.motion_offset.x = info[5]
+
+func get_info( ): pass
+#	var s = [ $StaticBody2D2.position, $StaticBody2D3.position, $StaticBody2D4.position ]
+#	var z = [ $End_fall_mark.position, $End_high_mark.position, $End_rise_mark.position ]
+#
+#	return [ state, position, should_fall, s, z , $ParallaxBackground/ParallaxLayer.motion_offset.x ] 
 
 func move_everything(delta):
 	var speed = get_parent().road_speed * delta

@@ -49,7 +49,7 @@ func reset():
 
 func shoot_forward():
 	forward_missle            = Utilities.get_instance("PFmissle")
-	forward_missle.position   = position + Vector2(50,0)
+	forward_missle.position   = position + Vector2(80,0)
 	forward_missle.scale      = Vector2( 1, 0.5 )
 	forward_missle.life_range = 300 
 	forward_missle.direction  = Vector2(1,0)
@@ -71,8 +71,17 @@ func stop():
 func _physics_process(delta):
 	if pause: return
 	process_move(delta)
-	#process_moves(delta)
+	
+	
+	process_wheels(delta)
 
+
+
+
+func process_wheels(delta):
+	$Whell1/AnimationPlayer.playback_speed = 1 + bakcground_speed_multipler
+	$Whell2/AnimationPlayer.playback_speed = 1 + bakcground_speed_multipler
+	 
 #Whole function is to refactor but it is work
 func process_move(delta):
 	var middle_point     = ( move_borders.x + move_borders.y )/2
@@ -87,8 +96,9 @@ func process_move(delta):
 	if is_jumping: move_and_slide( ( Vector2(position.x, target_pos.y) - position ).normalized() * Gravity * gravity_reducer  )
 	else:
 		var collision = move_and_collide( Vector2(0, Gravity) * delta * gravity_reducer )
-		if collision:
-			if collision.collider.is_in_group("floor"): on_floor = true
+		on_floor = wheel_on_floor()
+#		if collision:
+#			if collision.collider.is_in_group("floor"): on_floor = true
 
 	bakcground_speed_multipler = 1 + ( relative_x/200 )
 

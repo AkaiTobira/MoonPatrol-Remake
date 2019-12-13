@@ -25,19 +25,23 @@ func handle_keyword(keyword):
 		add_child( Utilities.get_instance( "IRoad" ) )
 	elif keyword[1] == "F":
 		if has_node( "Back4" ): $Back4.start_fall()
-#	if  : 
+
 
 func load_bakcground_fill( b_name ):
 	$Back2/Sprite.texture = textures[b_name]
 
 func get_backgoround_info():
-	return [ $Back1.motion_offset.x, $Back2.motion_offset.x, $Back3.motion_offset.x, $InclinedRoad.motion_offset.x  ]
+	return [ $Back1.motion_offset.x, $Back2.motion_offset.x, $Back3.motion_offset.x, $Back4.get_info() if has_node( "Back4" ) else null  ]
 
 func set_backgoround_info( info ):
+	if has_node( "Back4" ):
+		if $Back4.state == "Rise": 
+			remove_child( $Back4 )
+	
 	$Back1.motion_offset.x = info[0]
 	$Back2.motion_offset.x = info[1]
 	$Back3.motion_offset.x = info[2]
-	$InclinedRoad.motion_offset.x = info[3]
+	if has_node( "Back4" ) : $Back4.set_info(info[3])
 
 var road_speed =  SPEDD_MULTIPLER_3 * player_speed * SPEED
 

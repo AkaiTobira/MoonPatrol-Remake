@@ -10,10 +10,13 @@ var timer_reduction   = 0
 # warning-ignore:unused_class_variable
 var points            = 0
 
+var background_backup = null
+
 func _ready():
 	Utilities.register_player($Player)
 	set_of_spawns = LevelParser.get_active_spawn_times()
 	Flow.main_node = self 
+	background_backup = $ParallaxBackground.get_backgoround_info()
 #	Flow.pause_world(3)
 
 func process_intro():
@@ -52,7 +55,9 @@ func _process(delta):
 	process_GUI()
 	
 func process_GUI(): 
-	$UI/Time.text = str( stepify(timer_for_segment + timer_reduction, 0.1) )
+	$GUI/Black_Holder_Left/Time.text = str( stepify(timer_for_segment + timer_reduction, 0.1) )
+	
+	if Input.is_action_just_pressed("ui_accept"): reload_from_checkpoint()
 	
 func process_player_speed():
 	var player_multipler = $Player.bakcground_speed_multipler
@@ -68,9 +73,13 @@ func reload_from_checkpoint():
 	timer_reduction   = 0
 	Utilities.player.reset()
 	set_of_spawns     = LevelParser.get_active_spawn_times()
+	$ParallaxBackground.set_backgoround_info( background_backup )
+	
+	
 #	Flow.play_world()
 
 func next_checkpoint(letter):
+	background_backup = $ParallaxBackground.get_backgoround_info()
 	LevelParser.reached_next_letter(letter)
 	set_of_spawns     = LevelParser.get_active_spawn_times()
 	timer_for_segment = 0
