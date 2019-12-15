@@ -55,9 +55,9 @@ func _process(delta):
 	process_GUI()
 	
 func process_GUI(): 
-	$GUI/Black_Holder_Left/Time.text = str( stepify(timer_for_segment + timer_reduction, 0.1) )
+	$UI/Time.text = str( stepify(timer_for_segment + timer_reduction, 0.1) )
 	
-	if Input.is_action_just_pressed("ui_accept"): reload_from_checkpoint()
+	if Input.is_action_just_pressed("ui_down"): reload_from_checkpoint()
 	
 func process_player_speed():
 	var player_multipler = $Player.bakcground_speed_multipler
@@ -66,6 +66,7 @@ func process_player_speed():
 	for obstacle in get_children():
 		if obstacle.is_in_group("obstalces"):
 			obstacle.adapt_speed( $ParallaxBackground.road_speed )
+		
 
 func reload_from_checkpoint():
 	Flow.clean_scene()

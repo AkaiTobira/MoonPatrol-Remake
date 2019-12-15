@@ -25,6 +25,7 @@ var relative_x = 0
 var relative_y = 0
 var is_jumping = false
 
+onready var base_high  = position.y
 
 var force      = 0
 var on_floor   = true
@@ -43,13 +44,16 @@ func calculate_relative():
 	relative_x = (position.x - middle_point)/movable_distance  * 100
 
 func reset():
+	relative_x = 0
+	relative_y = 0
+	position.y = base_high
 	forward_missle  = null
 	fire_up_missles = 0 
 	relative_x = 0
 
 func shoot_forward():
 	forward_missle            = Utilities.get_instance("PFmissle")
-	forward_missle.position   = position + Vector2(80,0)
+	forward_missle.position   = position + Vector2(100,-20)
 	forward_missle.scale      = Vector2( 1, 0.5 )
 	forward_missle.life_range = 300 
 	forward_missle.direction  = Vector2(1,0)
@@ -71,14 +75,10 @@ func stop():
 func _physics_process(delta):
 	if pause: return
 	process_move(delta)
-	
-	
-	process_wheels(delta)
+	process_wheels()
 
-
-
-
-func process_wheels(delta):
+# warning-ignore:unused_argument
+func process_wheels():
 	$Whell1/AnimationPlayer.playback_speed = 1 + bakcground_speed_multipler
 	$Whell2/AnimationPlayer.playback_speed = 1 + bakcground_speed_multipler
 	 
@@ -95,7 +95,8 @@ func process_move(delta):
 # warning-ignore:return_value_discarded
 	if is_jumping: move_and_slide( ( Vector2(position.x, target_pos.y) - position ).normalized() * Gravity * gravity_reducer  )
 	else:
-		var collision = move_and_collide( Vector2(0, Gravity) * delta * gravity_reducer )
+# warning-ignore:return_value_discarded
+		move_and_collide( Vector2(0, Gravity) * delta * gravity_reducer )
 		on_floor = wheel_on_floor()
 #		if collision:
 #			if collision.collider.is_in_group("floor"): on_floor = true
