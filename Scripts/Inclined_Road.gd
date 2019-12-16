@@ -33,14 +33,11 @@ func move_everything(delta):
 	$StaticBody2D3.position.x    -= speed
 	$StaticBody2D4.position.x    -= speed
 	$ParallaxBackground.offset.x -= speed
-	$End_rise_mark.position.x    -= speed
-	$End_high_mark.position.x    -= speed
-	$End_fall_mark.position.x    -= speed
 
 func handle_rise(delta):
 	if state != "Rise" : return
 	move_everything(delta)
-	if ($End_rise_mark.position.x + position.x) < 450 : 
+	if ($End_rise_mark.position.x - $ParallaxBackground.offset.x) < 450 : 
 		state = "High"
 		parent_collider_y = get_parent().get_node("Back3/StaticBody2D").position.y
 		get_parent().get_node("Back3/StaticBody2D").position.y = 10
@@ -70,10 +67,10 @@ func handle_fall(delta):
 			get_parent().get_node("Back3/StaticBody2D").position.y = parent_collider_y
 	elif state == "preFall2":
 		move_everything(delta)
-		if ($End_high_mark.position.x + position.x) < 450 : state = "Fall"
+		if ($End_high_mark.position.x  - $ParallaxBackground.offset.x) < 450 : state = "Fall"
 	elif state == "Fall" :
 		move_everything(delta)
-		if ($End_fall_mark.position.x + position.x) < 450 : call_deferred( "queue_free" )
+		if ($End_fall_mark.position.x  - $ParallaxBackground.offset.x) < 450 : call_deferred( "queue_free" )
 
 func _process(delta): 
 	print( state, should_fall )

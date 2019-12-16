@@ -10,6 +10,8 @@ var timer_reduction   = 0
 # warning-ignore:unused_class_variable
 var points            = 0
 
+var logger            = []
+
 var background_backup = null
 
 func _ready():
@@ -75,8 +77,6 @@ func reload_from_checkpoint():
 	Utilities.player.reset()
 	set_of_spawns     = LevelParser.get_active_spawn_times()
 	$ParallaxBackground.set_backgoround_info( background_backup )
-	
-	
 #	Flow.play_world()
 
 func next_checkpoint(letter):

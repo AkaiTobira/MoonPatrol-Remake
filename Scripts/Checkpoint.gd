@@ -14,15 +14,14 @@ func set_letter(letter):
 
 func save_checkpoint():
 	if !Utilities.player: return 
-#	if Utilities.player.position.x > position.x:
-#		get_parent().next_checkpoint($Label.text)
-#		is_not_reached = false
+#print( $Sprite.position, offset, Utilities.player.position.x )
+	if Utilities.player.position.x > offset.x:
+		get_parent().next_checkpoint($Sprite/Label.text)
+		is_not_reached = false
 
 func _process(delta):
 	if Flow.world_is_paused: return
-	
-#	offset = 
-	
+
 	offset = Vector2( offset.x - 1 * SPEED * delta, offset.y)
 	if is_not_reached : save_checkpoint()
-#	if position.x < -100 : call_deferred("queue_free")
+	if offset.x < -100 : call_deferred("queue_free")
