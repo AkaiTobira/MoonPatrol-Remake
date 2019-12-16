@@ -81,6 +81,7 @@ func reload_from_checkpoint():
 
 func next_checkpoint(letter):
 	background_backup = $ParallaxBackground.get_backgoround_info()
+	print( background_backup )
 	LevelParser.reached_next_letter(letter)
 	set_of_spawns     = LevelParser.get_active_spawn_times()
 	timer_for_segment = 0

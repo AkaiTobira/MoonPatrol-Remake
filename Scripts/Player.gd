@@ -17,7 +17,7 @@ var fire_up_missles = 0
 
 #system variables
 var bakcground_speed_multipler = 0
-var player_good_mode           = false
+var player_good_mode           = true
 var pause                      = false
 
 # warning-ignore:unused_class_variable
@@ -47,6 +47,9 @@ func reset():
 	relative_x = 0
 	relative_y = 0
 	position.y = base_high
+	
+	if get_parent().background_backup[ 3 ] : position.y -= 200
+	
 	forward_missle  = null
 	fire_up_missles = 0 
 	relative_x = 0

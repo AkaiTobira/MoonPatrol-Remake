@@ -31,7 +31,7 @@ func clean_scene():
 
 func summarize( letter, avg_time, top_time ):
 	pause_world( 100000 )
-	main_node.get_node("Summary").start_typing_sequences( letter , { "takes_time"   : main_node.timer_summary,
+	main_node.get_node("Summary/V").start_typing_sequences( letter , { "takes_time"   : main_node.timer_summary,
 																	 "top_time"     : top_time,
 																	 "average_time" : avg_time } )
 	main_node.timer_summary = 0

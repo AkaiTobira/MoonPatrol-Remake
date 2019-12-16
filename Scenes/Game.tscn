@@ -76,18 +76,21 @@ _data = {
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Summary" type="Node2D" parent="."]
+[node name="Summary" type="CanvasLayer" parent="."]
+editor/display_folded = true
+layer = 2
+
+[node name="V" type="Node2D" parent="Summary"]
 editor/display_folded = true
 visible = false
-z_index = 1
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="Summary"]
+[node name="Sprite" type="Sprite" parent="Summary/V"]
 position = Vector2( 1005.77, 544.75 )
 scale = Vector2( 1.75807, 3.21601 )
 texture = ExtResource( 3 )
 
-[node name="LevelReached" type="RichTextLabel" parent="Summary"]
+[node name="LevelReached" type="RichTextLabel" parent="Summary/V"]
 margin_left = 641.0
 margin_top = 313.0
 margin_right = 1224.0
@@ -96,7 +99,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = "Time to reach point \"U \""
 
-[node name="Label_YourTIME" type="RichTextLabel" parent="Summary"]
+[node name="Label_YourTIME" type="RichTextLabel" parent="Summary/V"]
 margin_left = 567.0
 margin_top = 416.0
 margin_right = 813.0
@@ -105,7 +108,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = "Your Time "
 
-[node name="Label_AverageTime" type="RichTextLabel" parent="Summary"]
+[node name="Label_AverageTime" type="RichTextLabel" parent="Summary/V"]
 margin_left = 561.0
 margin_top = 476.0
 margin_right = 893.0
@@ -114,7 +117,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = "Average Time"
 
-[node name="Label_TopRecord" type="RichTextLabel" parent="Summary"]
+[node name="Label_TopRecord" type="RichTextLabel" parent="Summary/V"]
 margin_left = 557.104
 margin_top = 538.337
 margin_right = 889.104
@@ -123,7 +126,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = "Top Record"
 
-[node name="Label_GoddBonusPoint" type="RichTextLabel" parent="Summary"]
+[node name="Label_GoddBonusPoint" type="RichTextLabel" parent="Summary/V"]
 margin_left = 635.0
 margin_top = 651.0
 margin_right = 1072.0
@@ -132,7 +135,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = "Good Bonus Point :"
 
-[node name="Label_ BrokenRecord" type="RichTextLabel" parent="Summary"]
+[node name="Label_ BrokenRecord" type="RichTextLabel" parent="Summary/V"]
 margin_left = 590.0
 margin_top = 709.0
 margin_right = 1352.0
@@ -141,7 +144,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = "You have broken the record"
 
-[node name="YourTime" type="RichTextLabel" parent="Summary"]
+[node name="YourTime" type="RichTextLabel" parent="Summary/V"]
 margin_left = 1038.84
 margin_top = 412.347
 margin_right = 1798.84
@@ -150,7 +153,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
-[node name="AverageTime" type="RichTextLabel" parent="Summary"]
+[node name="AverageTime" type="RichTextLabel" parent="Summary/V"]
 margin_left = 1042.27
 margin_top = 469.791
 margin_right = 1802.27
@@ -159,7 +162,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
-[node name="TopRecord" type="RichTextLabel" parent="Summary"]
+[node name="TopRecord" type="RichTextLabel" parent="Summary/V"]
 margin_left = 1043.99
 margin_top = 528.95
 margin_right = 1803.99
@@ -168,7 +171,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
-[node name="BonusPoint" type="RichTextLabel" parent="Summary"]
+[node name="BonusPoint" type="RichTextLabel" parent="Summary/V"]
 margin_left = 1049.13
 margin_top = 651.556
 margin_right = 1809.13
@@ -178,6 +181,7 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
 [node name="UI" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 442, 203 )
 z_index = 56
 
@@ -232,7 +236,8 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = "Score :"
 
 [node name="GUI" type="CanvasLayer" parent="."]
-layer = 2
+editor/display_folded = true
+layer = 3
 
 [node name="Control" type="Control" parent="GUI"]
 anchor_right = 1.0

@@ -4,6 +4,7 @@ extends Node2D
 var state = "Normal"
 
 func _ready():
+	parent_collider_y = get_parent().get_node("Back3/StaticBody2D").position.y
 	state = "Rise"
 
 var should_fall = false
@@ -17,32 +18,41 @@ func set_info( info ):
 		queue_free()
 		return
 
+	if state != "High" :
+		get_parent().get_node("Back3/StaticBody2D").position.y = parent_collider_y
+
 	if info[0] == "Rise" and state == "High" : 
 		get_parent().get_node("Back3/StaticBody2D").position.y = parent_collider_y
-		queue_free()
+		state = "Rise"
+	else: state = info[0]
 
-	if state == "Hight"  and info[1] == should_fall: should_fall = info[1]
+	should_fall                                     = info[1]
+	$Colliders.position.x                           = info[2]
+	$ParallaxBackground.offset.x                    = info[3]
+	$ParallaxBackground/ParallaxLayer.motion_offset = info[4]
 
 func get_info( ): 
-	return [ state, should_fall ]
+	var road_motion = $ParallaxBackground/ParallaxLayer.motion_offset
+	var reducer = 250
+	if state == "High": reducer = 0
+	return [ state, should_fall, $Colliders.position.x + reducer, $ParallaxBackground.offset.x + reducer,  road_motion ]
 
 func move_everything(delta):
 	var speed = get_parent().road_speed * delta
-	#position.x                   -= speed
-	$StaticBody2D2.position.x    -= speed
-	$StaticBody2D3.position.x    -= speed
-	$StaticBody2D4.position.x    -= speed
+	$Colliders.position.x        -= speed
+#	$Colliders.move_colliders(speed)
 	$ParallaxBackground.offset.x -= speed
 
 func handle_rise(delta):
 	if state != "Rise" : return
 	move_everything(delta)
-	if ($End_rise_mark.position.x - $ParallaxBackground.offset.x) < 450 : 
+	if ($End_rise_mark.position.x + $ParallaxBackground.offset.x) < 450 : 
 		state = "High"
 		parent_collider_y = get_parent().get_node("Back3/StaticBody2D").position.y
 		get_parent().get_node("Back3/StaticBody2D").position.y = 10
 
 func reparent(parent, child, to):
+	if not parent or not child or not to : return  
 	parent.remove_child(child)
 	to.add_child(child)
 	child.set_owner(to)
@@ -67,13 +77,13 @@ func handle_fall(delta):
 			get_parent().get_node("Back3/StaticBody2D").position.y = parent_collider_y
 	elif state == "preFall2":
 		move_everything(delta)
-		if ($End_high_mark.position.x  - $ParallaxBackground.offset.x) < 450 : state = "Fall"
+		if ($End_high_mark.position.x  + $ParallaxBackground.offset.x) < 450 : state = "Fall"
 	elif state == "Fall" :
 		move_everything(delta)
-		if ($End_fall_mark.position.x  - $ParallaxBackground.offset.x) < 450 : call_deferred( "queue_free" )
+		if ($End_fall_mark.position.x  + $ParallaxBackground.offset.x) < 450 : call_deferred( "queue_free" )
 
 func _process(delta): 
-	print( state, should_fall )
+#	print( state, should_fall )
 	handle_rise(delta)
 	handle_high(delta)
 	handle_fall(delta)
