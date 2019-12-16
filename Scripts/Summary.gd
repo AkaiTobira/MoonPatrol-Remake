@@ -80,7 +80,7 @@ func update_score():
 		
 		if timers["takes_time"] == timers["average_time"]: seconds = 3
 		return
-	get_parent().points += aditonal_points
+	get_parent().get_parent().points += aditonal_points
 	Flow.play_world()
 	hide()
 	set_process(false)

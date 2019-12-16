@@ -1,7 +1,46 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_old/the_car.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Whell.gd" type="Script" id=3]
+[ext_resource path="res://Textures/Placeholders_old/Wheel.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Roll"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 16.0413
+
+[sub_resource type="Animation" id=3]
+resource_name = "Roll"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
@@ -13,7 +52,7 @@ script = ExtResource( 1 )
 Friction = 300.0
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -1.51838, -31.75 )
+position = Vector2( 0, -30 )
 scale = Vector2( 0.62283, 0.601695 )
 texture = ExtResource( 2 )
 
@@ -23,8 +62,42 @@ collision_mask = 7686
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2( -0.397217, -15 )
-polygon = PoolVector2Array( -90.5254, -46.8323, -93.3059, 2.81946, 83.4545, 24.6662, 31.0222, -24.5883, -13.8631, -36.5048, -23.3962, -50.0101 )
+polygon = PoolVector2Array( -84.1404, -47.9991, -81.3004, -4.76762, 103.06, 5.92637, 85.9456, -0.192032, -2.41077, -31.4323, -27.3961, -48.8489 )
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 81.8656, 22.2551, -98.4697, 1.59995, 34.9943, 35.7604, 81.8656, 35.3632 )
+position = Vector2( 1.53743, -41.6189 )
+scale = Vector2( 0.244088, 1 )
+polygon = PoolVector2Array( 382.986, 33.5588, 330.608, 35.1085, -418.563, 23.4858, -414.595, 26.1978, 382.193, 37.2393 )
+
+[node name="Whell1" type="KinematicBody2D" parent="."]
+position = Vector2( 61, 14 )
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Whell1"]
+rotation = 1.74846e-007
+scale = Vector2( 0.46912, 0.446368 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Whell1"]
+autoplay = "Roll"
+anims/Roll = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Whell1"]
+shape = SubResource( 2 )
+
+[node name="Whell2" type="KinematicBody2D" parent="."]
+position = Vector2( -75, 7 )
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Whell2"]
+rotation = 1.74846e-007
+scale = Vector2( 0.46912, 0.446368 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Whell2"]
+autoplay = "Roll"
+anims/Roll = SubResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Whell2"]
+shape = SubResource( 2 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -7,8 +7,8 @@ var points          = 50
 var fixed_y_pos     = 0
 var add_points      = true
 
-func set_speed_multipler( player_multipler ):
-	speed_multipler = 1 + player_multipler
+func adapt_speed( speed ):
+	SPEED = speed
 
 func grant_points():
 	if !Utilities.player: return 

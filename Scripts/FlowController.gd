@@ -5,6 +5,8 @@ var world_is_paused = false
 var pause_timer     = 0.0
 var pause_end       = 0.0
 
+var is_high          = false
+var hight_difference = 0
 
 func play_intro_objects():
 	if main_node.get_node("UI/Welcomer").visible: main_node.get_node("UI/Welcomer").visible = false
@@ -31,11 +33,16 @@ func clean_scene():
 
 func summarize( letter, avg_time, top_time ):
 	pause_world( 100000 )
-	main_node.get_node("Summary").start_typing_sequences( letter , { "takes_time"   : main_node.timer_summary,
+	main_node.get_node("Summary/V").start_typing_sequences( letter , { "takes_time"   : main_node.timer_summary,
 																	 "top_time"     : top_time,
 																	 "average_time" : avg_time } )
 	main_node.timer_summary = 0
 	clean_scene()
+
+func adapt_height( instance ):
+	if is_high: 
+		instance.position.y  -= hight_difference
+		instance.fixed_y_pos -= hight_difference
 
 func _process(delta):
 	if pause_end <= pause_timer: 

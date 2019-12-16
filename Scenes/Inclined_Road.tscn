@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Inclined_Road.gd" type="Script" id=1]
+[ext_resource path="res://Textures/Placeholders_old/Background_road2.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Placeholders_old/Background_road.png" type="Texture" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+func move_colliders( speed ):
+	$StaticBody2D2.position.x    -= speed
+	$StaticBody2D3.position.x    -= speed
+	$StaticBody2D4.position.x    -= speed"
+
+[node name="Back4" type="Node2D"]
+z_index = 150
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 720.262 ]
+}
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 3345.68, 636.879 )
+scale = Vector2( 4.70122, 2.27221 )
+z_index = 10
+z_as_relative = false
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 8035.89, 633.852 )
+scale = Vector2( 4.70122, 2.27221 )
+z_index = 120
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1000, 0 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 5714.68, 466.404 )
+scale = Vector2( 2.70334, 2.27221 )
+z_index = 10
+texture = ExtResource( 3 )
+
+[node name="End_rise_mark" type="Node2D" parent="."]
+position = Vector2( 4851.34, 679.118 )
+
+[node name="End_high_mark" type="Node2D" parent="."]
+position = Vector2( 6533.57, 579.146 )
+
+[node name="End_fall_mark" type="Node2D" parent="."]
+position = Vector2( 9538.08, 843.408 )
+
+[node name="Colliders" type="Node2D" parent="."]
+script = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Colliders" groups=[
+"floor",
+]]
+scale = Vector2( 3.35939, 0.998225 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Colliders/StaticBody2D2"]
+position = Vector2( 693.09, 885.699 )
+scale = Vector2( 0.364871, 1 )
+build_mode = 1
+polygon = PoolVector2Array( 2047.47, -9.79761, -756.521, 28.8161, 2098.94, -166.255 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Colliders" groups=[
+"floor",
+]]
+scale = Vector2( 3.35939, 0.998225 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Colliders/StaticBody2D3"]
+position = Vector2( 689.685, 879.969 )
+scale = Vector2( 0.364871, 1 )
+build_mode = 1
+polygon = PoolVector2Array( 3433.8, -6.92877, 3432.05, -164.142, 6304.72, 29.4765, 5888.67, 56.9392 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Colliders" groups=[
+"floor",
+]]
+scale = Vector2( 3.35939, 0.998225 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Colliders/StaticBody2D4"]
+position = Vector2( 178.047, 900.42 )
+scale = Vector2( 0.364871, 1 )
+build_mode = 1
+polygon = PoolVector2Array( 3433.8, -6.92877, 3423.88, -166.155, 3603.68, -191.192, 3674.12, -163.879, 3724.17, -182.088, 3781.63, -170.707, 3857.63, -179.812, 3933.63, -159.327, 4009.63, -188.916, 4091.19, -166.155, 4165.33, -172.983, 4235.77, -191.192, 4319.18, -170.707, 4380.35, -191.192, 4439.67, -166.155, 4515.67, -207.125, 4599.08, -179.812, 4667.66, -204.849, 4756.64, -207.125, 4810.39, -216.229, 4888.24, -172.983, 4848.13, -10.8825, 4093.11, -8.77185 )
