@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/RoundRock.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_old/RockBulder.png" type="Texture" id=2]
@@ -6,8 +6,10 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 27.4359
 
-[sub_resource type="Animation" id=2]
-resource_name = "Round"
+[sub_resource type="CircleShape2D" id=2]
+radius = 28.8005
+
+[sub_resource type="Animation" id=3]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -43,12 +45,11 @@ collision_mask = 512
 rotation = 18.8496
 texture = ExtResource( 2 )
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2( -5.12886, 6.41901 )
-scale = Vector2( 1.2, 1.2 )
-polygon = PoolVector2Array( -29.4031, -4.06337, -5.97168, 13.8232, 13.1669, 14.7175, 3.5082, -29.2834, -12.5897, -17.6572 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -0.490604, -0.367953 )
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Round"
-anims/Round = SubResource( 2 )
+anims/Round = SubResource( 3 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

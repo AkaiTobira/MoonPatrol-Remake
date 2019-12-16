@@ -4,8 +4,8 @@ var SPEED = 130
 
 var speed_multipler  = 1
 var fixed_y_pos      = 0
-var points_jump_over = 50
-var points_destroy   = 100
+var points_jump_over = 0
+var points_destroy   = 50
 var add_points       = true
 
 func adapt_speed( speed ):

@@ -240,10 +240,10 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = "Score :"
 
 [node name="GUI" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = 3
 
 [node name="Control" type="Control" parent="GUI"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -11.5241
@@ -417,14 +417,12 @@ margin_right = 0.0779877
 margin_bottom = -0.0481567
 
 [node name="Black_Holder_Left" type="Sprite" parent="GUI"]
-visible = false
 position = Vector2( 222.929, 545.587 )
 scale = Vector2( 0.700018, 3.23606 )
 z_index = 20
 texture = ExtResource( 3 )
 
 [node name="Black_Holder_Right" type="Sprite" parent="GUI"]
-visible = false
 position = Vector2( 1696.15, 538.368 )
 scale = Vector2( 0.700018, 3.23606 )
 z_index = 2
@@ -434,7 +432,6 @@ texture = ExtResource( 3 )
 SPEDD_MULTIPLER_3 = 4.0
 
 [node name="Base" type="Sprite" parent="."]
-visible = false
 position = Vector2( 776.347, 743.249 )
 texture = ExtResource( 9 )
 flip_h = true
@@ -450,7 +447,6 @@ move_borders = Vector2( 650, 900 )
 
 [node name="Paths" type="Node2D" parent="."]
 editor/display_folded = true
-visible = false
 
 [node name="Alien1" type="Node2D" parent="Paths"]
 
@@ -480,6 +476,7 @@ curve = SubResource( 9 )
 curve = SubResource( 9 )
 
 [node name="Spawners" type="Node2D" parent="."]
+editor/display_folded = true
 script = ExtResource( 12 )
 
 [node name="Rock_Spawner2" parent="Spawners" instance=ExtResource( 13 )]
