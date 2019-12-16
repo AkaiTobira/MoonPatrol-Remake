@@ -48,8 +48,7 @@ func handle_rise(delta):
 	move_everything(delta)
 	if ($End_rise_mark.position.x + $ParallaxBackground.offset.x) < 450 : 
 		state = "High"
-		parent_collider_y = get_parent().get_node("Back3/StaticBody2D").position.y
-		get_parent().get_node("Back3/StaticBody2D").position.y = 10
+		get_parent().get_node("Back3/StaticBody2D").position.y = 30
 
 func reparent(parent, child, to):
 	if not parent or not child or not to : return  
@@ -87,3 +86,12 @@ func _process(delta):
 	handle_rise(delta)
 	handle_high(delta)
 	handle_fall(delta)
+	
+	set_spawners_height()
+
+func set_spawners_height():
+	var is_low  = "Fall" == state or state == "Rise"
+	Flow.is_high          = not is_low
+	Flow.hight_difference = parent_collider_y - get_parent().get_node("Back3/StaticBody2D").position.y
+	
+	

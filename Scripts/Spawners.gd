@@ -33,6 +33,10 @@ func spawn_ground(obstacle_to_spawn):
 			$Rock_Spawner.spawn( Utilities.get_instance(obstacle_to_spawn) )
 		"RockS" : 
 			$Rock_Spawner.spawn( Utilities.get_instance(obstacle_to_spawn) )
+		"Round" :
+			$Rock_Spawner2.spawn( Utilities.get_instance(obstacle_to_spawn) )
+		"RoundS":
+			$Rock_Spawner2.spawn( Utilities.get_instance(obstacle_to_spawn) )
 		"Hole" : 
 			$Hole_Spawner.spawn( Utilities.get_instance(obstacle_to_spawn) )
 		"HoleB" : 

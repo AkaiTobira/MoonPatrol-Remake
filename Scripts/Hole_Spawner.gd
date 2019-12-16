@@ -7,4 +7,5 @@ func _ready():
 func spawn(instance):
 	instance.fixed_y_pos = position.y
 	instance.position    = position
+	Flow.adapt_height( instance )
 	get_parent().get_parent().add_child(instance)

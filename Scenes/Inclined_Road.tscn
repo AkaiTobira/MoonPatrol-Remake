@@ -21,23 +21,26 @@ func move_colliders( speed ):
 	$StaticBody2D4.position.x    -= speed"
 
 [node name="Back4" type="Node2D"]
+z_index = 150
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 720.262 ]
+}
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-layer = 0
 scroll_ignore_camera_zoom = true
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground"]
 position = Vector2( 3345.68, 636.879 )
 scale = Vector2( 4.70122, 2.27221 )
-z_index = 1
+z_index = 10
 z_as_relative = false
 texture = ExtResource( 2 )
 
 [node name="Sprite3" type="Sprite" parent="ParallaxBackground"]
 position = Vector2( 8035.89, 633.852 )
 scale = Vector2( 4.70122, 2.27221 )
-z_index = 1
+z_index = 120
 texture = ExtResource( 2 )
 flip_h = true
 
@@ -47,7 +50,7 @@ motion_mirroring = Vector2( 1000, 0 )
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 5714.68, 466.404 )
 scale = Vector2( 2.70334, 2.27221 )
-z_index = -1
+z_index = 10
 texture = ExtResource( 3 )
 
 [node name="End_rise_mark" type="Node2D" parent="."]

@@ -36,7 +36,6 @@ func set_backgoround_info( info ):
 	$Back1.motion_offset.x = info[0]
 	$Back2.motion_offset.x = info[1]
 	$Back3.motion_offset.x = info[2]
-	if not info[3] : return
 	if not has_node("Back4") : add_child( Utilities.get_instance( "IRoad" ) )
 	$Back4.set_info(info[3])
 

@@ -10,6 +10,8 @@ var objects = {
 	"RockB"      :  preload( "res://Scenes/Obstacles/Rock.tscn" ),
 	"RockS"      :  preload( "res://Scenes/Obstacles/SmallRock.tscn" ),
 	"Rock2"      :  preload( "res://Scenes/Obstacles/DoubleRock.tscn" ),
+	"Round"      :  preload( "res://Scenes/Obstacles/RoundBulder.tscn" ),
+	"RoundS"     :  preload( "res://Scenes/Obstacles/SmallRoundBulder.tscn" ),
 	"Mine"       :  preload( "res://Scenes/Obstacles/Mine.tscn" ),
 	"checkpoint" :  preload( "res://Scenes/Checkpoint.tscn" ),
 	"Alien1"     :  preload( "res://Scenes/Enemies/Alien1.tscn" ),

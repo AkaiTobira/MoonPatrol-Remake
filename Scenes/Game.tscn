@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Summary.gd" type="Script" id=2]
@@ -12,11 +12,12 @@
 [ext_resource path="res://Scripts/Base.gd" type="Script" id=10]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scripts/Spawners.gd" type="Script" id=12]
-[ext_resource path="res://Scenes/Spawners/Hole_Spawner.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Scenes/Spawners/Rock_Spawner.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Scenes/Spawners/Mine_Spawner.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Scenes/Spawners/Checkpoint_Spawner.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Scenes/Spawners/Alien_Spawner.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Spawners/RRock_Spawner.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Spawners/Hole_Spawner.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/Spawners/Rock_Spawner.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/Spawners/Mine_Spawner.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/Spawners/Checkpoint_Spawner.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Spawners/Alien_Spawner.tscn" type="PackedScene" id=18]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 7 )
@@ -75,6 +76,9 @@ _data = {
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 721.756 ]
+}
 
 [node name="Summary" type="CanvasLayer" parent="."]
 editor/display_folded = true
@@ -236,10 +240,10 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = "Score :"
 
 [node name="GUI" type="CanvasLayer" parent="."]
-editor/display_folded = true
 layer = 3
 
 [node name="Control" type="Control" parent="GUI"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -11.5241
@@ -413,12 +417,14 @@ margin_right = 0.0779877
 margin_bottom = -0.0481567
 
 [node name="Black_Holder_Left" type="Sprite" parent="GUI"]
+visible = false
 position = Vector2( 222.929, 545.587 )
 scale = Vector2( 0.700018, 3.23606 )
 z_index = 20
 texture = ExtResource( 3 )
 
 [node name="Black_Holder_Right" type="Sprite" parent="GUI"]
+visible = false
 position = Vector2( 1696.15, 538.368 )
 scale = Vector2( 0.700018, 3.23606 )
 z_index = 2
@@ -474,36 +480,37 @@ curve = SubResource( 9 )
 curve = SubResource( 9 )
 
 [node name="Spawners" type="Node2D" parent="."]
-editor/display_folded = true
-visible = false
 script = ExtResource( 12 )
 
-[node name="Hole_Spawner" parent="Spawners" instance=ExtResource( 13 )]
+[node name="Rock_Spawner2" parent="Spawners" instance=ExtResource( 13 )]
+position = Vector2( 1920.89, 727.532 )
+
+[node name="Hole_Spawner" parent="Spawners" instance=ExtResource( 14 )]
 position = Vector2( 1594.84, 900.215 )
 scale = Vector2( 0.949715, 1.15578 )
 
-[node name="Rock_Spawner" parent="Spawners" instance=ExtResource( 14 )]
+[node name="Rock_Spawner" parent="Spawners" instance=ExtResource( 15 )]
 position = Vector2( 1580.37, 858.777 )
 
-[node name="Mine_Spawner" parent="Spawners" instance=ExtResource( 15 )]
+[node name="Mine_Spawner" parent="Spawners" instance=ExtResource( 16 )]
 position = Vector2( 1584.34, 879.86 )
 
-[node name="Checkpoint_Spawner" parent="Spawners" instance=ExtResource( 16 )]
+[node name="Checkpoint_Spawner" parent="Spawners" instance=ExtResource( 17 )]
 position = Vector2( 1588.99, 953.101 )
 
-[node name="Alien_SpawnerD" parent="Spawners" instance=ExtResource( 17 )]
+[node name="Alien_SpawnerD" parent="Spawners" instance=ExtResource( 18 )]
 position = Vector2( 1885.29, 356.368 )
 
-[node name="Alien_SpawnerC" parent="Spawners" instance=ExtResource( 17 )]
+[node name="Alien_SpawnerC" parent="Spawners" instance=ExtResource( 18 )]
 position = Vector2( 1510.72, 93.8405 )
 
-[node name="Alien_SpawnerB" parent="Spawners" instance=ExtResource( 17 )]
+[node name="Alien_SpawnerB" parent="Spawners" instance=ExtResource( 18 )]
 visible = false
 position = Vector2( 977.297, 85.8518 )
 
-[node name="Alien_SpawnerE" parent="Spawners" instance=ExtResource( 17 )]
+[node name="Alien_SpawnerE" parent="Spawners" instance=ExtResource( 18 )]
 visible = false
 position = Vector2( 485.033, 82.1506 )
 
-[node name="Alien_SpawnerA" parent="Spawners" instance=ExtResource( 17 )]
+[node name="Alien_SpawnerA" parent="Spawners" instance=ExtResource( 18 )]
 position = Vector2( 294.981, 377.636 )
