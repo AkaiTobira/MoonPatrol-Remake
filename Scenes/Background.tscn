@@ -27,40 +27,40 @@ texture = ExtResource( 2 )
 
 [node name="Back1" type="ParallaxLayer" parent="."]
 motion_offset = Vector2( 1, 0 )
-motion_mirroring = Vector2( 1000, 0 )
+motion_mirroring = Vector2( 2301, 0 )
 
 [node name="Sprite" type="Sprite" parent="Back1"]
-position = Vector2( 1169.43, 637.669 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 1560, 637.669 )
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 3 )
 
 [node name="Back2" type="ParallaxLayer" parent="."]
 motion_offset = Vector2( 1, 0 )
-motion_mirroring = Vector2( 1000, 0 )
+motion_mirroring = Vector2( 2301, 0 )
 
 [node name="Sprite" type="Sprite" parent="Back2"]
-position = Vector2( 1175.27, 695.584 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 1560, 695.584 )
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 4 )
 
 [node name="Back3" type="ParallaxLayer" parent="."]
 motion_offset = Vector2( 1, 0 )
-motion_mirroring = Vector2( 1000, 0 )
+motion_mirroring = Vector2( 2301, 0 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Back3" groups=[
 "floor",
 ]]
-position = Vector2( 450, 200 )
+position = Vector2( 443, 249 )
 z_index = 10
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back3/StaticBody2D"]
 position = Vector2( 646.09, 746.727 )
 scale = Vector2( 1, 0.941706 )
-polygon = PoolVector2Array( 1922.26, -59.5726, 1355.12, 140.605, -662.983, 148.094, -658.804, -59.8505 )
+polygon = PoolVector2Array( 2408.96, -56.3149, 2438.49, 112.575, -662.983, 148.094, -658.804, -59.8505 )
 one_way_collision_margin = 128.0
 
 [node name="Sprite" type="Sprite" parent="Back3"]
-position = Vector2( 1176.56, 781.173 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 1560, 775.173 )
+scale = Vector2( 0.6, 0.6 )
 z_index = 1
 texture = ExtResource( 5 )

@@ -432,13 +432,13 @@ texture = ExtResource( 3 )
 SPEDD_MULTIPLER_3 = 4.0
 
 [node name="Base" type="Sprite" parent="."]
-position = Vector2( 776.347, 743.249 )
+position = Vector2( 776.347, 801.249 )
 texture = ExtResource( 9 )
 flip_h = true
 script = ExtResource( 10 )
 
 [node name="Player" parent="." instance=ExtResource( 11 )]
-position = Vector2( 915.418, 866.642 )
+position = Vector2( 915.418, 924.642 )
 scale = Vector2( 0.9, 0.7 )
 Gravity = 200.0
 Friction = 0.0
