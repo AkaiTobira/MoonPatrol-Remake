@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Summary.gd" type="Script" id=2]
@@ -12,11 +12,12 @@
 [ext_resource path="res://Scripts/Base.gd" type="Script" id=10]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scripts/Spawners.gd" type="Script" id=12]
-[ext_resource path="res://Scenes/Spawners/Hole_Spawner.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Scenes/Spawners/Rock_Spawner.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Scenes/Spawners/Mine_Spawner.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Scenes/Spawners/Checkpoint_Spawner.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Scenes/Spawners/Alien_Spawner.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Spawners/RRock_Spawner.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Spawners/Hole_Spawner.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/Spawners/Rock_Spawner.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/Spawners/Mine_Spawner.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/Spawners/Checkpoint_Spawner.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Spawners/Alien_Spawner.tscn" type="PackedScene" id=18]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 7 )
@@ -75,19 +76,25 @@ _data = {
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 721.756 ]
+}
 
-[node name="Summary" type="Node2D" parent="."]
+[node name="Summary" type="CanvasLayer" parent="."]
+editor/display_folded = true
+layer = 2
+
+[node name="V" type="Node2D" parent="Summary"]
 editor/display_folded = true
 visible = false
-z_index = 1
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="Summary"]
+[node name="Sprite" type="Sprite" parent="Summary/V"]
 position = Vector2( 1005.77, 544.75 )
 scale = Vector2( 1.75807, 3.21601 )
 texture = ExtResource( 3 )
 
-[node name="LevelReached" type="RichTextLabel" parent="Summary"]
+[node name="LevelReached" type="RichTextLabel" parent="Summary/V"]
 margin_left = 641.0
 margin_top = 313.0
 margin_right = 1224.0
@@ -96,7 +103,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = "Time to reach point \"U \""
 
-[node name="Label_YourTIME" type="RichTextLabel" parent="Summary"]
+[node name="Label_YourTIME" type="RichTextLabel" parent="Summary/V"]
 margin_left = 567.0
 margin_top = 416.0
 margin_right = 813.0
@@ -105,7 +112,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = "Your Time "
 
-[node name="Label_AverageTime" type="RichTextLabel" parent="Summary"]
+[node name="Label_AverageTime" type="RichTextLabel" parent="Summary/V"]
 margin_left = 561.0
 margin_top = 476.0
 margin_right = 893.0
@@ -114,7 +121,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = "Average Time"
 
-[node name="Label_TopRecord" type="RichTextLabel" parent="Summary"]
+[node name="Label_TopRecord" type="RichTextLabel" parent="Summary/V"]
 margin_left = 557.104
 margin_top = 538.337
 margin_right = 889.104
@@ -123,7 +130,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = "Top Record"
 
-[node name="Label_GoddBonusPoint" type="RichTextLabel" parent="Summary"]
+[node name="Label_GoddBonusPoint" type="RichTextLabel" parent="Summary/V"]
 margin_left = 635.0
 margin_top = 651.0
 margin_right = 1072.0
@@ -132,7 +139,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = "Good Bonus Point :"
 
-[node name="Label_ BrokenRecord" type="RichTextLabel" parent="Summary"]
+[node name="Label_ BrokenRecord" type="RichTextLabel" parent="Summary/V"]
 margin_left = 590.0
 margin_top = 709.0
 margin_right = 1352.0
@@ -141,7 +148,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = "You have broken the record"
 
-[node name="YourTime" type="RichTextLabel" parent="Summary"]
+[node name="YourTime" type="RichTextLabel" parent="Summary/V"]
 margin_left = 1038.84
 margin_top = 412.347
 margin_right = 1798.84
@@ -150,7 +157,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
-[node name="AverageTime" type="RichTextLabel" parent="Summary"]
+[node name="AverageTime" type="RichTextLabel" parent="Summary/V"]
 margin_left = 1042.27
 margin_top = 469.791
 margin_right = 1802.27
@@ -159,7 +166,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
-[node name="TopRecord" type="RichTextLabel" parent="Summary"]
+[node name="TopRecord" type="RichTextLabel" parent="Summary/V"]
 margin_left = 1043.99
 margin_top = 528.95
 margin_right = 1803.99
@@ -168,7 +175,7 @@ custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
-[node name="BonusPoint" type="RichTextLabel" parent="Summary"]
+[node name="BonusPoint" type="RichTextLabel" parent="Summary/V"]
 margin_left = 1049.13
 margin_top = 651.556
 margin_right = 1809.13
@@ -178,6 +185,7 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
 [node name="UI" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 442, 203 )
 z_index = 56
 
@@ -232,7 +240,8 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = "Score :"
 
 [node name="GUI" type="CanvasLayer" parent="."]
-layer = 2
+editor/display_folded = true
+layer = 3
 
 [node name="Control" type="Control" parent="GUI"]
 anchor_right = 1.0
@@ -423,7 +432,6 @@ texture = ExtResource( 3 )
 SPEDD_MULTIPLER_3 = 4.0
 
 [node name="Base" type="Sprite" parent="."]
-visible = false
 position = Vector2( 776.347, 743.249 )
 texture = ExtResource( 9 )
 flip_h = true
@@ -439,7 +447,6 @@ move_borders = Vector2( 650, 900 )
 
 [node name="Paths" type="Node2D" parent="."]
 editor/display_folded = true
-visible = false
 
 [node name="Alien1" type="Node2D" parent="Paths"]
 
@@ -470,35 +477,37 @@ curve = SubResource( 9 )
 
 [node name="Spawners" type="Node2D" parent="."]
 editor/display_folded = true
-visible = false
 script = ExtResource( 12 )
 
-[node name="Hole_Spawner" parent="Spawners" instance=ExtResource( 13 )]
+[node name="Rock_Spawner2" parent="Spawners" instance=ExtResource( 13 )]
+position = Vector2( 1920.89, 727.532 )
+
+[node name="Hole_Spawner" parent="Spawners" instance=ExtResource( 14 )]
 position = Vector2( 1594.84, 900.215 )
 scale = Vector2( 0.949715, 1.15578 )
 
-[node name="Rock_Spawner" parent="Spawners" instance=ExtResource( 14 )]
+[node name="Rock_Spawner" parent="Spawners" instance=ExtResource( 15 )]
 position = Vector2( 1580.37, 858.777 )
 
-[node name="Mine_Spawner" parent="Spawners" instance=ExtResource( 15 )]
+[node name="Mine_Spawner" parent="Spawners" instance=ExtResource( 16 )]
 position = Vector2( 1584.34, 879.86 )
 
-[node name="Checkpoint_Spawner" parent="Spawners" instance=ExtResource( 16 )]
+[node name="Checkpoint_Spawner" parent="Spawners" instance=ExtResource( 17 )]
 position = Vector2( 1588.99, 953.101 )
 
-[node name="Alien_SpawnerD" parent="Spawners" instance=ExtResource( 17 )]
+[node name="Alien_SpawnerD" parent="Spawners" instance=ExtResource( 18 )]
 position = Vector2( 1885.29, 356.368 )
 
-[node name="Alien_SpawnerC" parent="Spawners" instance=ExtResource( 17 )]
+[node name="Alien_SpawnerC" parent="Spawners" instance=ExtResource( 18 )]
 position = Vector2( 1510.72, 93.8405 )
 
-[node name="Alien_SpawnerB" parent="Spawners" instance=ExtResource( 17 )]
+[node name="Alien_SpawnerB" parent="Spawners" instance=ExtResource( 18 )]
 visible = false
 position = Vector2( 977.297, 85.8518 )
 
-[node name="Alien_SpawnerE" parent="Spawners" instance=ExtResource( 17 )]
+[node name="Alien_SpawnerE" parent="Spawners" instance=ExtResource( 18 )]
 visible = false
 position = Vector2( 485.033, 82.1506 )
 
-[node name="Alien_SpawnerA" parent="Spawners" instance=ExtResource( 17 )]
+[node name="Alien_SpawnerA" parent="Spawners" instance=ExtResource( 18 )]
 position = Vector2( 294.981, 377.636 )

@@ -33,7 +33,7 @@ func set_info( info ):
 
 func get_info( ): 
 	var road_motion = $ParallaxBackground/ParallaxLayer.motion_offset
-	var reducer = 100
+	var reducer = 250
 	if state == "High": reducer = 0
 	return [ state, should_fall, $Colliders.position.x + reducer, $ParallaxBackground.offset.x + reducer,  road_motion ]
 
