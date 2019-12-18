@@ -79,7 +79,7 @@ func enable_kamikaze_atack():
 			target_move_point = Utilities.player.position + Vector2( randi()%20 * -1 if randi()%2 == 0 else 1, 10 ) 
 
 func on_dead():
-	call_deferred( "queue_free" )
+	play_animation_if_not_player( "Dead" )
 	SquatController.reduce_number_of_squad(squat_id)
 
 func process_shooting():
@@ -210,7 +210,7 @@ func calculate_avoid_velocity(delta):
 	return (next_point - current_triple["relative"]).normalized() * move_speed
 
 func on_destroy():
-	call_deferred( "queue_free" )
+	play_animation_if_not_player( "Dead" )
 	SquatController.reduce_number_of_squad(squat_id)
 	if !SquatController.is_squat_active(squat_id):
 		get_parent().points += POINTS_FOR_SQUAT_DESTROY
@@ -218,11 +218,23 @@ func on_destroy():
 		print( squat_id, " Squad is is_dead " )
 	get_parent().points += POINTS_FOR_DESTROY
 
-func _on_Area2D_body_entered(body):
-	if body.is_in_group("missle"):
-		on_destroy()
-		body.on_delete()
-	elif body.is_in_group("player"):
-		on_destroy()
-		body.on_dead()
+var pause = false
 
+func play(): pause = false
+func stop(): pause = true
+
+func _on_Area2D_body_entered(body):
+	var hit_with_floor  = body.is_in_group("floor")
+	var hit_with_player = body.is_in_group("missle") or body.is_in_group("player")
+	
+	if hit_with_player or hit_with_floor:
+		stop()
+		if hit_with_floor  : on_dead()
+		if hit_with_player : on_destroy()
+
+func play_animation_if_not_player( anim_name ):
+	if $AnimationPlayer.current_animation == anim_name : return
+	$AnimationPlayer.play(anim_name)
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Dead": call_deferred( "queue_free" )

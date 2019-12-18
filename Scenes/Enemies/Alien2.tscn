@@ -1,15 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Alien2.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_old/SillyPlate.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Placeholders_old/BakuhatsuNoGenjutsuDa.png" type="Texture" id=3]
+[ext_resource path="res://Resouces/Dead.tres" type="Animation" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 34.7102
 height = 254.554
 
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+loop = true
+
 [node name="Alien2" type="KinematicBody2D" groups=[
-"alien",
 "obstalces",
+"alien",
 ]]
 scale = Vector2( 0.3, 0.3 )
 collision_layer = 6657
@@ -19,9 +25,16 @@ script = ExtResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
+[node name="Explosion" type="Sprite" parent="."]
+visible = false
+position = Vector2( -20.3198, -14.7962 )
+scale = Vector2( 3.00392, 2.43316 )
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 3
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 152.29, -38.5612, 160.574, 17.9227, 124.079, 61.0083, -137.725, 67.8529, -183.601, 24.7008, -166.279, -20.4863, -112.055, -76.9702, 1.66636, -88.267, 75.472, -75.464 )
-disabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2561
@@ -31,4 +44,11 @@ collision_mask = 2561
 position = Vector2( -3.76561, 59.4964 )
 rotation = 1.5708
 shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+playback_speed = 4.0
+anims/Dead = ExtResource( 4 )
+anims/Idle = SubResource( 2 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

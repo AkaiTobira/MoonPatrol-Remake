@@ -14,7 +14,8 @@ func start_fall():
 	
 func set_info( info ):
 	if info == null : 
-		get_parent().get_node("Back3/StaticBody2D").position.y = parent_collider_y
+		var straight_road = get_parent()
+		if straight_road : straight_road.get_node("Back3/StaticBody2D").position.y = parent_collider_y
 		queue_free()
 		return
 

@@ -17,7 +17,7 @@ var fire_up_missles = 0
 
 #system variables
 var bakcground_speed_multipler = 0
-var player_good_mode           = true
+var player_good_mode           = false
 var pause                      = false
 
 # warning-ignore:unused_class_variable
@@ -120,9 +120,9 @@ func _on_Area2D_body_entered(body):
 		on_dead()
 		print( "RIP, player died by kamikaze" )
 	if body.is_in_group("obstalces"):
-		on_dead()
+	#	on_dead()
 		print( "RIP, player died by obstacles" )
 	if body.is_in_group("enemy_missle"):
-		on_dead()
+	#	on_dead()
 		print( "RIP, player died by missle" )
 

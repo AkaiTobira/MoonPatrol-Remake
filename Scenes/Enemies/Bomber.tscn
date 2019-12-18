@@ -1,9 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Bomber.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_old/NotProudOfThat.png" type="Texture" id=2]
+[ext_resource path="res://Resouces/Dead.tres" type="Animation" id=3]
+[ext_resource path="res://Textures/Placeholders_old/BakuhatsuNoGenjutsuDa.png" type="Texture" id=4]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+loop = true
+
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 34.7102
 height = 387.737
 
@@ -17,6 +23,12 @@ script = ExtResource( 1 )
 position = Vector2( 2.15688, 0 )
 texture = ExtResource( 2 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+playback_speed = 4.0
+anims/Dead = ExtResource( 3 )
+anims/Idle = SubResource( 1 )
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -35.5886, -106.766 )
 polygon = PoolVector2Array( 226.97, 39.1214, 272.264, 99.5143, 259.323, 163.143, 170.891, 291.477, -86.8575, 288.242, -187.153, 152.358, -182.839, 70.3963, -69.1601, -7.27725, 40.3989, -13.7223, 136.38, -4.01633 )
@@ -29,5 +41,14 @@ collision_mask = 2561
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 12.411, 158.713 )
 rotation = 1.5708
-shape = SubResource( 1 )
+shape = SubResource( 2 )
+
+[node name="Explosion" type="Sprite" parent="."]
+visible = false
+position = Vector2( 13.6225, -21.5689 )
+scale = Vector2( 4.71212, 3.4634 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 3
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

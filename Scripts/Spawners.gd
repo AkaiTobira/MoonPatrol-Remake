@@ -87,7 +87,7 @@ func spawn_flying(enemy):
 			var path_node = get_random_path(obstacle_name)
 			get_node("Alien_SpawnerA").spawn(instance, squat_id, number_of_enemies, path_node)
 		else:
-			var path_node = get_node("/root/Root/Paths/" + obstacle_name + "/" + spawner_id)
+			var path_node = get_node("/root/Game/Paths/" + obstacle_name + "/" + spawner_id)
 			get_node("Alien_SpawnerA").spawn(instance, squat_id, number_of_enemies, path_node)
 		
 	SquatController.fill_squat( squat_id, squat, obstacle_name )
