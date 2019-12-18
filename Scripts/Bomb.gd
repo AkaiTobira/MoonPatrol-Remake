@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 var direction     = Vector2(0,1)
-var SPEED         = 0
+var SPEED         = 250
 var triple_points = {}
 var max_distance  = 1
 var left_distance = 1
@@ -22,12 +22,11 @@ func calculate_path( mother_ship ):
 	left_distance = max_distance
 
 func update_direction(delta):
-	left_distance  = max( left_distance - ( SPEED * delta), 0 )
-	var t          = left_distance/max_distance
-	var next_point = Utilities.get_bezier_interpolate_point( triple_points, 1.0-t )
-	var velocity_t = (next_point - triple_points["relative"]).normalized()
-	triple_points["relative"] += velocity_t*delta * SPEED
-	direction  = velocity_t.normalized()
+
+	var a_distance_x = abs(triple_points["b"].x - triple_points["a"].x)
+	var t_2 = float(triple_points["b"].x - triple_points["relative"].x ) / a_distance_x
+	direction  = Vector2( t_2, 1-t_2 ).normalized()
+	triple_points["relative"] += direction*delta * SPEED
 
 func _physics_process(delta):
 	SPEED = min ( SPEED + 250*delta, 500 )
@@ -49,7 +48,7 @@ func spawn_hole():
 	var hole = Utilities.get_instance("BHole")
 	hole.squat_id = squat_id
 	hole.position = position
-	hole.position.y = get_parent().get_node("Spawners/Hole_Spawner").position.y
+	hole.position.y  = get_parent().get_node("Spawners/Hole_Spawner").position.y
 	hole.fixed_y_pos = get_parent().get_node("Spawners/Hole_Spawner").position.y
 	get_parent().call_deferred( "add_child", hole )
 	on_delete()
