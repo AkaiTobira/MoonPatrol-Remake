@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_old/the_car.png" type="Texture" id=2]
-[ext_resource path="res://Scripts/Whell.gd" type="Script" id=3]
-[ext_resource path="res://Textures/Placeholders_old/Wheel.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Placeholders_old/BakuhatsuNoGenjutsuDa.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Whell.gd" type="Script" id=4]
+[ext_resource path="res://Textures/Placeholders_old/Wheel.png" type="Texture" id=5]
+[ext_resource path="res://Resouces/Dead-Player.tres" type="Animation" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Roll"
@@ -42,11 +44,62 @@ tracks/0/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Whell2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Whell1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Explosion:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
-collision_layer = 2561
-collision_mask = 2561
+collision_layer = 59
+collision_mask = 59
 collision/safe_margin = 5.0
 script = ExtResource( 1 )
 Friction = 300.0
@@ -55,6 +108,15 @@ Friction = 300.0
 position = Vector2( 0, -30 )
 scale = Vector2( 0.62283, 0.601695 )
 texture = ExtResource( 2 )
+
+[node name="Explosion" type="Sprite" parent="."]
+visible = false
+position = Vector2( -10.4779, -40.4779 )
+scale = Vector2( 1.67361, 1.20941 )
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 3
+frame = 5
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 7686
@@ -71,12 +133,12 @@ polygon = PoolVector2Array( 382.986, 33.5588, 330.608, 35.1085, -418.563, 23.485
 
 [node name="Whell1" type="KinematicBody2D" parent="."]
 position = Vector2( 61, 14 )
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Whell1"]
 rotation = 1.74846e-007
 scale = Vector2( 0.46912, 0.446368 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Whell1"]
 autoplay = "Roll"
@@ -87,12 +149,12 @@ shape = SubResource( 2 )
 
 [node name="Whell2" type="KinematicBody2D" parent="."]
 position = Vector2( -75, 7 )
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Whell2"]
 rotation = 1.74846e-007
 scale = Vector2( 0.46912, 0.446368 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Whell2"]
 autoplay = "Roll"
@@ -100,4 +162,10 @@ anims/Roll = SubResource( 3 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Whell2"]
 shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Dead = ExtResource( 6 )
+anims/Idle = SubResource( 4 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

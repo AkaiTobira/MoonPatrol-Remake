@@ -35,6 +35,7 @@ func _physics_process(delta):
 	process_collisions(output)
 
 func process_collisions( object ):
+	print ( object )
 	if object == null : return
 	if object.collider.is_in_group("obstacles"): return
 	if object.collider.is_in_group("enemy_missle"): return
@@ -42,7 +43,11 @@ func process_collisions( object ):
 	if object.collider.is_in_group("player"): 
 		on_delete()
 		return
-	spawn_hole()
+	if object.collider.is_in_group("floor"): play_animation_if_not_player("Dead")
+
+func play_animation_if_not_player( anim_name ):
+	if $AnimationPlayer.current_animation == anim_name : return
+	$AnimationPlayer.play(anim_name)
 
 func spawn_hole():
 	var hole = Utilities.get_instance("BHole")
@@ -50,8 +55,8 @@ func spawn_hole():
 	hole.position = position
 	hole.position.y  = get_parent().get_node("Spawners/Hole_Spawner").position.y
 	hole.fixed_y_pos = get_parent().get_node("Spawners/Hole_Spawner").position.y
+	Flow.adapt_height( hole )
 	get_parent().call_deferred( "add_child", hole )
-	on_delete()
 
 func on_delete():
 	call_deferred("queue_free")

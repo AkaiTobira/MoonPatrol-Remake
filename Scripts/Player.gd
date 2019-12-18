@@ -111,18 +111,21 @@ func wheel_on_floor():
 
 func on_dead():
 	if not player_good_mode: 
-		Flow.pause_world(3)
-		print( "Here should be break but since player has no animation it isn't" )
+		Flow.pause_world(10)
+		play_animation_if_not_player("Dead")
+
+
+func play_animation_if_not_player( anim_name ):
+	if $AnimationPlayer.current_animation == anim_name : return
+	$AnimationPlayer.play(anim_name)
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Dead": 
 		get_parent().reload_from_checkpoint()
+		play_animation_if_not_player( "Idle" )
+		Flow.play_world()
 
 func _on_Area2D_body_entered(body):
-	if body.is_in_group("alien"):
-		on_dead()
-		print( "RIP, player died by kamikaze" )
-	if body.is_in_group("obstalces"):
-	#	on_dead()
-		print( "RIP, player died by obstacles" )
-	if body.is_in_group("enemy_missle"):
-	#	on_dead()
-		print( "RIP, player died by missle" )
+	var is_killed = body.is_in_group("alien") or body.is_in_group("obstalces") or body.is_in_group("enemy_missle")
+	if is_killed: on_dead()
 
