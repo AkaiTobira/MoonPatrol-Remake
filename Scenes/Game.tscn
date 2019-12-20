@@ -185,7 +185,6 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
 [node name="UI" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 442, 203 )
 z_index = 56
 
@@ -194,6 +193,14 @@ margin_left = 25.4343
 margin_top = 67.6824
 margin_right = 461.435
 margin_bottom = 114.682
+custom_fonts/normal_font = ExtResource( 4 )
+text = "Time : "
+
+[node name="GodMode" type="RichTextLabel" parent="UI"]
+margin_left = 285.434
+margin_top = 32.6824
+margin_right = 721.435
+margin_bottom = 79.682
 custom_fonts/normal_font = ExtResource( 4 )
 text = "Time : "
 
@@ -476,29 +483,29 @@ curve = SubResource( 9 )
 curve = SubResource( 9 )
 
 [node name="Spawners" type="Node2D" parent="."]
-editor/display_folded = true
 script = ExtResource( 12 )
 
 [node name="Rock_Spawner2" parent="Spawners" instance=ExtResource( 13 )]
-position = Vector2( 1920.89, 727.532 )
+position = Vector2( 1920.89, 771.532 )
 
 [node name="Hole_Spawner" parent="Spawners" instance=ExtResource( 14 )]
-position = Vector2( 1594.84, 900.215 )
+position = Vector2( 1594.84, 957.215 )
 scale = Vector2( 0.949715, 1.15578 )
 
 [node name="Rock_Spawner" parent="Spawners" instance=ExtResource( 15 )]
-position = Vector2( 1580.37, 858.777 )
+position = Vector2( 1580.37, 911.777 )
 
 [node name="Mine_Spawner" parent="Spawners" instance=ExtResource( 16 )]
-position = Vector2( 1584.34, 879.86 )
+position = Vector2( 1591.34, 932.86 )
 
 [node name="Checkpoint_Spawner" parent="Spawners" instance=ExtResource( 17 )]
-position = Vector2( 1588.99, 953.101 )
+position = Vector2( 1588.99, 1083.1 )
 
 [node name="Alien_SpawnerD" parent="Spawners" instance=ExtResource( 18 )]
 position = Vector2( 1885.29, 356.368 )
 
 [node name="Alien_SpawnerC" parent="Spawners" instance=ExtResource( 18 )]
+visible = false
 position = Vector2( 1510.72, 93.8405 )
 
 [node name="Alien_SpawnerB" parent="Spawners" instance=ExtResource( 18 )]

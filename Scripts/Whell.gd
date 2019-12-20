@@ -8,7 +8,7 @@ var base_y = 0
 var base_x = 0
 var on_floor = false
 
-var max_far = 6
+var max_far = 15
 
 func _physics_process(delta): 
 	var collision = move_and_collide( Vector2(0, get_parent().Gravity) * delta )

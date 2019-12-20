@@ -36,8 +36,11 @@ func set_backgoround_info( info ):
 	$Back1.motion_offset.x = info[0]
 	$Back2.motion_offset.x = info[1]
 	$Back3.motion_offset.x = info[2]
-	if not has_node("Back4") : add_child( Utilities.get_instance( "IRoad" ) )
-	$Back4.set_info(info[3])
+	if not has_node("Back4") : 
+		var road = Utilities.get_instance( "IRoad" )
+		call_deferred( "add_child", road )
+		road.set_info(info[3])
+	else: $Back4.set_info(info[3])
 
 var road_speed =  SPEDD_MULTIPLER_3 * player_speed * SPEED
 

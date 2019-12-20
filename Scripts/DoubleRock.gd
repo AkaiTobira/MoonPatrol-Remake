@@ -12,9 +12,6 @@ var pause            = false
 func adapt_speed( speed ):
 	SPEED = speed
 
-func play(): pause = false
-func stop(): pause = true
-
 func grant_points():
 	if !Utilities.player: return 
 	if Utilities.player.position.x > position.x:
@@ -23,7 +20,7 @@ func grant_points():
 
 # warning-ignore:unused_argument
 func _physics_process(delta):
-	if pause: return
+	if Flow.world_is_paused: return
 # warning-ignore:return_value_discarded
 	move_and_slide( Vector2(-1, 0 ) * SPEED  * speed_multipler )
 	position.y = fixed_y_pos
@@ -35,7 +32,7 @@ func _on_Area2D_body_entered(body):
 	if body.is_in_group("missle"):
 		get_parent().points += points_destroy
 		body.on_delete()
-		$CollisionPolygon2D.disabled = true
+		$CollisionPolygon2D.call_deferred("queue_free")
 		$Area2D.call_deferred("queue_free")
 
 func _on_Area2D2_body_entered(body):
@@ -43,4 +40,3 @@ func _on_Area2D2_body_entered(body):
 		get_parent().points += points_destroy
 		body.on_delete()
 		call_deferred("queue_free")
-	pass # Replace with function body.

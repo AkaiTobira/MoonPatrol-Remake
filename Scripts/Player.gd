@@ -17,7 +17,7 @@ var fire_up_missles = 0
 
 #system variables
 var bakcground_speed_multipler = 0
-var player_good_mode           = true
+var player_good_mode           = false
 var pause                      = false
 
 # warning-ignore:unused_class_variable
@@ -98,31 +98,34 @@ func process_move(delta):
 # warning-ignore:return_value_discarded
 	if is_jumping: move_and_slide( ( Vector2(position.x, target_pos.y) - position ).normalized() * Gravity * gravity_reducer  )
 	else:
-# warning-ignore:return_value_discarded
-		move_and_collide( Vector2(0, Gravity) * delta * gravity_reducer )
-		on_floor = wheel_on_floor()
+		on_floor = wheel_on_floor(move_and_collide( Vector2(0, Gravity) * delta * gravity_reducer ))
 #		if collision:
 #			if collision.collider.is_in_group("floor"): on_floor = true
 
 	bakcground_speed_multipler = 1 + ( relative_x/200 )
 
-func wheel_on_floor():
+func wheel_on_floor( collision ):
+	if collision : 
+		return $Whell1.on_floor or $Whell2.on_floor or collision.collider.is_in_group("floor")
 	return $Whell1.on_floor or $Whell2.on_floor
 
 func on_dead():
 	if not player_good_mode: 
-		Flow.pause_world(3)
-		print( "Here should be break but since player has no animation it isn't" )
+		Flow.pause_world(10)
+		play_animation_if_not_player("Dead")
+
+func play_animation_if_not_player( anim_name ):
+	if $AnimationPlayer.current_animation == anim_name : return
+	$AnimationPlayer.play(anim_name)
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Dead": 
 		get_parent().reload_from_checkpoint()
+		play_animation_if_not_player( "Idle" )
+		Flow.play_world()
 
 func _on_Area2D_body_entered(body):
-	if body.is_in_group("alien"):
-		on_dead()
-		print( "RIP, player died by kamikaze" )
-	if body.is_in_group("obstalces"):
-		on_dead()
-		print( "RIP, player died by obstacles" )
-	if body.is_in_group("enemy_missle"):
-		on_dead()
-		print( "RIP, player died by missle" )
+	print( body.get_groups() )
+	var is_killed = body.is_in_group("alien") or body.is_in_group("obstalces") or body.is_in_group("enemy_missle")
+	if is_killed: on_dead()
 

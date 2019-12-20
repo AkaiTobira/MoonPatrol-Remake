@@ -1,34 +1,57 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Alien1.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_old/SillyAsianAlien.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Placeholders_old/BakuhatsuNoGenjutsuDa.png" type="Texture" id=3]
+[ext_resource path="res://Resouces/Dead.tres" type="Animation" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 34.7102
 height = 254.554
 
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+loop = true
+
 [node name="Alien1" type="KinematicBody2D" groups=[
-"alien",
 "obstalces",
+"alien",
 ]]
 scale = Vector2( 0.3, 0.3 )
-collision_layer = 2561
-collision_mask = 2561
+collision_layer = 7
+collision_mask = 7
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
+[node name="Explosion" type="Sprite" parent="."]
+visible = false
+position = Vector2( -10, 33.3333 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 3
+frame = 1
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 87.9668, 10.1813, 112.409, 30.4332, 155.706, 73.032, 115.387, 128.097, -97.7453, 126.591, -156.453, 70.937, -114.552, 25.5448, -69.1601, -7.27725, -12.5944, -17.054, 26.5127, -9.37228 )
-disabled = true
+position = Vector2( 1.28491, -86.6667 )
+scale = Vector2( 0.134036, 1 )
+polygon = PoolVector2Array( 119.215, 92.4759, 144.971, 105.354, -151.945, 103.208, -128.335, 93.9068 )
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 6657
-collision_mask = 6657
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -3.76561, 59.4964 )
 rotation = 1.5708
 shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+playback_speed = 4.0
+anims/Dead = ExtResource( 4 )
+anims/Idle = SubResource( 2 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

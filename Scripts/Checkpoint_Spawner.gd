@@ -10,8 +10,7 @@ func spawn( instance, letter ):
 #	instance.position    = position
 
 	#$Sprite.offset = position
-	
-	instance.offset = position
+	instance.offset = position + get_parent().position
 	
 	instance.set_letter(letter)
 	get_parent().get_parent().add_child(instance)
