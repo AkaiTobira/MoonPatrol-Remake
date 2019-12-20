@@ -98,8 +98,8 @@ tracks/3/keys = {
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
-collision_layer = 59
-collision_mask = 59
+collision_layer = 2
+collision_mask = 3
 collision/safe_margin = 5.0
 script = ExtResource( 1 )
 Friction = 300.0
@@ -127,12 +127,14 @@ position = Vector2( -0.397217, -15 )
 polygon = PoolVector2Array( -84.1404, -47.9991, -81.3004, -4.76762, 103.06, 5.92637, 85.9456, -0.192032, -2.41077, -31.4323, -27.3961, -48.8489 )
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( 1.53743, -41.6189 )
+position = Vector2( 1.53743, -38.9595 )
 scale = Vector2( 0.244088, 1 )
 polygon = PoolVector2Array( 382.986, 33.5588, 330.608, 35.1085, -418.563, 23.4858, -414.595, 26.1978, 382.193, 37.2393 )
 
 [node name="Whell1" type="KinematicBody2D" parent="."]
 position = Vector2( 61, 14 )
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Whell1"]
@@ -149,6 +151,8 @@ shape = SubResource( 2 )
 
 [node name="Whell2" type="KinematicBody2D" parent="."]
 position = Vector2( -75, 7 )
+collision_layer = 0
+collision_mask = 0
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Whell2"]

@@ -57,9 +57,12 @@ func _process(delta):
 	process_GUI()
 	
 func process_GUI(): 
-	$UI/Time.text = str( stepify(timer_for_segment + timer_reduction, 0.1) )
+	$UI/Time.text    = str( stepify(timer_for_segment + timer_reduction, 0.1) )
+	$UI/GodMode.text = "Good Mode : "  +  str($Player.player_good_mode)
 	
 	if Input.is_action_just_pressed("ui_down"): reload_from_checkpoint()
+	if Input.is_action_just_pressed("ui_page_down"): $Player.player_good_mode = !$Player.player_good_mode 
+	
 	
 func process_player_speed():
 	var player_multipler = $Player.bakcground_speed_multipler

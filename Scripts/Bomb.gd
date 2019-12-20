@@ -35,7 +35,6 @@ func _physics_process(delta):
 	process_collisions(output)
 
 func process_collisions( object ):
-	print ( object )
 	if object == null : return
 	if object.collider.is_in_group("obstacles"): return
 	if object.collider.is_in_group("enemy_missle"): return
@@ -43,6 +42,7 @@ func process_collisions( object ):
 	if object.collider.is_in_group("player"): 
 		on_delete()
 		return
+	print ( object.collider.get_groups() )
 	if object.collider.is_in_group("floor"): play_animation_if_not_player("Dead")
 
 func play_animation_if_not_player( anim_name ):
