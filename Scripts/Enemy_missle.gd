@@ -13,7 +13,7 @@ func process_collisions( object ):
 	if object.collider.is_in_group("obstacles"): return
 	if object.collider.is_in_group("enemy_missle"): return
 	if object.collider.is_in_group("alien"): return
-	print( object.collider.get_groups() )
+#	print( object.collider.get_groups() )
 	if object.collider.is_in_group("missle"): get_parent().points += 100
 	on_delete()
 

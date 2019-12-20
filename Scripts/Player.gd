@@ -125,6 +125,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		Flow.play_world()
 
 func _on_Area2D_body_entered(body):
+	print( body.get_groups() )
 	var is_killed = body.is_in_group("alien") or body.is_in_group("obstalces") or body.is_in_group("enemy_missle")
 	if is_killed: on_dead()
 

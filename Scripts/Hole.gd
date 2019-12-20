@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 export var SPEED = 130
 
@@ -22,7 +22,7 @@ func _physics_process(delta):
 	if Flow.world_is_paused: return
 
 	position.x -=  -1 * SPEED * speed_multipler * delta
-	position.y = fixed_y_pos
+	position.y  = fixed_y_pos
 	
 	if add_points : grant_points()
 	if position.x < -100 : call_deferred("queue_free")

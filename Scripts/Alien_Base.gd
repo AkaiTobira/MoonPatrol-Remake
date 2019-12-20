@@ -227,6 +227,8 @@ func _on_Area2D_body_entered(body):
 	var hit_with_floor  = body.is_in_group("floor")
 	var hit_with_player = body.is_in_group("missle") or body.is_in_group("player")
 	
+	if body.is_in_group("missle"): body.on_delete()
+
 	if hit_with_player or hit_with_floor:
 		stop()
 		if hit_with_floor  : on_dead()

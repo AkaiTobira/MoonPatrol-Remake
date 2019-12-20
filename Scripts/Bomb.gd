@@ -6,6 +6,7 @@ var triple_points = {}
 var max_distance  = 1
 var left_distance = 1
 var squat_id      = 0
+var road_speed    = 0
 
 func calculate_path( mother_ship ): 
 	position = mother_ship.position
@@ -21,6 +22,9 @@ func calculate_path( mother_ship ):
 	max_distance = (farest_point - triple_points["a"]).length() + (triple_points["c"] - farest_point).length()
 	left_distance = max_distance
 
+func adapt_speed( speed ): 
+	road_speed = speed
+
 func update_direction(delta):
 
 	var a_distance_x = abs(triple_points["b"].x - triple_points["a"].x)
@@ -29,10 +33,14 @@ func update_direction(delta):
 	triple_points["relative"] += direction*delta * SPEED
 
 func _physics_process(delta):
-	SPEED = min ( SPEED + 250*delta, 500 )
 	update_direction(delta)
 	var output = move_and_collide( direction * SPEED * delta )
 	process_collisions(output)
+	SPEED = min ( SPEED + 250*delta, 500 )
+	
+	if $AnimationPlayer.current_animation == "Dead":
+		SPEED = 0
+		position.x -= road_speed * delta
 
 func process_collisions( object ):
 	if object == null : return
@@ -42,7 +50,7 @@ func process_collisions( object ):
 	if object.collider.is_in_group("player"): 
 		on_delete()
 		return
-	print ( object.collider.get_groups() )
+#	print ( object.collider.get_groups() )
 	if object.collider.is_in_group("floor"): play_animation_if_not_player("Dead")
 
 func play_animation_if_not_player( anim_name ):

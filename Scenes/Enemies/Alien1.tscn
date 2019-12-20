@@ -18,8 +18,8 @@ loop = true
 "alien",
 ]]
 scale = Vector2( 0.3, 0.3 )
-collision_layer = 0
-collision_mask = 0
+collision_layer = 7
+collision_mask = 7
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -40,8 +40,8 @@ scale = Vector2( 0.134036, 1 )
 polygon = PoolVector2Array( 119.215, 92.4759, 144.971, 105.354, -151.945, 103.208, -128.335, 93.9068 )
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 6657
-collision_mask = 6657
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -3.76561, 59.4964 )
