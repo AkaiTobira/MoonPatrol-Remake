@@ -9,6 +9,7 @@ var player_speed = 1
 
 func set_speed_multipler( multipler ):
 	player_speed = 1 + multipler
+	road_speed   =  SPEDD_MULTIPLER_3 * player_speed * SPEED
 
 func move_background( node, speed ):
 	node.motion_offset.x -= speed

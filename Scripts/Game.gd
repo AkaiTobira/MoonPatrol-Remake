@@ -7,6 +7,8 @@ var timer_for_segment = -6
 var timer_summary     = -6
 var timer_reduction   = 0
 
+var drived_road       = 0
+
 # warning-ignore:unused_class_variable
 var points            = 0
 
@@ -32,10 +34,10 @@ func process_timers(delta):
 	timer_reduction   += Utilities.player.bakcground_speed_multipler * delta * 0.22
 
 func process_spawn():
-	var current_time = stepify(timer_for_segment + timer_reduction, 0.1)
+	var current_time = stepify(drived_road, 0.1)#stepify(timer_for_segment + timer_reduction, 0.1)
 	for timer in set_of_spawns :
-		var nmb_time = float(timer)
-		if nmb_time <= current_time:
+		var nmb_time = float(timer) * $ParallaxBackground.SPEED * $ParallaxBackground.SPEDD_MULTIPLER_3
+		if nmb_time <= current_time: 
 			parse_keyword( set_of_spawns[timer] )
 			set_of_spawns.erase(timer)
 
@@ -53,7 +55,7 @@ func _process(delta):
 	process_intro()
 	process_timers(delta)
 	process_spawn()
-	process_player_speed()
+	process_player_speed(delta)
 	process_GUI()
 	
 func process_GUI(): 
@@ -64,19 +66,23 @@ func process_GUI():
 	if Input.is_action_just_pressed("ui_page_down"): $Player.player_good_mode = !$Player.player_good_mode 
 	
 	
-func process_player_speed():
+func process_player_speed(delta):
 	var player_multipler = $Player.bakcground_speed_multipler
 	$ParallaxBackground.set_speed_multipler( player_multipler )
+
+	#var value  = ( $Player.relative_x/100 + 2 )
+	print( drived_road, " ", $ParallaxBackground.road_speed )
+	drived_road += $ParallaxBackground.road_speed * delta 
 
 	for obstacle in get_children():
 		if obstacle.is_in_group("obstalces"):
 			obstacle.adapt_speed( $ParallaxBackground.road_speed )
-		
 
 func reload_from_checkpoint():
 	Flow.clean_scene()
 	timer_for_segment = 0
 	timer_reduction   = 0
+	drived_road       = 0 
 	Utilities.player.reset()
 	set_of_spawns     = LevelParser.get_active_spawn_times()
 	$ParallaxBackground.set_backgoround_info( background_backup )
@@ -88,3 +94,4 @@ func next_checkpoint(letter):
 	set_of_spawns     = LevelParser.get_active_spawn_times()
 	timer_for_segment = 0
 	timer_reduction   = 0
+	drived_road       = 0
