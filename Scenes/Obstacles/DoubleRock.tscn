@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/DoubleRock.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_old/rock.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Placeholders_old/BakuhatsuNoGenjutsuDa.png" type="Texture" id=3]
+[ext_resource path="res://Resouces/Dead_Rock.tres" type="Animation" id=4]
+[ext_resource path="res://Resouces/Dead_Rock2.tres" type="Animation" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+loop = true
+
+[sub_resource type="Animation" id=3]
+resource_name = "Idle"
+loop = true
 
 [node name="Rock" type="KinematicBody2D" groups=[
 "obstalces",
@@ -26,22 +37,54 @@ collision_mask = 4
 [node name="Sprite" type="Sprite" parent="Area2D"]
 texture = ExtResource( 2 )
 
+[node name="Explosion" type="Sprite" parent="Area2D"]
+visible = false
+position = Vector2( -4.85298, -19.6816 )
+scale = Vector2( 1.19643, 1.70908 )
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 3
+frame = 1
+
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2( 1.3689, -0.684448 )
 scale = Vector2( 1.2, 1.2 )
 polygon = PoolVector2Array( -40.1759, -57.711, -62.3115, 31.5345, -24.3647, 59.6432, 16.3931, 61.4, 61.7185, 44.1834, 55.394, 2.37158, 43.0964, -54.9001 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D"]
+autoplay = "Idle"
+playback_speed = 9.0
+anims/Dead = ExtResource( 4 )
+anims/Idle = SubResource( 1 )
+
 [node name="Area2D2" type="Area2D" parent="."]
-position = Vector2( 41.4286, 0 )
+position = Vector2( 40, 0 )
 collision_layer = 4
 collision_mask = 4
 
 [node name="Sprite" type="Sprite" parent="Area2D2"]
 texture = ExtResource( 2 )
 
+[node name="Explosion" type="Sprite" parent="Area2D2"]
+visible = false
+position = Vector2( -4.85298, -19.6816 )
+scale = Vector2( 1.19643, 1.70908 )
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 3
+frame = 1
+
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D2"]
 position = Vector2( 1.3689, -0.684448 )
 scale = Vector2( 1.2, 1.2 )
 polygon = PoolVector2Array( -40.1759, -57.711, -62.3115, 31.5345, -24.3647, 59.6432, 16.3931, 61.4, 61.7185, 44.1834, 55.394, 2.37158, 43.0964, -54.9001 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D2"]
+autoplay = "Idle"
+playback_speed = 9.0
+anims/Dead = ExtResource( 5 )
+anims/Idle = SubResource( 3 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="animation_finished" from="Area2D/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
+[connection signal="animation_finished" from="Area2D2/AnimationPlayer" to="." method="_on_AnimationPlayer2_animation_finished"]

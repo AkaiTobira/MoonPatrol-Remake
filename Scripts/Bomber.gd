@@ -36,7 +36,6 @@ func _physics_process(delta):
 		else: process_move(delta)
 	update_move_log()
 
-#var index = 0
 func follow_lider(delta):
 	target_move_point = lider.move_log[ number_in_squat * 15 ] 
 	move_to_target_pos(delta)

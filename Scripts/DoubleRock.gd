@@ -7,7 +7,6 @@ var fixed_y_pos      = 0
 var points_jump_over = 50
 var points_destroy   = 100
 var add_points       = true
-var pause            = false
 
 func adapt_speed( speed ):
 	SPEED = speed
@@ -30,13 +29,23 @@ func _physics_process(delta):
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("missle"):
+		play_animation( $Area2D/AnimationPlayer, "Dead" )
 		get_parent().points += points_destroy
 		body.on_delete()
-		$CollisionPolygon2D.call_deferred("queue_free")
-		$Area2D.call_deferred("queue_free")
 
 func _on_Area2D2_body_entered(body):
 	if body.is_in_group("missle"):
 		get_parent().points += points_destroy
+		play_animation( $Area2D2/AnimationPlayer, "Dead" )
 		body.on_delete()
-		call_deferred("queue_free")
+
+func play_animation( animator, anim_name ):
+#	if animator == null: return
+	if animator.current_animation == anim_name: return
+	animator.play(anim_name)
+
+func _on_AnimationPlayer_animation_finished(anim_name): 
+	$CollisionPolygon2D.call_deferred("queue_free")
+	$Area2D.call_deferred("queue_free")
+
+func _on_AnimationPlayer2_animation_finished(anim_name): call_deferred("queue_free")

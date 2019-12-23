@@ -33,11 +33,19 @@ func process_timers(delta):
 	timer_summary     += delta
 	timer_reduction   += Utilities.player.bakcground_speed_multipler * delta * 0.22
 
+func update_logger( info ):
+	logger.push_back( info )
+	if logger.size() > 8 : logger.pop_front()
+	$UI/SpawnLog.text = ""
+	for logg in logger:
+		$UI/SpawnLog.text += logg + "\n"
+
 func process_spawn():
 	var current_time = stepify(drived_road, 0.1)#stepify(timer_for_segment + timer_reduction, 0.1)
 	for timer in set_of_spawns :
 		var nmb_time = float(timer) * $ParallaxBackground.SPEED * $ParallaxBackground.SPEDD_MULTIPLER_3
 		if nmb_time <= current_time: 
+			update_logger(str( current_time ) + " " + str(set_of_spawns[timer]))
 			parse_keyword( set_of_spawns[timer] )
 			set_of_spawns.erase(timer)
 
@@ -70,20 +78,22 @@ func process_player_speed(delta):
 	var player_multipler = $Player.bakcground_speed_multipler
 	$ParallaxBackground.set_speed_multipler( player_multipler )
 
-	#var value  = ( $Player.relative_x/100 + 2 )
-	print( drived_road, " ", $ParallaxBackground.road_speed )
 	drived_road += $ParallaxBackground.road_speed * delta 
 
 	for obstacle in get_children():
 		if obstacle.is_in_group("obstalces"):
 			obstacle.adapt_speed( $ParallaxBackground.road_speed )
 
-func reload_from_checkpoint():
-	Flow.clean_scene()
+func reset_segment_process_values():
 	timer_for_segment = 0
 	timer_reduction   = 0
 	drived_road       = 0 
+	
+
+func reload_from_checkpoint():
+	Flow.clean_scene()
 	Utilities.player.reset()
+	reset_segment_process_values()
 	set_of_spawns     = LevelParser.get_active_spawn_times()
 	$ParallaxBackground.set_backgoround_info( background_backup )
 	Flow.play_world()
@@ -92,6 +102,4 @@ func next_checkpoint(letter):
 	background_backup = $ParallaxBackground.get_backgoround_info()
 	LevelParser.reached_next_letter(letter)
 	set_of_spawns     = LevelParser.get_active_spawn_times()
-	timer_for_segment = 0
-	timer_reduction   = 0
-	drived_road       = 0
+	reset_segment_process_values()
