@@ -17,12 +17,13 @@ func grant_points():
 func adapt_speed( speed ):
 	SPEED = speed
 
+func on_delete() : return
+
 # warning-ignore:unused_argument
 func _physics_process(delta):
 	if Flow.world_is_paused: return
 
-	position.x -=  -1 * SPEED * speed_multipler * delta
+	position.x +=  -1 * SPEED * speed_multipler * delta
 	position.y  = fixed_y_pos
-	
 	if add_points : grant_points()
 	if position.x < -100 : call_deferred("queue_free")

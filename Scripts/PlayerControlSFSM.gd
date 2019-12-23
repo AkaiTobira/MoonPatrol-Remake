@@ -57,7 +57,7 @@ class JumpRight extends State:
 	var target_hight  = 0 
 	
 	func _init(s_stack).(s_stack):
-		target_hight = Utilities.player.position.y - (Utilities.player.MaxJump + (Utilities.player.relative_x * Utilities.player.MaxJump/200))
+		target_hight = Utilities.player.position.y - 30 - (Utilities.player.MaxJump + (Utilities.player.relative_x * Utilities.player.MaxJump/200))
 		Utilities.player.is_jumping = true
 		Utilities.player.on_floor   = false
 		Utilities.player.relative_y = target_hight
@@ -77,7 +77,7 @@ class JumpLeft extends State:
 	var target_hight  = 0 
 	
 	func _init(s_stack).(s_stack):
-		target_hight = Utilities.player.position.y - (Utilities.player.MaxJump + (Utilities.player.relative_x * Utilities.player.MaxJump/200))
+		target_hight = Utilities.player.position.y - 30 - (Utilities.player.MaxJump + (Utilities.player.relative_x * Utilities.player.MaxJump/200))
 		Utilities.player.is_jumping = true
 		Utilities.player.on_floor   = false
 		Utilities.player.relative_y = target_hight
@@ -117,7 +117,7 @@ class JumpIdle extends State:
 	var target_hight  = 0 
 	
 	func _init(s_stack).(s_stack):
-		target_hight = Utilities.player.position.y - (Utilities.player.MaxJump + (Utilities.player.relative_x * Utilities.player.MaxJump/200))
+		target_hight = Utilities.player.position.y - 30 - (Utilities.player.MaxJump + (Utilities.player.relative_x * Utilities.player.MaxJump/200))
 		
 		Utilities.player.is_jumping = true
 		

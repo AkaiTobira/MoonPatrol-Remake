@@ -30,10 +30,6 @@ func _physics_process(delta):
 func on_delete(): play_if_not_played( "Dead" )
 
 func _on_Area2D_body_entered(body):
-	print( "SRB ", get_groups()," ", body.get_groups() )
-	
-	
-	
 	if body.is_in_group("player"): 
 		speed_multipler = 0
 		play_if_not_played( "Dead" )

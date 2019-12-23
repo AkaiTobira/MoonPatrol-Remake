@@ -13,7 +13,7 @@ func calculate_path( mother_ship ):
 	squat_id = mother_ship.squat_id
 	triple_points = { 
 		"a" : Vector2(0,0), 
-		"b" : Vector2(min( Utilities.player.position.x - 250 + randi()%200, 1150 ),
+		"b" : Vector2(min( Utilities.player.position.x - 250 + randi()%200, 900 ),
 		              Utilities.player.position.y - position.y),
 		"c" : 2 * ( Vector2( 0, Utilities.player.position.y - position.y) ), 
 		"relative" : Vector2(0,0) 

@@ -185,6 +185,7 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
 [node name="UI" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 442, 203 )
 z_index = 56
 
@@ -247,7 +248,6 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = "Score :"
 
 [node name="GUI" type="CanvasLayer" parent="."]
-editor/display_folded = true
 layer = 3
 
 [node name="Control" type="Control" parent="GUI"]
@@ -430,6 +430,7 @@ z_index = 20
 texture = ExtResource( 3 )
 
 [node name="Black_Holder_Right" type="Sprite" parent="GUI"]
+visible = false
 position = Vector2( 1696.15, 538.368 )
 scale = Vector2( 0.700018, 3.23606 )
 z_index = 2
@@ -489,7 +490,7 @@ script = ExtResource( 12 )
 position = Vector2( 1920.89, 771.532 )
 
 [node name="Hole_Spawner" parent="Spawners" instance=ExtResource( 14 )]
-position = Vector2( 1594.84, 957.215 )
+position = Vector2( 1671, 943 )
 scale = Vector2( 0.949715, 1.15578 )
 
 [node name="Rock_Spawner" parent="Spawners" instance=ExtResource( 15 )]

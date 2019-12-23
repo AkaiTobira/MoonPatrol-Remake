@@ -7,7 +7,7 @@
 "obstalces",
 ]]
 scale = Vector2( 0.75, 0.75 )
-z_index = 1
+z_index = 100
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -16,4 +16,4 @@ texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 12.3236, 17.0183 )
-polygon = PoolVector2Array( -62.2812, -21.9381, -28.8142, 28.6578, -2.46216, 41.3068, 26.7886, 16.7994, 31.7955, -25.3638, -11.5271, -39.0947 )
+polygon = PoolVector2Array( -62.2812, -21.9381, -28.8142, 28.6578, -2.46216, 41.3068, 26.7886, 16.7994, 31.7955, -25.3638, -9.76659, -53.7657 )

@@ -124,7 +124,7 @@ collision_mask = 57
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2( -0.397217, -15.3406 )
-polygon = PoolVector2Array( -84.1404, -47.9991, -81.3004, -4.76762, 100.081, 9.21457, 106.74, 23.722, 107.1, 7.62626, 85.9456, -0.192032, -2.41077, -31.4323, -27.3961, -48.8489 )
+polygon = PoolVector2Array( -84.1404, -47.9991, -81.3004, -4.76762, -32.0126, -0.834395, -51.7481, 11.4599, 37.5471, 15.0187, 26.8705, 5.95981, 100.081, 9.21457, 106.74, 23.722, 107.1, 7.62626, 85.9456, -0.192032, -2.41077, -31.4323, -27.3961, -48.8489 )
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 1.53743, -38.9595 )
