@@ -69,6 +69,7 @@ func _process(delta):
 func process_GUI(): 
 	$UI/Time.text    = str( stepify(timer_for_segment + timer_reduction, 0.1) )
 	$UI/GodMode.text = "Good Mode : "  +  str($Player.player_good_mode)
+	$UI/Road.text    = str( stepify(drived_road, 0.1) )
 	
 	if Input.is_action_just_pressed("ui_down"): reload_from_checkpoint()
 	if Input.is_action_just_pressed("ui_page_down"): $Player.player_good_mode = !$Player.player_good_mode 
@@ -78,7 +79,8 @@ func process_player_speed(delta):
 	var player_multipler = $Player.bakcground_speed_multipler
 	$ParallaxBackground.set_speed_multipler( player_multipler )
 
-	drived_road += $ParallaxBackground.road_speed * delta 
+	if timer_for_segment >= 0 :
+		drived_road += $ParallaxBackground.road_speed * delta 
 
 	for obstacle in get_children():
 		if obstacle.is_in_group("obstalces"):

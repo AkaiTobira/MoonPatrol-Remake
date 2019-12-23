@@ -40,7 +40,7 @@ func _on_Area2D2_body_entered(body):
 		body.on_delete()
 
 func play_animation( animator, anim_name ):
-#	if animator == null: return
+	if animator == null: return
 	if animator.current_animation == anim_name: return
 	animator.play(anim_name)
 
@@ -54,5 +54,5 @@ func _on_AnimationPlayer2_animation_finished(anim_name):
 	call_deferred("queue_free")
 
 func on_delete():
-	play_animation( $Area2D/AnimationPlayer, "Dead" )
-	play_animation( $Area2D2/AnimationPlayer, "Dead" )
+	if $Area2D/AnimationPlayer  : play_animation( $Area2D/AnimationPlayer, "Dead" )
+	if $Area2D2/AnimationPlayer : play_animation( $Area2D2/AnimationPlayer, "Dead" )
