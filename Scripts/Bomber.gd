@@ -64,6 +64,6 @@ func on_destroy():
 	SquatController.bomber_destroyed( squat_id, number_in_squat-1 )
 	.on_destroy()
 
-func on_dead():
+func on_delete():
 	SquatController.bomber_destroyed( squat_id, number_in_squat-1 )
-	.on_dead()
+	.on_delete()

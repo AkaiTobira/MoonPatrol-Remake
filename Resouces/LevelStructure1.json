@@ -7,36 +7,37 @@
 	"level_structure"   : {
 		"0" : {
 			"0" :{
-				"1"    : "5_abcde_Alien1",
-				"1.1"  : "5_11111_Alien2",
-				"1.2"  : "5_11111_Bomber",
+				"100"    : "5_abcde_Alien1",
+				"100.1"  : "5_11111_Alien2",
+				"100.2"  : "5_11111_Bomber",
 
+				"6"   : "RoundS",
+				"8"   : "Round",
+
+				"112"    : "RockB",
+
+				"114"    : "Hole",
 				
+				"116"    : "Mine",
 
-				"2"    : "RockB",
+				"118"    : "HoleB",
 
-				"4"    : "Hole",
-				
-				"6"    : "Mine",
+				"120"   : "Rock2",
 
-				"8"    : "HoleB",
+				"122"   : "RockS",
 
-				"10"   : "Rock2",
+				"124"   : "RoundS",
 
-				"12"   : "RockS",
+				"126"   : "Worm",
 
-				"14"   : "RoundS",
-
-				"16"   : "Worm",
-
-				"18"   : "Round",
+				"128"   : "Round",
 
 
-				"20" : "^Rise",
+				"130" : "^Rise",
 
 
 
-				"50" : "^Fall",
+				"150" : "^Fall",
 
 				"200"   : "@0",
 

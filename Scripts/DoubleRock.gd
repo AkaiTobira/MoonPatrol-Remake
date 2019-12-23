@@ -45,7 +45,14 @@ func play_animation( animator, anim_name ):
 	animator.play(anim_name)
 
 func _on_AnimationPlayer_animation_finished(anim_name): 
+	if anim_name != "Dead" : return
 	$CollisionPolygon2D.call_deferred("queue_free")
 	$Area2D.call_deferred("queue_free")
 
-func _on_AnimationPlayer2_animation_finished(anim_name): call_deferred("queue_free")
+func _on_AnimationPlayer2_animation_finished(anim_name): 
+	if anim_name != "Dead" : return
+	call_deferred("queue_free")
+
+func on_delete():
+	play_animation( $Area2D/AnimationPlayer, "Dead" )
+	play_animation( $Area2D2/AnimationPlayer, "Dead" )

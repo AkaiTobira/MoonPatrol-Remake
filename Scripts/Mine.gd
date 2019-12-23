@@ -25,3 +25,11 @@ func _physics_process(delta):
 	
 	if add_points : grant_points()
 	if position.x < -100 : call_deferred("queue_free")
+
+func on_delete():
+	$AnimationPlayer.play("Dead")
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name != "Dead" : return
+	call_deferred("queue_free")
+	

@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/WormHole.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_old/hole.png" type="Texture" id=2]
 [ext_resource path="res://Textures/Placeholders_old/rock.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Placeholders_old/BakuhatsuNoGenjutsuDa.png" type="Texture" id=4]
+[ext_resource path="res://Resouces/Dead_Worm.tres" type="Animation" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "GoUp"
@@ -20,6 +22,10 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( -10.6959, 7.44566 ), Vector2( -7.35094, -51.0663 ), Vector2( -10.696, 7.446 ) ]
 }
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+loop = true
 
 [node name="WormHole" type="KinematicBody2D" groups=[
 "obstalces",
@@ -53,4 +59,19 @@ collision_mask = 5
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Worm/Area2D"]
 position = Vector2( -5.85371, -51.4291 )
 polygon = PoolVector2Array( -42.6368, -58.2742, 41.824, -57.4379, 54.3677, 10.298, 57.2946, 39.5666, 30.9528, 52.9465, -2.49701, 57.964, -22.5669, 55.8734, -49.7449, 42.0753, -58.5255, 35.3854, -42.6368, -57.0198 )
+
+[node name="Explosion" type="Sprite" parent="Worm"]
+visible = false
+position = Vector2( 0, -26.3444 )
+scale = Vector2( 1, 1.60472 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Worm"]
+autoplay = "Idle"
+playback_speed = 9.0
+anims/Dead = ExtResource( 5 )
+anims/Idle = SubResource( 2 )
 [connection signal="body_entered" from="Worm/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="animation_finished" from="Worm/AnimationPlayer" to="." method="_on_AnimationPlayer2_animation_finished"]

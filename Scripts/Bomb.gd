@@ -35,17 +35,17 @@ func update_direction(delta):
 func _physics_process(delta):
 	update_direction(delta)
 	var output = move_and_collide( direction * SPEED * delta )
-	process_collisions(output)
+	process_collisions(output, delta)
 	SPEED = min ( SPEED + 250*delta, 500 )
 	
 	if $AnimationPlayer.current_animation == "Dead":
 		SPEED = 0
 		position.x -= road_speed * delta
 
-func process_collisions( object ):
+func process_collisions( object, delta ):
 	if object == null : return
-	if object.collider.is_in_group("obstacles"): return
-	if object.collider.is_in_group("enemy_missle"): return
+	if object.collider.is_in_group("obstacles"):    move_and_slide( direction * SPEED * delta )
+	if object.collider.is_in_group("enemy_missle"): move_and_slide( direction * SPEED * delta )
 	if object.collider.is_in_group("missle"): get_parent().points += 100
 	if object.collider.is_in_group("player"): 
 		on_delete()

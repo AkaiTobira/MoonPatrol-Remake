@@ -40,5 +40,16 @@ func _on_Area2D_body_entered(body):
 		var current_animation_position = $AnimationPlayer.current_animation_position
 		add_points_base_animation_moment(current_animation_position)
 		body.on_delete()
-		$AnimationPlayer.call_deferred("queue_free")
-		$Worm.call_deferred("queue_free")
+
+func play_if_not_played(anim_name):
+	var animator = $Worm/AnimationPlayer
+	if animator.current_animation == anim_name : return
+	animator.play(anim_name) 
+
+func on_delete(): play_if_not_played("Dead")
+
+func _on_AnimationPlayer2_animation_finished(anim_name):
+	if anim_name != "Dead" : return
+	$AnimationPlayer.call_deferred("queue_free")
+	$Worm.call_deferred("queue_free")
+

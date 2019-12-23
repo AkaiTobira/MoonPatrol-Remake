@@ -9,7 +9,7 @@ var points_destroy   = 50
 var add_points       = true
 
 func adapt_speed( speed ):
-	SPEED =  max( 130, speed )
+	SPEED =  max( 160, speed )
 
 func grant_points():
 	if !Utilities.player: return 
@@ -27,10 +27,25 @@ func _physics_process(delta):
 	if add_points : grant_points()
 	if position.x < -100 : call_deferred("queue_free")
 
+func on_delete(): play_if_not_played( "Dead" )
+
 func _on_Area2D_body_entered(body):
-	if body.is_in_group("player"):
-		queue_free()
+	print( "SRB ", get_groups()," ", body.get_groups() )
+	
+	
+	
+	if body.is_in_group("player"): 
+		speed_multipler = 0
+		play_if_not_played( "Dead" )
 	if body.is_in_group("missle"):
 		get_parent().points += points_destroy
+		speed_multipler = 0
 		body.on_delete()
-		call_deferred("queue_free")
+		play_if_not_played( "Dead" )
+
+func play_if_not_played( anim_name ):
+	if $AnimationPlayer.current_animation == anim_name : return
+	$AnimationPlayer.play(anim_name)
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	call_deferred("queue_free")

@@ -59,7 +59,7 @@ func update_times(delta):
 func process_dead():
 	if life_timer < LIFE_TIME: return
 	select_life_end_point()
-	if target_move_point.distance_to( position ) < 3: on_dead()
+	if target_move_point.distance_to( position ) < 3: on_delete()
 
 # warning-ignore:unused_argument
 func adapt_speed( speed ): pass
@@ -78,7 +78,7 @@ func enable_kamikaze_atack():
 			SquatController.switch_sqaut_special_active( squat_id, true )
 			target_move_point = Utilities.player.position + Vector2( randi()%20 * -1 if randi()%2 == 0 else 1, 10 ) 
 
-func on_dead():
+func on_delete():
 	play_animation_if_not_player( "Dead" )
 	SquatController.reduce_number_of_squad(squat_id)
 
@@ -231,7 +231,7 @@ func _on_Area2D_body_entered(body):
 
 	if hit_with_player or hit_with_floor:
 		stop()
-		if hit_with_floor  : on_dead()
+		if hit_with_floor  : on_delete()
 		if hit_with_player : on_destroy()
 
 func play_animation_if_not_player( anim_name ):
