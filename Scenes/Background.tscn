@@ -58,7 +58,7 @@ collision_mask = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Back3/StaticBody2D"]
 position = Vector2( 646.09, 746.727 )
 scale = Vector2( 1, 0.941706 )
-polygon = PoolVector2Array( 3294.59, -52.7101, 3298.67, 116.306, -697.645, 104.75, -697.645, -59.933 )
+polygon = PoolVector2Array( 3299.21, -60.0696, 3298.67, 116.306, -697.645, 104.75, -697.645, -59.933, 311.42, -60.0696 )
 one_way_collision_margin = 128.0
 
 [node name="Sprite" type="Sprite" parent="Back3"]
@@ -66,3 +66,4 @@ position = Vector2( 1560, 775.173 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 1
 texture = ExtResource( 5 )
+offset = Vector2( 0, 702 )

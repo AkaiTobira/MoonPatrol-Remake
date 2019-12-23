@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/BombHole.gd" type="Script" id=1]
-[ext_resource path="res://Textures/Placeholders_old/hole.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Placeholders_new/bomber hole.png" type="Texture" id=2]
 
 [node name="BombHole" type="KinematicBody2D" groups=[
 "obstalces",
@@ -11,8 +11,10 @@ z_index = 1
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.135914, -31.4277 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 0, -0.154643 )
-polygon = PoolVector2Array( -56.4114, -50.3088, -72.0304, -24.4834, -28.8142, 28.6578, -2.46216, 41.3068, 26.7886, 16.7994, 35.9103, -31.7517, -18.9879, -66.7009 )
+polygon = PoolVector2Array( -57.1904, -0.141998, -28.8142, 28.6578, -2.46216, 41.3068, 37.6941, 20.7924, 60.2598, 1.21738, -0.64032, -2.04514 )
