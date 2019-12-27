@@ -31,6 +31,7 @@ loop = true
 "obstalces",
 ]]
 position = Vector2( 0, -10 )
+scale = Vector2( 0.85, 0.85 )
 z_index = 1
 script = ExtResource( 1 )
 

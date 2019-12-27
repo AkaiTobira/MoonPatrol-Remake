@@ -6,7 +6,7 @@
 [node name="BombHole" type="KinematicBody2D" groups=[
 "obstalces",
 ]]
-scale = Vector2( 0.75, 0.75 )
+scale = Vector2( 0.95, 0.95 )
 z_index = 1
 script = ExtResource( 1 )
 
