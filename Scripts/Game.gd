@@ -105,3 +105,8 @@ func next_checkpoint(letter):
 	LevelParser.reached_next_letter(letter)
 	set_of_spawns     = LevelParser.get_active_spawn_times()
 	reset_segment_process_values()
+
+func _on_V_visibility_changed():
+		if $GUI/Control.visible:
+			$GUI/Control.hide()
+		else: $GUI/Control.show()

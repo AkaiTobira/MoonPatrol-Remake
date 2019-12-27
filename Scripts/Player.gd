@@ -17,7 +17,7 @@ var fire_up_missles = 0
 
 #system variables
 var bakcground_speed_multipler = 0
-var player_good_mode           = false
+var player_good_mode           = true
 var pause                      = false
 
 # warning-ignore:unused_class_variable
@@ -61,6 +61,8 @@ func shoot_forward():
 	forward_missle.life_range = 300 
 	forward_missle.direction  = Vector2(1,0)
 	get_parent().call_deferred("add_child", forward_missle)  
+	$ShootSound.play()
+	
 
 func shoot_up():
 	var up_missle        = Utilities.get_instance("PUmissle")
@@ -111,6 +113,7 @@ func wheel_on_floor( collision ):
 
 func on_dead():
 	if not player_good_mode: 
+		$ExplosionSound.play()
 		Flow.pause_world(10)
 		play_animation_if_not_player("Dead")
 

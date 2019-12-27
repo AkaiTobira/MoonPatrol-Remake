@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_old/the_car.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Scripts/Whell.gd" type="Script" id=4]
 [ext_resource path="res://Textures/Placeholders_old/Wheel.png" type="Texture" id=5]
 [ext_resource path="res://Resouces/Dead-Player.tres" type="Animation" id=6]
+[ext_resource path="res://Sounds/LaserShot.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/atari_boom5.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Roll"
@@ -171,5 +173,11 @@ shape = SubResource( 2 )
 autoplay = "Idle"
 anims/Dead = ExtResource( 6 )
 anims/Idle = SubResource( 4 )
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
