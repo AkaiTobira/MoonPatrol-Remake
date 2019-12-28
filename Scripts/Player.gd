@@ -31,6 +31,8 @@ var force      = 0
 var on_floor   = true
 var floor_y    = 0
 
+var lives      = 3
+
 var controller = null
 
 func _ready():
@@ -123,7 +125,9 @@ func play_animation_if_not_player( anim_name ):
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Dead": 
-		get_parent().reload_from_checkpoint()
+		lives -= 1
+		if lives < 0 and not player_good_mode : get_parent().show_game_over()
+		else : get_parent().reload_from_checkpoint()
 		play_animation_if_not_player( "Idle" )
 		Flow.play_world()
 
