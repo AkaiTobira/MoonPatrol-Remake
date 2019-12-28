@@ -442,6 +442,7 @@ margin_right = 0.0779877
 margin_bottom = -0.0481567
 
 [node name="Obstacle" type="VBoxContainer" parent="GUI/Control/Warnings"]
+visible = false
 anchor_left = 0.112
 anchor_top = 0.114
 anchor_right = 0.867
@@ -500,28 +501,18 @@ move_borders = Vector2( 650, 900 )
 [node name="Alien1" type="Node2D" parent="Paths"]
 
 [node name="a" type="Path2D" parent="Paths/Alien1"]
-visible = false
 curve = SubResource( 10 )
 
 [node name="b" type="Path2D" parent="Paths/Alien1"]
-visible = false
 curve = SubResource( 11 )
 
 [node name="c" type="Path2D" parent="Paths/Alien1"]
-visible = false
 curve = SubResource( 12 )
 
 [node name="d" type="Path2D" parent="Paths/Alien1"]
-visible = false
 curve = SubResource( 13 )
 
-[node name="f" type="Path2D" parent="Paths/Alien1"]
-position = Vector2( 2.30154, 1.52588e-005 )
-scale = Vector2( 0.991935, 1 )
-curve = SubResource( 10 )
-
 [node name="e" type="Path2D" parent="Paths/Alien1"]
-visible = false
 curve = SubResource( 14 )
 
 [node name="Alien2" type="Node2D" parent="Paths"]
@@ -534,7 +525,6 @@ curve = SubResource( 10 )
 visible = false
 
 [node name="a" type="Path2D" parent="Paths/Bomber"]
-visible = false
 curve = SubResource( 10 )
 
 [node name="Spawners" type="Node2D" parent="."]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Mine.gd" type="Script" id=1]
-[ext_resource path="res://Textures/Placeholders_old/Mine.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Placeholders_new/landmine.png" type="Texture" id=2]
 [ext_resource path="res://Textures/Placeholders_old/BakuhatsuNoGenjutsuDa.png" type="Texture" id=3]
 [ext_resource path="res://Resouces/Dead_Mine.tres" type="Animation" id=4]
 
@@ -20,6 +20,8 @@ position = Vector2( 1.07315, 0 )
 polygon = PoolVector2Array( 17.8936, -70.036, 109.851, 11.385, 98.1091, 27.5829, 3.39336, 37.3941, -101.888, 27.9603, -108.303, 7.20583, -17.5218, -68.605, 6.08849, -191.665 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1.46393, -15.5127 )
+scale = Vector2( 1.33537, 1.69311 )
 texture = ExtResource( 2 )
 
 [node name="Explosion" type="Sprite" parent="."]

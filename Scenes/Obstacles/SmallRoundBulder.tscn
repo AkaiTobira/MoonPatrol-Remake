@@ -2,11 +2,11 @@
 
 [ext_resource path="res://Scripts/RoundRock.gd" type="Script" id=1]
 [ext_resource path="res://Resouces/Dead_Round.tres" type="Animation" id=2]
-[ext_resource path="res://Textures/Placeholders_old/RockBulder.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Placeholders_new/boulder_small.png" type="Texture" id=3]
 [ext_resource path="res://Textures/Placeholders_old/BakuhatsuNoGenjutsuDa.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 27.4359
+radius = 18.4381
 
 [sub_resource type="Animation" id=2]
 resource_name = "Round"
@@ -26,18 +26,18 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 31.3904
+radius = 19.4236
 
 [node name="Rock" type="KinematicBody2D" groups=[
 "obstalces",
 ]]
-scale = Vector2( 0.9, 0.9 )
 z_index = 1
 collision_layer = 3
 collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -3 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -47,6 +47,7 @@ anims/Dead = ExtResource( 2 )
 anims/Round = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -2 )
 rotation = 6.28319
 texture = ExtResource( 3 )
 
@@ -55,7 +56,7 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -0.421987, -0.268688 )
+position = Vector2( -0.421987, -2.26869 )
 shape = SubResource( 3 )
 
 [node name="Explosion" type="Sprite" parent="."]
