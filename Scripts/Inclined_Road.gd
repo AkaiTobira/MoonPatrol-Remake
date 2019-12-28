@@ -93,6 +93,7 @@ func _process(delta):
 func set_spawners_height():
 	var is_low  = "Fall" == state or state == "Rise"
 	Flow.is_high          = not is_low
-	Flow.hight_difference = parent_collider_y - get_parent().get_node("Back3/StaticBody2D").position.y
+	var difference        = parent_collider_y - get_parent().get_node("Back3/StaticBody2D").position.y + 3
+	Flow.hight_difference = difference if abs(difference) > 10 else 0
 	
 	

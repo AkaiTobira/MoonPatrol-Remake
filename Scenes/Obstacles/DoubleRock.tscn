@@ -52,7 +52,6 @@ frame = 4
 position = Vector2( 1.3689, -0.684448 )
 scale = Vector2( 1.2, 1.2 )
 polygon = PoolVector2Array( -75.3685, -2.77712, -74.9833, 25.9814, -40.7041, 57.8854, 16.3931, 61.4, 34.0167, 58.3348, 32.0909, -72.8761, -4.11403, -43.6682, -11.8172, -23.4473, -13.743, 15.6463, -43.7854, -3.67583 )
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D"]
 autoplay = "Idle"
