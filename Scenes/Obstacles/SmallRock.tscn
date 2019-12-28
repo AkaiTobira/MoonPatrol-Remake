@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Rock.gd" type="Script" id=1]
-[ext_resource path="res://Textures/Placeholders_old/rock.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Placeholders_new/rock1.png" type="Texture" id=2]
 [ext_resource path="res://Resouces/Dead_RockD.tres" type="Animation" id=3]
 [ext_resource path="res://Textures/Placeholders_old/BakuhatsuNoGenjutsuDa.png" type="Texture" id=4]
 
@@ -25,6 +25,8 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="Sprite" type="Sprite" parent="Area2D"]
+position = Vector2( -1.46711, 20 )
+scale = Vector2( 1.20631, 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]

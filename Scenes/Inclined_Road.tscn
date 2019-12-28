@@ -47,14 +47,14 @@ z_as_relative = false
 texture = ExtResource( 2 )
 
 [node name="Sprite3" type="Sprite" parent="ParallaxBackground"]
-position = Vector2( 9382.31, 1030.86 )
+position = Vector2( 9368.31, 1030.86 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 120
 texture = ExtResource( 2 )
 flip_h = true
 
 [node name="Sprite4" type="Sprite" parent="ParallaxBackground"]
-position = Vector2( 11618.5, 1140.75 )
+position = Vector2( 11609.5, 1140.75 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 120
 texture = ExtResource( 2 )

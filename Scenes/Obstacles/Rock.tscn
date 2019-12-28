@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Rock.gd" type="Script" id=1]
-[ext_resource path="res://Textures/Placeholders_old/rock.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Placeholders_new/rock2.png" type="Texture" id=2]
 [ext_resource path="res://Resouces/Dead_RockD.tres" type="Animation" id=3]
 [ext_resource path="res://Textures/Placeholders_old/BakuhatsuNoGenjutsuDa.png" type="Texture" id=4]
 
