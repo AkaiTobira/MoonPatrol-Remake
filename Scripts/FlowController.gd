@@ -44,7 +44,17 @@ func adapt_height( instance ):
 		instance.position.y  -= hight_difference
 		instance.fixed_y_pos -= hight_difference
 
+var is_over = false
+func exit_to_intro( lenght_of_pause ):
+	is_over = true
+	pause_world( lenght_of_pause )
+
+func reload_game():
+	is_over = false
+	get_tree().change_scene("res://Scenes/Intro.tscn")
+
 func _process(delta):
 	if pause_end <= pause_timer: 
 		if world_is_paused: play_world()
+		if is_over : reload_game()
 	else: pause_timer += delta

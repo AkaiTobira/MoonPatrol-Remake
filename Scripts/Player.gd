@@ -31,6 +31,8 @@ var force      = 0
 var on_floor   = true
 var floor_y    = 0
 
+var lives      = 2
+
 var controller = null
 
 func _ready():
@@ -123,9 +125,15 @@ func play_animation_if_not_player( anim_name ):
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Dead": 
-		get_parent().reload_from_checkpoint()
+		lives -= 1
 		play_animation_if_not_player( "Idle" )
 		Flow.play_world()
+		if lives < 0 and not player_good_mode : 
+			Flow.pause_world(1000)
+			get_parent().show_game_over()
+			visible = false
+		else : get_parent().reload_from_checkpoint()
+
 
 func _on_Area2D_body_entered(body):
 	var is_killed = body.is_in_group("alien") or body.is_in_group("enemy_missle")

@@ -91,6 +91,13 @@ func reset_segment_process_values():
 	timer_reduction   = 0
 	drived_road       = 0 
 	
+func show_game_over():
+	
+	$UI/Welcomer.text    = "Game Over"
+	$UI/Welcomer.visible = true
+	Flow.exit_to_intro( 5 )
+	pass
+
 
 func reload_from_checkpoint():
 	Flow.clean_scene()
