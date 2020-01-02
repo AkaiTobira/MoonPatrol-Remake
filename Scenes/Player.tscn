@@ -1,20 +1,22 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Textures/Placeholders_old/the_car.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Placeholders_new/rover2_wer2.png" type="Texture" id=2]
 [ext_resource path="res://Textures/Placeholders_old/BakuhatsuNoGenjutsuDa.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Whell.gd" type="Script" id=4]
-[ext_resource path="res://Textures/Placeholders_old/Wheel.png" type="Texture" id=5]
-[ext_resource path="res://Resouces/Dead-Player.tres" type="Animation" id=6]
-[ext_resource path="res://Sounds/LaserShot.wav" type="AudioStream" id=7]
-[ext_resource path="res://Sounds/atari_boom5.wav" type="AudioStream" id=8]
+[ext_resource path="res://Textures/Placeholders_new/rover_element_front.png" type="Texture" id=5]
+[ext_resource path="res://Textures/Placeholders_new/wheel_alone.png" type="Texture" id=6]
+[ext_resource path="res://Textures/Placeholders_new/rover_element_back.png" type="Texture" id=7]
+[ext_resource path="res://Resouces/Dead-Player.tres" type="Animation" id=8]
+[ext_resource path="res://Sounds/LaserShot.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sounds/atari_boom5.wav" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Roll"
 length = 2.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/path = NodePath("Sprite2/Sprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -27,14 +29,14 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 16.0413
+radius = 14.3933
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 resource_name = "Roll"
 length = 2.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/path = NodePath("Sprite2/Sprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -49,7 +51,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=4]
 resource_name = "Idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Whell2:visible")
+tracks/0/path = NodePath("Whell1:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -61,7 +63,7 @@ tracks/0/keys = {
 "values": [ true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Whell1:visible")
+tracks/1/path = NodePath("Explosion:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -70,10 +72,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Explosion:visible")
+tracks/2/path = NodePath("Sprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -82,10 +84,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:visible")
+tracks/3/path = NodePath("Whell2:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -108,7 +110,7 @@ Friction = 300.0
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -30 )
-scale = Vector2( 0.62283, 0.601695 )
+scale = Vector2( 0.561, 0.421 )
 texture = ExtResource( 2 )
 
 [node name="Explosion" type="Sprite" parent="."]
@@ -126,12 +128,13 @@ collision_mask = 57
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2( -0.397217, -15.3406 )
-polygon = PoolVector2Array( -84.1404, -47.9991, -81.3004, -4.76762, -32.0126, -0.834395, -51.7481, 11.4599, 37.5471, 15.0187, 26.8705, 5.95981, 100.081, 9.21457, 106.74, 23.722, 107.1, 7.62626, 85.9456, -0.192032, -2.41077, -31.4323, -27.3961, -48.8489 )
+polygon = PoolVector2Array( -96.3667, -29.4892, -100.172, -1.66345, -32.0126, -0.834395, -51.7481, 11.4599, 37.5471, 15.0187, 26.8705, 5.95981, 100.081, 9.21457, 104.121, 37.2349, 107.1, 7.62626, 85.9456, -0.192032, 61.3125, -24.0192, 42.5242, -31.6296, 2.33142, -37.8131, -52.8444, -31.154 )
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( 1.53743, -38.9595 )
+position = Vector2( 0.299607, -35.9595 )
 scale = Vector2( 0.244088, 1 )
-polygon = PoolVector2Array( 382.986, 33.5588, 330.608, 35.1085, -418.563, 23.4858, -414.595, 26.1978, 382.193, 37.2393 )
+polygon = PoolVector2Array( 136.773, 49.7202, -133.512, 48.5905, -136.288, 52.6573, 140.475, 54.0129 )
+disabled = true
 
 [node name="Whell1" type="KinematicBody2D" parent="."]
 position = Vector2( 61, 14 )
@@ -139,45 +142,60 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="Whell1"]
-rotation = 1.74846e-007
-scale = Vector2( 0.46912, 0.446368 )
+[node name="Sprite2" type="Sprite" parent="Whell1"]
+position = Vector2( -46.009, -48.1511 )
+scale = Vector2( 0.147166, 0.13689 )
 texture = ExtResource( 5 )
+centered = false
+
+[node name="Sprite" type="Sprite" parent="Whell1/Sprite2"]
+position = Vector2( 438.373, 348.757 )
+rotation = 1.80945e-007
+scale = Vector2( 1.0033, 0.98794 )
+texture = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Whell1"]
 autoplay = "Roll"
 anims/Roll = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Whell1"]
+position = Vector2( 18.3483, -0.891861 )
 shape = SubResource( 2 )
 
 [node name="Whell2" type="KinematicBody2D" parent="."]
-position = Vector2( -75, 7 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="Whell2"]
-rotation = 1.74846e-007
-scale = Vector2( 0.46912, 0.446368 )
-texture = ExtResource( 5 )
+[node name="Sprite2" type="Sprite" parent="Whell2"]
+position = Vector2( -92.0509, -42.9937 )
+scale = Vector2( 0.147, 0.137 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="Sprite" type="Sprite" parent="Whell2/Sprite2"]
+position = Vector2( 66.7124, 388.593 )
+rotation = 1.80945e-007
+scale = Vector2( 1.0033, 0.98794 )
+texture = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Whell2"]
 autoplay = "Roll"
-anims/Roll = SubResource( 3 )
+anims/Roll = SubResource( 5 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Whell2"]
+position = Vector2( -82.4696, 10.7735 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Dead = ExtResource( 6 )
+anims/Dead = ExtResource( 8 )
 anims/Idle = SubResource( 4 )
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 9 )
 
 [node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource( 10 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

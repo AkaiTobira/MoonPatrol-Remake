@@ -102,15 +102,19 @@ func process_move(delta):
 # warning-ignore:return_value_discarded
 	if is_jumping: move_and_slide( ( Vector2(position.x, target_pos.y) - position ).normalized() * Gravity * gravity_reducer  )
 	else:
-		on_floor = wheel_on_floor(move_and_collide( Vector2(0, Gravity) * delta * gravity_reducer ))
+		if !on_floor:
+			move_and_slide( Vector2(0, Gravity) * gravity_reducer )
+			on_floor = wheel_on_floor(null)
 #		if collision:
 #			if collision.collider.is_in_group("floor"): on_floor = true
 
 	bakcground_speed_multipler = 1 + ( relative_x/200 )
 
 func wheel_on_floor( collision ):
-	if collision : 
-		return $Whell1.on_floor or $Whell2.on_floor or collision.collider.is_in_group("floor")
+#	if collision : 
+#		return $Whell1.on_floor or $Whell2.on_floor or collision.collider.is_in_group("floor")
+
+	print( $Whell1.on_floor, " ", $Whell2.on_floor ) 
 	return $Whell1.on_floor or $Whell2.on_floor
 
 func on_dead():
