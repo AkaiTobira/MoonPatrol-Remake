@@ -17,7 +17,7 @@ var fire_up_missles = 0
 
 #system variables
 var bakcground_speed_multipler = 0
-var player_good_mode           = true
+var player_good_mode           = false
 var pause                      = false
 
 # warning-ignore:unused_class_variable
@@ -126,10 +126,12 @@ func play_animation_if_not_player( anim_name ):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Dead": 
 		lives -= 1
+		get_tree().call_group("Control", "update_lives", lives)
 		play_animation_if_not_player( "Idle" )
 		Flow.play_world()
 		if lives < 0 and not player_good_mode : 
 			Flow.pause_world(1000)
+			get_tree().call_group("Control", "update_lives", "0")
 			get_parent().show_game_over()
 			visible = false
 		else : get_parent().reload_from_checkpoint()
