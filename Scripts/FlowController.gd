@@ -47,6 +47,7 @@ func adapt_height( instance ):
 var is_over = false
 func exit_to_intro( lenght_of_pause ):
 	is_over = true
+	SquatController.clear()
 	pause_world( lenght_of_pause )
 
 func reload_game():

@@ -11,12 +11,16 @@ var on_floor = false
 var max_far = 13
 
 func _physics_process(delta): 
-	var collision = move_and_collide( Vector2(0, get_parent().Gravity) * delta )
+#	if get_parent().is_jumping: return
 
-	if position.y < base_y - 2 * max_far: position.y = base_y - 2 * max_far
-	if position.y > base_y + max_far:     position.y = base_y + max_far
+	var collision = move_and_collide( Vector2(0, 1) * delta )
 	if collision:
 		if collision.collider.is_in_group("floor"): on_floor = true
 		else : on_floor = false
 	else: on_floor = false
-	position.x = base_x
+
+#	position = Vector2( base_x, base_y )
+
+#	if position.y < base_y - max_far: position.y = base_y - max_far
+#	if position.y > base_y + max_far: position.y = base_y + max_far
+#	position.x = base_x

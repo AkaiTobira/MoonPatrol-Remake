@@ -68,7 +68,7 @@ func shoot_forward():
 
 func shoot_up():
 	var up_missle        = Utilities.get_instance("PUmissle")
-	up_missle.position   = position + Vector2(-30,-30)
+	up_missle.position   = position + Vector2(-75,-30)
 	up_missle.life_range = 600 
 	up_missle.direction  = Vector2(0,-1)
 	get_parent().call_deferred("add_child", up_missle)
@@ -104,17 +104,10 @@ func process_move(delta):
 	else:
 		if !on_floor:
 			move_and_slide( Vector2(0, Gravity) * gravity_reducer )
-			on_floor = wheel_on_floor(null)
-#		if collision:
-#			if collision.collider.is_in_group("floor"): on_floor = true
-
+			on_floor = wheel_on_floor()
 	bakcground_speed_multipler = 1 + ( relative_x/200 )
 
-func wheel_on_floor( collision ):
-#	if collision : 
-#		return $Whell1.on_floor or $Whell2.on_floor or collision.collider.is_in_group("floor")
-
-	print( $Whell1.on_floor, " ", $Whell2.on_floor ) 
+func wheel_on_floor():
 	return $Whell1.on_floor or $Whell2.on_floor
 
 func on_dead():

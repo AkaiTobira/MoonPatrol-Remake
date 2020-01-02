@@ -194,6 +194,7 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
 [node name="UI" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 442, 203 )
 z_index = 56
 
@@ -264,6 +265,7 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = "Score :"
 
 [node name="GUI" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = 3
 
 [node name="Control" type="Control" parent="GUI" groups=[
@@ -497,6 +499,7 @@ MaxMoveSpeed = 120.0
 move_borders = Vector2( 650, 900 )
 
 [node name="Paths" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Alien1" type="Node2D" parent="Paths"]
 
