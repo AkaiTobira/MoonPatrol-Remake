@@ -13,7 +13,7 @@ var max_far = 13
 var reverse_gravity = false
 
 func _physics_process(delta): 
-#	if get_parent().is_jumping: return
+	if Flow.world_is_paused : return
 	var gravity = 15
 	var collision = null
 	if reverse_gravity : gravity = -gravity

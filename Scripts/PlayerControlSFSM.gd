@@ -13,13 +13,10 @@ func _exit_tree(): #FOR GOD SAKE THIS GODOT SHOULD DO!!!
 		stack.pop_front()
 
 func _process(delta):
-	if Flow.world_is_paused: return
+	if Flow.world_is_paused or Utilities.player.pause: return
 	while stack[0].is_over : stack.pop_front()
 	stack[0].update(delta)
 	stack[0].handle_input()
-	
-	print( "Process is active" )
-	
 
 class State:
 # warning-ignore:unused_class_variable
