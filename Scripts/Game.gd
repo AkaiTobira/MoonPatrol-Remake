@@ -4,7 +4,7 @@ var play_intro    = true
 var set_of_spawns = null
 
 var timer_for_segment = -6
-var timer_summary     = -6
+var timer_summary     = 0
 var timer_reduction   = 0
 
 var drived_road       = 0
@@ -32,6 +32,7 @@ func process_timers(delta):
 	timer_for_segment += delta
 	timer_summary     += delta
 	timer_reduction   += Utilities.player.bakcground_speed_multipler * delta * 0.22
+	get_tree().call_group("Control", "update_timer", timer_summary)
 
 func update_logger( info ):
 	logger.push_back( info )
