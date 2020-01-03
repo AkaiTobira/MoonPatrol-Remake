@@ -10,10 +10,15 @@ var on_floor = false
 
 var max_far = 13
 
+var reverse_gravity = false
+
 func _physics_process(delta): 
 #	if get_parent().is_jumping: return
-
-	var collision = move_and_collide( Vector2(0, 1) * delta )
+	var gravity = 15
+	var collision = null
+	if reverse_gravity : gravity = -gravity
+	
+	collision = move_and_collide( Vector2(0, gravity) * delta )
 	if collision:
 		if collision.collider.is_in_group("floor"): on_floor = true
 		else : on_floor = false

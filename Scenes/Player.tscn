@@ -160,12 +160,11 @@ tracks/8/keys = {
 "values": [ 0.0, 9.0, 0.0 ]
 }
 
-[node name="Player" type="KinematicBody2D" groups=[
+[node name="Player" type="Area2D" groups=[
 "player",
 ]]
-collision_layer = 2
-collision_mask = 2
-collision/safe_margin = 5.0
+collision_layer = 59
+collision_mask = 59
 script = ExtResource( 1 )
 Friction = 300.0
 
@@ -183,19 +182,9 @@ vframes = 2
 hframes = 3
 frame = 5
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 57
-collision_mask = 57
-
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( -0.397217, -15.5665 )
 polygon = PoolVector2Array( -101.706, -35.9682, -115.354, 37.4609, -92.5554, -11.9382, -45.0879, -8.62997, -42.6026, 32.4903, 34.6674, 33.1681, 40.0898, -7.27435, 59.1603, -7.72623, 95.31, 10.5746, 108.866, 40.8499, 107.1, 7.62626, 61.1937, -24.4455, 42.5242, -31.6296, 2.90231, -36.8719 )
-
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( 0.299607, -35.9595 )
-scale = Vector2( 0.244088, 1 )
-polygon = PoolVector2Array( 136.773, 49.7202, -133.512, 48.5905, -136.288, 52.6573, 140.475, 54.0129 )
-disabled = true
 
 [node name="Whell1" type="KinematicBody2D" parent="."]
 position = Vector2( 61, 14 )
@@ -258,5 +247,5 @@ stream = ExtResource( 9 )
 
 [node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

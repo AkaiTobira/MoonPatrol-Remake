@@ -483,7 +483,6 @@ z_index = 2
 texture = ExtResource( 3 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 10 )]
-SPEDD_MULTIPLER_3 = 4.0
 
 [node name="Base" type="Sprite" parent="."]
 position = Vector2( 776.347, 801.249 )
@@ -494,6 +493,7 @@ script = ExtResource( 12 )
 [node name="Player" parent="." instance=ExtResource( 13 )]
 position = Vector2( 935.418, 910.642 )
 Gravity = 200.0
+MaxJump = 20.0
 Friction = 0.0
 MaxMoveSpeed = 120.0
 move_borders = Vector2( 650, 900 )
