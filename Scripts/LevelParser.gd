@@ -65,6 +65,11 @@ func get_top_record():
 	if not records[current_active_index]["top"]: records[current_active_index]["top"] = json_levels[current_active_index]["avr_time"]
 	return records[current_active_index]["top"]
 
+func change_active_segment( segment_index ):
+	current_active_index  = segment_index
+	current_active_letter = json_levels[current_active_index]["start_segment"]
+	return true
+
 func reached_next_segment( backup_letter ):
 	if max_segments > current_active_index + 1 : 
 		current_active_index += 1
