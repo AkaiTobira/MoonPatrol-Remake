@@ -215,7 +215,7 @@ func on_destroy():
 	if !SquatController.is_squat_active(squat_id):
 		get_parent().points += POINTS_FOR_SQUAT_DESTROY
 		#TODO add text levitating in place of destroyed enemy
-		get_tree().call_group("bonus", "show_bonus", POINTS_FOR_DESTROY)
+		get_tree().call_group("bonus", "show_bonus", POINTS_FOR_SQUAT_DESTROY)
 		print( squat_id, " Squad is is_dead " )
 	get_parent().points += POINTS_FOR_DESTROY
 
