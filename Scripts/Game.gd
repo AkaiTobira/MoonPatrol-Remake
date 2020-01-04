@@ -51,7 +51,7 @@ func process_spawn():
 			set_of_spawns.erase(timer)
 
 func parse_keyword( keyword ):
-	if   keyword[0] == "!": print( "Its a warning,       ignore for now" )
+	if   keyword[0] == "!": get_tree().call_group("Control", "show_warning", keyword)
 	elif keyword[0] == "^": $ParallaxBackground.handle_keyword(keyword)
 	elif keyword[0] == "@": $Spawners.spawn_checkpoint( keyword[1] )
 	else : $Spawners.spawn_obstacle(keyword)
@@ -87,6 +87,8 @@ func process_GUI():
 	$UI/Time.text    = str( stepify(timer_for_segment + timer_reduction, 0.1) )
 	$UI/GodMode.text = "Good Mode : "  +  str($Player.player_good_mode)
 	$UI/Road.text    = str( stepify(drived_road, 0.1) )
+	get_tree().call_group("Control", "update_score", points)
+	
 
 func process_player_speed(delta):
 	var player_multipler = $Player.bakcground_speed_multipler

@@ -6,8 +6,8 @@ func _ready():
 func update_timer(time_past):
 	$ScoreBoard/GTime.text = str(int(time_past))
 	
-func update_score():
-	pass
+func update_score(points):
+	$ScoreBoard/ScoreResult.text = str(points)
 	
 func update_hi_score():
 	pass
@@ -22,5 +22,4 @@ func update_segment_distance():
 	pass
 	
 func show_warning(obstacle):
-	if obstacle == true:
-		$Warnings/ObstacleWarning.visible = true
+	print(obstacle)

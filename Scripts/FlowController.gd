@@ -8,6 +8,8 @@ var pause_end       = 0.0
 var is_high          = false
 var hight_difference = 0
 
+var high_score = 0
+
 func play_intro_objects():
 	if main_node.get_node("UI/Welcomer").visible: main_node.get_node("UI/Welcomer").visible = false
 	if main_node.get_node("Base") : main_node.get_node("Base").play() 
