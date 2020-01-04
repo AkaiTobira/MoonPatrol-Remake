@@ -1,7 +1,7 @@
 extends "res://Scripts/Alien_Base.gd"
 
-var bomb           = null
-var move_log       = []
+var bomb            = null
+var move_log        = []
 var is_squat_lider  = false
 var lider           = null
 var number_in_squat = 1
