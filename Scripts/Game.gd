@@ -92,8 +92,6 @@ func process_GUI():
 	get_tree().call_group("Control", "update_hi_score", get_node("/root/Flow").high_score)
 	get_tree().call_group("Control", "update_score", points)
 
-func hi_score_update():
-	pass
 
 func process_player_speed(delta):
 	var player_multipler = $Player.bakcground_speed_multipler

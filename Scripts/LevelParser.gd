@@ -58,6 +58,7 @@ func reached_next_letter( letter ):
 						)
 		return
 	current_active_letter = letter
+	get_tree().call_group("Control", "update_checkpoint", current_active_letter)
 
 func get_additional_point(): return json_levels[current_active_index]["additional_points"]
 
