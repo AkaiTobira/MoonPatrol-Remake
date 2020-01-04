@@ -23,6 +23,9 @@ func grant_points():
 func set_speed_multipler( player_multipler ):
 	speed_multipler = 1 + player_multipler
 
+func on_delete():
+	pass
+
 # warning-ignore:unused_argument
 func _physics_process(delta):
 	if Flow.world_is_paused: return 

@@ -4,7 +4,7 @@ var play_intro    = true
 var set_of_spawns = null
 
 var timer_for_segment = -6
-var timer_summary     = -6
+var timer_summary     = 0
 var timer_reduction   = 0
 
 var drived_road       = 0
@@ -32,6 +32,7 @@ func process_timers(delta):
 	timer_for_segment += delta
 	timer_summary     += delta
 	timer_reduction   += Utilities.player.bakcground_speed_multipler * delta * 0.22
+	get_tree().call_group("Control", "update_timer", timer_summary)
 
 func update_logger( info ):
 	logger.push_back( info )
@@ -65,16 +66,28 @@ func _process(delta):
 	process_spawn()
 	process_player_speed(delta)
 	process_GUI()
+	process_cheat()
 	
+func process_cheat():
+	if Input.is_action_just_pressed("ui_down"): reload_from_checkpoint()
+	if Input.is_action_just_pressed("ui_page_down"): $Player.player_good_mode = !$Player.player_good_mode 
+
+	var need_reload = false
+	if Input.is_action_just_pressed("res1"): need_reload = LevelParser.change_active_segment( 0 )
+	if Input.is_action_just_pressed("res2"): need_reload = LevelParser.change_active_segment( 1 )
+	if Input.is_action_just_pressed("res3"): need_reload = LevelParser.change_active_segment( 2 )
+	if Input.is_action_just_pressed("res4"): need_reload = LevelParser.change_active_segment( 3 )
+	if Input.is_action_just_pressed("res5"): need_reload = LevelParser.change_active_segment( 4 )
+	if Input.is_action_just_pressed("res6"): need_reload = LevelParser.change_active_segment( 5 )
+	if need_reload: 
+		set_of_spawns = LevelParser.get_active_spawn_times()
+		reload_from_checkpoint()
+
 func process_GUI(): 
 	$UI/Time.text    = str( stepify(timer_for_segment + timer_reduction, 0.1) )
 	$UI/GodMode.text = "Good Mode : "  +  str($Player.player_good_mode)
 	$UI/Road.text    = str( stepify(drived_road, 0.1) )
-	
-	if Input.is_action_just_pressed("ui_down"): reload_from_checkpoint()
-	if Input.is_action_just_pressed("ui_page_down"): $Player.player_good_mode = !$Player.player_good_mode 
-	
-	
+
 func process_player_speed(delta):
 	var player_multipler = $Player.bakcground_speed_multipler
 	$ParallaxBackground.set_speed_multipler( player_multipler )
@@ -92,12 +105,9 @@ func reset_segment_process_values():
 	drived_road       = 0 
 	
 func show_game_over():
-	
 	$UI/Welcomer.text    = "Game Over"
 	$UI/Welcomer.visible = true
 	Flow.exit_to_intro( 5 )
-	pass
-
 
 func reload_from_checkpoint():
 	Flow.clean_scene()

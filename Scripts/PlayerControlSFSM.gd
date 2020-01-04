@@ -13,7 +13,7 @@ func _exit_tree(): #FOR GOD SAKE THIS GODOT SHOULD DO!!!
 		stack.pop_front()
 
 func _process(delta):
-	if Flow.world_is_paused: return
+	if Flow.world_is_paused or Utilities.player.pause: return
 	while stack[0].is_over : stack.pop_front()
 	stack[0].update(delta)
 	stack[0].handle_input()
@@ -35,6 +35,7 @@ class MoveLeft extends State:
 		Utilities.player.relative_x = max( -100, Utilities.player.relative_x - 1 * delta * move_speed )	
 
 	func handle_input():
+		if Flow.world_is_paused : return
 		if !Input.is_action_pressed("ui_left") : is_over = true
 		elif Input.is_action_just_pressed("ui_accept"): stack.push_front( Shoot.new(stack) )
 		elif Input.is_action_pressed("ui_up")   : stack.push_front( JumpLeft.new(stack)  ) 
@@ -48,6 +49,7 @@ class MoveRight extends State:
 		Utilities.player.relative_x = min( 100, Utilities.player.relative_x + 1 * delta * move_speed )	
 
 	func handle_input():
+		if Flow.world_is_paused : return
 		if !Input.is_action_pressed("ui_right") : is_over = true
 		elif Input.is_action_just_pressed("ui_accept"): stack.push_front( Shoot.new(stack) )
 		elif Input.is_action_pressed("ui_up")   : stack.push_front( JumpRight.new(stack)) 
@@ -66,10 +68,12 @@ class JumpRight extends State:
 	func update(delta ):
 		var move_speed = Utilities.player.MaxMoveSpeed
 		Utilities.player.relative_x = min( 100, Utilities.player.relative_x + 1 * delta * move_speed ) 
-		if abs( Utilities.player.position.y - target_hight) < gravity*delta : Utilities.player.is_jumping = false
+		if Utilities.player.position.y < target_hight :  Utilities.player.is_jumping = false
+	#	if abs( Utilities.player.position.y - target_hight) < gravity*delta : Utilities.player.is_jumping = false
 		if Utilities.player.on_floor: is_over = true 
 
 	func handle_input():
+		if Flow.world_is_paused : return
 		if Input.is_action_just_pressed("ui_accept"): stack.push_front( Shoot.new(stack) )
 
 class JumpLeft extends State:
@@ -86,10 +90,13 @@ class JumpLeft extends State:
 	func update(delta):
 		var move_speed = Utilities.player.MaxMoveSpeed
 		Utilities.player.relative_x = max( -100, Utilities.player.relative_x - 1 * delta * move_speed ) 
-		if abs( Utilities.player.position.y - target_hight) < gravity*delta : Utilities.player.is_jumping = false
+		if Utilities.player.position.y < target_hight :  Utilities.player.is_jumping = false
+	
+	#	if abs( Utilities.player.position.y - target_hight) < gravity*delta : Utilities.player.is_jumping = false
 		if Utilities.player.on_floor: is_over = true 
 
 	func handle_input():
+		if Flow.world_is_paused : return
 		if Input.is_action_just_pressed("ui_accept"): stack.push_front( Shoot.new(stack) )
 
 class Shoot extends State:
@@ -118,23 +125,23 @@ class JumpIdle extends State:
 	
 	func _init(s_stack).(s_stack):
 		target_hight = Utilities.player.position.y - 30 - (Utilities.player.MaxJump + (Utilities.player.relative_x * Utilities.player.MaxJump/200))
-		
 		Utilities.player.is_jumping = true
-		
 		Utilities.player.on_floor   = false
 		Utilities.player.relative_y = target_hight
-		gravity                  = Utilities.player.Gravity
+		gravity                     = Utilities.player.Gravity
 
 	func update(delta):
 		var move_speed = Utilities.player.MaxMoveSpeed
 		if Utilities.player.relative_x < 0   : Utilities.player.relative_x = min( 0, Utilities.player.relative_x + 1 * delta * move_speed )
 		elif Utilities.player.relative_x > 0 : Utilities.player.relative_x = max( 0, Utilities.player.relative_x - 1 * delta * move_speed )
+		if Utilities.player.position.y < target_hight :  Utilities.player.is_jumping = false
 		
-		if abs( Utilities.player.position.y - target_hight) < gravity*delta : Utilities.player.is_jumping = false
+	#	if abs( Utilities.player.position.y - target_hight) < gravity*delta : Utilities.player.is_jumping = false
 			
 		if Utilities.player.on_floor: is_over = true 
 
 	func handle_input():
+		if Flow.world_is_paused : return
 		if Input.is_action_just_pressed("ui_accept"): stack.push_front( Shoot.new(stack) )
 
 
@@ -148,7 +155,8 @@ class Idle extends State:
 		elif Utilities.player.relative_x > 0 : Utilities.player.relative_x = max( 0, Utilities.player.relative_x - 1 * delta * move_speed )
 
 	func handle_input():
+		if Flow.world_is_paused : return
 		if Input.is_action_just_pressed("ui_accept"): stack.push_front( Shoot.new(stack) )
-		elif Input.is_action_pressed("ui_up")     : stack.push_front( JumpIdle.new(stack))
+		elif Input.is_action_pressed("ui_up")   : stack.push_front( JumpIdle.new(stack))
 		elif Input.is_action_pressed("ui_right"): stack.push_front( MoveRight.new(stack) )
 		elif Input.is_action_pressed("ui_left") : stack.push_front( MoveLeft.new(stack) )
