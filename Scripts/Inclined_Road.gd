@@ -83,7 +83,6 @@ func handle_fall(delta):
 		if ($End_fall_mark.position.x  + $ParallaxBackground.offset.x) < 450 : call_deferred( "queue_free" )
 
 func _process(delta): 
-	if Flow.world_is_paused : return
 #	print( state, should_fall )
 	handle_rise(delta)
 	handle_high(delta)

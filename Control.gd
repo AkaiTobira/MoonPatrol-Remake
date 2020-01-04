@@ -18,3 +18,5 @@ func update_segment_distance():
 func show_warning(obstacle):
 	if obstacle == true:
 		$Warnings/ObstacleWarning.visible = true
+	
+	

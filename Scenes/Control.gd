@@ -14,7 +14,7 @@ func update_main_distance():
 
 func update_segment_distance():
 	pass
-	
+
 func show_warning(obstacle):
 	if obstacle == true:
 		$Warnings/ObstacleWarning.visible = true

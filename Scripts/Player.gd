@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 # warning-ignore:unused_class_variable
 export var Gravity      =  900.0
@@ -17,7 +17,7 @@ var fire_up_missles = 0
 
 #system variables
 var bakcground_speed_multipler = 0
-var player_good_mode           = false
+var player_good_mode           = true
 var pause                      = false
 
 # warning-ignore:unused_class_variable
@@ -27,7 +27,9 @@ var is_jumping = false
 
 onready var base_high  = position.y
 
+var force      = 0
 var on_floor   = true
+var floor_y    = 0
 
 var lives      = 2
 
@@ -52,11 +54,7 @@ func reset():
 	
 	forward_missle  = null
 	fire_up_missles = 0 
-	relative_x      = 0
-	pause           = false
-	is_jumping      = false
-	on_floor        = true
-
+	relative_x = 0
 
 func shoot_forward():
 	forward_missle            = Utilities.get_instance("PFmissle")
@@ -66,22 +64,22 @@ func shoot_forward():
 	forward_missle.direction  = Vector2(1,0)
 	get_parent().call_deferred("add_child", forward_missle)  
 	$ShootSound.play()
+	
 
 func shoot_up():
 	var up_missle        = Utilities.get_instance("PUmissle")
-	up_missle.position   = position + Vector2(-75,-30)
+	up_missle.position   = position + Vector2(-30,-30)
 	up_missle.life_range = 600 
 	up_missle.direction  = Vector2(0,-1)
 	get_parent().call_deferred("add_child", up_missle)
 
 func play(): 
 	pause = false
-
+	
 func stop(): 
 	pause = true
 
 func _physics_process(delta):
-	if Flow.world_is_paused : return 
 	if pause: return
 	process_move(delta)
 	process_wheels()
@@ -91,45 +89,32 @@ func process_wheels():
 	$Whell1/AnimationPlayer.playback_speed = 1 + bakcground_speed_multipler
 	$Whell2/AnimationPlayer.playback_speed = 1 + bakcground_speed_multipler
 	 
-	
-onready var wheel_base = ( $Whell1.position + $Whell2.position ) / 2.0
 #Whole function is to refactor but it is work
 func process_move(delta):
-	if Flow.world_is_paused : return 
 	var middle_point     = ( move_borders.x + move_borders.y )/2
 	var movable_distance = move_borders.y - move_borders.x
 	var target_pos = Vector2( middle_point + (relative_x * movable_distance)/100, 
 	                          relative_y )
 # warning-ignore:return_value_discarded
+	move_and_slide( Vector2(target_pos.x, position.y) - position )
 
-	var res            = Vector2(target_pos.x, position.y) - position
-	var wheel_distance = ( $Whell1.position + $Whell2.position ) / 2.0
-	
-	position.x += res.x * delta
-	position.y += (wheel_distance - wheel_base).y
-
-# move_and_slide( Vector2(target_pos.x, position.y) - position )
-
-	var gravity_reducer = 1 # min( 1, ( Vector2(position.x, target_pos.y) - position ).length() / MaxJump + 0.3 )
+	var gravity_reducer = min( 1, ( Vector2(position.x, target_pos.y) - position ).length() / MaxJump + 0.3 )
 # warning-ignore:return_value_discarded
-
-	if is_jumping :
-		$Whell1.reverse_gravity = true
-		$Whell2.reverse_gravity = true
-	else: on_floor = wheel_on_floor()
+	if is_jumping: move_and_slide( ( Vector2(position.x, target_pos.y) - position ).normalized() * Gravity * gravity_reducer  )
+	else:
+		on_floor = wheel_on_floor(move_and_collide( Vector2(0, Gravity) * delta * gravity_reducer ))
+#		if collision:
+#			if collision.collider.is_in_group("floor"): on_floor = true
 
 	bakcground_speed_multipler = 1 + ( relative_x/200 )
 
-var previous_wheel_distance = 9.15
-
-func wheel_on_floor():
-	$Whell1.reverse_gravity = false
-	$Whell2.reverse_gravity = false
+func wheel_on_floor( collision ):
+	if collision : 
+		return $Whell1.on_floor or $Whell2.on_floor or collision.collider.is_in_group("floor")
 	return $Whell1.on_floor or $Whell2.on_floor
 
 func on_dead():
 	if not player_good_mode: 
-		controller.set_process(false)
 		$ExplosionSound.play()
 		Flow.pause_world(10)
 		play_animation_if_not_player("Dead")
@@ -141,16 +126,14 @@ func play_animation_if_not_player( anim_name ):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Dead": 
 		lives -= 1
-		get_tree().call_group("Control", "update_lives", lives)
 		play_animation_if_not_player( "Idle" )
 		Flow.play_world()
 		if lives < 0 and not player_good_mode : 
 			Flow.pause_world(1000)
-			get_tree().call_group("Control", "update_lives", "0")
 			get_parent().show_game_over()
 			visible = false
 		else : get_parent().reload_from_checkpoint()
-		controller.set_process(true)
+
 
 func _on_Area2D_body_entered(body):
 	var is_killed = body.is_in_group("alien") or body.is_in_group("enemy_missle")

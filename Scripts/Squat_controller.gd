@@ -37,12 +37,12 @@ func fill_squat( index, squat, valid ):
 		squat[alien].number_in_squat = alien+1
 
 func fire_bomb( index, bomb ):
-	if index >= len( bombs ): return
+	if index > len( bombs ): return
 	bombs[index] = bomb
 	active_squats[index][1] = true
 
 func bomb_exploded( index ):
-	if index >= len( bombs ): return
+	if index > len( bombs ): return
 	bombs[index] = null
 	active_squats[index][1] = false
 
