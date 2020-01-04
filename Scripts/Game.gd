@@ -67,7 +67,7 @@ func _process(delta):
 	process_player_speed(delta)
 	process_GUI()
 	process_cheat()
-	
+
 func process_cheat():
 	if Input.is_action_just_pressed("ui_down"): reload_from_checkpoint()
 	if Input.is_action_just_pressed("ui_page_down"): $Player.player_good_mode = !$Player.player_good_mode 
@@ -105,7 +105,7 @@ func reset_segment_process_values():
 	timer_for_segment = 0
 	timer_reduction   = 0
 	drived_road       = 0 
-	
+
 func show_game_over():
 	$UI/Welcomer.text    = "Game Over"
 	$UI/Welcomer.visible = true
