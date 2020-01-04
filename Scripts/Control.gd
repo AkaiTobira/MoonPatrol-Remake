@@ -9,8 +9,9 @@ func update_timer(time_past):
 func update_score(points):
 	$ScoreBoard/ScoreResult.text = str(points)
 	
-func update_hi_score():
-	pass
+func update_hi_score(hi_score):
+	$ScoreBoard/HiScoreResult.text = str(hi_score)
+	
 	
 func update_lives(lives_left):
 	$Distance/LifeLabel.text = str(lives_left)

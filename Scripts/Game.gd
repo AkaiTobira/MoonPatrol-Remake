@@ -87,8 +87,13 @@ func process_GUI():
 	$UI/Time.text    = str( stepify(timer_for_segment + timer_reduction, 0.1) )
 	$UI/GodMode.text = "Good Mode : "  +  str($Player.player_good_mode)
 	$UI/Road.text    = str( stepify(drived_road, 0.1) )
+	if get_node("/root/Flow").high_score < points:
+		get_node("/root/Flow").high_score = points
+	get_tree().call_group("Control", "update_hi_score", get_node("/root/Flow").high_score)
 	get_tree().call_group("Control", "update_score", points)
-	
+
+func hi_score_update():
+	pass
 
 func process_player_speed(delta):
 	var player_multipler = $Player.bakcground_speed_multipler
