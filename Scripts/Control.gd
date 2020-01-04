@@ -4,10 +4,11 @@ func _ready():
 	$Distance/LifeLabel.text = "2"
 	
 func update_timer(time_past):
-	$ScoreBoard/GTime.text = str(int(time_past))
+	if time_past >= 0:
+		$ScoreBoard/GTime.text = str(int(time_past))
 	
 func update_score():
-	pass
+	$ScoreBoard/ScoreResult.text = str(get_parent().get_parent().points)
 	
 func update_hi_score():
 	pass
@@ -24,3 +25,7 @@ func update_segment_distance():
 func show_warning(obstacle):
 	if obstacle == true:
 		$Warnings/ObstacleWarning.visible = true
+
+func update_segment_letter(checkpoint_letter):
+	$Warnings/Checkpoint.text = checkpoint_letter
+	

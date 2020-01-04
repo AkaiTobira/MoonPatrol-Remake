@@ -14,3 +14,4 @@ func spawn( instance, letter ):
 	
 	instance.set_letter(letter)
 	get_parent().get_parent().add_child(instance)
+	get_tree().call_group("Control", "update_segment_letter", letter)

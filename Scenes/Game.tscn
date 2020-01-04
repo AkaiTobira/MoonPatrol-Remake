@@ -91,7 +91,6 @@ __meta__ = {
 }
 
 [node name="Summary" type="CanvasLayer" parent="."]
-editor/display_folded = true
 layer = 2
 
 [node name="V" type="Node2D" parent="Summary"]
@@ -194,7 +193,6 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
 [node name="UI" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 442, 203 )
 z_index = 56
 
