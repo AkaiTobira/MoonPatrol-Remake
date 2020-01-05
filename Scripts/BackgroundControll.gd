@@ -1,6 +1,7 @@
 extends ParallaxBackground
 
 export var SPEED             = 60.0
+export var SPEDD_MULTIPLER_0 = 0.25
 export var SPEDD_MULTIPLER_1 = 1.0
 export var SPEDD_MULTIPLER_2 = 2.0
 export var SPEDD_MULTIPLER_3 = 4.0
@@ -48,6 +49,7 @@ var road_speed =  SPEDD_MULTIPLER_3 * player_speed * SPEED
 func _process(delta): 
 	if Flow.world_is_paused: return 
 	road_speed =  SPEDD_MULTIPLER_3 * player_speed * SPEED
+	move_background($Back5, SPEDD_MULTIPLER_0 * player_speed * SPEED * delta)
 	move_background($Back1, SPEDD_MULTIPLER_1 * player_speed * SPEED * delta)
 	move_background($Back2, SPEDD_MULTIPLER_2 * player_speed * SPEED * delta)
 	move_background($Back3, SPEDD_MULTIPLER_3 * player_speed * SPEED * delta)
