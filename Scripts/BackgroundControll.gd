@@ -35,7 +35,7 @@ func load_bakcground_fill( b_name ):
 func get_backgoround_info():
 	return [ $Back1.motion_offset.x, $Back2.motion_offset.x, $Back3.motion_offset.x, $Back4.get_info() if has_node( "Back4" ) else null  ]
 
-func set_backgoround_info( info ):	
+func set_backgoround_info( info ):
 	$Back1.motion_offset.x = info[0]
 	$Back2.motion_offset.x = info[1]
 	$Back3.motion_offset.x = info[2]

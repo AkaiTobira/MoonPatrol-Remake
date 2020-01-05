@@ -657,7 +657,7 @@ Gravity = 200.0
 MaxJump = 20.0
 Friction = 0.0
 MaxMoveSpeed = 120.0
-move_borders = Vector2( 650, 800 )
+move_borders = Vector2( 650, 900 )
 
 [node name="Paths" parent="." instance=ExtResource( 16 )]
 

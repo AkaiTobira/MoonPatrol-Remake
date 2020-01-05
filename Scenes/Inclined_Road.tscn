@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Inclined_Road.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_new/road desert slope.png" type="Texture" id=2]
-[ext_resource path="res://Textures/Placeholders_new/road desert big.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Placeholders_new/Slope_placeholder.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Placeholders_new/road desert big.png" type="Texture" id=4]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -47,17 +48,10 @@ z_as_relative = false
 texture = ExtResource( 2 )
 
 [node name="Sprite3" type="Sprite" parent="ParallaxBackground"]
-position = Vector2( 9368.31, 1030.86 )
+position = Vector2( 9368.31, 1091.86 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 120
-texture = ExtResource( 2 )
-flip_h = true
-
-[node name="Sprite4" type="Sprite" parent="ParallaxBackground"]
-position = Vector2( 11609.5, 1140.75 )
-scale = Vector2( 0.6, 0.6 )
-z_index = 120
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 flip_h = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -67,7 +61,7 @@ motion_mirroring = Vector2( 1000, 0 )
 position = Vector2( 7074, 974 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="End_rise_mark" type="Node2D" parent="."]
 position = Vector2( 5917.07, 715.244 )
@@ -76,7 +70,7 @@ position = Vector2( 5917.07, 715.244 )
 position = Vector2( 9212.94, 705.588 )
 
 [node name="End_fall_mark" type="Node2D" parent="."]
-position = Vector2( 13770.9, 877.061 )
+position = Vector2( 10537.9, 932.851 )
 
 [node name="Colliders" type="Node2D" parent="."]
 position = Vector2( 0, 52 )
@@ -108,10 +102,10 @@ collision_mask = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Colliders/StaticBody2D3" groups=[
 "floor",
 ]]
-position = Vector2( 1488.14, 821.528 )
+position = Vector2( 1488.97, 821.528 )
 scale = Vector2( 0.364871, 1 )
 build_mode = 1
-polygon = PoolVector2Array( 3428.98, 26.3181, 3448.55, -155.463, 7266.2, 69.4387, 7247.67, 105.856 )
+polygon = PoolVector2Array( 3428.98, 26.3181, 3448.55, -155.463, 5323.92, 62.9979, 5321.64, 121.682 )
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Colliders" groups=[
 "floor",
