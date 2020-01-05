@@ -24,6 +24,24 @@ func update_segment_distance():
 	
 func show_warning(obstacle):
 	print(obstacle)
+	match obstacle:
+		"!Mine" :
+#			$Warnings/Checkpoint.visible = false
+#			$Warnings/ShortDistanceBar.visible = false 
+			$Warnings/AnimationPlayer.play("mine")
 
+		"!Round" :
+#			$Warnings/Checkpoint.visible = false
+#			$Warnings/ShortDistanceBar.visible = false  
+			$Warnings/AnimationPlayer.play("round")
+
+		"!Worm" :
+#			$Warnings/Checkpoint.visible = false
+#			$Warnings/ShortDistanceBar.visible = false  
+			$Warnings/AnimationPlayer.play("worm")
+	
+	
 func update_checkpoint(checkpoint):
-	$Warnings/Checkpoint.text = str(checkpoint)
+	if checkpoint != null:
+		$Warnings/Checkpoint.text = str(checkpoint)
+		$Warnings/ShortDistanceBar.visible = true

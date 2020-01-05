@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Summary.gd" type="Script" id=2]
@@ -8,20 +8,22 @@
 [ext_resource path="res://Textures/GUI/panel new 1.png" type="Texture" id=6]
 [ext_resource path="res://Textures/buggy.png" type="Texture" id=7]
 [ext_resource path="res://Fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://Textures/Placeholders_new/landmine.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Textures/Placeholders_old/Base.png" type="Texture" id=11]
-[ext_resource path="res://Scripts/Base.gd" type="Script" id=12]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Scripts/Spawners.gd" type="Script" id=14]
-[ext_resource path="res://Scenes/Spawners/RRock_Spawner.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Scenes/Spawners/Hole_Spawner.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Scenes/Spawners/Rock_Spawner.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Scenes/Spawners/Mine_Spawner.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Scenes/Spawners/Checkpoint_Spawner.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Scenes/Spawners/Alien_Spawner.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Sounds/Lunar_Joyride.ogg" type="AudioStream" id=21]
-[ext_resource path="res://Scenes/BonusPoints.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Textures/Placeholders_new/worm_warn.png" type="Texture" id=9]
+[ext_resource path="res://Textures/Placeholders_new/landmine_new2.png" type="Texture" id=10]
+[ext_resource path="res://Textures/Placeholders_new/boulder_big_new.png" type="Texture" id=11]
+[ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Textures/Placeholders_old/Base.png" type="Texture" id=13]
+[ext_resource path="res://Scripts/Base.gd" type="Script" id=14]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scripts/Spawners.gd" type="Script" id=16]
+[ext_resource path="res://Scenes/Spawners/RRock_Spawner.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Spawners/Hole_Spawner.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/Spawners/Rock_Spawner.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Spawners/Mine_Spawner.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/Spawners/Checkpoint_Spawner.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/Spawners/Alien_Spawner.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Sounds/Lunar_Joyride.ogg" type="AudioStream" id=23]
+[ext_resource path="res://Scenes/BonusPoints.tscn" type="PackedScene" id=24]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 8 )
@@ -58,6 +60,162 @@ size = 24
 outline_size = 2
 outline_color = Color( 0.984314, 0.0392157, 0.0392157, 1 )
 font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=15]
+resource_name = "mine"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ObstacleMine:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 0.5, 1, 0.5, 1, 0.5 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DangerLbl:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Checkpoint:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ShortDistanceBar:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "round"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ObstacleRound:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 0.5, 0.5, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DangerLbl:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Checkpoint:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ShortDistanceBar:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "worm"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ObstacleWorm:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DangerLbl:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Checkpoint:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ShortDistanceBar:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
 
 [sub_resource type="Curve2D" id=10]
 _data = {
@@ -446,31 +604,49 @@ margin_top = 0.0438614
 margin_right = 0.0779877
 margin_bottom = -0.0481567
 
-[node name="Obstacle" type="VBoxContainer" parent="GUI/Control/Warnings"]
+[node name="ObstacleWorm" type="TextureRect" parent="GUI/Control/Warnings"]
 visible = false
-anchor_left = 0.112
-anchor_top = 0.114
-anchor_right = 0.867
-anchor_bottom = 0.859
-margin_left = 0.00799942
-margin_top = 10.014
-margin_right = 0.0529938
-margin_bottom = -2.991
-alignment = 1
+margin_left = 46.8607
+margin_top = 23.685
+margin_right = 231.861
+margin_bottom = 151.685
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 9 )
+stretch_mode = 4
 
-[node name="Label" type="Label" parent="GUI/Control/Warnings/Obstacle"]
-margin_right = 181.0
-margin_bottom = 30.0
+[node name="ObstacleMine" type="TextureRect" parent="GUI/Control/Warnings"]
+visible = false
+margin_left = 27.0
+margin_top = 61.0
+margin_right = 208.0
+margin_bottom = 125.0
+texture = ExtResource( 10 )
+stretch_mode = 4
+
+[node name="ObstacleRound" type="TextureRect" parent="GUI/Control/Warnings"]
+visible = false
+margin_left = 55.2658
+margin_top = 33.0632
+margin_right = 225.266
+margin_bottom = 188.063
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 11 )
+stretch_mode = 4
+
+[node name="DangerLbl" type="Label" parent="GUI/Control/Warnings"]
+visible = false
+margin_left = 27.0
+margin_top = 27.0
+margin_right = 208.0
+margin_bottom = 57.0
 custom_fonts/font = SubResource( 9 )
 text = "DANGER!!!"
 align = 1
 
-[node name="TextureRect" type="TextureRect" parent="GUI/Control/Warnings/Obstacle"]
-margin_top = 34.0
-margin_right = 181.0
-margin_bottom = 98.0
-texture = ExtResource( 9 )
-stretch_mode = 4
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Control/Warnings"]
+anims/mine = SubResource( 15 )
+anims/round = SubResource( 16 )
+anims/worm = SubResource( 17 )
 
 [node name="Black_Holder_Left" type="Sprite" parent="GUI"]
 position = Vector2( 222.929, 545.587 )
@@ -484,15 +660,15 @@ scale = Vector2( 0.700018, 3.23606 )
 z_index = 2
 texture = ExtResource( 3 )
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 10 )]
+[node name="ParallaxBackground" parent="." instance=ExtResource( 12 )]
 
 [node name="Base" type="Sprite" parent="."]
 position = Vector2( 776.347, 801.249 )
-texture = ExtResource( 11 )
+texture = ExtResource( 13 )
 flip_h = true
-script = ExtResource( 12 )
+script = ExtResource( 14 )
 
-[node name="Player" parent="." instance=ExtResource( 13 )]
+[node name="Player" parent="." instance=ExtResource( 15 )]
 position = Vector2( 935.418, 910.642 )
 Gravity = 200.0
 MaxJump = 20.0
@@ -501,7 +677,6 @@ MaxMoveSpeed = 120.0
 move_borders = Vector2( 650, 900 )
 
 [node name="Paths" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Alien1" type="Node2D" parent="Paths"]
 
@@ -533,46 +708,46 @@ visible = false
 curve = SubResource( 10 )
 
 [node name="Spawners" type="Node2D" parent="."]
-script = ExtResource( 14 )
+script = ExtResource( 16 )
 
-[node name="Rock_Spawner2" parent="Spawners" instance=ExtResource( 15 )]
+[node name="Rock_Spawner2" parent="Spawners" instance=ExtResource( 17 )]
 position = Vector2( 1920.89, 771.532 )
 
-[node name="Hole_Spawner" parent="Spawners" instance=ExtResource( 16 )]
+[node name="Hole_Spawner" parent="Spawners" instance=ExtResource( 18 )]
 position = Vector2( 1671, 943 )
 scale = Vector2( 0.949715, 1.15578 )
 
-[node name="Rock_Spawner" parent="Spawners" instance=ExtResource( 17 )]
+[node name="Rock_Spawner" parent="Spawners" instance=ExtResource( 19 )]
 position = Vector2( 1580.37, 911.777 )
 
-[node name="Mine_Spawner" parent="Spawners" instance=ExtResource( 18 )]
+[node name="Mine_Spawner" parent="Spawners" instance=ExtResource( 20 )]
 position = Vector2( 1591.34, 932.86 )
 
-[node name="Checkpoint_Spawner" parent="Spawners" instance=ExtResource( 19 )]
+[node name="Checkpoint_Spawner" parent="Spawners" instance=ExtResource( 21 )]
 position = Vector2( 1583.69, 1030.1 )
 
-[node name="Alien_SpawnerD" parent="Spawners" instance=ExtResource( 20 )]
+[node name="Alien_SpawnerD" parent="Spawners" instance=ExtResource( 22 )]
 position = Vector2( 1885.29, 356.368 )
 
-[node name="Alien_SpawnerC" parent="Spawners" instance=ExtResource( 20 )]
+[node name="Alien_SpawnerC" parent="Spawners" instance=ExtResource( 22 )]
 visible = false
 position = Vector2( 1510.72, 93.8405 )
 
-[node name="Alien_SpawnerB" parent="Spawners" instance=ExtResource( 20 )]
+[node name="Alien_SpawnerB" parent="Spawners" instance=ExtResource( 22 )]
 visible = false
 position = Vector2( 977.297, 85.8518 )
 
-[node name="Alien_SpawnerE" parent="Spawners" instance=ExtResource( 20 )]
+[node name="Alien_SpawnerE" parent="Spawners" instance=ExtResource( 22 )]
 visible = false
 position = Vector2( 485.033, 82.1506 )
 
-[node name="Alien_SpawnerA" parent="Spawners" instance=ExtResource( 20 )]
+[node name="Alien_SpawnerA" parent="Spawners" instance=ExtResource( 22 )]
 position = Vector2( 294.981, 377.636 )
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 21 )
+stream = ExtResource( 23 )
 autoplay = true
 
-[node name="BonusPoints" parent="." instance=ExtResource( 22 )]
+[node name="BonusPoints" parent="." instance=ExtResource( 24 )]
 position = Vector2( -6.86987, -115.7 )
 [connection signal="visibility_changed" from="Summary/V" to="." method="_on_V_visibility_changed"]
