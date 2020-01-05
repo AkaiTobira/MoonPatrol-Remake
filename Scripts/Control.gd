@@ -1,5 +1,9 @@
 extends Control
 
+var is_mine_first = true
+var is_round_first = true
+var is_worm_first = true
+
 func _ready():
 	$Distance/LifeLabel.text = "2"
 	$Warnings/Checkpoint.text = ""
@@ -26,22 +30,20 @@ func update_segment_distance():
 	
 func show_warning(obstacle):
 	print(obstacle)
+	
 	match obstacle:
 		"!Mine" :
-#			$Warnings/Checkpoint.visible = false
-#			$Warnings/ShortDistanceBar.visible = false 
-			$Warnings/AnimationPlayer.play("mine")
-
+			if is_mine_first == true:
+				$Warnings/AnimationPlayer.play("mine")
+				is_mine_first = false
 		"!Round" :
-#			$Warnings/Checkpoint.visible = false
-#			$Warnings/ShortDistanceBar.visible = false  
-			$Warnings/AnimationPlayer.play("round")
-
+			if is_round_first == true:
+				$Warnings/AnimationPlayer.play("round")
+				is_round_first = false
 		"!Worm" :
-#			$Warnings/Checkpoint.visible = false
-#			$Warnings/ShortDistanceBar.visible = false  
-			$Warnings/AnimationPlayer.play("worm")
-	
+			if is_worm_first == true:
+				$Warnings/AnimationPlayer.play("worm")
+				is_worm_first = false
 	
 func update_checkpoint(checkpoint):
 	if checkpoint != null:
