@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Intro.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_old/Black_holder.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/BigFont1.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Textures/Placeholders_new/logo_title.png" type="Texture" id=4]
 
 [node name="Intro" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,10 +15,15 @@ texture = ExtResource( 2 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 606.217
-margin_top = 492.483
+margin_top = 629.483
 margin_right = 1292.22
-margin_bottom = 648.483
+margin_bottom = 785.483
 custom_fonts/normal_font = ExtResource( 3 )
 text = "Hello
 
 Press Space to start game"
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 949.531, 406.857 )
+scale = Vector2( 1.28801, 1.36447 )
+texture = ExtResource( 4 )
