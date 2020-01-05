@@ -3,6 +3,8 @@ extends Control
 func _ready():
 	$Distance/LifeLabel.text = "2"
 	$Warnings/Checkpoint.text = ""
+	$Warnings/ShortDistanceBar.visible = false
+	
 	
 func update_timer(time_past):
 	$ScoreBoard/GTime.text = str(int(time_past))
