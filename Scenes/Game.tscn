@@ -401,7 +401,6 @@ text = ":   0000"
 
 [node name="UI" type="Node2D" parent="."]
 editor/display_folded = true
-visible = false
 position = Vector2( 442, 203 )
 z_index = 56
 

@@ -48,7 +48,7 @@ z_as_relative = false
 texture = ExtResource( 2 )
 
 [node name="Sprite3" type="Sprite" parent="ParallaxBackground"]
-position = Vector2( 9368.31, 1091.86 )
+position = Vector2( 9381.31, 1086.86 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 120
 texture = ExtResource( 3 )
@@ -105,7 +105,7 @@ collision_mask = 2
 position = Vector2( 1488.97, 821.528 )
 scale = Vector2( 0.364871, 1 )
 build_mode = 1
-polygon = PoolVector2Array( 3428.98, 26.3181, 3448.55, -155.463, 5323.92, 62.9979, 5321.64, 121.682 )
+polygon = PoolVector2Array( 3428.98, 26.3181, 3448.55, -155.463, 5319.61, 73.0817, 5321.64, 121.682 )
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Colliders" groups=[
 "floor",
