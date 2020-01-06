@@ -11,8 +11,8 @@
 [ext_resource path="res://Textures/Placeholders_new/worm_warn.png" type="Texture" id=9]
 [ext_resource path="res://Textures/Placeholders_new/landmine_new2.png" type="Texture" id=10]
 [ext_resource path="res://Textures/Placeholders_new/boulder_big_new.png" type="Texture" id=11]
-[ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Textures/Placeholders_old/Base.png" type="Texture" id=13]
+[ext_resource path="res://Textures/Placeholders_old/Base.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scripts/Base.gd" type="Script" id=14]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Paths.tscn" type="PackedScene" id=16]
@@ -75,7 +75,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
 "transitions": PoolRealArray( 1, 1, 0.5, 1, 0.5, 1, 0.5 ),
 "update": 1,
-"values": [ false, true, false, true, false, true, false ]
+"values": [ false, true, true, true, true, true, false ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("DangerLbl:visible")
@@ -87,7 +87,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ false, true, false, true, false, true, false ]
+"values": [ false, true, true, true, true, true, false ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Checkpoint:visible")
@@ -112,6 +112,30 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ObstacleMine:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1, 2, 3, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DangerLbl:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1, 2, 3, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -127,7 +151,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
 "transitions": PoolRealArray( 1, 1, 0.5, 0.5, 1, 1, 1 ),
 "update": 1,
-"values": [ false, true, false, true, false, true, false ]
+"values": [ false, true, true, true, true, true, false ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("DangerLbl:visible")
@@ -139,7 +163,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ false, true, false, true, false, true, false ]
+"values": [ false, true, true, true, true, true, false ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Checkpoint:visible")
@@ -164,6 +188,30 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ObstacleRound:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1, 2, 3, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DangerLbl:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1, 2, 3, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -179,7 +227,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ false, true, false, true, false, true, false ]
+"values": [ false, true, true, true, true, true, false ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("DangerLbl:visible")
@@ -191,7 +239,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ false, true, false, true, false, true, false ]
+"values": [ false, true, true, true, true, true, false ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Checkpoint:visible")
@@ -216,6 +264,30 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ObstacleWorm:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1, 2, 3, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DangerLbl:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1, 2, 3, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="Game" type="Node2D"]
@@ -548,7 +620,6 @@ custom_fonts/font = SubResource( 7 )
 text = "0"
 
 [node name="Warnings" type="TextureRect" parent="GUI/Control"]
-editor/display_folded = true
 anchor_left = 0.398
 anchor_right = 0.611
 anchor_bottom = 0.212
@@ -596,6 +667,7 @@ stretch_mode = 4
 
 [node name="ObstacleMine" type="TextureRect" parent="GUI/Control/Warnings"]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 27.0
 margin_top = 61.0
 margin_right = 208.0
@@ -605,6 +677,7 @@ stretch_mode = 4
 
 [node name="ObstacleRound" type="TextureRect" parent="GUI/Control/Warnings"]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 55.2658
 margin_top = 33.0632
 margin_right = 225.266
@@ -615,6 +688,7 @@ stretch_mode = 4
 
 [node name="DangerLbl" type="Label" parent="GUI/Control/Warnings"]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 27.0
 margin_top = 27.0
 margin_right = 208.0
@@ -628,6 +702,13 @@ anims/mine = SubResource( 10 )
 anims/round = SubResource( 11 )
 anims/worm = SubResource( 12 )
 
+[node name="WarnBase" type="Sprite" parent="GUI/Control/Warnings"]
+visible = false
+position = Vector2( 135.026, 74.0024 )
+scale = Vector2( 0.176275, 0.189937 )
+texture = ExtResource( 12 )
+flip_h = true
+
 [node name="Black_Holder_Left" type="Sprite" parent="GUI"]
 position = Vector2( 222.929, 545.587 )
 scale = Vector2( 0.700018, 3.23606 )
@@ -640,11 +721,11 @@ scale = Vector2( 0.700018, 3.23606 )
 z_index = 2
 texture = ExtResource( 3 )
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 12 )]
+[node name="ParallaxBackground" parent="." instance=ExtResource( 13 )]
 
 [node name="Base" type="Sprite" parent="."]
 position = Vector2( 776.347, 801.249 )
-texture = ExtResource( 13 )
+texture = ExtResource( 12 )
 flip_h = true
 script = ExtResource( 14 )
 

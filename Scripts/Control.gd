@@ -11,6 +11,7 @@ func _ready():
 	$Distance/LifeLabel.visible = true
 	$Distance/TextureRect.visible = true
 	$Distance/XLabel.visible = true
+	$Warnings/WarnBase.visible = true
 	
 	
 func update_timer(time_past):
@@ -56,5 +57,6 @@ func show_warning(obstacle):
 	
 func update_checkpoint(checkpoint):
 	if checkpoint != null:
+		$Warnings/WarnBase.visible = false
 		$Warnings/Checkpoint.text = str(checkpoint)
 		$Warnings/ShortDistanceBar.visible = true
