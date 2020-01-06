@@ -24,7 +24,7 @@ func update_hi_score(hi_score):
 	$ScoreBoard/HiScoreResult.text = str(hi_score)
 	
 func update_lives(lives_left):
-	if lives_left < 1:
+	if int(lives_left) < 1:
 		$Distance/LifeLabel.visible = false
 		$Distance/TextureRect.visible = false
 		$Distance/XLabel.visible = false
