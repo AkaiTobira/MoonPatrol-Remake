@@ -1,29 +1,57 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Intro.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_old/Black_holder.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/BigFont1.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Textures/Placeholders_new/logo_title.png" type="Texture" id=4]
 
+[sub_resource type="Animation" id=1]
+resource_name = "intro"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("RichTextLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false, true ]
+}
+
 [node name="Intro" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 967.425, 545.133 )
+position = Vector2( 968.785, 547.854 )
 scale = Vector2( 3.08896, 2.8356 )
 texture = ExtResource( 2 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 606.217
-margin_top = 629.483
-margin_right = 1292.22
-margin_bottom = 785.483
+margin_left = 607.36
+margin_top = 690.685
+margin_right = 1293.36
+margin_bottom = 802.685
 custom_fonts/normal_font = ExtResource( 3 )
-text = "Hello
-
+text = "
 Press Space to start game"
 
 [node name="Sprite2" type="Sprite" parent="."]
 position = Vector2( 949.531, 406.857 )
 scale = Vector2( 1.28801, 1.36447 )
 texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 608.087
+margin_top = 650.939
+margin_right = 754.087
+margin_bottom = 719.939
+custom_fonts/font = ExtResource( 3 )
+text = "HELLO"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "intro"
+anims/intro = SubResource( 1 )
