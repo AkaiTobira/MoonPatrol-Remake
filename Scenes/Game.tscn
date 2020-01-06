@@ -329,6 +329,7 @@ text = ":   0000"
 
 [node name="UI" type="Node2D" parent="."]
 editor/display_folded = true
+visible = false
 position = Vector2( 442, 203 )
 z_index = 56
 
@@ -399,13 +400,11 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = "Score :"
 
 [node name="GUI" type="CanvasLayer" parent="."]
-editor/display_folded = true
 layer = 3
 
 [node name="Control" type="Control" parent="GUI" groups=[
 "Control",
 ]]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -11.5241
@@ -415,7 +414,6 @@ margin_bottom = 5.01038
 script = ExtResource( 5 )
 
 [node name="Distance" type="TextureRect" parent="GUI/Control"]
-editor/display_folded = true
 margin_left = 1111.1
 margin_top = -19.6429
 margin_right = 1352.1
@@ -486,7 +484,6 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="ScoreBoard" type="TextureRect" parent="GUI/Control"]
-editor/display_folded = true
 margin_left = 475.813
 margin_top = -17.3783
 margin_right = 716.813
@@ -638,7 +635,7 @@ z_index = 20
 texture = ExtResource( 3 )
 
 [node name="Black_Holder_Right" type="Sprite" parent="GUI"]
-position = Vector2( 1696.15, 538.368 )
+position = Vector2( 1697.15, 537.368 )
 scale = Vector2( 0.700018, 3.23606 )
 z_index = 2
 texture = ExtResource( 3 )

@@ -4,7 +4,7 @@ var play_intro    = true
 var set_of_spawns = null
 
 var timer_for_segment = -6
-var timer_summary     = 0
+var timer_summary     = -6
 var timer_reduction   = 0
 
 var drived_road       = 0
