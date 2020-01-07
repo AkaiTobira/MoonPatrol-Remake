@@ -109,7 +109,7 @@ func process_player_speed(delta):
 	
 	if timer_for_segment >= 0 :
 		drived_road += $ParallaxBackground.road_speed * delta 
-		get_tree().call_group("Control", "get_drived_distance", drived_road)
+		get_tree().call_group("Control", "update_drived_distance", drived_road)
 		
 	for obstacle in get_children():
 		if obstacle.is_in_group("obstalces"):

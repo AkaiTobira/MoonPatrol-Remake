@@ -36,13 +36,14 @@ func update_main_distance():
 	pass
 
 func update_drived_distance(drived_road):
-	print(drived_road)
+	print("Drived Road" + str(drived_road))
 	
 func get_segment_end_distance():
 	print(LevelParser.get_letter_time())
 
 func show_warning(obstacle):
 	print(obstacle)
+	
 	match obstacle:
 		"!Mine" :
 			if is_mine_first == true:
