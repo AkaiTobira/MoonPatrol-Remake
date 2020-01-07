@@ -38,15 +38,16 @@ func update_main_distance():
 	pass
 
 func update_drived_distance(drived_road):
-	$Warnings/ShortDistanceBar.value = int( drived_road)
+	$Warnings/ShortDistanceBar.value = int(drived_road)
 
 var to_travel = 3.625
-var max_value = 1
-	
 func get_segment_end_distance():
-	max_value = (LevelParser.get_letter_time() + to_travel) * Utilities.PIXOMETR
-	$Warnings/ShortDistanceBar.value = 0
+	var max_value = (LevelParser.get_letter_time() + to_travel) * Utilities.PIXOMETR
+	reset_distance_bar()
 	$Warnings/ShortDistanceBar.max_value = max_value
+
+func reset_distance_bar():
+	$Warnings/ShortDistanceBar.value = 0
 
 func show_warning(obstacle):
 	print(obstacle)

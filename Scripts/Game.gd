@@ -22,7 +22,8 @@ func _ready():
 	Flow.main_node    = self 
 	background_backup = $ParallaxBackground.get_backgoround_info()
 	$ParallaxBackground.load_bakcground_fill( LevelParser.get_background_info() )
-	get_tree().call_group("Control", "update_hi_score", Flow.high_score)
+	get_tree().call_group("Control", "update_hi_score", Flow.high_score )
+	get_tree().call_group("Control", "get_segment_end_distance" )
 	Flow.pause_world(2)
 
 func process_intro():
@@ -130,16 +131,14 @@ func reload_from_checkpoint():
 	set_of_spawns     = LevelParser.get_active_spawn_times()
 	$ParallaxBackground.set_backgoround_info( background_backup )
 	$ParallaxBackground.load_bakcground_fill( LevelParser.get_background_info() )
-	get_tree().call_group("Control", "get_segment_end_distance" )
+	get_tree().call_group("Control", "reset_distance_bar" )
 	Flow.play_world()
 
 func next_checkpoint(letter):
 	background_backup = $ParallaxBackground.get_backgoround_info()
 	LevelParser.reached_next_letter(letter)
-	
 	set_of_spawns     = LevelParser.get_active_spawn_times()
 	$ParallaxBackground.load_bakcground_fill( LevelParser.get_background_info() )
-	
 	get_tree().call_group("Control", "get_segment_end_distance" )
 	reset_segment_process_values()
 
