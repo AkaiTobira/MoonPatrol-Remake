@@ -1,6 +1,6 @@
 {
 	"start_segment"     : "0",
-	"end_segment"       : "E",
+	"end_segment"       : "D",
 	"avr_time"          : 20,
 	"additional_points" : 1000,
 	"fixed_segment"     : false,
@@ -8,54 +8,39 @@
 	"level_structure"   : {
 		"0" : {
 			"0" :{
-				"100"    : "5_abcde_Alien1",
-				"100.1"  : "5_11111_Alien2",
-				"100.2"  : "5_11111_Bomber",
-
-				"2" : "RockB",
-				"3" : "HoleB",
-
-				"6"   : "RoundS",
-				"8"   : "Round",
-
-				"12"  : "3_111_Bomber",
-
-				"13" : "^Rise",
-
-				"30"   : "RoundS",
-
-				"32"   : "Round",
-
-				"14" : "^Fall",
-
-				"112"    : "RockB",
-
-				"114"    : "Hole",
-				
-				"116"    : "Mine",
-
-				"118"    : "HoleB",
-
-				"120"   : "Rock2",
-
-				"122"   : "RockS",
-
-				"124"   : "RoundS",
-
-				"126"   : "Worm",
-
-				"128"   : "Round",
-
-
-				"130" : "^Rise",
-
-				"144"    : "HoleB",
-
-				"150" : "^Fall",
-
-				"200"   : "@0",
-
+					"1"    : "RockS",
+					"5"    : "@A"
 			}
-		}
+		},
+	  "C" : {
+		  "0" :{
+				  "2"    : "!Round",
+				  "9"    : "Round",
+				  "0.5"  : "^Rise",
+				  "10"    : "2_ef_Alien2",
+				  "20"    : "@D"
+		  }
+	  },
+	  "B" : {
+		  "0" :{
+			  "0"    : "!Alien1",
+			  "2"    : "HoleB",
+			  "1"    : "1_A_Alien1",
+			  "5"    : "@C"
+		  },
+		  "1" : {
+			  "0"    : "!Alien1",
+			  "1"    : "2_fg_Alien1",
+			  "5"    : "@C"
+		  }
+	  },
+	  "A" : {
+		  "0" :{
+			  "2"    : "RockS",
+			  "5"    : "RockS",			  
+			  "10"    : "1_A_Bomber",
+			  "35"    : "@B"
+		  }
+	  }
 	}
   }
