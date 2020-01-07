@@ -493,14 +493,6 @@ margin_right = -11.5242
 margin_bottom = 5.01038
 script = ExtResource( 6 )
 
-[node name="TextureRect" type="TextureRect" parent="GUI/Control"]
-margin_left = 338.545
-margin_top = -41.8564
-margin_right = 719.545
-margin_bottom = 107.144
-rect_scale = Vector2( 5.53, 2.37 )
-texture = ExtResource( 7 )
-
 [node name="Distance" type="Control" parent="GUI/Control"]
 margin_left = 1005.1
 margin_top = -17.6429
