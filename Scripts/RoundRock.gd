@@ -21,7 +21,7 @@ func grant_points():
 func _physics_process(delta):
 	if Flow.world_is_paused: return
 # warning-ignore:return_value_discarded
-	move_and_slide( Vector2(-1, 1 ) * SPEED  * speed_multipler )
+	move_and_slide( Vector2(-1.5, 1 ) * SPEED  * speed_multipler )
 #	position.y = fixed_y_pos
 
 	if add_points : grant_points()

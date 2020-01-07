@@ -739,11 +739,10 @@ move_borders = Vector2( 650, 800 )
 [node name="Paths" parent="." instance=ExtResource( 16 )]
 
 [node name="Spawners" type="Node2D" parent="."]
-editor/display_folded = true
 script = ExtResource( 17 )
 
 [node name="Rock_Spawner2" parent="Spawners" instance=ExtResource( 18 )]
-position = Vector2( 1920.89, 771.532 )
+position = Vector2( 1917.19, 493.938 )
 
 [node name="Hole_Spawner" parent="Spawners" instance=ExtResource( 19 )]
 position = Vector2( 1671, 943 )
