@@ -9,7 +9,7 @@ var squat_id      = 0
 var road_speed    = 0
 
 func calculate_path( mother_ship ): 
-	position = mother_ship.position
+	position = mother_ship.position + Vector2( 30, 0 )
 	squat_id = mother_ship.squat_id
 	triple_points = { 
 		"a" : Vector2(0,0), 
