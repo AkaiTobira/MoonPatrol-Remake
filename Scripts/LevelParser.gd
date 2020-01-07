@@ -54,7 +54,7 @@ func get_letter_time():
     var sel = get_active_spawn_times()
     for key in sel.keys():
         if sel[key][0] == "@" : 
-            return float(key * Utilities.PIXOMETR)	
+            return float(key) * Utilities.PIXOMETR
 
 func get_background_info():
 	return json_levels[current_active_index]["background"]

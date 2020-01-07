@@ -35,14 +35,14 @@ func update_lives(lives_left):
 func update_main_distance():
 	pass
 
-func update_segment_distance():
+func update_drived_distance(drived_road):
+	print(drived_road)
+	
+func get_segment_end_distance():
 	print(LevelParser.get_letter_time())
-	
-	
+
 func show_warning(obstacle):
 	print(obstacle)
-	update_segment_distance()
-	
 	match obstacle:
 		"!Mine" :
 			if is_mine_first == true:
