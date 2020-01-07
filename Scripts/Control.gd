@@ -13,6 +13,8 @@ func _ready():
 	$Distance/XLabel.visible = true
 	$Warnings/WarnBase.visible = true
 	
+	#get_segment_end_distance()
+	
 	
 func update_timer(time_past):
 	if time_past >= 0:
@@ -36,10 +38,15 @@ func update_main_distance():
 	pass
 
 func update_drived_distance(drived_road):
-	print("Drived Road" + str(drived_road))
+	$Warnings/ShortDistanceBar.value = int( drived_road)
+
+var to_travel = 3.625
+var max_value = 1
 	
 func get_segment_end_distance():
-	print(LevelParser.get_letter_time())
+	max_value = (LevelParser.get_letter_time() + to_travel) * Utilities.PIXOMETR
+	$Warnings/ShortDistanceBar.value = 0
+	$Warnings/ShortDistanceBar.max_value = max_value
 
 func show_warning(obstacle):
 	print(obstacle)
