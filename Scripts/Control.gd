@@ -36,10 +36,12 @@ func update_main_distance():
 	pass
 
 func update_segment_distance():
-	pass
+	print(LevelParser.get_letter_time())
+	
 	
 func show_warning(obstacle):
 	print(obstacle)
+	update_segment_distance()
 	
 	match obstacle:
 		"!Mine" :

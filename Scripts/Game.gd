@@ -45,7 +45,7 @@ func update_logger( info ):
 func process_spawn():
 	var current_time = stepify(drived_road, 0.1)
 	for timer in set_of_spawns :
-		var nmb_time = float(timer) * $ParallaxBackground.SPEED * $ParallaxBackground.SPEDD_MULTIPLER_3
+		var nmb_time = float(timer) * Utilities.PIXOMETR
 		if nmb_time <= current_time: 
 			update_logger(str( current_time ) + " " + str(set_of_spawns[timer]))
 			parse_keyword( set_of_spawns[timer] )

@@ -8,6 +8,9 @@ export var SPEDD_MULTIPLER_3 = 4.0
 
 var player_speed = 1
 
+func _ready():
+	Utilities.PIXOMETR = SPEED * SPEDD_MULTIPLER_3
+	
 func set_speed_multipler( multipler ):
 	player_speed = 1 + multipler
 	road_speed   =  SPEDD_MULTIPLER_3 * player_speed * SPEED

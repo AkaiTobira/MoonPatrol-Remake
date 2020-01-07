@@ -1,6 +1,7 @@
 extends Node
 
 var player = null
+var PIXOMETR = 0
 
 var objects = {
 	"Hole"       :  preload( "res://Scenes/Obstacles/Hole.tscn" ),
