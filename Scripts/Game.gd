@@ -7,10 +7,8 @@ var timer_for_segment = -6
 var timer_summary     = -6
 
 var drived_road       = 0
-
 # warning-ignore:unused_class_variable
 var points            = 0
-
 var logger            = []
 
 var background_backup = null

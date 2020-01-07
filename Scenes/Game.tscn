@@ -41,10 +41,6 @@ font_data = ExtResource( 9 )
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=5]
-size = 14
-font_data = ExtResource( 9 )
-
 [sub_resource type="DynamicFont" id=6]
 size = 14
 font_data = ExtResource( 9 )
@@ -71,10 +67,14 @@ outline_size = 2
 outline_color = Color( 0.984314, 0.0392157, 0.0392157, 1 )
 font_data = ExtResource( 9 )
 
+[sub_resource type="DynamicFont" id=5]
+size = 14
+font_data = ExtResource( 9 )
+
 [sub_resource type="Animation" id=12]
 length = 6.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("ObstacleMine:visible")
+tracks/0/path = NodePath("../ObstacleMine:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -86,7 +86,7 @@ tracks/0/keys = {
 "values": [ false, true, true, true, true, true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("DangerLbl:visible")
+tracks/1/path = NodePath("../DangerLbl:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -98,7 +98,7 @@ tracks/1/keys = {
 "values": [ false, true, true, true, true, true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Checkpoint:visible")
+tracks/2/path = NodePath("../Checkpoint:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -110,7 +110,7 @@ tracks/2/keys = {
 "values": [ true, false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ShortDistanceBar:visible")
+tracks/3/path = NodePath("../ShortDistanceBar:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -122,7 +122,7 @@ tracks/3/keys = {
 "values": [ true, false, true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("ObstacleMine:modulate")
+tracks/4/path = NodePath("../ObstacleMine:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -134,7 +134,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("DangerLbl:modulate")
+tracks/5/path = NodePath("../DangerLbl:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -149,7 +149,7 @@ tracks/5/keys = {
 [sub_resource type="Animation" id=13]
 length = 6.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("ObstacleRound:visible")
+tracks/0/path = NodePath("../ObstacleRound:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -161,7 +161,7 @@ tracks/0/keys = {
 "values": [ false, true, true, true, true, true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("DangerLbl:visible")
+tracks/1/path = NodePath("../DangerLbl:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -173,7 +173,7 @@ tracks/1/keys = {
 "values": [ false, true, true, true, true, true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Checkpoint:visible")
+tracks/2/path = NodePath("../Checkpoint:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -185,7 +185,7 @@ tracks/2/keys = {
 "values": [ true, false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ShortDistanceBar:visible")
+tracks/3/path = NodePath("../ShortDistanceBar:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -197,7 +197,7 @@ tracks/3/keys = {
 "values": [ true, false, true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("ObstacleRound:modulate")
+tracks/4/path = NodePath("../ObstacleRound:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -209,7 +209,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("DangerLbl:modulate")
+tracks/5/path = NodePath("../DangerLbl:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -224,7 +224,7 @@ tracks/5/keys = {
 [sub_resource type="Animation" id=14]
 length = 6.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("ObstacleWorm:visible")
+tracks/0/path = NodePath("../ObstacleWorm:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -236,7 +236,7 @@ tracks/0/keys = {
 "values": [ false, true, true, true, true, true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("DangerLbl:visible")
+tracks/1/path = NodePath("../DangerLbl:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -248,7 +248,7 @@ tracks/1/keys = {
 "values": [ false, true, true, true, true, true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Checkpoint:visible")
+tracks/2/path = NodePath("../Checkpoint:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -260,7 +260,7 @@ tracks/2/keys = {
 "values": [ true, false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ShortDistanceBar:visible")
+tracks/3/path = NodePath("../ShortDistanceBar:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -272,7 +272,7 @@ tracks/3/keys = {
 "values": [ true, false, true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("ObstacleWorm:modulate")
+tracks/4/path = NodePath("../ObstacleWorm:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -284,7 +284,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("DangerLbl:modulate")
+tracks/5/path = NodePath("../DangerLbl:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -493,12 +493,18 @@ margin_right = -11.5242
 margin_bottom = 5.01038
 script = ExtResource( 6 )
 
-[node name="Distance" type="TextureRect" parent="GUI/Control"]
-margin_left = 1111.1
-margin_top = -19.6429
-margin_right = 1352.1
-margin_bottom = 129.357
-rect_scale = Vector2( 1.4, 1.2 )
+[node name="Distance" type="Control" parent="GUI/Control"]
+margin_left = 1005.1
+margin_top = -17.6429
+margin_right = 1045.1
+margin_bottom = 22.3571
+
+[node name="Distance_T" type="TextureRect" parent="GUI/Control/Distance"]
+margin_left = 35.15
+margin_top = 15.2
+margin_right = 276.15
+margin_bottom = 164.2
+rect_scale = Vector2( 1, 0.6 )
 texture = ExtResource( 7 )
 
 [node name="TextureRect" type="TextureRect" parent="GUI/Control/Distance"]
@@ -506,11 +512,10 @@ anchor_left = 0.34
 anchor_top = 0.206
 anchor_right = 0.473
 anchor_bottom = 0.421
-margin_left = 0.0670929
-margin_top = 0.0043354
-margin_right = 32.0141
-margin_bottom = 31.9693
-rect_scale = Vector2( 0.5, 0.5 )
+margin_left = 66.0602
+margin_top = 6.74799
+margin_right = 124.74
+margin_bottom = 62.148
 texture = ExtResource( 8 )
 
 [node name="XLabel" type="Label" parent="GUI/Control/Distance"]
@@ -518,10 +523,10 @@ anchor_left = 0.503
 anchor_top = 0.303
 anchor_right = 0.553
 anchor_bottom = 0.437
-margin_left = 0.071991
-margin_top = -0.0685997
-margin_right = 0.0219879
-margin_bottom = -0.0345993
+margin_left = 134.493
+margin_top = 42.9241
+margin_right = 144.493
+margin_bottom = 57.5641
 custom_fonts/font = SubResource( 3 )
 text = "X"
 
@@ -530,49 +535,28 @@ anchor_left = 0.581
 anchor_top = 0.288
 anchor_right = 0.697
 anchor_bottom = 0.422
-margin_left = 0.0189819
-margin_top = -0.0236015
-margin_right = 0.0629883
-margin_bottom = 0.0103989
+margin_left = 170.916
+margin_top = 38.0461
+margin_right = 177.276
+margin_bottom = 52.6861
 custom_fonts/font = SubResource( 4 )
 text = "3"
-
-[node name="DistanceLabel" type="Label" parent="GUI/Control/Distance"]
-anchor_left = 0.212
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.625
-margin_left = -0.0898018
-margin_top = 0.640198
-margin_right = -9.498
-margin_bottom = -3.9848
-custom_fonts/font = SubResource( 5 )
-text = "Distance:"
-
-[node name="DistanceBar" type="ProgressBar" parent="GUI/Control/Distance"]
-anchor_left = 0.207
-anchor_top = 0.632
-anchor_right = 0.805
-anchor_bottom = 0.766
-margin_left = 0.112995
-margin_top = 0.0219955
-margin_right = -0.00502014
-margin_bottom = 0.0559998
 
 [node name="TextureProgress" type="TextureProgress" parent="GUI/Control/Distance"]
 margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="ScoreBoard" type="Control" parent="GUI/Control"]
-margin_right = 40.0
+margin_left = -136.0
+margin_right = -96.0
 margin_bottom = 40.0
 
 [node name="ScoreBoard_T" type="TextureRect" parent="GUI/Control/ScoreBoard"]
-margin_left = 476.0
-margin_top = -17.0
-margin_right = 717.0
-margin_bottom = 132.0
-rect_scale = Vector2( 1.4, 1.2 )
+margin_left = 1132.82
+margin_top = 45.8764
+margin_right = 1373.82
+margin_bottom = 259.876
+rect_scale = Vector2( 1.4, 1.5 )
 texture = ExtResource( 7 )
 
 [node name="ScoreLabels" type="Label" parent="GUI/Control/ScoreBoard"]
@@ -580,10 +564,10 @@ anchor_left = 0.147
 anchor_top = 0.263
 anchor_right = 0.5
 anchor_bottom = 0.86
-margin_left = 519.791
-margin_top = 19.5202
-margin_right = 581.671
-margin_bottom = 76.6402
+margin_left = 1185.06
+margin_top = 94.7465
+margin_right = 1246.94
+margin_bottom = 151.866
 rect_scale = Vector2( 1.4, 1.4 )
 custom_fonts/font = SubResource( 6 )
 text = "HI SCORE:
@@ -596,10 +580,10 @@ anchor_left = 0.537
 anchor_top = 0.253
 anchor_right = 0.881
 anchor_bottom = 0.387
-margin_left = 635.693
-margin_top = 18.1033
-margin_right = 635.789
-margin_bottom = 30.7434
+margin_left = 1332.8
+margin_top = 101.006
+margin_right = 1332.89
+margin_bottom = 113.646
 rect_scale = Vector2( 1.4, 1.4 )
 custom_fonts/font = SubResource( 7 )
 text = "0"
@@ -612,10 +596,10 @@ anchor_left = 0.534
 anchor_top = 0.396
 anchor_right = 0.883
 anchor_bottom = 0.53
-margin_left = 634.961
-margin_top = 37.9806
-margin_right = 634.852
-margin_bottom = 50.6206
+margin_left = 1335.61
+margin_top = 122.296
+margin_right = 1335.5
+margin_bottom = 134.936
 rect_scale = Vector2( 1.4, 1.4 )
 custom_fonts/font = SubResource( 8 )
 text = "0"
@@ -627,23 +611,29 @@ anchor_left = 0.535
 anchor_top = 0.54
 anchor_right = 0.888
 anchor_bottom = 0.675
-margin_left = 635.18
-margin_top = 58.0353
-margin_right = 635.107
-margin_bottom = 70.6353
+margin_left = 1334.06
+margin_top = 147.462
+margin_right = 1333.98
+margin_bottom = 160.062
 rect_scale = Vector2( 1.4, 1.4 )
 custom_fonts/font = SubResource( 9 )
 text = "0"
 
-[node name="Warnings" type="TextureRect" parent="GUI/Control"]
+[node name="Warnings" type="Control" parent="GUI/Control"]
+margin_left = 631.272
+margin_top = -23.3038
+margin_right = 671.272
+margin_bottom = 16.6962
+
+[node name="Warnings_T" type="TextureRect" parent="GUI/Control/Warnings"]
 anchor_left = 0.398
 anchor_right = 0.611
 anchor_bottom = 0.212
-margin_left = -0.888
-margin_top = -23.3038
-margin_right = -168.848
-margin_bottom = -103.264
-rect_scale = Vector2( 1.7, 1.7 )
+margin_left = 9.92998
+margin_top = 15.05
+margin_right = 242.41
+margin_bottom = 167.57
+rect_scale = Vector2( 1.7, 2 )
 texture = ExtResource( 7 )
 
 [node name="Checkpoint" type="Label" parent="GUI/Control/Warnings"]
@@ -651,10 +641,10 @@ anchor_left = 0.307
 anchor_top = 0.143
 anchor_right = 0.66
 anchor_bottom = 0.666
-margin_left = 0.0323334
-margin_top = -0.00943947
-margin_right = -0.0409851
-margin_bottom = 0.0634613
+margin_left = 174.37
+margin_top = 48.88
+margin_right = 258.25
+margin_bottom = 137.96
 custom_fonts/font = SubResource( 10 )
 text = "A"
 align = 1
@@ -665,18 +655,18 @@ anchor_left = 0.149
 anchor_top = 0.644
 anchor_right = 0.842
 anchor_bottom = 0.752
-margin_left = 0.0909996
-margin_top = 0.0438614
-margin_right = 0.0779877
-margin_bottom = -0.0481567
+margin_left = 97.04
+margin_top = 165.24
+margin_right = 316.32
+margin_bottom = 174.92
 
 [node name="ObstacleWorm" type="TextureRect" parent="GUI/Control/Warnings"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 46.8607
-margin_top = 23.685
-margin_right = 231.861
-margin_bottom = 151.685
+margin_left = 79.6632
+margin_top = 40.2645
+margin_right = 264.664
+margin_bottom = 168.264
 rect_scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 10 )
 stretch_mode = 4
@@ -684,20 +674,20 @@ stretch_mode = 4
 [node name="ObstacleMine" type="TextureRect" parent="GUI/Control/Warnings"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 27.0
-margin_top = 61.0
-margin_right = 208.0
-margin_bottom = 125.0
+margin_left = 45.9
+margin_top = 103.7
+margin_right = 226.9
+margin_bottom = 167.7
 texture = ExtResource( 11 )
 stretch_mode = 4
 
 [node name="ObstacleRound" type="TextureRect" parent="GUI/Control/Warnings"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 55.2658
-margin_top = 33.0632
-margin_right = 225.266
-margin_bottom = 188.063
+margin_left = 93.9518
+margin_top = 56.2074
+margin_right = 263.952
+margin_bottom = 211.207
 rect_scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 12 )
 stretch_mode = 4
@@ -705,13 +695,76 @@ stretch_mode = 4
 [node name="DangerLbl" type="Label" parent="GUI/Control/Warnings"]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 27.0
-margin_top = 27.0
-margin_right = 208.0
-margin_bottom = 57.0
+margin_left = 45.9
+margin_top = 45.9
+margin_right = 226.9
+margin_bottom = 75.9
 custom_fonts/font = SubResource( 11 )
 text = "DANGER!!!"
 align = 1
+
+[node name="DistanceLabel" type="Label" parent="GUI/Control/Warnings"]
+anchor_left = 0.212
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.625
+margin_left = 91.5509
+margin_top = 184.979
+margin_right = 149.031
+margin_bottom = 197.979
+custom_fonts/font = SubResource( 5 )
+text = "Distance:"
+
+[node name="DistanceBar" type="ProgressBar" parent="GUI/Control/Warnings"]
+anchor_left = 0.207
+anchor_top = 0.632
+anchor_right = 0.805
+anchor_bottom = 0.766
+margin_left = 292.72
+margin_top = 201.72
+margin_right = 307.8
+margin_bottom = 210.36
+
+[node name="DistanceBar2" type="ProgressBar" parent="GUI/Control/Warnings"]
+anchor_left = 0.207
+anchor_top = 0.632
+anchor_right = 0.805
+anchor_bottom = 0.766
+margin_left = 94.72
+margin_top = 200.72
+margin_right = 114.8
+margin_bottom = 209.36
+
+[node name="DistanceBar3" type="ProgressBar" parent="GUI/Control/Warnings"]
+anchor_left = 0.207
+anchor_top = 0.632
+anchor_right = 0.805
+anchor_bottom = 0.766
+margin_left = 245.72
+margin_top = 200.72
+margin_right = 260.8
+margin_bottom = 209.36
+rect_pivot_offset = Vector2( 25.85, 7 )
+
+[node name="DistanceBar4" type="ProgressBar" parent="GUI/Control/Warnings"]
+anchor_left = 0.207
+anchor_top = 0.632
+anchor_right = 0.805
+anchor_bottom = 0.766
+margin_left = 144.72
+margin_top = 200.72
+margin_right = 167.8
+margin_bottom = 209.36
+
+[node name="DistanceBar5" type="ProgressBar" parent="GUI/Control/Warnings"]
+anchor_left = 0.207
+anchor_top = 0.632
+anchor_right = 0.805
+anchor_bottom = 0.766
+margin_left = 195.72
+margin_top = 199.72
+margin_right = 215.8
+margin_bottom = 208.36
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Control/Warnings"]
 anims/mine = SubResource( 12 )
@@ -719,9 +772,8 @@ anims/round = SubResource( 13 )
 anims/worm = SubResource( 14 )
 
 [node name="WarnBase" type="Sprite" parent="GUI/Control/Warnings"]
-visible = false
-position = Vector2( 135.026, 74.0024 )
-scale = Vector2( 0.176275, 0.189937 )
+position = Vector2( 251.869, 117.254 )
+scale = Vector2( 0.265527, 0.294393 )
 texture = ExtResource( 13 )
 flip_h = true
 
