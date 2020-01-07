@@ -51,17 +51,25 @@ func get_active_spawn_times():
 	return json_levels[current_active_index]["level_structure"][current_active_letter][selected_variant].duplicate(true)
 
 func get_letter_time():
-    var sel = get_active_spawn_times()
-    for key in sel.keys():
-        if sel[key][0] == "@" : 
-            return float(key)
+	var sel = get_active_spawn_times()
+	for key in sel.keys():
+		if sel[key][0] == "@" : return float(key)
+
+func get_whole_distance():
+	var whole_distance = 0.0
+	for json_index in json_levels.keys():
+		var level_structures = json_levels[json_index]["level_structure"]
+		for level in level_structure[json_index].keys():
+			var variant = level_structure[json_index][level]
+			for key in level_structures[level][variant].keys():
+				if level_structures[level][variant][key][0] == "@" : whole_distance += float(key)
+	return whole_distance
 
 func get_background_info():
 	return json_levels[current_active_index]["background"]
 
 func reset():
 	current_active_index = 0
-
 	current_active_letter = json_levels[current_active_index]["start_segment"]
 
 func on_json_change( letter ):
