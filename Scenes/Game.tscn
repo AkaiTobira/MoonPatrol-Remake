@@ -28,25 +28,17 @@
 [ext_resource path="res://Sounds/Lunar_Joyride.ogg" type="AudioStream" id=26]
 [ext_resource path="res://Scenes/BonusPoints.tscn" type="PackedScene" id=27]
 
-[sub_resource type="DynamicFontData" id=13]
+[sub_resource type="DynamicFontData" id=1]
 font_path = "res://Fonts/Digital Play St.ttf"
 
-[sub_resource type="DynamicFont" id=14]
-size = 34
-font_data = SubResource( 13 )
-
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 9 )
-
 [sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 9 )
+size = 34
+font_data = SubResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 14
 font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 14
 font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=5]
@@ -62,17 +54,24 @@ size = 14
 font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=8]
-size = 64
+size = 14
 font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=9]
+size = 14
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 64
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=11]
 size = 24
 outline_size = 2
 outline_color = Color( 0.984314, 0.0392157, 0.0392157, 1 )
 font_data = ExtResource( 9 )
 
-[sub_resource type="Animation" id=10]
-resource_name = "mine"
+[sub_resource type="Animation" id=12]
 length = 6.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ObstacleMine:visible")
@@ -147,8 +146,7 @@ tracks/5/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "round"
+[sub_resource type="Animation" id=13]
 length = 6.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ObstacleRound:visible")
@@ -223,8 +221,7 @@ tracks/5/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "worm"
+[sub_resource type="Animation" id=14]
 length = 6.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ObstacleWorm:visible")
@@ -473,15 +470,14 @@ text = "Score :"
 layer = 3
 
 [node name="Welcomer" type="RichTextLabel" parent="GUI"]
-anchor_right = 0.6
 margin_left = 469.0
 margin_top = 555.0
-margin_right = 958.0
+margin_right = 2110.0
 margin_bottom = 666.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/normal_font = SubResource( 14 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.784314, 0.313726, 0.313726, 1 )
 text = "Beginner course Go !"
 script = ExtResource( 5 )
@@ -527,7 +523,7 @@ margin_left = 0.071991
 margin_top = -0.0685997
 margin_right = 0.0219879
 margin_bottom = -0.0345993
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "X"
 
 [node name="LifeLabel" type="Label" parent="GUI/Control/Distance"]
@@ -539,7 +535,7 @@ margin_left = 0.0189819
 margin_top = -0.0236015
 margin_right = 0.0629883
 margin_bottom = 0.0103989
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "3"
 
 [node name="DistanceLabel" type="Label" parent="GUI/Control/Distance"]
@@ -551,7 +547,7 @@ margin_left = -0.0898018
 margin_top = 0.640198
 margin_right = -9.498
 margin_bottom = -3.9848
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 text = "Distance:"
 
 [node name="DistanceBar" type="ProgressBar" parent="GUI/Control/Distance"]
@@ -585,7 +581,7 @@ margin_left = 0.0521011
 margin_top = 0.0131226
 margin_right = 0.978996
 margin_bottom = 0.0597382
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 text = "HI SCORE:
 SCORE:
 TIME:
@@ -600,7 +596,7 @@ margin_left = -0.00801086
 margin_top = -0.0108757
 margin_right = 0.0879822
 margin_bottom = 0.0230827
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "0"
 valign = 1
 autowrap = true
@@ -615,7 +611,7 @@ margin_left = 0.106979
 margin_top = 0.0131798
 margin_right = -0.00201416
 margin_bottom = 0.047142
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "0"
 valign = 1
 uppercase = true
@@ -629,7 +625,7 @@ margin_left = 0.0509796
 margin_top = 0.0694427
 margin_right = -0.0220184
 margin_bottom = -0.0451965
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 text = "0"
 
 [node name="Warnings" type="TextureRect" parent="GUI/Control"]
@@ -652,7 +648,7 @@ margin_left = 0.0323334
 margin_top = -0.00943947
 margin_right = -0.0409851
 margin_bottom = 0.0634613
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 10 )
 text = "A"
 align = 1
 valign = 1
@@ -706,14 +702,14 @@ margin_left = 27.0
 margin_top = 27.0
 margin_right = 208.0
 margin_bottom = 57.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 11 )
 text = "DANGER!!!"
 align = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Control/Warnings"]
-anims/mine = SubResource( 10 )
-anims/round = SubResource( 11 )
-anims/worm = SubResource( 12 )
+anims/mine = SubResource( 12 )
+anims/round = SubResource( 13 )
+anims/worm = SubResource( 14 )
 
 [node name="WarnBase" type="Sprite" parent="GUI/Control/Warnings"]
 visible = false
