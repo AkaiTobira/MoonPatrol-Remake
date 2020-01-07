@@ -100,21 +100,22 @@ func process_GUI():
 	if Flow.high_score < points: Flow.high_score = points
 	get_tree().call_group("Control", "update_hi_score", Flow.high_score)
 	get_tree().call_group("Control", "update_score", points)
-	
+	if timer_for_segment < 0 :
+		get_tree().call_group("Control", "update_drived_distance", drived_road)
 	
 
 func process_player_speed(delta):
 	var player_multipler = $Player.bakcground_speed_multipler
 	$ParallaxBackground.set_speed_multipler( player_multipler )
-	
-	if timer_for_segment >= 0 :
-		drived_road += $ParallaxBackground.road_speed * delta 
-		get_tree().call_group("Control", "update_drived_distance", drived_road)
-		
+	update_drived_road(delta)
 	for obstacle in get_children():
 		if obstacle.is_in_group("obstalces"):
 			obstacle.adapt_speed( $ParallaxBackground.road_speed )
 
+func update_drived_road(delta):
+	if timer_for_segment < 0 : 
+		drived_road += $ParallaxBackground.road_speed * delta 
+		
 func reset_segment_process_values():
 	timer_for_segment = 0
 	drived_road       = 0 
