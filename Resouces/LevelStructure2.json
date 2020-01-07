@@ -3,13 +3,14 @@
 	"end_segment"       : "D",
 	"avr_time"          : 20,
 	"additional_points" : 1000,
+	"background"        : "hills",
 	"fixed_segment"     : false,
 	"level_structure"   : {
 		"0" : {
 			"0" :{
 					"0"    : "!RockS",
 					"2"    : "RockS",
-					"0.5"  : "^Rise_4",
+					"0.5"  : "^Rise",
 					"1"    : "1_A_Alien2",
 					"5"    : "@A"
 			}
@@ -18,7 +19,7 @@
 		  "0" :{
 				  "0"    : "!RockS",
 				  "2"    : "RockS",
-				  "0.5"  : "^Rise_4",
+				  "0.5"  : "^Rise",
 				  "1"    : "1_A_Alien2",
 				  "5"    : "@B"
 		  }
@@ -39,9 +40,8 @@
 	  "C" : {
 		  "0" :{
 			  "2"    : "RockS",
-			  "0.5"  : "^Fall_4",
 			  "1"    : "1_A_Bomber",
-			  "5"    : "@D"
+			  "35"    : "@D"
 		  }
 	  }
 	}

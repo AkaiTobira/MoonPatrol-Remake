@@ -47,8 +47,8 @@ func reset():
 	relative_x = 0
 	relative_y = 0
 	position.y = base_high
-	
-	if get_parent().background_backup[ 3 ] : position.y -= 200
+
+	if Flow.is_high : position.y -= ( Flow.hight_difference + 10 )
 	
 	forward_missle  = null
 	fire_up_missles = 0 
@@ -108,28 +108,23 @@ func process_move(delta):
 	position.x += res.x * delta
 	position.y += (wheel_distance - wheel_base).y
 
-# move_and_slide( Vector2(target_pos.x, position.y) - position )
-
-	var gravity_reducer = 1 # min( 1, ( Vector2(position.x, target_pos.y) - position ).length() / MaxJump + 0.3 )
-# warning-ignore:return_value_discarded
-
-	if is_jumping :
-		$Whell1.reverse_gravity = true
-		$Whell2.reverse_gravity = true
+	if is_jumping : switch_wheels(true)
 	else: on_floor = wheel_on_floor()
 
 	bakcground_speed_multipler = 1 + ( relative_x/200 )
 
-var previous_wheel_distance = 9.15
+func switch_wheels( is_gravity_reverted ):
+	$Whell1.reverse_gravity = is_gravity_reverted
+	$Whell2.reverse_gravity = is_gravity_reverted
 
 func wheel_on_floor():
-	$Whell1.reverse_gravity = false
-	$Whell2.reverse_gravity = false
+	switch_wheels(false)
 	return $Whell1.on_floor or $Whell2.on_floor
 
 func on_dead():
 	if not player_good_mode: 
 		controller.set_process(false)
+		Flow.stop_BGM_music()
 		$ExplosionSound.play()
 		Flow.pause_world(10)
 		play_animation_if_not_player("Dead")
@@ -147,13 +142,36 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		if lives < 0 and not player_good_mode : 
 			Flow.pause_world(1000)
 			get_tree().call_group("Control", "update_lives", "0")
+			$DeadSound.play()
 			get_parent().show_game_over()
 			visible = false
-		else : get_parent().reload_from_checkpoint()
+		else : 
+			get_parent().reload_from_checkpoint()
+			Flow.play_BGM_music()
 		controller.set_process(true)
+
+
+func play_end_game_music():
+	$VictorySound.play()
+	
+func play_checkpoint_music():
+	$LoseLifeSound.play()
+
+func block_player_animations():
+	$AnimationPlayer.stop()
+	$Whell1/AnimationPlayer.stop()
+	$Whell2/AnimationPlayer.stop()
+
+func play_player_animations():
+	$AnimationPlayer.play()
+	$Whell1/AnimationPlayer.play()
+	$Whell2/AnimationPlayer.play()
 
 func _on_Area2D_body_entered(body):
 	var is_killed = body.is_in_group("alien") or body.is_in_group("enemy_missle")
 	var hit_smt   = body.is_in_group("obstalces") 
 	if hit_smt:     body.on_delete()
 	if is_killed or hit_smt: on_dead()
+
+func _on_Sound_finished():
+	Flow.summarize()

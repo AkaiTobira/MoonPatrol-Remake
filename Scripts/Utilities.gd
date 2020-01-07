@@ -20,9 +20,29 @@ var objects = {
 	"PUmissle"   :  preload( "res://Scenes/ProjectTiles/Missle.tscn" ),
 	"PFmissle"   :  preload( "res://Scenes/ProjectTiles/Missle_forward.tscn" ),
 	"Bomb"       :  preload( "res://Scenes/ProjectTiles/Bomb.tscn" ),
-	"IRoad"      :  preload( "res://Scenes/Inclined_Road.tscn" ),
+	"IRoad1"     :  preload( "res://Scenes/Inclined_Road.tscn" ),
+	"IRoad2"     :  preload( "res://Scenes/Inclined_Road.tscn" ),
 	"Emissle"    :  preload( "res://Scenes/ProjectTiles/Enemy_missle.tscn" )
 }
+
+var background = {
+	"1" : {
+		"road"  : preload("res://Textures/Placeholders_new/road_1.png" ),
+		"back1" : preload("res://Textures/Placeholders_new/hill_1.png" ),
+		"back2" : preload("res://Textures/Placeholders_new/hill_3.png" ),
+		"inclined_name" : "IRoad1"
+		},
+	"2" : {
+		"road"  : preload("res://Textures/Placeholders_new/road_1.png" ),
+		"back1" : preload("res://Textures/Placeholders_new/hill_2.png" ),
+		"back2" : preload("res://Textures/Placeholders_new/hill_4.png" ),
+		"inclined_name" : "IRoad2"
+		}
+}
+
+func get_backgrounds( t_name ):
+	if t_name == "dessert" : return background["1"]
+	if t_name == "hills"   : return background["2"]
 
 func get_bezier_interpolate_point( triple_points, t ):
 	var invert_t = 1.0-t

@@ -3,6 +3,7 @@
 	"end_segment"       : "D",
 	"avr_time"          : 20,
 	"additional_points" : 1000,
+	"background"        : "hills",
 	"fixed_segment"     : false,
 	"level_structure"   : {
 		"0" : {

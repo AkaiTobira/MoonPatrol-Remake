@@ -3,15 +3,17 @@ extends Node
 # warning-ignore:unused_class_variable
 var high_score = 0
 
-func _ready():
-	current_active_index = 0
+func load_json():
 	load_structure("LevelStructure1", 0 )
 	load_structure("LevelStructure2", 1 )
 	load_structure("LevelStructure3", 2 )
 	load_structure("LevelStructure4", 3 )
 	load_structure("LevelStructure5", 4 )
 	load_structure("LevelStructure6", 5 )
-	current_active_letter = json_levels[current_active_index]["start_segment"]
+
+func _ready():
+	load_json()
+	reset()
 
 var json_levels = {}
 var records  = { 
@@ -48,14 +50,31 @@ func get_active_spawn_times():
 	var selected_variant = level_structure[current_active_index][current_active_letter]
 	return json_levels[current_active_index]["level_structure"][current_active_letter][selected_variant].duplicate(true)
 	
+func get_background_info():
+	return json_levels[current_active_index]["background"]
+
+func reset():
+	current_active_index = 0
+
+	current_active_letter = json_levels[current_active_index]["start_segment"]
+
+func on_json_change( letter ):
+	Flow.stop_BGM_music()
+	if current_active_index == 5: 
+		Flow.show_congratulation()
+		Flow.play_end_game_music()
+	else: Flow.play_checkpoint_music()
+	Flow.freeze_screen()
+	
+	Flow.save_record_data(  letter, 
+							json_levels[current_active_index]["avr_time"],
+							get_top_record() )
+
 func reached_next_letter( letter ):
 	if json_levels[current_active_index]["fixed_segment"] : return
 	if json_levels[current_active_index]["end_segment"] == letter:
 		reached_next_segment( current_active_letter )
-		Flow.summarize( letter, 
-						json_levels[current_active_index]["avr_time"],
-						get_top_record()
-						)
+		on_json_change( letter )
 		return
 	current_active_letter = letter
 	get_tree().call_group("Control", "update_checkpoint", current_active_letter)

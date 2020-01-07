@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_new/rover2_wer2.png" type="Texture" id=2]
@@ -8,8 +8,11 @@
 [ext_resource path="res://Textures/Placeholders_new/wheel_alone.png" type="Texture" id=6]
 [ext_resource path="res://Textures/Placeholders_new/rover_element_back.png" type="Texture" id=7]
 [ext_resource path="res://Resouces/Dead-Player.tres" type="Animation" id=8]
-[ext_resource path="res://Sounds/LaserShot.wav" type="AudioStream" id=9]
-[ext_resource path="res://Sounds/atari_boom5.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sounds/Dead.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sounds/Victory.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sounds/LaserShot.wav" type="AudioStream" id=11]
+[ext_resource path="res://Sounds/atari_boom5.wav" type="AudioStream" id=12]
+[ext_resource path="res://Sounds/Lose_life.wav" type="AudioStream" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Roll"
@@ -31,7 +34,7 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=2]
 radius = 14.3933
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "Roll"
 length = 2.0
 loop = true
@@ -231,7 +234,7 @@ texture = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Whell2"]
 autoplay = "Roll"
-anims/Roll = SubResource( 5 )
+anims/Roll = SubResource( 3 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Whell2"]
 position = Vector2( -82.4696, 10.7735 )
@@ -242,10 +245,21 @@ autoplay = "Idle"
 anims/Dead = ExtResource( 8 )
 anims/Idle = SubResource( 4 )
 
-[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+[node name="DeadSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 
-[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+[node name="VictorySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="LoseLifeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="finished" from="VictorySound" to="." method="_on_Sound_finished"]
+[connection signal="finished" from="LoseLifeSound" to="." method="_on_Sound_finished"]

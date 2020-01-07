@@ -84,16 +84,12 @@ func handle_fall(delta):
 
 func _process(delta): 
 	if Flow.world_is_paused : return
-#	print( state, should_fall )
 	handle_rise(delta)
 	handle_high(delta)
 	handle_fall(delta)
-	
 	set_spawners_height()
 
 func set_spawners_height():
-	var is_low  = "Fall" == state or state == "Rise"
+	var is_low  = ("Fall" == state or state == "Rise")
 	Flow.is_high          = not is_low
 	Flow.hight_difference = parent_collider_y - get_parent().get_node("Back3/StaticBody2D").position.y
-	
-	

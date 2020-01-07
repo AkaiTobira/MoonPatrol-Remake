@@ -5,7 +5,6 @@ var set_of_spawns = null
 
 var timer_for_segment = -6
 var timer_summary     = -6
-var timer_reduction   = 0
 
 var drived_road       = 0
 
@@ -18,10 +17,13 @@ var background_backup = null
 
 func _ready():
 	Utilities.register_player($Player)
+	LevelParser.reset()
 	set_of_spawns = LevelParser.get_active_spawn_times()
-	Flow.main_node = self 
+	Flow.main_node    = self 
 	background_backup = $ParallaxBackground.get_backgoround_info()
-	Flow.pause_world(3)
+	$ParallaxBackground.load_bakcground_fill( LevelParser.get_background_info() )
+	get_tree().call_group("Control", "update_hi_score", Flow.high_score)
+	Flow.pause_world(2)
 
 func process_intro():
 	if not play_intro : return
@@ -31,7 +33,6 @@ func process_intro():
 func process_timers(delta):
 	timer_for_segment += delta
 	timer_summary     += delta
-	timer_reduction   += Utilities.player.bakcground_speed_multipler * delta * 0.22
 	get_tree().call_group("Control", "update_timer", timer_summary)
 
 func update_logger( info ):
@@ -42,7 +43,7 @@ func update_logger( info ):
 		$UI/SpawnLog.text += logg + "\n"
 
 func process_spawn():
-	var current_time = stepify(drived_road, 0.1)#stepify(timer_for_segment + timer_reduction, 0.1)
+	var current_time = stepify(drived_road, 0.1)
 	for timer in set_of_spawns :
 		var nmb_time = float(timer) * $ParallaxBackground.SPEED * $ParallaxBackground.SPEDD_MULTIPLER_3
 		if nmb_time <= current_time: 
@@ -60,17 +61,26 @@ func parse_checkpoint_keyword(keyword):
 	$Spawners.spawn_checkpoint( keyword[1] )
 
 func _process(delta):
+	process_cheat()
 	if Flow.world_is_paused: return
 	process_intro()
 	process_timers(delta)
 	process_spawn()
 	process_player_speed(delta)
 	process_GUI()
-	process_cheat()
 
+var is_frozed = false
 func process_cheat():
 	if Input.is_action_just_pressed("ui_down"): reload_from_checkpoint()
 	if Input.is_action_just_pressed("ui_page_down"): $Player.player_good_mode = !$Player.player_good_mode 
+
+	if Input.is_action_just_pressed("ui_home"): 
+		if is_frozed : 
+			Flow.unfreeze_screen()
+			is_frozed = false
+		else :
+			Flow.freeze_screen()
+			is_frozed = true
 
 	var need_reload = false
 	if Input.is_action_just_pressed("res1"): need_reload = LevelParser.change_active_segment( 0 )
@@ -84,14 +94,12 @@ func process_cheat():
 		reload_from_checkpoint()
 
 func process_GUI(): 
-	$UI/Time.text    = str( stepify(timer_for_segment + timer_reduction, 0.1) )
+	$UI/Time.text    = str( stepify(timer_for_segment, 0.1) )
 	$UI/GodMode.text = "Good Mode : "  +  str($Player.player_good_mode)
 	$UI/Road.text    = str( stepify(drived_road, 0.1) )
-	if get_node("/root/Flow").high_score < points:
-		get_node("/root/Flow").high_score = points
-	get_tree().call_group("Control", "update_hi_score", get_node("/root/Flow").high_score)
+	if Flow.high_score < points: Flow.high_score = points
+	get_tree().call_group("Control", "update_hi_score", Flow.high_score)
 	get_tree().call_group("Control", "update_score", points)
-
 
 func process_player_speed(delta):
 	var player_multipler = $Player.bakcground_speed_multipler
@@ -106,13 +114,12 @@ func process_player_speed(delta):
 
 func reset_segment_process_values():
 	timer_for_segment = 0
-	timer_reduction   = 0
 	drived_road       = 0 
 
 func show_game_over():
-	$UI/Welcomer.text    = "Game Over"
-	$UI/Welcomer.visible = true
-	Flow.exit_to_intro( 5 )
+	$GUI/Welcomer.text    = "Game Over"
+	$GUI/Welcomer.visible = true
+	Flow.exit_to_intro( 4 )
 
 func reload_from_checkpoint():
 	Flow.clean_scene()
@@ -120,12 +127,14 @@ func reload_from_checkpoint():
 	reset_segment_process_values()
 	set_of_spawns     = LevelParser.get_active_spawn_times()
 	$ParallaxBackground.set_backgoround_info( background_backup )
+	$ParallaxBackground.load_bakcground_fill( LevelParser.get_background_info() )
 	Flow.play_world()
 
 func next_checkpoint(letter):
 	background_backup = $ParallaxBackground.get_backgoround_info()
 	LevelParser.reached_next_letter(letter)
 	set_of_spawns     = LevelParser.get_active_spawn_times()
+	$ParallaxBackground.load_bakcground_fill( LevelParser.get_background_info() )
 	reset_segment_process_values()
 
 func _on_V_visibility_changed():

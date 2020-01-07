@@ -2,9 +2,9 @@
 
 [ext_resource path="res://Scripts/BackgroundControll.gd" type="Script" id=1]
 [ext_resource path="res://Textures/GUI/bg_1_1.png" type="Texture" id=2]
-[ext_resource path="res://Textures/Placeholders_new/hill3 big.png" type="Texture" id=3]
-[ext_resource path="res://Textures/Placeholders_new/hill1 big.png" type="Texture" id=4]
-[ext_resource path="res://Textures/Placeholders_new/road desert big.png" type="Texture" id=5]
+[ext_resource path="res://Textures/Placeholders_new/hill_3.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Placeholders_new/hill_1.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Placeholders_new/road_1.png" type="Texture" id=5]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 layer = -2

@@ -107,7 +107,7 @@ class Shoot extends State:
 		return !Utilities.player.forward_missle
 
 	func can_shoot_up():
-		return Utilities.player.fire_up_missles < 3
+		return Utilities.player.fire_up_missles < 4
 
 # warning-ignore:unused_argument
 	func update(delta):

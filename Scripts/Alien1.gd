@@ -12,7 +12,7 @@ func _ready():
 	LIFE_TIME         = 12
 	
 func _physics_process(delta):
-	if pause : return
+	if Flow.world_is_paused : return
 	update_times(delta)
 	process_dead()
 	process_shooting()

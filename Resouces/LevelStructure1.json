@@ -4,6 +4,7 @@
 	"avr_time"          : 20,
 	"additional_points" : 1000,
 	"fixed_segment"     : false,
+	"background"        : "dessert",
 	"level_structure"   : {
 		"0" : {
 			"0" :{
@@ -19,8 +20,11 @@
 
 				"12"  : "3_111_Bomber",
 
-				
 				"13" : "^Rise",
+
+				"30"   : "RoundS",
+
+				"32"   : "Round",
 
 				"14" : "^Fall",
 

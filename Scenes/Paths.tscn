@@ -105,6 +105,10 @@ curve = SubResource( 3 )
 visible = false
 curve = SubResource( 4 )
 
+[node name="e" type="Path2D" parent="Alien1"]
+visible = false
+curve = SubResource( 4 )
+
 [node name="g" type="Path2D" parent="Alien1"]
 visible = false
 position = Vector2( 52.9999, -96 )

@@ -24,7 +24,7 @@ func _ready():
 	for i in range(76): move_log.append(Vector2(0,0))
 
 func _physics_process(delta):
-	if pause : return
+	if Flow.world_is_paused : return
 	update_times(delta)
 	process_dead()
 	process_bombing()

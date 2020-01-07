@@ -9,8 +9,8 @@ var KAMIKAZE_PROBABILITY = 5
 var KAMIKAZE_ENABLED     = true
 
 #shooting variables
-var current_precision = 250
-var MAX_PRECISION     = 250
+var current_precision = 100
+var MAX_PRECISION     = 100
 var PRECISION_UPDATE  = 30
 var SHOOT_PROBABILITY = 320
 var precision_update_timer        = 0

@@ -1,8 +1,9 @@
 {
 	"start_segment"     : "0",
-	"end_segment"       : "D",
+	"end_segment"       : "Z",
 	"avr_time"          : 20,
 	"additional_points" : 1000,
+	"background"        : "hills",
 	"fixed_segment"     : false,
 	"level_structure"   : {
 		"0" : {
@@ -47,7 +48,7 @@
 		  "0" :{
 			  "2"    : "RockS",
 			  "1"    : "1_A_Bomber",
-			  "5"    : "@D"
+			  "5"    : "@Z"
 		  }
 	  }
 	}
