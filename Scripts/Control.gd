@@ -1,19 +1,19 @@
 extends Control
 
-var is_mine_first = true
-var is_round_first = true
-var is_worm_first = true
+var is_mine_first   = true
+var is_round_first  = true
+var is_worm_first   = true
+var is_bomber_first = true
 
 func _ready():
-	$Distance/LifeLabel.text = "2"
-	$Warnings/Checkpoint.text = ""
+	$Distance/LifeLabel.text           = "2"
+	$Warnings/Checkpoint.text          = ""
 	$Warnings/ShortDistanceBar.visible = false
-	$Distance/LifeLabel.visible = true
-	$Distance/TextureRect.visible = true
-	$Distance/XLabel.visible = true
-	$Warnings/WarnBase.visible = true
+	$Distance/LifeLabel.visible        = true
+	$Distance/TextureRect.visible      = true
+	$Distance/XLabel.visible           = true
+	$Warnings/WarnBase.visible         = true
 	
-	#get_segment_end_distance()
 	
 	
 func update_timer(time_past):
@@ -65,7 +65,11 @@ func show_warning(obstacle):
 			if is_worm_first == true:
 				$Warnings/AnimationPlayer.play("worm")
 				is_worm_first = false
-	
+		"!Bomber":
+			if is_bomber_first == true:
+				$Warnings/AnimationPlayer.play("bomber")
+				is_bomber_first = false
+				
 func update_checkpoint(checkpoint):
 	if checkpoint != null:
 		$Warnings/WarnBase.visible = false
