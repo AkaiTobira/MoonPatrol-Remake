@@ -1,47 +1,94 @@
 {
-	"start_segment"     : "0",
-	"end_segment"       : "D",
+	"start_segment"     : "E",
+	"end_segment"       : "J",
 	"avr_time"          : 20,
 	"additional_points" : 1000,
-	"background"        : "hills",
 	"fixed_segment"     : false,
+	"background"        : "dessert",
 	"level_structure"   : {
-		"0" : {
+		"E" : {
 			"0" :{
-					"0"    : "!RockS",
-					"2"    : "RockS",
-					"0.5"  : "^Rise",
-					"1"    : "1_A_Alien2",
-					"5"    : "@A"
+					"0"    : "!Mine",
+					"3"    : "Mine",
+					"5"    : "Mine",
+					"11"    : "Mine",
+					"15.5"    : "Mine",
+					"15"    : "Mine",
+					"17"    : "Mine",
+					"18.5"    : "Mine",					
+					"20"    : "@F"
 			}
 		},
-	  "A" : {
+	  "F" : {
 		  "0" :{
-				  "0"    : "!RockS",
-				  "2"    : "RockS",
-				  "0.5"  : "^Rise",
-				  "1"    : "1_A_Alien2",
-				  "5"    : "@B"
+					"0.5"  : "^Rise",
+					"2.7"    : "!Round",
+					"8.7"    : "RoundS",
+					"9.5"    : "Round",
+					"10.1"    : "RoundS",
+					"5"    : "2_ef_Alien2",
+					"0.5"    : "RockS",
+					"10"    : "3_egf_Alien1",
+					"12.5"  : "^Fall",
+					"20"    : "@G"
 		  }
 	  },
-	  "B" : {
+	  "G" : {
 		  "0" :{
-			  "0"    : "!Hole",
-			  "2"    : "HoleB",
-			  "1"    : "1_A_Alien1",
-			  "5"    : "@C"
+					"2"    : "HoleB",
+					"6"    : "Hole",
+					"19"    : "HoleB",
+					"12"    : "HoleB",
+					"15"    : "HoleB",
+					"3.5"    : "2_ij_Alien1",
+					"17.7"    : "Hole",
+					"20"    : "@H"
 		  },
 		  "1" : {
-			  "0"    : "!Hole",
-			  "1"    : "1_A_Alien1",
-			  "5"    : "@C"
+					"0.5"    : "RockS",
+					"4.2"    : "RockS",
+					"6.5"    : "RockS",
+					"9.3"    : "RockS",
+					"1"    : "2_fg_Alien1",
+					"9.8"    : "RockB",
+					"12.5"    : "RockB",
+					"15.5"    : "RockB",
+					"20"    : "@H"
 		  }
 	  },
-	  "C" : {
+	  "H" : {
 		  "0" :{
-			  "2"    : "RockS",
-			  "1"    : "1_A_Bomber",
-			  "35"    : "@D"
+					"2"    : "RockS",
+					"2.1"    : "3_chi_Alien1",			  
+					"4.5"    : "RockS",
+					"5.5"    : "RockS",
+					"6.5"    : "RockS",
+					"9"    : "RockB",
+					"12"    : "RockS",
+					"6.1"    : "!Bomber",	
+					"12.1"    : "2_de_Bomber",
+					"12.2"    : "2_ab_Alien1",	
+					"15"    : "RockS",
+					"17"    : "RockS",
+					"19"    : "RockS",
+					"20"    : "@I"
+		  }
+	  },
+	  "I" : {
+		  "0" :{
+					"0"    : "!Bomber",
+					"7.5"   : "RockB",
+					"12"    : "Hole",
+					"10"    : "RockB",
+					"6"    : "2_AA_Bomber", 
+					"6.1"    : "1_j_Alien1",
+					"11.5"    : "RockB",	
+					"12.1"    : "2_aa_Alien2",
+					"14.7"    : "Rock2",	
+					"15.5"    : "Hole",
+					"17"    : "RockB",
+					"18.3"    : "HoleB", 	
+					"20"    : "@J"
 		  }
 	  }
 	}
