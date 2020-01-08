@@ -65,7 +65,7 @@ func show_warning(obstacle):
 			if is_worm_first == true:
 				$Warnings/AnimationPlayer.play("worm")
 				is_worm_first = false
-		"!1_A_Bomber":
+		"!Bomber":
 			if is_bomber_first == true:
 				$Warnings/AnimationPlayer.play("bomber")
 				is_bomber_first = false
