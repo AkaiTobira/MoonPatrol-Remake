@@ -1,13 +1,12 @@
 extends Node2D
 
-
-var state = "Normal"
+var state             = "Normal"
+var should_fall       = false
+var parent_collider_y = 0
 
 func _ready():
 	parent_collider_y = get_parent().get_node("Back3/StaticBody2D").position.y
 	state = "Rise"
-
-var should_fall = false
 
 func start_fall():
 	should_fall = true
@@ -62,10 +61,7 @@ func handle_high(delta):
 	$ParallaxBackground/ParallaxLayer.motion_offset.x -= get_parent().road_speed * delta
 	if $ParallaxBackground/ParallaxLayer.motion_offset.x < -$ParallaxBackground/ParallaxLayer.motion_mirroring.x: 
 		$ParallaxBackground/ParallaxLayer.motion_offset.x += $ParallaxBackground/ParallaxLayer.motion_mirroring.x
-	if should_fall: 
-		state = "preFall1"
-
-var parent_collider_y = 0
+	if should_fall:  state = "preFall1"
 
 func handle_fall(delta):
 	if state == "preFall1":

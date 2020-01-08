@@ -74,7 +74,7 @@ font_data = ExtResource( 9 )
 [sub_resource type="Animation" id=12]
 length = 6.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("../ObstacleMine:visible")
+tracks/0/path = NodePath("ObstacleMine:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -86,7 +86,7 @@ tracks/0/keys = {
 "values": [ false, true, true, true, true, true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../DangerLbl:visible")
+tracks/1/path = NodePath("DangerLbl:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -98,7 +98,7 @@ tracks/1/keys = {
 "values": [ false, true, true, true, true, true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../Checkpoint:visible")
+tracks/2/path = NodePath("Checkpoint:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -110,7 +110,7 @@ tracks/2/keys = {
 "values": [ true, false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../ShortDistanceBar:visible")
+tracks/3/path = NodePath("ShortDistanceBar:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -122,7 +122,7 @@ tracks/3/keys = {
 "values": [ true, false, true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../ObstacleMine:modulate")
+tracks/4/path = NodePath("ObstacleMine:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -134,7 +134,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../DangerLbl:modulate")
+tracks/5/path = NodePath("DangerLbl:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -149,7 +149,7 @@ tracks/5/keys = {
 [sub_resource type="Animation" id=13]
 length = 6.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("../ObstacleRound:visible")
+tracks/0/path = NodePath("ObstacleRound:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -161,7 +161,7 @@ tracks/0/keys = {
 "values": [ false, true, true, true, true, true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../DangerLbl:visible")
+tracks/1/path = NodePath("DangerLbl:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -173,7 +173,7 @@ tracks/1/keys = {
 "values": [ false, true, true, true, true, true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../Checkpoint:visible")
+tracks/2/path = NodePath("Checkpoint:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -185,7 +185,7 @@ tracks/2/keys = {
 "values": [ true, false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../ShortDistanceBar:visible")
+tracks/3/path = NodePath("ShortDistanceBar:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -197,7 +197,7 @@ tracks/3/keys = {
 "values": [ true, false, true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../ObstacleRound:modulate")
+tracks/4/path = NodePath("ObstacleRound:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -209,7 +209,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../DangerLbl:modulate")
+tracks/5/path = NodePath("DangerLbl:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -224,7 +224,7 @@ tracks/5/keys = {
 [sub_resource type="Animation" id=14]
 length = 6.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("../ObstacleWorm:visible")
+tracks/0/path = NodePath("ObstacleWorm:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -236,7 +236,7 @@ tracks/0/keys = {
 "values": [ false, true, true, true, true, true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../DangerLbl:visible")
+tracks/1/path = NodePath("DangerLbl:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -248,7 +248,7 @@ tracks/1/keys = {
 "values": [ false, true, true, true, true, true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../Checkpoint:visible")
+tracks/2/path = NodePath("Checkpoint:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -260,7 +260,7 @@ tracks/2/keys = {
 "values": [ true, false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../ShortDistanceBar:visible")
+tracks/3/path = NodePath("ShortDistanceBar:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -272,7 +272,7 @@ tracks/3/keys = {
 "values": [ true, false, true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../ObstacleWorm:modulate")
+tracks/4/path = NodePath("ObstacleWorm:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -284,7 +284,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../DangerLbl:modulate")
+tracks/5/path = NodePath("DangerLbl:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -353,10 +353,10 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = "Top Record"
 
 [node name="Label_GoddBonusPoint" type="RichTextLabel" parent="Summary/V"]
-margin_left = 635.0
-margin_top = 651.0
-margin_right = 1072.0
-margin_bottom = 700.0
+margin_left = 622.0
+margin_top = 652.0
+margin_right = 1591.0
+margin_bottom = 701.0
 custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = "Good Bonus Point :"
@@ -398,15 +398,16 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
 [node name="BonusPoint" type="RichTextLabel" parent="Summary/V"]
-margin_left = 1049.13
+margin_left = 1037.13
 margin_top = 651.556
-margin_right = 1809.13
+margin_right = 1797.13
 margin_bottom = 700.556
 custom_fonts/mono_font = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 4 )
 text = ":   0000"
 
 [node name="UI" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 442, 203 )
 z_index = 56
 

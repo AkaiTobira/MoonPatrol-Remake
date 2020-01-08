@@ -55,6 +55,7 @@ texture = ExtResource( 3 )
 flip_h = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1000, 0 )
 
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 7074, 1070 )

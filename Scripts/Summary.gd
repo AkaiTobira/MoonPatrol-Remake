@@ -33,13 +33,16 @@ var aditonal_points = 0
 var states = [ "Reach", "YTime", "ATime", "Ttime", "Bonus", "Record", "NRecord" ]
 
 func reset():
+	$BonusPoint.visible = true
 	texts["Reach"] = "Time to reach point " + '"' + reached_letter + '"'
 	seconds = 0.15
 	if timers["takes_time"] < timers["average_time"]: 
 		states          = [ "Reach", "YTime", "ATime", "Ttime", "Bonus", "Record" ]
 		aditonal_points = 1000
 		LevelParser.save_top_record( timers["takes_time"] )
-	else: states = [ "Reach", "YTime", "ATime", "Ttime", "NBonus" ]
+	else: 
+		states = [ "Reach", "YTime", "ATime", "Ttime", "NBonus" ]
+		$BonusPoint.visible = false
 	for child in get_children():
 		if child.name == "Sprite": continue
 		child.text = "" 
