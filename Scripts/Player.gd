@@ -127,13 +127,29 @@ func on_dead():
 		Flow.pause_world(10)
 		play_animation_if_not_player("Dead")
 
-func on_hole_dead( anim_name ):
+func on_hole_dead( anim_name, target ):
 	if not player_good_mode: 
 		controller.set_process(false)
 		Flow.stop_BGM_music()
 		$ExplosionSound.play()
 		Flow.pause_world(10)
+		correct_anim(anim_name, target )
 		play_animation_if_not_player(anim_name)
+		
+func correct_anim(anim_name, target ):
+	var anim  = $AnimationPlayer.get_animation( anim_name )
+	var index        = anim.find_track( "Sprite:position" )
+	var whell_index1 = anim.find_track( "Whell1/Sprite2:position" )
+	var whell_index2 = anim.find_track( "Whell2/Sprite2:position" )
+	var fire_index   = anim.find_track( "Explosion:position" )
+	
+	var cur_value   = anim.track_get_key_value(index, 1)
+	var target_vale = (target-position) + Vector2(0, 20 )
+	var diff      = cur_value - target_vale
+	anim.track_set_key_value( index, 1, target_vale )
+	anim.track_set_key_value( whell_index1, 1, anim.track_get_key_value(whell_index1, 1) - diff )
+	anim.track_set_key_value( whell_index2, 1, anim.track_get_key_value(whell_index2, 1) - diff )
+	anim.track_set_key_value( fire_index, 1,   anim.track_get_key_value(fire_index, 1) - diff )
 
 func play_animation_if_not_player( anim_name ):
 	if $AnimationPlayer.current_animation == anim_name : return
@@ -178,13 +194,13 @@ func _on_Area2D_body_entered(body):
 	var hit_smt   = body.is_in_group("obstalces") 
 	if hit_smt:     body.on_delete()
 	var side = calculate_side( body.position ) if body.is_in_group("hole") else "None"
-	if is_killed or hit_smt: fall_in_hole(side)
+	if is_killed or hit_smt: fall_in_hole(side , body.position)
 
-func fall_in_hole( side ):
+func fall_in_hole( side, target_pos):
 	match( side ):
 		"None"  : on_dead()
-		"Front" : on_hole_dead( "Fall_front" )
-		"Back"  : on_hole_dead( "Fall_back" )
+		"Front" : on_hole_dead( "Fall_front", target_pos )
+		"Back"  : on_hole_dead( "Fall_back",  target_pos )
 
 func calculate_side( position_hole ):
 	if position_hole.x < position.x : return "Back"
