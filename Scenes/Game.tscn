@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Summary.gd" type="Script" id=2]
@@ -9,25 +9,26 @@
 [ext_resource path="res://Textures/GUI/panel new 1.png" type="Texture" id=7]
 [ext_resource path="res://Textures/buggy.png" type="Texture" id=8]
 [ext_resource path="res://Fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=9]
-[ext_resource path="res://Textures/Placeholders_new/worm_warn.png" type="Texture" id=10]
-[ext_resource path="res://Textures/Placeholders_new/landmine_new2.png" type="Texture" id=11]
-[ext_resource path="res://Textures/Placeholders_new/boulder_big_new.png" type="Texture" id=12]
-[ext_resource path="res://Textures/Placeholders_new/bomber_warn.png" type="Texture" id=13]
-[ext_resource path="res://Textures/Placeholders_old/Base_small.png" type="Texture" id=14]
-[ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Textures/Placeholders_old/Base.png" type="Texture" id=16]
-[ext_resource path="res://Scripts/Base.gd" type="Script" id=17]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Scenes/Paths.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Scripts/Spawners.gd" type="Script" id=20]
-[ext_resource path="res://Scenes/Spawners/RRock_Spawner.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Scenes/Spawners/Hole_Spawner.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Scenes/Spawners/Rock_Spawner.tscn" type="PackedScene" id=23]
-[ext_resource path="res://Scenes/Spawners/Mine_Spawner.tscn" type="PackedScene" id=24]
-[ext_resource path="res://Scenes/Spawners/Checkpoint_Spawner.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Scenes/Spawners/Alien_Spawner.tscn" type="PackedScene" id=26]
-[ext_resource path="res://Sounds/Lunar_Joyride.ogg" type="AudioStream" id=27]
-[ext_resource path="res://Scenes/BonusPoints.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Fonts/Digital Play St.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Textures/Placeholders_new/worm_warn.png" type="Texture" id=11]
+[ext_resource path="res://Textures/Placeholders_new/landmine_new2.png" type="Texture" id=12]
+[ext_resource path="res://Textures/Placeholders_new/boulder_big_new.png" type="Texture" id=13]
+[ext_resource path="res://Textures/Placeholders_new/bomber_warn.png" type="Texture" id=14]
+[ext_resource path="res://Textures/Placeholders_old/Base_small.png" type="Texture" id=15]
+[ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Textures/Placeholders_old/Base.png" type="Texture" id=17]
+[ext_resource path="res://Scripts/Base.gd" type="Script" id=18]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Paths.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scripts/Spawners.gd" type="Script" id=21]
+[ext_resource path="res://Scenes/Spawners/RRock_Spawner.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Scenes/Spawners/Hole_Spawner.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Scenes/Spawners/Rock_Spawner.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Scenes/Spawners/Mine_Spawner.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Scenes/Spawners/Checkpoint_Spawner.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Scenes/Spawners/Alien_Spawner.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Sounds/Lunar_Joyride.ogg" type="AudioStream" id=28]
+[ext_resource path="res://Scenes/BonusPoints.tscn" type="PackedScene" id=29]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Fonts/Digital Play St.ttf"
@@ -40,31 +41,32 @@ font_data = SubResource( 1 )
 font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 9 )
+size = 14
+font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 14
-font_data = ExtResource( 9 )
+size = 12
+font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=6]
-size = 14
-font_data = ExtResource( 9 )
+size = 12
+font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=7]
-size = 14
-font_data = ExtResource( 9 )
+size = 12
+font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=8]
-size = 14
-font_data = ExtResource( 9 )
+size = 12
+font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=9]
-size = 14
-font_data = ExtResource( 9 )
+size = 12
+font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=10]
-size = 64
-font_data = ExtResource( 9 )
+size = 52
+font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=11]
 size = 24
@@ -565,10 +567,10 @@ script = ExtResource( 5 )
 ]]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -11.5241
-margin_top = 5.01053
-margin_right = -11.5242
-margin_bottom = 5.01038
+margin_left = -9.30804
+margin_top = 2.79447
+margin_right = -9.30811
+margin_bottom = 2.79431
 script = ExtResource( 6 )
 
 [node name="Distance" type="Control" parent="GUI/Control"]
@@ -588,10 +590,11 @@ anchor_left = 0.34
 anchor_top = 0.206
 anchor_right = 0.473
 anchor_bottom = 0.421
-margin_left = 69.5377
-margin_top = 4.07754
-margin_right = 128.218
-margin_bottom = 59.4775
+margin_left = 84.331
+margin_top = 12.2226
+margin_right = 143.011
+margin_bottom = 67.6226
+rect_scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 8 )
 
 [node name="XLabel" type="Label" parent="GUI/Control/Distance"]
@@ -611,10 +614,10 @@ anchor_left = 0.581
 anchor_top = 0.288
 anchor_right = 0.697
 anchor_bottom = 0.422
-margin_left = 176.903
-margin_top = 28.367
-margin_right = 183.263
-margin_bottom = 43.007
+margin_left = 171.201
+margin_top = 19.6641
+margin_right = 178.561
+margin_bottom = 44.3041
 rect_scale = Vector2( 2, 2 )
 custom_fonts/font = SubResource( 4 )
 text = "3"
@@ -624,10 +627,10 @@ anchor_left = 0.212
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.625
-margin_left = 65.6476
-margin_top = 60.6325
-margin_right = 123.128
-margin_bottom = 73.6325
+margin_left = 61.2155
+margin_top = 63.9566
+margin_right = 130.695
+margin_bottom = 80.9566
 rect_scale = Vector2( 1.4, 1.4 )
 custom_fonts/font = SubResource( 5 )
 text = "Distance:"
@@ -638,9 +641,9 @@ anchor_top = 0.632
 anchor_right = 0.805
 anchor_bottom = 0.766
 margin_left = 59.7693
-margin_top = 83.8186
+margin_top = 87.1427
 margin_right = 238.849
-margin_bottom = 102.459
+margin_bottom = 105.783
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 
 [node name="TextureProgress" type="TextureProgress" parent="GUI/Control/Distance"]
@@ -664,10 +667,10 @@ anchor_left = 0.147
 anchor_top = 0.263
 anchor_right = 0.5
 anchor_bottom = 0.86
-margin_left = 519.791
-margin_top = 19.5202
-margin_right = 581.671
-margin_bottom = 76.6402
+margin_left = 520.12
+margin_top = 9.63983
+margin_right = 580.0
+margin_bottom = 82.7598
 rect_scale = Vector2( 1.4, 1.4 )
 custom_fonts/font = SubResource( 6 )
 text = "HI SCORE:
@@ -680,10 +683,10 @@ anchor_left = 0.537
 anchor_top = 0.253
 anchor_right = 0.881
 anchor_bottom = 0.387
-margin_left = 635.693
-margin_top = 18.1033
-margin_right = 635.789
-margin_bottom = 30.7434
+margin_left = 614.641
+margin_top = 9.48393
+margin_right = 614.737
+margin_bottom = 28.2273
 rect_scale = Vector2( 1.4, 1.4 )
 custom_fonts/font = SubResource( 7 )
 text = "0"
@@ -696,10 +699,10 @@ anchor_left = 0.534
 anchor_top = 0.396
 anchor_right = 0.883
 anchor_bottom = 0.53
-margin_left = 634.961
-margin_top = 37.9806
-margin_right = 634.852
-margin_bottom = 50.6206
+margin_left = 614.0
+margin_top = 39.2208
+margin_right = 613.799
+margin_bottom = 55.8608
 rect_scale = Vector2( 1.4, 1.4 )
 custom_fonts/font = SubResource( 8 )
 text = "0"
@@ -711,10 +714,10 @@ anchor_left = 0.535
 anchor_top = 0.54
 anchor_right = 0.888
 anchor_bottom = 0.675
-margin_left = 635.18
-margin_top = 58.0353
-margin_right = 635.107
-margin_bottom = 70.6353
+margin_left = 614.127
+margin_top = 68.1398
+margin_right = 614.054
+margin_bottom = 84.7398
 rect_scale = Vector2( 1.4, 1.4 )
 custom_fonts/font = SubResource( 9 )
 text = "0"
@@ -740,10 +743,10 @@ anchor_left = 0.307
 anchor_top = 0.143
 anchor_right = 0.66
 anchor_bottom = 0.666
-margin_left = 133.714
-margin_top = 27.4997
-margin_right = 170.594
-margin_bottom = 84.5797
+margin_left = 145.908
+margin_top = 11.7675
+margin_right = 182.788
+margin_bottom = 85.8475
 rect_scale = Vector2( 1.8, 1.8 )
 custom_fonts/font = SubResource( 10 )
 text = "A"
@@ -771,7 +774,7 @@ margin_top = 42.4435
 margin_right = 426.226
 margin_bottom = 270.444
 rect_scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 stretch_mode = 4
 
 [node name="ObstacleMine" type="TextureRect" parent="GUI/Control/Warnings"]
@@ -781,7 +784,7 @@ margin_left = 111.061
 margin_top = 115.918
 margin_right = 292.061
 margin_bottom = 179.918
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 stretch_mode = 4
 
 [node name="ObstacleRound" type="TextureRect" parent="GUI/Control/Warnings"]
@@ -790,7 +793,7 @@ margin_left = 47.2747
 margin_top = 56.3389
 margin_right = 343.275
 margin_bottom = 241.339
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 stretch_mode = 4
 
 [node name="EnemyBomber" type="TextureRect" parent="GUI/Control/Warnings"]
@@ -800,7 +803,7 @@ margin_top = 84.8089
 margin_right = 388.319
 margin_bottom = 338.809
 rect_scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 stretch_mode = 4
 
 [node name="DangerLbl" type="Label" parent="GUI/Control/Warnings"]
@@ -824,7 +827,7 @@ anims/worm = SubResource( 15 )
 visible = false
 position = Vector2( 229.544, 125.804 )
 scale = Vector2( 0.299668, 0.322893 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 flip_h = true
 
 [node name="Black_Holder_Left" type="Sprite" parent="GUI"]
@@ -839,15 +842,15 @@ scale = Vector2( 0.700018, 3.23606 )
 z_index = 2
 texture = ExtResource( 3 )
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 15 )]
+[node name="ParallaxBackground" parent="." instance=ExtResource( 16 )]
 
 [node name="Base" type="Sprite" parent="."]
 position = Vector2( 776.347, 801.249 )
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 flip_h = true
-script = ExtResource( 17 )
+script = ExtResource( 18 )
 
-[node name="Player" parent="." instance=ExtResource( 18 )]
+[node name="Player" parent="." instance=ExtResource( 19 )]
 position = Vector2( 935.418, 910.642 )
 Gravity = 200.0
 MaxJump = 20.0
@@ -855,51 +858,51 @@ Friction = 0.0
 MaxMoveSpeed = 170.0
 move_borders = Vector2( 650, 800 )
 
-[node name="Paths" parent="." instance=ExtResource( 19 )]
+[node name="Paths" parent="." instance=ExtResource( 20 )]
 
 [node name="Spawners" type="Node2D" parent="."]
 editor/display_folded = true
-script = ExtResource( 20 )
+script = ExtResource( 21 )
 
-[node name="Rock_Spawner2" parent="Spawners" instance=ExtResource( 21 )]
+[node name="Rock_Spawner2" parent="Spawners" instance=ExtResource( 22 )]
 position = Vector2( 1917.19, 493.938 )
 
-[node name="Hole_Spawner" parent="Spawners" instance=ExtResource( 22 )]
+[node name="Hole_Spawner" parent="Spawners" instance=ExtResource( 23 )]
 position = Vector2( 1671, 943 )
 scale = Vector2( 0.949715, 1.15578 )
 
-[node name="Rock_Spawner" parent="Spawners" instance=ExtResource( 23 )]
+[node name="Rock_Spawner" parent="Spawners" instance=ExtResource( 24 )]
 position = Vector2( 1580.37, 911.777 )
 
-[node name="Mine_Spawner" parent="Spawners" instance=ExtResource( 24 )]
+[node name="Mine_Spawner" parent="Spawners" instance=ExtResource( 25 )]
 position = Vector2( 1591.34, 932.86 )
 
-[node name="Checkpoint_Spawner" parent="Spawners" instance=ExtResource( 25 )]
+[node name="Checkpoint_Spawner" parent="Spawners" instance=ExtResource( 26 )]
 position = Vector2( 1583.69, 1000.1 )
 
-[node name="Alien_SpawnerD" parent="Spawners" instance=ExtResource( 26 )]
+[node name="Alien_SpawnerD" parent="Spawners" instance=ExtResource( 27 )]
 position = Vector2( 1885.29, 356.368 )
 
-[node name="Alien_SpawnerC" parent="Spawners" instance=ExtResource( 26 )]
+[node name="Alien_SpawnerC" parent="Spawners" instance=ExtResource( 27 )]
 visible = false
 position = Vector2( 1510.72, 93.8405 )
 
-[node name="Alien_SpawnerB" parent="Spawners" instance=ExtResource( 26 )]
+[node name="Alien_SpawnerB" parent="Spawners" instance=ExtResource( 27 )]
 visible = false
 position = Vector2( 977.297, 85.8518 )
 
-[node name="Alien_SpawnerE" parent="Spawners" instance=ExtResource( 26 )]
+[node name="Alien_SpawnerE" parent="Spawners" instance=ExtResource( 27 )]
 visible = false
 position = Vector2( 485.033, 82.1506 )
 
-[node name="Alien_SpawnerA" parent="Spawners" instance=ExtResource( 26 )]
+[node name="Alien_SpawnerA" parent="Spawners" instance=ExtResource( 27 )]
 position = Vector2( 294.981, 377.636 )
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 27 )
+stream = ExtResource( 28 )
 autoplay = true
 
-[node name="BonusPoints" parent="." instance=ExtResource( 28 )]
+[node name="BonusPoints" parent="." instance=ExtResource( 29 )]
 position = Vector2( -6.86987, -115.7 )
 [connection signal="visibility_changed" from="Summary/V" to="." method="_on_V_visibility_changed"]
 [connection signal="visibility_changed" from="GUI/Welcomer" to="GUI/Welcomer" method="_on_Welcomer_visibility_changed"]
