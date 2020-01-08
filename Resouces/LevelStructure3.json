@@ -1,48 +1,76 @@
 {
-	"start_segment"     : "0",
-	"end_segment"       : "D",
+	"start_segment"     : "J",
+	"end_segment"       : "O",
 	"avr_time"          : 20,
 	"additional_points" : 1000,
 	"background"        : "dessert",
 	"fixed_segment"     : false,
 	"level_structure"   : {
-		"0" : {
+		"J" : {
 			"0" :{
-					"0"    : "!RockS",
-					"2"    : "RockS",
-					"0.5"  : "^Rise_4",
-					"1"    : "1_A_Alien2",
-					"5"    : "@A"
+					"1.1"  : "!Bomber",
+					"12"    : "Hole",					
+					"14   : "Hole",
+					"5"    : "2_ab_Bomber",
+					"10" : "RockB",
+					"12" : "Rock2"
+					"13"   : "2_ab_Bomber",
+					"15" : "RockS",
+					"17"    : "HoleB"					
+					"20"  : "@K"
 			}
 		},
-	  "A" : {
+	  "K : {
 		  "0" :{
-				  "0"    : "!RockS",
-				  "2"    : "RockS",
-				  "0.5"  : "^Rise_4",
-				  "1"    : "1_A_Alien2",
-				  "5"    : "@B"
+					"0.5" : "!Mine",
+					"3"    : "Mine"
+					"5.5"    : "Mine",
+					"7.5"    : "Mine",
+					"10"    : "Mine",
+					"15"   : "Mine",
+					"16"    : "Mine",
+					"19"   : "Mine",
+					"20"    : "@L"
 		  }
 	  },
-	  "B" : {
+	  "L" : {
 		  "0" :{
-			  "0"    : "!Hole",
-			  "2"    : "HoleB",
-			  "1"    : "1_A_Alien1",
-			  "5"    : "@C"
-		  },
-		  "1" : {
-			  "0"    : "!Hole",
-			  "1"    : "1_A_Alien1",
-			  "5"    : "@C"
+					"2"    : "HoleB",
+					"6"    : "Hole",
+					"19"    : "HoleB",
+					"12"    : "HoleB",
+					"15"    : "HoleB",
+					".5"    : "2_ij_Alien1",					
+					"5.5"    : "2_ij_Alien1",
+					"17.7"    : "Hole",
+					"20"    : "@M"
 		  }
 	  },
-	  "C" : {
+	  "M": {
 		  "0" :{
-			  "2"    : "RockS",
-			  "0.5"  : "^Fall_4",
-			  "1"    : "1_A_Bomber",
-			  "5"    : "@D"
+					"2"    : "RockS",
+					"5"    : "2_cd_Alien1",	
+					"12"    : "2_de_Alien2"					
+					"6"    : "HoleB",
+					"10"    : "2_fg_Alien1"
+					"9"    : "RockB",
+					"12"    : "HoleB",
+					"17"    : "Rock2"
+					"20"    : "@B"
+		  }
+	  },
+	  "N" : {
+		  "0" :{
+					"2"    : "RockS",
+					"3.5"   : "RockS",
+					"7"    : "RockB",
+					"1"    : "!Bomber"
+					"7.1"    : "1_a_Bomber",
+					"10.1"  : "3_efg_Alien1"
+					"10"    : "Hole",  
+					"12"    : "Hole",
+					"15"   : "HoleB"
+					"20"    : "@O"
 		  }
 	  }
 	}
