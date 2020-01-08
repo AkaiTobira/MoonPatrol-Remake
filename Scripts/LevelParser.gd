@@ -29,7 +29,7 @@ var records  = {
 var current_active_index  = -1
 var current_active_letter = ""
 var max_segments          = 6
-var level_structure = {}
+var level_variants = {}
 
 func load_structure(file_name, segment_index):
 	var file = File.new()
@@ -41,13 +41,13 @@ func load_structure(file_name, segment_index):
 
 func generate_level_segment_orded( segment_index ):
 	randomize()
-	level_structure[segment_index] = {}
+	level_variants[segment_index] = {}
 	for letter in json_levels[segment_index]["level_structure"].keys():
 		var temp = json_levels[segment_index]["level_structure"][letter]
-		level_structure[segment_index][letter] = str(randi()%len(temp.keys())) 
+		level_variants[segment_index][letter] = str(randi()%len(temp.keys())) 
 
 func get_active_spawn_times():
-	var selected_variant = level_structure[current_active_index][current_active_letter]
+	var selected_variant = level_variants[current_active_index][current_active_letter]
 	return json_levels[current_active_index]["level_structure"][current_active_letter][selected_variant].duplicate(true)
 
 func get_letter_time():
@@ -59,8 +59,8 @@ func get_whole_distance():
 	var whole_distance = 0.0
 	for json_index in json_levels.keys():
 		var level_structures = json_levels[json_index]["level_structure"]
-		for level in level_structure[json_index].keys():
-			var variant = level_structure[json_index][level]
+		for level in level_variants[json_index].keys():
+			var variant = level_variants[json_index][level]
 			for key in level_structures[level][variant].keys():
 				if level_structures[level][variant][key][0] == "@" : whole_distance += float(key)
 	return whole_distance

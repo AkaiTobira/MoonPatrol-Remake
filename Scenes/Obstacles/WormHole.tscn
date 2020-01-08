@@ -41,6 +41,7 @@ loop = true
 
 [node name="WormHole" type="KinematicBody2D" groups=[
 "obstalces",
+"hole",
 ]]
 position = Vector2( 0, -10 )
 scale = Vector2( 0.85, 0.85 )

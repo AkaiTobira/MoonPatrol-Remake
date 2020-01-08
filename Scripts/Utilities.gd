@@ -1,7 +1,10 @@
 extends Node
 
-var player = null
-var PIXOMETR = 0
+var player       = null
+# warning-ignore:unused_class_variable
+var PIXOMETR     = 0
+# warning-ignore:unused_class_variable
+var player_speed = 5
 
 var objects = {
 	"Hole"       :  preload( "res://Scenes/Obstacles/Hole.tscn" ),

@@ -13,8 +13,8 @@ func calculate_path( mother_ship ):
 	squat_id = mother_ship.squat_id
 	triple_points = { 
 		"a" : Vector2(0,0), 
-		"b" : Vector2(min( Utilities.player.position.x + 250 + randi()%300, 800 ),
-		              Utilities.player.position.y - position.y),
+		"b" : Vector2(min( Utilities.player.position.x + 250 + randi()%300, 625 ),
+		                   Utilities.player.position.y - position.y),
 		"c" : 2 * ( Vector2( 0, Utilities.player.position.y - position.y) ), 
 		"relative" : Vector2(0,0) 
 	} 
@@ -44,7 +44,9 @@ func _physics_process(delta):
 
 func process_collisions( object, delta ):
 	if object == null : return
+# warning-ignore:return_value_discarded
 	if object.collider.is_in_group("obstacles"):    move_and_slide( direction * SPEED * delta )
+# warning-ignore:return_value_discarded
 	if object.collider.is_in_group("enemy_missle"): move_and_slide( direction * SPEED * delta )
 	if object.collider.is_in_group("missle"): get_parent().points += 100
 	if object.collider.is_in_group("player"): 

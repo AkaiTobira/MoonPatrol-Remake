@@ -9,7 +9,7 @@ func _ready():
 
 func _process(delta):
 	timer += delta
-	if timer < 2:
+	if timer < timer_over:
 		rect_scale = Vector2(1,1) * timer 
 
 func _on_Welcomer_visibility_changed():

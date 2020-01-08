@@ -89,5 +89,8 @@ func update_score():
 	hide()
 	set_process(false)
 
+	get_parent().get_parent().reload_background()
+
+# warning-ignore:return_value_discarded
 	if reached_letter == "Z": get_tree().change_scene("res://Scenes/Intro.tscn")
 

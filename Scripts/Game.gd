@@ -21,7 +21,7 @@ func _ready():
 	set_of_spawns = LevelParser.get_active_spawn_times()
 	Flow.main_node    = self 
 	background_backup = $ParallaxBackground.get_backgoround_info()
-	$ParallaxBackground.load_bakcground_fill( LevelParser.get_background_info() )
+	reload_background()
 	get_tree().call_group("Control", "update_hi_score", Flow.high_score )
 	get_tree().call_group("Control", "get_segment_end_distance" )
 	Flow.pause_world(2)
@@ -34,7 +34,7 @@ func process_intro():
 func process_timers(delta):
 	timer_for_segment += delta
 	timer_summary     += delta
-	get_tree().call_group("Control", "update_timer", timer_summary)
+
 
 func update_logger( info ):
 	logger.push_back( info )
@@ -92,6 +92,7 @@ func process_cheat():
 	if Input.is_action_just_pressed("res6"): need_reload = LevelParser.change_active_segment( 5 )
 	if need_reload: 
 		set_of_spawns = LevelParser.get_active_spawn_times()
+		reload_background()
 		reload_from_checkpoint()
 
 func process_GUI(): 
@@ -102,6 +103,7 @@ func process_GUI():
 	get_tree().call_group("Control", "update_hi_score", Flow.high_score)
 	get_tree().call_group("Control", "update_score", points)
 	get_tree().call_group("Control", "update_drived_distance", drived_road)
+	get_tree().call_group("Control", "update_timer", timer_summary)
 
 func process_player_speed(delta):
 	var player_multipler = $Player.bakcground_speed_multipler
@@ -130,15 +132,16 @@ func reload_from_checkpoint():
 	reset_segment_process_values()
 	set_of_spawns     = LevelParser.get_active_spawn_times()
 	$ParallaxBackground.set_backgoround_info( background_backup )
-	$ParallaxBackground.load_bakcground_fill( LevelParser.get_background_info() )
 	get_tree().call_group("Control", "reset_distance_bar" )
 	Flow.play_world()
+
+func reload_background():
+	$ParallaxBackground.load_bakcground_fill( LevelParser.get_background_info() )
 
 func next_checkpoint(letter):
 	background_backup = $ParallaxBackground.get_backgoround_info()
 	LevelParser.reached_next_letter(letter)
 	set_of_spawns     = LevelParser.get_active_spawn_times()
-	$ParallaxBackground.load_bakcground_fill( LevelParser.get_background_info() )
 	get_tree().call_group("Control", "get_segment_end_distance" )
 	reset_segment_process_values()
 

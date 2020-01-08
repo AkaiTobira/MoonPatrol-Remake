@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Rock.gd" type="Script" id=1]
-[ext_resource path="res://Textures/Placeholders_new/rock1.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Placeholders_new/boulder_big_new.png" type="Texture" id=2]
 [ext_resource path="res://Resouces/Dead_RockD.tres" type="Animation" id=3]
 [ext_resource path="res://Textures/Placeholders_old/BakuhatsuNoGenjutsuDa.png" type="Texture" id=4]
 
@@ -13,11 +13,11 @@ loop = true
 "obstalces",
 ]]
 position = Vector2( 0, 10 )
-scale = Vector2( 0.3, 0.4 )
 z_index = 1
 script = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2( 0.4, 0.4 )
 polygon = PoolVector2Array( -40.1759, -57.711, -62.3115, 31.5345, -24.3647, 59.6432, 16.3931, 61.4, 61.7185, 44.1834, 55.394, 2.37158, 43.0964, -54.9001 )
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -25,13 +25,13 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="Sprite" type="Sprite" parent="Area2D"]
-position = Vector2( -1.46711, 20 )
-scale = Vector2( 1.20631, 1 )
+position = Vector2( 0.479276, -2.70863 )
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2( 1.3689, -0.684448 )
-scale = Vector2( 1.2, 1.2 )
+scale = Vector2( 0.4, 0.4 )
 polygon = PoolVector2Array( -40.1759, -57.711, -62.3115, 31.5345, -24.3647, 59.6432, 16.3931, 61.4, 61.7185, 44.1834, 55.394, 2.37158, 43.0964, -54.9001 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D"]

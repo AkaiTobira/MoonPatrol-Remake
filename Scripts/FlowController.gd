@@ -8,6 +8,7 @@ var pause_end       = 0.0
 var is_high          = false
 var hight_difference = 0
 
+# warning-ignore:unused_class_variable
 var high_score = 0
 
 func play_intro_objects():
@@ -46,6 +47,7 @@ func exit_to_intro( lenght_of_pause ):
 
 func reload_game():
 	is_over = false
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Scenes/Intro.tscn")
 
 var background_speed = 0

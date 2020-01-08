@@ -468,6 +468,7 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = "Score :"
 
 [node name="GUI" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = 3
 
 [node name="Welcomer" type="RichTextLabel" parent="GUI"]
@@ -674,6 +675,8 @@ align = 1
 valign = 1
 
 [node name="ShortDistanceBar" type="ProgressBar" parent="GUI/Control/Warnings"]
+modulate = Color( 1, 0, 0, 1 )
+self_modulate = Color( 1, 0.105882, 0.105882, 1 )
 anchor_left = 0.149
 anchor_top = 0.644
 anchor_right = 0.842
@@ -682,46 +685,45 @@ margin_left = 57.04
 margin_top = 137.24
 margin_right = 305.32
 margin_bottom = 163.92
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.00784314, 0.00784314, 0.00784314, 1 )
 
 [node name="ObstacleWorm" type="TextureRect" parent="GUI/Control/Warnings"]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 79.6632
-margin_top = 40.2645
-margin_right = 264.664
-margin_bottom = 168.264
+margin_left = 70.2259
+margin_top = 42.4435
+margin_right = 426.226
+margin_bottom = 270.444
 rect_scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 10 )
 stretch_mode = 4
 
 [node name="ObstacleMine" type="TextureRect" parent="GUI/Control/Warnings"]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 45.9
-margin_top = 103.7
-margin_right = 226.9
-margin_bottom = 167.7
+modulate = Color( 1, 1, 1, 0.9 )
+margin_left = 111.061
+margin_top = 115.918
+margin_right = 292.061
+margin_bottom = 179.918
 texture = ExtResource( 11 )
 stretch_mode = 4
 
 [node name="ObstacleRound" type="TextureRect" parent="GUI/Control/Warnings"]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 93.9518
-margin_top = 56.2074
-margin_right = 263.952
-margin_bottom = 211.207
-rect_scale = Vector2( 0.75, 0.75 )
+margin_left = 47.2747
+margin_top = 56.3389
+margin_right = 343.275
+margin_bottom = 241.339
 texture = ExtResource( 12 )
 stretch_mode = 4
 
 [node name="DangerLbl" type="Label" parent="GUI/Control/Warnings"]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 45.9
-margin_top = 45.9
-margin_right = 226.9
-margin_bottom = 75.9
+margin_left = -38.7087
+margin_top = 55.7741
+margin_right = 281.291
+margin_bottom = 99.7741
+rect_scale = Vector2( 1.5, 1.5 )
 custom_fonts/font = SubResource( 11 )
 text = "DANGER!!!"
 align = 1
@@ -763,7 +765,7 @@ position = Vector2( 935.418, 910.642 )
 Gravity = 200.0
 MaxJump = 20.0
 Friction = 0.0
-MaxMoveSpeed = 120.0
+MaxMoveSpeed = 170.0
 move_borders = Vector2( 650, 800 )
 
 [node name="Paths" parent="." instance=ExtResource( 18 )]

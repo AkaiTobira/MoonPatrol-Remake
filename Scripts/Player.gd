@@ -7,7 +7,7 @@ export var MaxJump      =  60.0
 # warning-ignore:unused_class_variable
 export var Friction     =  50.0
 # warning-ignore:unused_class_variable
-export var MaxMoveSpeed =  130.0
+export var MaxMoveSpeed =  200.0
 export var move_borders = Vector2( 500, 800 )
 
 
@@ -46,10 +46,8 @@ func calculate_relative():
 func reset():
 	relative_x = 0
 	relative_y = 0
-	position.y = base_high
+	position.y = base_high - 120
 
-	if Flow.is_high : position.y -= ( Flow.hight_difference + 10 )
-	
 	forward_missle  = null
 	fire_up_missles = 0 
 	relative_x      = 0
@@ -129,12 +127,21 @@ func on_dead():
 		Flow.pause_world(10)
 		play_animation_if_not_player("Dead")
 
+func on_hole_dead( anim_name ):
+	if not player_good_mode: 
+		controller.set_process(false)
+		Flow.stop_BGM_music()
+		$ExplosionSound.play()
+		Flow.pause_world(10)
+		play_animation_if_not_player(anim_name)
+
 func play_animation_if_not_player( anim_name ):
 	if $AnimationPlayer.current_animation == anim_name : return
 	$AnimationPlayer.play(anim_name)
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "Dead": 
+	if anim_name == "Idle" : return
+	else:
 		lives -= 1
 		get_tree().call_group("Control", "update_lives", lives)
 		play_animation_if_not_player( "Idle" )
@@ -149,7 +156,6 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			get_parent().reload_from_checkpoint()
 			Flow.play_BGM_music()
 		controller.set_process(true)
-
 
 func play_end_game_music():
 	$VictorySound.play()
@@ -171,7 +177,18 @@ func _on_Area2D_body_entered(body):
 	var is_killed = body.is_in_group("alien") or body.is_in_group("enemy_missle")
 	var hit_smt   = body.is_in_group("obstalces") 
 	if hit_smt:     body.on_delete()
-	if is_killed or hit_smt: on_dead()
+	var side = calculate_side( body.position ) if body.is_in_group("hole") else "None"
+	if is_killed or hit_smt: fall_in_hole(side)
+
+func fall_in_hole( side ):
+	match( side ):
+		"None"  : on_dead()
+		"Front" : on_hole_dead( "Fall_front" )
+		"Back"  : on_hole_dead( "Fall_back" )
+
+func calculate_side( position_hole ):
+	if position_hole.x < position.x : return "Back"
+	else: return "Front"
 
 func _on_Sound_finished():
 	Flow.summarize()

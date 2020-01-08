@@ -5,6 +5,7 @@
 
 [node name="Hole" type="KinematicBody2D" groups=[
 "obstalces",
+"hole",
 ]]
 scale = Vector2( 0.65, 0.65 )
 z_index = 1

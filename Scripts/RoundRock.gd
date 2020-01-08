@@ -3,6 +3,7 @@ extends KinematicBody2D
 var SPEED = 130
 
 var speed_multipler  = 1
+# warning-ignore:unused_class_variable
 var fixed_y_pos      = 0
 var points_jump_over = 0
 var points_destroy   = 50
@@ -43,5 +44,6 @@ func play_if_not_played( anim_name ):
 	if $AnimationPlayer.current_animation == anim_name : return
 	$AnimationPlayer.play(anim_name)
 
+# warning-ignore:unused_argument
 func _on_AnimationPlayer_animation_finished(anim_name):
 	call_deferred("queue_free")

@@ -8,13 +8,11 @@ var base_y = 0
 var base_x = 0
 var on_floor = false
 
-var max_far = 13
-
 var reverse_gravity = false
 
 func _physics_process(delta): 
 	if Flow.world_is_paused : return
-	var gravity = 15
+	var gravity = 20
 	var collision = null
 	if reverse_gravity : gravity = -gravity
 	

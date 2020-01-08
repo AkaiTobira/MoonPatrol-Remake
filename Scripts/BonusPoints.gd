@@ -1,5 +1,6 @@
 extends Node2D
 
+# warning-ignore:unused_class_variable
 var t = Timer.new()
 func show_bonus(bonus):
 	$BonusLabel.visible = true

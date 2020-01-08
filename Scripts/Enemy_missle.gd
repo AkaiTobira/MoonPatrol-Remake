@@ -4,7 +4,7 @@ var direction = Vector2(0,1)
 var SPEED     = 0
 
 func _physics_process(delta):
-	SPEED = min ( SPEED + 250*delta, 300 )
+	SPEED = min ( SPEED + 150*delta, 200 )
 	var output = move_and_collide( direction * SPEED * delta )
 	process_collisions(output)
 

@@ -32,7 +32,7 @@ class MoveLeft extends State:
 
 	func update(delta):
 		var move_speed = Utilities.player.MaxMoveSpeed
-		Utilities.player.relative_x = max( -100, Utilities.player.relative_x - 1 * delta * move_speed )	
+		Utilities.player.relative_x = max( -100, Utilities.player.relative_x - Utilities.player_speed * delta * move_speed )	
 
 	func handle_input():
 		if Flow.world_is_paused : return
@@ -46,7 +46,7 @@ class MoveRight extends State:
 	
 	func update(delta):
 		var move_speed = Utilities.player.MaxMoveSpeed
-		Utilities.player.relative_x = min( 100, Utilities.player.relative_x + 1 * delta * move_speed )	
+		Utilities.player.relative_x = min( 100, Utilities.player.relative_x + Utilities.player_speed * delta * move_speed )	
 
 	func handle_input():
 		if Flow.world_is_paused : return
@@ -67,7 +67,7 @@ class JumpRight extends State:
 
 	func update(delta ):
 		var move_speed = Utilities.player.MaxMoveSpeed
-		Utilities.player.relative_x = min( 100, Utilities.player.relative_x + 1 * delta * move_speed ) 
+		Utilities.player.relative_x = min( 100, Utilities.player.relative_x + Utilities.player_speed * delta * move_speed ) 
 		if Utilities.player.position.y < target_hight :  Utilities.player.is_jumping = false
 	#	if abs( Utilities.player.position.y - target_hight) < gravity*delta : Utilities.player.is_jumping = false
 		if Utilities.player.on_floor: is_over = true 
@@ -89,7 +89,7 @@ class JumpLeft extends State:
 
 	func update(delta):
 		var move_speed = Utilities.player.MaxMoveSpeed
-		Utilities.player.relative_x = max( -100, Utilities.player.relative_x - 1 * delta * move_speed ) 
+		Utilities.player.relative_x = max( -100, Utilities.player.relative_x - Utilities.player_speed * delta * move_speed ) 
 		if Utilities.player.position.y < target_hight :  Utilities.player.is_jumping = false
 	
 	#	if abs( Utilities.player.position.y - target_hight) < gravity*delta : Utilities.player.is_jumping = false
@@ -132,8 +132,8 @@ class JumpIdle extends State:
 
 	func update(delta):
 		var move_speed = Utilities.player.MaxMoveSpeed
-		if Utilities.player.relative_x < 0   : Utilities.player.relative_x = min( 0, Utilities.player.relative_x + 1 * delta * move_speed )
-		elif Utilities.player.relative_x > 0 : Utilities.player.relative_x = max( 0, Utilities.player.relative_x - 1 * delta * move_speed )
+		if Utilities.player.relative_x < 0   : Utilities.player.relative_x = min( 0, Utilities.player.relative_x + Utilities.player_speed * delta * move_speed )
+		elif Utilities.player.relative_x > 0 : Utilities.player.relative_x = max( 0, Utilities.player.relative_x - Utilities.player_speed * delta * move_speed )
 		if Utilities.player.position.y < target_hight :  Utilities.player.is_jumping = false
 		
 	#	if abs( Utilities.player.position.y - target_hight) < gravity*delta : Utilities.player.is_jumping = false
@@ -151,8 +151,8 @@ class Idle extends State:
 
 	func update(delta):
 		var move_speed = Utilities.player.MaxMoveSpeed
-		if Utilities.player.relative_x < 0   : Utilities.player.relative_x = min( 0, Utilities.player.relative_x + 1 * delta * move_speed )
-		elif Utilities.player.relative_x > 0 : Utilities.player.relative_x = max( 0, Utilities.player.relative_x - 1 * delta * move_speed )
+		if Utilities.player.relative_x < 0   : Utilities.player.relative_x = min( 0, Utilities.player.relative_x + Utilities.player_speed * delta * move_speed )
+		elif Utilities.player.relative_x > 0 : Utilities.player.relative_x = max( 0, Utilities.player.relative_x - Utilities.player_speed * delta * move_speed )
 
 	func handle_input():
 		if Flow.world_is_paused : return

@@ -3,6 +3,7 @@ extends CanvasLayer
 export var SPEED = 100
 
 var is_not_reached  = true
+# warning-ignore:unused_class_variable
 var fixed_y_pos     = 0
 
 func adapt_speed( speed ):
