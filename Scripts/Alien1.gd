@@ -18,4 +18,3 @@ func _physics_process(delta):
 	process_shooting()
 	process_move(delta)
 	
-	

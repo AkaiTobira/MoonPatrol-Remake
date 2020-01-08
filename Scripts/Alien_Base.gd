@@ -35,8 +35,8 @@ var POINTS_FOR_DESTROY       = 100
 var life_timer = 0
 var LIFE_TIME  = 12
 var is_dead    = false
+var enemy_destroyed = 0
 
-signal enemy_destroyed
 
 var path = null
 var is_following_fixed_path = false
@@ -212,7 +212,8 @@ func calculate_avoid_velocity(delta):
 
 func on_destroy():
 	play_animation_if_not_player( "Dead" )
-	emit_signal("enemy_destroyed")
+	enemy_destroyed =+ 1
+	get_tree().call_group("Game", "play_sound_of_death", enemy_destroyed)
 	SquatController.reduce_number_of_squad(squat_id)
 	if !SquatController.is_squat_active(squat_id):
 		get_parent().points += POINTS_FOR_SQUAT_DESTROY

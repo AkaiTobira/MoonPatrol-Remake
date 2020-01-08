@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Summary.gd" type="Script" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://Scenes/Spawners/Alien_Spawner.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Sounds/Lunar_Joyride.ogg" type="AudioStream" id=28]
 [ext_resource path="res://Scenes/BonusPoints.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Sounds/Hit1.ogg" type="AudioStream" id=30]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Fonts/Digital Play St.ttf"
@@ -375,7 +376,9 @@ tracks/5/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" groups=[
+"Game",
+]]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 721.756 ]
@@ -547,6 +550,7 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = "Score :"
 
 [node name="GUI" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = 3
 
 [node name="Welcomer" type="RichTextLabel" parent="GUI"]
@@ -565,6 +569,7 @@ script = ExtResource( 5 )
 [node name="Control" type="Control" parent="GUI" groups=[
 "Control",
 ]]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -9.30804
@@ -845,7 +850,7 @@ texture = ExtResource( 3 )
 [node name="ParallaxBackground" parent="." instance=ExtResource( 16 )]
 
 [node name="Base" type="Sprite" parent="."]
-position = Vector2( 776.347, 801.249 )
+position = Vector2( 827.347, 801.249 )
 texture = ExtResource( 17 )
 flip_h = true
 script = ExtResource( 18 )
@@ -904,5 +909,8 @@ autoplay = true
 
 [node name="BonusPoints" parent="." instance=ExtResource( 29 )]
 position = Vector2( -6.86987, -115.7 )
+
+[node name="AlienDestroyed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 30 )
 [connection signal="visibility_changed" from="Summary/V" to="." method="_on_V_visibility_changed"]
 [connection signal="visibility_changed" from="GUI/Welcomer" to="GUI/Welcomer" method="_on_Welcomer_visibility_changed"]

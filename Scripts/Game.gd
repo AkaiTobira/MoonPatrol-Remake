@@ -10,7 +10,6 @@ var drived_road       = 0
 
 # warning-ignore:unused_class_variable
 var points            = 0
-
 var logger            = []
 
 var background_backup = null
@@ -18,8 +17,9 @@ var background_backup = null
 func _ready():
 	Utilities.register_player($Player)
 	LevelParser.reset()
-	set_of_spawns = LevelParser.get_active_spawn_times()
+	set_of_spawns     = LevelParser.get_active_spawn_times()
 	Flow.main_node    = self 
+	Flow.is_high      = false
 	background_backup = $ParallaxBackground.get_backgoround_info()
 	reload_background()
 	get_tree().call_group("Control", "update_hi_score", Flow.high_score )
@@ -34,7 +34,6 @@ func process_intro():
 func process_timers(delta):
 	timer_for_segment += delta
 	timer_summary     += delta
-
 
 func update_logger( info ):
 	logger.push_back( info )
@@ -149,3 +148,7 @@ func _on_V_visibility_changed():
 		if $GUI/Control.visible:
 			$GUI/Control.hide()
 		else: $GUI/Control.show()
+
+func play_sound_of_death(death_sound):
+	if death_sound > 0:
+		$AlienDestroyed.play()
