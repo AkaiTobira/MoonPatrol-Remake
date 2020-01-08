@@ -1,6 +1,6 @@
 {
 	"start_segment"     : "0",
-	"end_segment"       : "D",
+	"end_segment"       : "E",
 	"avr_time"          : 20,
 	"additional_points" : 1000,
 	"fixed_segment"     : false,
@@ -8,38 +8,74 @@
 	"level_structure"   : {
 		"0" : {
 			"0" :{
-					"1"   : "RockS",
-					"5"   : "@A"
+					"1"    : "Hole",
+					"5"    : "RockS",
+					"7"    : "RockS",
+					"11"    : "Hole",					
+					"15"    : "@A"
 			}
 		},
 	  "C" : {
 		  "0" :{
-				  "2"   : "!Round",
-				  "9"   : "Round",
-				  "0.5" : "^Rise",
-				  "10"  : "2_ef_Alien2",
-				  "20"  : "@D"
+					"5.5" : "^Rise",
+					"3"    : "!Round",
+					"8.7"    : "RoundS",
+					"9.5"    : "Round",
+					"10"    : "RoundS",
+					"5"    : "2_ef_Alien2",
+					"0.5"    : "RockS",
+					"10"    : "3_egf_Alien1",
+					"20"    : "@D"
 		  }
 	  },
 	  "B" : {
 		  "0" :{
-			  "0"    : "!Alien1",
-			  "2"    : "HoleB",
-			  "1"    : "1_A_Alien1",
-			  "5"    : "@C"
+					"2"    : "HoleB",
+					"6"    : "HoleS",
+					"19"    : "HoleB",
+					"12"    : "HoleB",
+					"15"    : "HoleB",
+					".5"    : "2_ij_Alien1",					
+					"5.5"    : "2_ij_Alien1",
+					"17.7"    : "HoleS",
+					"20"    : "@C"
 		  },
 		  "1" : {
-			  "0"    : "!Alien1",
-			  "1"    : "2_fg_Alien1",
-			  "5"    : "@C"
+					"0.5"    : "RockS",
+					"4.2"    : "RockS",
+					"6.5"    : "RockS",
+					"9.3"    : "RockS",
+					"1"    : "2_fg_Alien1",
+					"9.8"    : "RockB",
+					"12.5"    : "RockB",
+					"15.5"    : "RockB",
+					"20"    : "@C"
 		  }
 	  },
 	  "A" : {
 		  "0" :{
-			  "2"    : "RockS",
-			  "5"    : "RockS",			  
-			  "10"   : "1_A_Bomber",
-			  "35"   : "@B"
+					"2"    : "RockS",
+					"10"    : "2_ab_Alien1",			  
+					"5"    : "HoleB",
+					"9"    : "RockB",
+					"12"    : "RockS",
+					"15"    : "RockB",
+					"17"    : "RockS",
+					"20"    : "@B"
+		  }
+	  },
+	  "D" : {
+		  "0" :{
+					"2"    : "RockS",
+					"6.5"   : "RockB",
+					"9"    : "RockB",
+					"1"    : "1_A_Bomber", 
+					"1.1"    : "1_C_Bomber",
+					"12.5"    : "RockB",			  
+					"14.7"    : "Mine",	
+					"17"    : "RockB",
+					"18.3"    : "Mine", 	
+					"20"    : "@E"
 		  }
 	  }
 	}
