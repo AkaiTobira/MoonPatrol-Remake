@@ -31,16 +31,16 @@ scale = Vector2( 3.08896, 2.8356 )
 texture = ExtResource( 2 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 607.36
-margin_top = 690.685
-margin_right = 1293.36
-margin_bottom = 802.685
+margin_left = 629.36
+margin_top = 721.685
+margin_right = 1315.36
+margin_bottom = 833.685
 custom_fonts/normal_font = ExtResource( 3 )
 text = "
 Press Space to start game"
 
 [node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 949.531, 406.857 )
+position = Vector2( 952.531, 453.857 )
 scale = Vector2( 1.28801, 1.36447 )
 texture = ExtResource( 4 )
 

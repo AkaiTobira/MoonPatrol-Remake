@@ -49,7 +49,7 @@ func handle_rise(delta):
 	move_everything(delta)
 	if ($End_rise_mark.position.x + $ParallaxBackground.offset.x) < 450 : 
 		state = "High"
-		get_parent().get_node("Back3/StaticBody2D").position.y = 30
+		get_parent().get_node("Back3/StaticBody2D").position.y = 121
 
 func reparent(parent, child, to):
 	if not parent or not child or not to : return  

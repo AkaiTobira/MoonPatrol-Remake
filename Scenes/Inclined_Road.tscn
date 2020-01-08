@@ -26,39 +26,38 @@ func move_colliders( speed ):
 z_index = 150
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 720.262, 948.415 ],
-"_edit_vertical_guides_": [ 8232.15 ]
+"_edit_horizontal_guides_": [ 720.262, 948.415, 808.08, 720.537 ],
+"_edit_vertical_guides_": [  ]
 }
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_ignore_camera_zoom = true
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground"]
-position = Vector2( 2551.14, 1140.66 )
+position = Vector2( 2551, 1141 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
 z_as_relative = false
 texture = ExtResource( 2 )
 
 [node name="Sprite5" type="Sprite" parent="ParallaxBackground"]
-position = Vector2( 4771.79, 1032 )
+position = Vector2( 4773.06, 1078.76 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
 z_as_relative = false
 texture = ExtResource( 2 )
 
 [node name="Sprite3" type="Sprite" parent="ParallaxBackground"]
-position = Vector2( 9381.31, 1086.86 )
+position = Vector2( 8917, 1090 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 120
 texture = ExtResource( 3 )
 flip_h = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 1000, 0 )
 
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 7074, 974 )
+position = Vector2( 7074, 1070 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
 texture = ExtResource( 4 )
@@ -86,10 +85,10 @@ collision_mask = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Colliders/StaticBody2D2" groups=[
 "floor",
 ]]
-position = Vector2( 693.09, 885.699 )
+position = Vector2( 693.09, 887.703 )
 scale = Vector2( 0.364871, 1 )
 build_mode = 1
-polygon = PoolVector2Array( 2943.18, -42.697, -752.606, 44.568, -1203.88, 27.253, 2940.8, -220.037 )
+polygon = PoolVector2Array( 2943.18, -42.697, -752.606, 44.568, -1204.11, 18.752, -758.781, 1.60693, 2938.67, -125.8 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Colliders" groups=[
 "floor",
@@ -102,10 +101,10 @@ collision_mask = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Colliders/StaticBody2D3" groups=[
 "floor",
 ]]
-position = Vector2( 1488.97, 821.528 )
+position = Vector2( 1488.97, 919.702 )
 scale = Vector2( 0.364871, 1 )
 build_mode = 1
-polygon = PoolVector2Array( 3428.98, 26.3181, 3448.55, -155.463, 5319.61, 73.0817, 5321.64, 121.682 )
+polygon = PoolVector2Array( 3428.98, 26.3181, 3448.55, -155.463, 4170.27, -68.5431, 4474.62, -37.6492, 4561.67, -24.5939, 5319.61, 73.0817, 5321.64, 121.682 )
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Colliders" groups=[
 "floor",
@@ -117,7 +116,7 @@ collision_mask = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Colliders/StaticBody2D4" groups=[
 "flooor",
 ]]
-position = Vector2( 508.032, 848.303 )
+position = Vector2( 508.032, 940.467 )
 scale = Vector2( 0.364871, 1 )
 build_mode = 1
-polygon = PoolVector2Array( 3433.8, -6.92877, 3433.92, -180.717, 5326.47, -177.45, 5340.12, -0.153564 )
+polygon = PoolVector2Array( 3433.8, -6.92877, 3433.83, -178.341, 5326.47, -177.45, 5340.12, -0.153564 )
