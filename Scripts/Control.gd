@@ -13,19 +13,16 @@ func _ready():
 	$Distance/TextureRect.visible      = true
 	$Distance/XLabel.visible           = true
 	$Warnings/WarnBase.visible         = true
-	
-	
-	
+
 func update_timer(time_past):
-	if time_past >= 0:
-		$ScoreBoard/GTime.text = str(int(time_past))
-	
+	$ScoreBoard/GTime.text = str( max (0, int(time_past)))
+
 func update_score(points):
 	$ScoreBoard/ScoreResult.text = str(points)
-	
+
 func update_hi_score(hi_score):
 	$ScoreBoard/HiScoreResult.text = str(hi_score)
-	
+
 func update_lives(lives_left):
 	if int(lives_left) < 1:
 		$Distance/LifeLabel.visible = false
@@ -65,7 +62,7 @@ func show_warning(obstacle):
 			if is_worm_first == true:
 				$Warnings/AnimationPlayer.play("worm")
 				is_worm_first = false
-		"!1_A_Bomber":
+		"!Bomber":
 			if is_bomber_first == true:
 				$Warnings/AnimationPlayer.play("bomber")
 				is_bomber_first = false

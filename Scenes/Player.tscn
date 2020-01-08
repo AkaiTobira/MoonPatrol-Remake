@@ -51,10 +51,10 @@ tracks/0/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "Fall_Back"
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "Fall_back"
 length = 3.0
 tracks/0/type = "value"
@@ -214,8 +214,7 @@ tracks/12/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Fall_front"
+[sub_resource type="Animation" id=6]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
@@ -374,8 +373,7 @@ tracks/12/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Idle"
+[sub_resource type="Animation" id=7]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Whell1:visible")
@@ -599,7 +597,7 @@ polygon = PoolVector2Array( -101.706, -35.9682, -104.097, -4.66411, -66.7587, 3.
 
 [node name="CollisionShape2D2" type="CollisionPolygon2D" parent="."]
 position = Vector2( -0.397217, -15.5665 )
-polygon = PoolVector2Array( 6.43019, -31.2936, 8.23421, -23.2992, 8.81818, -8.11574, 25.1696, 14.3674, 43.2729, 37.7266, 67.8, -3.44391, 91.3328, -7.04739, 61.1937, -24.4455, 42.5242, -31.6296, 2.90231, -36.8719 )
+polygon = PoolVector2Array( 6.43019, -31.2936, 8.23421, -23.2992, 8.81818, -8.11574, 25.1696, 14.3674, 43.2729, 37.7266, 67.0339, -4.11128, 105.443, 17.5785, 114.029, -1.85192, 110.414, -15.1821, 61.1937, -24.4455, 42.5242, -31.6296, 2.90231, -36.8719 )
 
 [node name="Whell1" type="KinematicBody2D" parent="."]
 position = Vector2( 61, 14 )
@@ -655,10 +653,10 @@ shape = SubResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
 anims/Dead = ExtResource( 8 )
-anims/Fall_Back = SubResource( 6 )
-anims/Fall_back = SubResource( 7 )
-anims/Fall_front = SubResource( 5 )
-anims/Idle = SubResource( 4 )
+anims/Fall_Back = SubResource( 4 )
+anims/Fall_back = SubResource( 5 )
+anims/Fall_front = SubResource( 6 )
+anims/Idle = SubResource( 7 )
 
 [node name="DeadSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
