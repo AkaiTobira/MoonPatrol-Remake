@@ -547,6 +547,7 @@ custom_fonts/normal_font = ExtResource( 4 )
 text = "Score :"
 
 [node name="GUI" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = 3
 
 [node name="Welcomer" type="RichTextLabel" parent="GUI"]
@@ -565,6 +566,7 @@ script = ExtResource( 5 )
 [node name="Control" type="Control" parent="GUI" groups=[
 "Control",
 ]]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -9.30804
@@ -845,7 +847,7 @@ texture = ExtResource( 3 )
 [node name="ParallaxBackground" parent="." instance=ExtResource( 16 )]
 
 [node name="Base" type="Sprite" parent="."]
-position = Vector2( 776.347, 801.249 )
+position = Vector2( 827.347, 801.249 )
 texture = ExtResource( 17 )
 flip_h = true
 script = ExtResource( 18 )
