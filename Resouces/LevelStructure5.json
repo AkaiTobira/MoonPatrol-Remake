@@ -1,47 +1,89 @@
 {
-	"start_segment"     : "0",
-	"end_segment"       : "D",
+	"start_segment"     : "T",
+	"end_segment"       : "Z",
 	"avr_time"          : 20,
 	"additional_points" : 1000,
-	"background"        : "dessert",
+	"background"        : "hills",
 	"fixed_segment"     : false,
 	"level_structure"   : {
-		"0" : {
+		"T" : {
 			"0" :{
-					"0"    : "!RockS",
-					"2"    : "RockS",
-					"0.5"  : "^Rise",
-					"1"    : "1_A_Alien2",
-					"5"    : "@A"
+					"2"    : "2_ad_Alien1",
+					"2.2"    : "2_bg_Alien2",
+					"5"    : "Rock2",
+					"6"    : "Hole",
+					"10"    : "Rock2",
+					"10.5"  : "Hole",
+					"12"    : "1_d_Alien1",
+					"12.5"    : "Rock2",
+					"13.5"    : "HoleB",
+					"15.5"    : "RockB",
+					"16"    : "Hole",
+					"18"    : "RockB",
+					"20"    : "@U"
 			}
 		},
-	  "A" : {
+	  "U" : {
 		  "0" :{
-				  "0"    : "!RockS",
-				  "2"    : "RockS",
-				  "0.5"  : "^Rise",
-				  "1"    : "1_A_Alien2",
-				  "5"    : "@B"
+					"0"  : "!Bomber",
+					"5.5"  : "2_de_Bomber",
+					"10"    : "Rock2",
+					"11"    : "Mine",
+					"11.5"    : "Mine",
+					"15"    : "3_ace_Alien1",					
+					"14"    : "Rock2",
+ 					"16"    : "HoleB",
+					"20"    : "@W"
 		  }
 	  },
-	  "B" : {
+	  "W" : {
 		  "0" :{
-			  "0"    : "!Hole",
-			  "2"    : "HoleB",
-			  "1"    : "1_A_Alien1",
-			  "5"    : "@C"
-		  },
-		  "1" : {
-			  "0"    : "!Hole",
-			  "1"    : "1_A_Alien1",
-			  "5"    : "@C"
+					"0.2"    : "!Round",
+					"0.5"   : "!Rise",
+					"6"   : "RoundS",
+					"7"    : "Round",
+					"8.5"    : "Round",
+					"9"    : "RoundS",
+					"10.2"    : "1_c_Alien1",
+					"15"    : "2_ad_Alien2" ,
+					"20"    : "@X"
 		  }
 	  },
-	  "C" : {
+	  "X" : {
 		  "0" :{
-			  "2"    : "RockS",
-			  "1"    : "1_A_Bomber",
-			  "5"    : "@D"
+					"1"    : "!Bomber",
+					"3"    : "Hole",
+					"6"    : "Rock2",
+					"8"    : "HoleB",
+					"5"   : "2_bg_Bomber",
+					"9"    : "1_a_Alien1",
+					"9.1"    : "2_ad_Alien2",
+					"11"    : "HoleB",
+					"12"    : "Hole",
+					"13.5"    : "RockS",
+					"14.5"    : "RockS",		
+					"16"    : "Rock2",
+					"17"    : "HoleB",
+					"20"    : "@Y"
+		  }
+	  },
+	  "Y" : {
+		  "0" :{
+					"1"    : "!Bomber",
+					"6"   : "2_fg_Bomber",
+					"5"   : "2_cd_Alien2",
+					"9.5"    : "2_af_Alien1",
+					"5"    : "Rock2",
+					"6.5"    : "HoleB",
+					"8"    : "Rock2",
+					"8.5"    : "HoleB",
+					"10"    : "Rock2",
+					"11"   : "Hole",
+					"13"   : "Hole",
+					"15"   : "Hole",
+					"17"   : "HoleB",
+					"19"   : "HoleB",
+					"20"    : "@Z"
 		  }
 	  }
 	}
