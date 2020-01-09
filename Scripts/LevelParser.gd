@@ -9,7 +9,7 @@ func load_json():
 	load_structure("LevelStructure3", 2 )
 	load_structure("LevelStructure4", 3 )
 	load_structure("LevelStructure5", 4 )
-	load_structure("LevelStructure6", 5 )
+#	load_structure("LevelStructure6", 5 )
 
 func _ready():
 	load_json()
@@ -23,12 +23,12 @@ var records  = {
 				4 : { "top": 0, "avg":0 },
 				5 : { "top": 0, "avg":0 },
 				1 : { "top": 0, "avg":0 },
-				6 : { "top": 0, "avg":0 }
+#				6 : { "top": 0, "avg":0 }
 }
 
 var current_active_index  = -1
 var current_active_letter = ""
-var max_segments          = 6
+var max_segments          = 5
 var level_variants = {}
 
 func load_structure(file_name, segment_index):
@@ -74,7 +74,7 @@ func reset():
 
 func on_json_change( letter ):
 	Flow.stop_BGM_music()
-	if current_active_index == 5: 
+	if current_active_index == max_segments-1: 
 		Flow.show_congratulation()
 		Flow.play_end_game_music()
 	else: Flow.play_checkpoint_music()

@@ -1,21 +1,26 @@
-extends KinematicBody2D
+extends Area2D
 
 var direction = Vector2(0,1)
+var squat_id  = -1
 var SPEED     = 0
 
 func _physics_process(delta):
 	SPEED = min ( SPEED + 150*delta, 200 )
-	var output = move_and_collide( direction * SPEED * delta )
-	process_collisions(output)
-
-func process_collisions( object ):
-	if object == null : return
-	if object.collider.is_in_group("obstacles"): return
-	if object.collider.is_in_group("enemy_missle"): return
-	if object.collider.is_in_group("alien"): return
-#	print( object.collider.get_groups() )
-	if object.collider.is_in_group("missle"): get_parent().points += 100
-	on_delete()
+	position += direction * SPEED * delta
 
 func on_delete(): 
+	SquatController.missle_exploded(squat_id)
 	call_deferred("queue_free")
+
+func _on_Enemy_missle_body_entered(body):
+	if body.is_in_group("missle"): 
+		get_parent().points += 100
+		body.on_delete()
+		on_delete()
+	if body.is_in_group("floor") : on_delete()
+
+func _on_Enemy_missle_area_entered(area):
+	if area.is_in_group("player") : 
+		Utilities.player._on_Area2D_body_entered(self)
+		on_delete()
+		print( "hit" )

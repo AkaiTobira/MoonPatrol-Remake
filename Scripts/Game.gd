@@ -88,7 +88,7 @@ func process_cheat():
 	if Input.is_action_just_pressed("res3"): need_reload = LevelParser.change_active_segment( 2 )
 	if Input.is_action_just_pressed("res4"): need_reload = LevelParser.change_active_segment( 3 )
 	if Input.is_action_just_pressed("res5"): need_reload = LevelParser.change_active_segment( 4 )
-	if Input.is_action_just_pressed("res6"): need_reload = LevelParser.change_active_segment( 5 )
+	if Input.is_action_just_pressed("res6"): $UI.visible = !$UI.visible
 	if need_reload: 
 		set_of_spawns = LevelParser.get_active_spawn_times()
 		reload_background()

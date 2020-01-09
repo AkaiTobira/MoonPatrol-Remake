@@ -4,8 +4,8 @@
 [ext_resource path="res://Textures/Placeholders_new/bomber hole.png" type="Texture" id=2]
 
 [node name="BombHole" type="KinematicBody2D" groups=[
-"obstalces",
 "hole",
+"obstalces",
 ]]
 scale = Vector2( 0.95, 0.95 )
 z_index = 1

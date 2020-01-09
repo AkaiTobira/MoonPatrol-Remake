@@ -85,8 +85,9 @@ func on_delete():
 
 func process_shooting():
 	update_precision()
-	if not randi() % SHOOT_PROBABILITY == 0  : return
+	#if not randi() % SHOOT_PROBABILITY == 0  : return
 	if is_far_from_player(): return 
+	if SquatController.missle_active(squat_id) : return
 	create_missle()
 
 func is_far_from_player():
@@ -96,13 +97,17 @@ func is_far_from_player():
 
 func create_missle():
 	var missle_instance = Utilities.get_instance("Emissle")
+	SquatController.fire_missle( squat_id, missle_instance )
+	missle_instance.squat_id  = squat_id
 	missle_instance.position  = position - ( direction.x * 70 ) * Vector2(1,0)
 	missle_instance.direction = (get_missle_target() - missle_instance.position).normalized()
 	get_parent().call_deferred( "add_child", missle_instance )
 
 func get_missle_target():
-	var missle_target = Utilities.player.position
-	var disruption    = (current_precision - randi()% int(current_precision/2))
+	var position_destability = Vector2( 100 if randi()%2 else -100, 0 ) * float( current_precision/MAX_PRECISION )
+	var missle_target = Utilities.player.position + position_destability
+	var disruption    = 0
+	if current_precision >= 3: disruption = (current_precision - randi()% int(current_precision/3))
 	missle_target.x   += ( disruption if randi()%2 else -disruption )
 	return missle_target 
 
@@ -132,12 +137,22 @@ func process_path(delta):
 	if path_index == (path.size() - 1): 
 		is_following_fixed_path = false
 		return
-	var target = path[path_index]
-	if position.distance_to(target) < 10:
-		path_index = min(  path_index + 1, path.size() - 1 )
-		target = path[path_index]
-	var velocity = (target - position).normalized() * move_speed
-	velocity = move_and_slide(velocity)
+	
+	var temp_distance = move_speed
+	while( temp_distance > 0 ):
+		var target          = path[path_index]
+		var target_distance = (target - position).length()
+		var direction       = (target - position).normalized()
+
+		if temp_distance > target_distance:
+# warning-ignore:return_value_discarded
+			move_and_slide( direction * target_distance )
+			path_index = min(  path_index + 1, path.size() - 1 )
+			temp_distance -= target_distance 
+		else:
+# warning-ignore:return_value_discarded
+			move_and_slide( direction * temp_distance )
+			temp_distance = 0
 
 func move_to_target_pos(delta):
 	var distance_v = (target_move_point - position)

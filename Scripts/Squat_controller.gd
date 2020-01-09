@@ -3,11 +3,13 @@ extends Node2D
 var active_squats = []
 var bomber_squats = []
 var bombs         = []
+var missles       = []
 
 func clear():
 	active_squats = []
 	bomber_squats = []
 	bombs         = []
+	missles       = []
 
 func is_squat_active(squat_id):
 	if len(active_squats) <= squat_id: return false
@@ -35,6 +37,18 @@ func fill_squat( index, squat, valid ):
 	squat[0].is_squat_lider = true
 	for alien in len(squat):
 		squat[alien].number_in_squat = alien+1
+
+func fire_missle( index, missle ):
+	if index >= len( missles ): return
+	missles[index] = missle
+
+func missle_exploded( index ):
+	if index >= len( missles ): return
+	missles[index] = null
+
+func missle_active(squat_id):
+	if squat_id >= len( missles ): return true
+	return missles[squat_id]
 
 func fire_bomb( index, bomb ):
 	if index >= len( bombs ): return
@@ -66,4 +80,5 @@ func register_new_squat(size_of_squat):
 	active_squats.append([size_of_squat, false])
 	bomber_squats.append([])
 	bombs.append(null)
+	missles.append(null)
 	return len( active_squats) - 1
