@@ -23,7 +23,6 @@ func _ready():
 	background_backup = $ParallaxBackground.get_backgoround_info()
 	reload_background()
 	get_tree().call_group("Control", "update_hi_score", Flow.high_score )
-	get_tree().call_group("Control", "get_segment_end_distance" )
 	Flow.pause_world(2)
 
 func process_intro():
@@ -102,6 +101,7 @@ func process_GUI():
 	get_tree().call_group("Control", "update_hi_score", Flow.high_score)
 	get_tree().call_group("Control", "update_score", points)
 	get_tree().call_group("Control", "update_drived_distance", drived_road)
+	get_tree().call_group("Control", "update_main_distance", drived_road)
 	get_tree().call_group("Control", "update_timer", timer_summary)
 
 func process_player_speed(delta):
