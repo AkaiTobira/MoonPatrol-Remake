@@ -79,7 +79,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -46.009, -48.1511 ), Vector2( -201.412, 85.07 ) ]
+"values": [ Vector2( 13.4081, -38.4683 ), Vector2( -142.875, 98.2738 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Wheel2:position")
@@ -238,7 +238,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -46.009, -48.1511 ), Vector2( 67.169, 95.154 ) ]
+"values": [ Vector2( 12.3657, -37.0321 ), Vector2( 144.075, 123.415 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Wheel2:position")
@@ -298,7 +298,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 80.0 ]
+"values": [ 0.0, 120.5 ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Explosion:rotation_degrees")
@@ -583,14 +583,13 @@ scale = Vector2( 0.561, 0.421 )
 texture = ExtResource( 2 )
 
 [node name="Explosion" type="Sprite" parent="."]
-visible = false
-position = Vector2( -33.7971, -20.9401 )
-rotation = -18.8496
+position = Vector2( -10.4779, -40.4779 )
+rotation = -0.392699
 scale = Vector2( 1.67361, 1.20941 )
 texture = ExtResource( 3 )
 vframes = 2
 hframes = 3
-frame = 1
+frame = 5
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 0.233032, -16.1967 )
@@ -601,7 +600,7 @@ position = Vector2( -0.397217, -15.5665 )
 polygon = PoolVector2Array( 6.43019, -31.2936, 8.23421, -23.2992, 8.81818, -8.11574, 25.1696, 14.3674, 48.5373, 42.0213, 48.1967, 4.90001, 67.0339, -4.11128, 116.65, 17.1603, 63.8626, -14.1715, 2.90231, -36.8719 )
 
 [node name="Wheel1" type="Sprite" parent="."]
-position = Vector2( 13, -32 )
+position = Vector2( 13.4081, -38.4683 )
 scale = Vector2( 0.147166, 0.13689 )
 texture = ExtResource( 4 )
 centered = false

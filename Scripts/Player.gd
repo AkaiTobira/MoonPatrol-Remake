@@ -134,8 +134,8 @@ func on_hole_dead( anim_name, target ):
 func correct_anim(anim_name, target ):
 	var anim  = $AnimationPlayer.get_animation( anim_name )
 	var index        = anim.find_track( "Sprite:position" )
-	var whell_index1 = anim.find_track( "Whell1/Sprite2:position" )
-	var whell_index2 = anim.find_track( "Whell2/Sprite2:position" )
+	var whell_index1 = anim.find_track( "Wheel1:position" )
+	var whell_index2 = anim.find_track( "Wheel2:position" )
 	var fire_index   = anim.find_track( "Explosion:position" )
 	
 	var cur_value   = anim.track_get_key_value(index, 1)
