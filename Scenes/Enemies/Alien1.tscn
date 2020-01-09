@@ -15,8 +15,8 @@ resource_name = "Idle"
 loop = true
 
 [node name="Alien1" type="KinematicBody2D" groups=[
-"obstalces",
 "alien",
+"obstalces",
 ]]
 scale = Vector2( 0.3, 0.3 )
 collision_layer = 7

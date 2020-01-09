@@ -213,7 +213,8 @@ func calculate_avoid_velocity(delta):
 func on_destroy():
 	play_animation_if_not_player( "Dead" )
 	enemy_destroyed =+ 1
-	get_tree().call_group("Game", "play_sound_of_death", enemy_destroyed)
+	$AudioStreamPlayer.play()
+#	get_tree().call_group("Game", "play_sound_of_death", enemy_destroyed)
 	SquatController.reduce_number_of_squad(squat_id)
 	if !SquatController.is_squat_active(squat_id):
 		get_parent().points += POINTS_FOR_SQUAT_DESTROY

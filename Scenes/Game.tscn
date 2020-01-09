@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Summary.gd" type="Script" id=2]
@@ -29,7 +29,6 @@
 [ext_resource path="res://Scenes/Spawners/Alien_Spawner.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Sounds/Lunar_Joyride.ogg" type="AudioStream" id=28]
 [ext_resource path="res://Scenes/BonusPoints.tscn" type="PackedScene" id=29]
-[ext_resource path="res://Sounds/Hit1.ogg" type="AudioStream" id=30]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Fonts/Digital Play St.ttf"
@@ -907,8 +906,5 @@ autoplay = true
 
 [node name="BonusPoints" parent="." instance=ExtResource( 29 )]
 position = Vector2( -6.86987, -115.7 )
-
-[node name="AlienDestroyed" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 30 )
 [connection signal="visibility_changed" from="Summary/V" to="." method="_on_V_visibility_changed"]
 [connection signal="visibility_changed" from="GUI/Welcomer" to="GUI/Welcomer" method="_on_Welcomer_visibility_changed"]
