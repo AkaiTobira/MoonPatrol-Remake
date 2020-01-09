@@ -12,7 +12,7 @@
 [ext_resource path="res://Sounds/Victory.wav" type="AudioStream" id=10]
 [ext_resource path="res://Sounds/LaserShot.wav" type="AudioStream" id=11]
 [ext_resource path="res://Sounds/atari_boom5.wav" type="AudioStream" id=12]
-[ext_resource path="res://Sounds/plant_growth.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Sounds/Lose_life.wav" type="AudioStream" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Roll"

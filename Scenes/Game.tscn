@@ -16,7 +16,7 @@
 [ext_resource path="res://Textures/Placeholders_new/bomber_warn.png" type="Texture" id=14]
 [ext_resource path="res://Textures/Placeholders_old/Base_small.png" type="Texture" id=15]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Textures/Placeholders_old/Base.png" type="Texture" id=17]
+[ext_resource path="res://Textures/Placeholders_new/start_point_test.png" type="Texture" id=17]
 [ext_resource path="res://Scripts/Base.gd" type="Script" id=18]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Scenes/Paths.tscn" type="PackedScene" id=20]
@@ -855,13 +855,15 @@ texture = ExtResource( 3 )
 [node name="ParallaxBackground" parent="." instance=ExtResource( 16 )]
 
 [node name="Base" type="Sprite" parent="."]
-position = Vector2( 827.347, 801.249 )
+position = Vector2( 808.997, 887.234 )
+scale = Vector2( 0.769885, 1 )
+z_index = -75
+z_as_relative = false
 texture = ExtResource( 17 )
-flip_h = true
 script = ExtResource( 18 )
 
 [node name="Player" parent="." instance=ExtResource( 19 )]
-position = Vector2( 935.418, 910.642 )
+position = Vector2( 771.118, 904.613 )
 Gravity = 200.0
 MaxJump = 20.0
 Friction = 0.0

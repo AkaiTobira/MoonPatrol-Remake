@@ -115,7 +115,7 @@ func process_player_speed(delta):
 func update_drived_road(delta):
 	if timer_for_segment < 0 : return
 	drived_road += $ParallaxBackground.road_speed * delta 
-		
+
 func reset_segment_process_values():
 	timer_for_segment = 0
 	drived_road       = 0 
