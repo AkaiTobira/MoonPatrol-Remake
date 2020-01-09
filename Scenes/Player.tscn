@@ -665,6 +665,7 @@ stream = ExtResource( 10 )
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
+volume_db = -8.0
 
 [node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )

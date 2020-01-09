@@ -61,7 +61,6 @@ func shoot_forward():
 	forward_missle.life_range = 300 
 	forward_missle.direction  = Vector2(1,0)
 	get_parent().call_deferred("add_child", forward_missle)  
-	$ShootSound.play()
 
 func shoot_up():
 	var up_missle        = Utilities.get_instance("PUmissle")
@@ -69,6 +68,7 @@ func shoot_up():
 	up_missle.life_range = 600 
 	up_missle.direction  = Vector2(0,-1)
 	get_parent().call_deferred("add_child", up_missle)
+	$ShootSound.play()
 
 func play(): 
 	pause = false
