@@ -148,3 +148,7 @@ func _on_V_visibility_changed():
 		if $GUI/Control.visible:
 			$GUI/Control.hide()
 		else: $GUI/Control.show()
+
+func play_sound_of_death(death_sound):
+	if death_sound > 0:
+		$AlienDestroyed.play()

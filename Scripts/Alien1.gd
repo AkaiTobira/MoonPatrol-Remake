@@ -17,3 +17,4 @@ func _physics_process(delta):
 	process_dead()
 	process_shooting()
 	process_move(delta)
+	

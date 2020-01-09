@@ -35,6 +35,7 @@ var POINTS_FOR_DESTROY       = 100
 var life_timer = 0
 var LIFE_TIME  = 12
 var is_dead    = false
+var enemy_destroyed = 0
 
 
 var path = null
@@ -211,6 +212,8 @@ func calculate_avoid_velocity(delta):
 
 func on_destroy():
 	play_animation_if_not_player( "Dead" )
+	enemy_destroyed =+ 1
+	get_tree().call_group("Game", "play_sound_of_death", enemy_destroyed)
 	SquatController.reduce_number_of_squad(squat_id)
 	if !SquatController.is_squat_active(squat_id):
 		get_parent().points += POINTS_FOR_SQUAT_DESTROY
@@ -238,6 +241,10 @@ func _on_Area2D_body_entered(body):
 func play_animation_if_not_player( anim_name ):
 	if $AnimationPlayer.current_animation == anim_name : return
 	$AnimationPlayer.play(anim_name)
+
+func play_enemy_explosion_sound():
+	$AudioStreamPlayer.stream = load("res://Sounds/Hit1.ogg")
+	$AudioStreamPlayer.play()
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Dead": call_deferred( "queue_free" )

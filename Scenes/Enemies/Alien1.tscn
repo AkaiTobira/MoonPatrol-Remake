@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Alien1.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_new/alien_1.png" type="Texture" id=2]
 [ext_resource path="res://Textures/Placeholders_old/BakuhatsuNoGenjutsuDa.png" type="Texture" id=3]
 [ext_resource path="res://Resouces/Dead.tres" type="Animation" id=4]
+[ext_resource path="res://Sounds/Hit1.ogg" type="AudioStream" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 34.7102
@@ -54,5 +55,9 @@ autoplay = "Idle"
 playback_speed = 4.0
 anims/Dead = ExtResource( 4 )
 anims/Idle = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -4.727
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
