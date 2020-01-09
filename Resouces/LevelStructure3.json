@@ -9,69 +9,69 @@
 		"J" : {
 			"0" :{
 					"1"  : "!Bomber",
-					"4"    : "Hole",					
-					"14"   : "Hole",
-					"5"    : "2_ab_Bomber",
-					"10" 	: "RockB",
-					"12" 	: "Rock2"
-					"13"   	: "2_ab_Bomber",
-					"15" 	: "RockS",
-					"17"    : "HoleB"					
-					"20"  : "@K"
+					"4"  : "Hole",					
+					"14" : "Hole",
+					"5"  : "2_ab_Bomber",
+					"10" : "RockB",
+					"12" : "Rock2",
+					"13" : "2_ab_Bomber",
+					"15" : "RockS",
+					"17" : "HoleB",				
+					"20" : "@K"
 			}
 		},
 	  "K" : {
 		  "0" :{
 					"0.5" : "!Mine",
-					"3"    : "Mine"
-					"5.5"    : "Mine",
-					"7.5"    : "Mine",
-					"10"    : "Mine",
-					"15"   : "Mine",
-					"16"    : "Mine",
-					"19"   : "Mine",
-					"20"    : "@L"
+					"3"   : "Mine",
+					"5.5" : "Mine",
+					"7.5" : "Mine",
+					"10"  : "Mine",
+					"15"  : "Mine",
+					"16"  : "Mine",
+					"19"  : "Mine",
+					"20"  : "@L"
 		  }
 	  },
 	  "L" : {
 		  "0" :{
 					"2"    : "HoleB",
 					"6"    : "Hole",
-					"19"    : "HoleB",
-					"12"    : "HoleB",
-					"15"    : "HoleB",
-					"15.5"    : "2_ad_Alien1",					
-					"3.5"    : "2_ce_Alien1",
-					"17.7"    : "Hole",
-					"20"    : "@M"
+					"19"   : "HoleB",
+					"12"   : "HoleB",
+					"15"   : "HoleB",
+					"15.5" : "2_ad_Alien1",					
+					"3.5"  : "2_ce_Alien1",
+					"17.7" : "Hole",
+					"20"   : "@M"
 		  }
 	  },
 	  "M": {
 		  "0" :{
 					"2"    : "RockS",
 					"5"    : "2_cd_Alien1",	
-					"12.1"    : "2_de_Alien2"					
+					"12.1" : "2_de_Alien2",					
 					"6"    : "HoleB",
-					"10"    : "2_fg_Alien1",
+					"10"   : "2_fg_Alien1",
 					"9"    : "RockB",
-					"12"    : "HoleB",
-					"17"    : "Rock2"
-					"20"    : "@N"
+					"12"   : "HoleB",
+					"17"   : "Rock2",
+					"20"   : "@N"
 		  }
 	  },
 	  "N" : {
 		  "0" :{
 					
-					"1"    : "!Bomber"
+					"1"    : "!Bomber",
 					"2"    : "RockS",
-					"3.5"   : "RockS",
+					"3.5"  : "RockS",
 					"7"    : "RockB",
-					"7.1"    : "1_a_Bomber",
-					"10.1"  : "3_efg_Alien1"
-					"10"    : "Hole",  
-					"12"    : "Hole",
+					"7.1"  : "1_a_Bomber",
+					"10.1" : "3_efg_Alien1",
+					"10"   : "Hole",  
+					"12"   : "Hole",
 					"15"   : "HoleB",
-					"20"    : "@O"
+					"20"   : "@O"
 		  }
 	  }
 	}
