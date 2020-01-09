@@ -21,7 +21,8 @@ func update_score(points):
 	$ScoreBoard/ScoreResult.text = str(points)
 
 func update_hi_score(hi_score):
-	$ScoreBoard/HiScoreResult.text = str(hi_score)
+	$ScoreBoard/HiScoreResult.text = ("%07d" % hi_score)
+	#$ScoreBoard/HiScoreResult.text = str(hi_score)
 
 func update_lives(lives_left):
 	if int(lives_left) < 1:
@@ -51,21 +52,17 @@ func show_warning(obstacle):
 	
 	match obstacle:
 		"!Mine" :
-			if is_mine_first == true:
+			if $Warnings/AnimationPlayer.current_animation != "mine":
 				$Warnings/AnimationPlayer.play("mine")
-				is_mine_first = false
 		"!Round" :
-			if is_round_first == true:
+			if $Warnings/AnimationPlayer.current_animation != "round":
 				$Warnings/AnimationPlayer.play("round")
-				is_round_first = false
 		"!Worm" :
-			if is_worm_first == true:
+			if $Warnings/AnimationPlayer.current_animation != ("worm"):
 				$Warnings/AnimationPlayer.play("worm")
-				is_worm_first = false
 		"!Bomber":
-			if is_bomber_first == true:
+			if $Warnings/AnimationPlayer.current_animation != ("bomber"):
 				$Warnings/AnimationPlayer.play("bomber")
-				is_bomber_first = false
 				
 func update_checkpoint(checkpoint):
 	if checkpoint != null:
