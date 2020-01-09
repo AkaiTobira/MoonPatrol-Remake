@@ -2,7 +2,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 285.393, 407.17, 0, 0, 0, 0, 333.546, 206, -44, -1, 44, 1, 636.7, 205.769, -38.1635, -71.9093, 38.1635, 71.9093, 1030.7, 260.769, -16, 65, 16, -65, 490.7, 287.769, 5, -46, -5, 46, 831.7, 279.769, 61, 3, -61, -3, 746.7, 328.769, -10, -44, 10, 44, 574.7, 354.769, -68, 0, 68, 0, 786.7, 381.769, 0, 0, 0, 0, 828.534, 371.946, 34, 22, -34, -22, 868.7, 334.769, 13, 48, -13, -48, 758.7, 288.769, 0, 0, 0, 0, 948.7, 249.769, -60.5097, -20.1511, 60.5097, 20.1511, 1134.53, 277.907, 42, -14, -42, 14, 1188.7, 380.769, 80, 1, -80, -1, 926.7, 381.769, -73, 21, 73, -21, 872.7, 300.769, -27, 14, 27, -14, 1113.7, 244.769, 9.27031, -254.422, -9.27031, 254.422, 1128.93, -124.859 )
+"points": PoolVector2Array( 0, 0, 0, 0, 285.393, 407.17, 0, 0, 0, 0, 333.546, 206, -44, -1, 44, 1, 636.7, 205.769, -38.1635, -71.9093, 38.1635, 71.9093, 1030.7, 260.769, -16, 65, 16, -65, 490.7, 287.769, 5, -46, -5, 46, 831.7, 279.769, 61, 3, -61, -3, 746.7, 328.769, -10, -44, 10, 44, 574.7, 354.769, -68, 0, 68, 0, 786.7, 381.769, 0, 0, 0, 0, 828.534, 371.946, 34, 22, -34, -22, 868.7, 334.769, 13, 48, -13, -48, 758.7, 288.769, 0, 0, 0, 0, 948.7, 249.769, -60.5097, -20.1511, 60.5097, 20.1511, 1134.53, 277.907, 42, -14, -42, 14, 1188.7, 380.769, 80, 1, -80, -1, 926.7, 381.769, -73, 21, 73, -21, 872.7, 300.769, -27, 14, 27, -14, 1113.7, 244.769 )
 }
 
 [sub_resource type="Curve2D" id=2]
@@ -57,7 +57,7 @@ _data = {
 
 [sub_resource type="Curve2D" id=12]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 489.7, -32.2312, 0, 0, 0, 0, 488.7, 228.769, 0, 0, 0, 0, 592.7, 227.769, 0, 0, 0, 0, 592.7, 283.769, 0, 0, 0, 0, 446.7, 283.769, 0, 0, 0, 0, 448.7, 348.769, 0, 0, 0, 0, 1140.7, 348.769, 0, 0, 0, 0, 1137.7, 271.769, 0, 0, 0, 0, 1254.7, 272.769, 0, 0, 0, 0, 1254.7, 214.769, 0, 0, 0, 0, 797.7, 214.769, 0, 0, 0, 0, 797.7, 274.769, 0, 0, 0, 0, 1008.7, 274.769, 0, 0, 0, 0, 1009.7, 314.769, 0, 0, 0, 0, 680.7, 314.769, 0, 0, 0, 0, 682.7, 348.769, 0, 0, 0, 0, 554.7, 341.769, 0, 0, 0, 0, 554.7, 253.769, 0, 0, 0, 0, 1091.7, 242.769, 0, 0, 0, 0, 1091.7, -30.2312 )
+"points": PoolVector2Array( 0, 0, 0, 0, 488.7, 228.769, 0, 0, 0, 0, 592.7, 227.769, 0, 0, 0, 0, 592.7, 283.769, 0, 0, 0, 0, 446.7, 283.769, 0, 0, 0, 0, 448.7, 348.769, 0, 0, 0, 0, 1140.7, 348.769, 0, 0, 0, 0, 1137.7, 271.769, 0, 0, 0, 0, 1254.7, 272.769, 0, 0, 0, 0, 1254.7, 214.769, 0, 0, 0, 0, 797.7, 214.769, 0, 0, 0, 0, 797.7, 274.769, 0, 0, 0, 0, 1008.7, 274.769, 0, 0, 0, 0, 1009.7, 314.769, 0, 0, 0, 0, 680.7, 314.769, 0, 0, 0, 0, 682.7, 348.769, 0, 0, 0, 0, 554.7, 341.769, 0, 0, 0, 0, 554.7, 253.769, 0, 0, 0, 0, 1091.7, 242.769 )
 }
 
 [sub_resource type="Curve2D" id=13]
@@ -90,13 +90,11 @@ __meta__ = {
 visible = false
 
 [node name="a" type="Path2D" parent="Alien1"]
-visible = false
 position = Vector2( 238.615, 70.0829 )
 scale = Vector2( 0.479262, 0.744375 )
 curve = SubResource( 1 )
 
 [node name="b" type="Path2D" parent="Alien1"]
-visible = false
 position = Vector2( 163.435, 44.098 )
 scale = Vector2( 0.586919, 0.777262 )
 curve = SubResource( 2 )
@@ -107,32 +105,27 @@ scale = Vector2( 0.158435, 0.46267 )
 curve = SubResource( 3 )
 
 [node name="d" type="Path2D" parent="Alien1"]
-visible = false
 position = Vector2( 172.197, 144.364 )
 scale = Vector2( 0.544873, 0.470404 )
 curve = SubResource( 4 )
 
 [node name="e" type="Path2D" parent="Alien1"]
-visible = false
 position = Vector2( 187.805, 187.046 )
 scale = Vector2( 0.54807, 0.318444 )
 curve = SubResource( 4 )
 
 [node name="g" type="Path2D" parent="Alien1"]
-visible = false
 position = Vector2( 93.3116, 53.7452 )
 scale = Vector2( 0.45007, 0.451564 )
 curve = SubResource( 5 )
 
 [node name="f" type="Path2D" parent="Alien1"]
-visible = false
 position = Vector2( 1345.39, 52.2328 )
 rotation = -0.000907236
 scale = Vector2( -0.61021, 0.45871 )
 curve = SubResource( 5 )
 
 [node name="j" type="Path2D" parent="Alien1"]
-visible = false
 position = Vector2( 99.4639, 71.0722 )
 scale = Vector2( 0.470266, 0.463562 )
 curve = SubResource( 5 )
@@ -152,22 +145,26 @@ visible = false
 
 [node name="a" type="Path2D" parent="Alien2"]
 visible = false
-position = Vector2( 22, -8 )
+position = Vector2( 173.221, 96.1742 )
+scale = Vector2( 0.578751, 0.677839 )
 curve = SubResource( 1 )
 
 [node name="b" type="Path2D" parent="Alien2"]
 visible = false
-position = Vector2( 33.0001, 57 )
-scale = Vector2( 0.895276, 0.794743 )
+position = Vector2( 123.166, 57.3096 )
+scale = Vector2( 0.57934, 0.796439 )
 curve = SubResource( 1 )
 
 [node name="c" type="Path2D" parent="Alien2"]
 visible = false
-position = Vector2( 312, 20 )
+position = Vector2( 370.783, 165.326 )
+scale = Vector2( 0.514547, 0.498818 )
 curve = SubResource( 8 )
 
 [node name="d" type="Path2D" parent="Alien2"]
 visible = false
+position = Vector2( 168.606, 102.573 )
+scale = Vector2( 0.578645, 0.665783 )
 curve = SubResource( 9 )
 
 [node name="e" type="Path2D" parent="Alien2"]
@@ -177,11 +174,13 @@ scale = Vector2( 0.439048, 0.503962 )
 curve = SubResource( 10 )
 
 [node name="f" type="Path2D" parent="Alien2"]
+visible = false
 position = Vector2( 242.344, -26.5859 )
 scale = Vector2( 0.407932, 0.965996 )
 curve = SubResource( 11 )
 
 [node name="g" type="Path2D" parent="Alien2"]
+visible = false
 position = Vector2( 238.615, 70.0829 )
 scale = Vector2( 0.479262, 0.744375 )
 curve = SubResource( 1 )
@@ -203,7 +202,7 @@ curve = SubResource( 1 )
 
 [node name="c" type="Path2D" parent="Bomber"]
 visible = false
-position = Vector2( 251.545, 3.04547 )
+position = Vector2( 252.545, -12.9545 )
 scale = Vector2( 0.436881, 1.09449 )
 curve = SubResource( 12 )
 
@@ -220,6 +219,7 @@ scale = Vector2( 0.39501, 0.723785 )
 curve = SubResource( 14 )
 
 [node name="f" type="Path2D" parent="Bomber"]
+visible = false
 position = Vector2( 281.143, 142.726 )
 scale = Vector2( 0.355789, 0.530457 )
 curve = SubResource( 15 )
