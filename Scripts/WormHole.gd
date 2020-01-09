@@ -40,8 +40,10 @@ func _on_Area2D_body_entered(body):
 		var current_animation_position = $AnimationPlayer.current_animation_position
 		add_points_base_animation_moment(current_animation_position)
 		body.on_delete()
+		on_delete()
 
 func play_if_not_played(anim_name):
+	if not has_node( "Worm" ) : return
 	var animator = $Worm/AnimationPlayer
 	if animator.current_animation == anim_name : return
 	animator.play(anim_name) 

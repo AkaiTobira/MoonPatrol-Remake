@@ -1,10 +1,5 @@
 extends Control
 
-var is_mine_first   = true
-var is_round_first  = true
-var is_worm_first   = true
-var is_bomber_first = true
-
 func _ready():
 	$Distance/LifeLabel.text           = "2"
 	$Warnings/Checkpoint.text          = ""
@@ -22,7 +17,6 @@ func update_score(points):
 
 func update_hi_score(hi_score):
 	$ScoreBoard/HiScoreResult.text = ("%07d" % hi_score)
-	#$ScoreBoard/HiScoreResult.text = str(hi_score)
 
 func update_lives(lives_left):
 	if int(lives_left) < 1:

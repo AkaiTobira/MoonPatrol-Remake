@@ -12,6 +12,7 @@ var KAMIKAZE_ENABLED     = true
 var current_precision = 100
 var MAX_PRECISION     = 100
 var PRECISION_UPDATE  = 30
+# warning-ignore:unused_class_variable
 var SHOOT_PROBABILITY = 320
 var precision_update_timer        = 0
 var max_precision_update_timer    = 1

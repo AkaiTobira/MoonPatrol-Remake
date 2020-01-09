@@ -25,7 +25,8 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="Sprite" type="Sprite" parent="Area2D"]
-position = Vector2( -2.93445, 2.6558 )
+position = Vector2( 6.33136, 9.38999 )
+rotation = 2.73144
 scale = Vector2( 0.516181, 0.516181 )
 texture = ExtResource( 2 )
 

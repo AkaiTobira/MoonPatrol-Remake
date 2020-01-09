@@ -1,10 +1,41 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Enemy_missle.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_new/alien_shot.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Placeholders_old/BakuhatsuNoGenjutsuDa.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 height = 36.9271
+
+[sub_resource type="Animation" id=2]
+resource_name = "Dead"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 0, 1, 2, 3, 4, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Idle"
 
 [node name="Enemy_missle" type="Area2D" groups=[
 "enemy_missle",
@@ -23,5 +54,20 @@ texture = ExtResource( 2 )
 position = Vector2( 0.951294, 14.5867 )
 rotation = 1.5708
 shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 8.0
+anims/Dead = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0.340576, -9.53572 )
+scale = Vector2( 0.615166, 0.761607 )
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 3
+frame = 5
 [connection signal="area_entered" from="." to="." method="_on_Enemy_missle_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Enemy_missle_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

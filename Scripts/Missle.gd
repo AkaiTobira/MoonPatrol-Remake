@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 var direction     = Vector2(0,0)
-export var SPEED  = 450
-var life_range    = 100
+export var SPEED  = 400
+var life_range    = 450
 var lifed_range   = 0
 
 func _physics_process(delta):

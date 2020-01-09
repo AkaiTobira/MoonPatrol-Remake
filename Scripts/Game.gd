@@ -3,8 +3,8 @@ extends Node
 var play_intro    = true
 var set_of_spawns = null
 
-var timer_for_segment = -6
-var timer_summary     = -6
+var timer_for_segment = -3.5
+var timer_summary     = -3.5
 
 var drived_road       = 0
 
