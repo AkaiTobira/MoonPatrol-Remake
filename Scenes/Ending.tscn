@@ -4,7 +4,7 @@
 [ext_resource path="res://Fonts/BigFont1.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Textures/Placeholders_new/thanks2.png" type="Texture" id=3]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
 func _process(delta):
@@ -12,8 +12,7 @@ func _process(delta):
 # warning-ignore:return_value_discarded
 		get_tree().change_scene(\"res://Scenes/Intro.tscn\")"
 
-[sub_resource type="Animation" id=1]
-resource_name = "intro"
+[sub_resource type="Animation" id=2]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -30,7 +29,7 @@ tracks/0/keys = {
 }
 
 [node name="Intro" type="Node2D"]
-script = SubResource( 2 )
+script = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 968.785, 547.854 )
@@ -53,4 +52,4 @@ texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "intro"
-anims/intro = SubResource( 1 )
+anims/intro = SubResource( 2 )
