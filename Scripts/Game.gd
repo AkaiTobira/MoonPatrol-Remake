@@ -24,6 +24,8 @@ func _ready():
 	reload_background()
 	get_tree().call_group("Control", "update_hi_score", Flow.high_score )
 	Flow.pause_world(2)
+	$GUI/Control.get_end_of_main_distance()
+	
 
 func process_intro():
 	if not play_intro : return

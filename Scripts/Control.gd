@@ -31,21 +31,22 @@ func update_lives(lives_left):
 
 func update_drived_distance(drived_road):
 	$Warnings/ShortDistanceBar.value  = int(drived_road)
-	sum_of_segments += drived_road
-	update_main_distance()
+	$Distance/DistanceBar.value = sum_of_segments + drived_road
 	
 var to_travel = 3.625
 func get_segment_end_distance():
 	var max_value = (LevelParser.get_letter_time() + to_travel) * Utilities.PIXOMETR
-	reset_distance_bar()
 	$Warnings/ShortDistanceBar.max_value = max_value
-
+	sum_of_segments += $Warnings/ShortDistanceBar.value
+	print(sum_of_segments," ", max_value) 
+	reset_distance_bar()
+	
 func update_main_distance():
-	$Distance/DistanceBar.value = sum_of_segments
+	pass	
 
 func get_end_of_main_distance():
-	var end_of_distance = (LevelParser.get_whole_distance() + 6 * to_travel) * Utilities.PIXOMETR
-	$Warnings/ShortDistanceBar.max_value = end_of_distance
+	var end_of_distance = (LevelParser.get_whole_distance() + 30 * to_travel) * Utilities.PIXOMETR
+	$Distance/DistanceBar.max_value = end_of_distance
 	print(end_of_distance)
 	
 func reset_distance_bar():
