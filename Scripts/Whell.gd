@@ -12,7 +12,7 @@ var reverse_gravity = false
 
 func _physics_process(delta): 
 	if Flow.world_is_paused : return
-	var gravity = 20
+	var gravity = 35
 	var collision = null
 	if reverse_gravity : gravity = -gravity
 	
@@ -21,5 +21,5 @@ func _physics_process(delta):
 		if collision.collider.is_in_group("floor"): on_floor = true
 		else : on_floor = false
 	else: on_floor = false
-	
+#	if abs( position.y - base_y ) > 10 : 
 	if abs( position.x - base_x ) > 10 : position.x = base_x

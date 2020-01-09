@@ -150,5 +150,4 @@ func _on_V_visibility_changed():
 		else: $GUI/Control.show()
 
 func play_sound_of_death(death_sound):
-	if death_sound > 0:
-		$AlienDestroyed.play()
+	if death_sound > 0: $AlienDestroyed.play()

@@ -10,7 +10,6 @@ export var Friction     =  50.0
 export var MaxMoveSpeed =  200.0
 export var move_borders = Vector2( 500, 800 )
 
-
 #shooting variables
 var forward_missle  = null
 var fire_up_missles = 0
@@ -28,7 +27,6 @@ var is_jumping = false
 onready var base_high  = position.y
 
 var on_floor   = true
-
 var lives      = 2
 
 var controller = null
@@ -88,8 +86,7 @@ func _physics_process(delta):
 func process_wheels():
 	$Whell1/AnimationPlayer.playback_speed = 1 + bakcground_speed_multipler
 	$Whell2/AnimationPlayer.playback_speed = 1 + bakcground_speed_multipler
-	 
-	
+
 onready var wheel_base = ( $Whell1.position + $Whell2.position ) / 2.0
 #Whole function is to refactor but it is work
 func process_move(delta):
@@ -99,7 +96,6 @@ func process_move(delta):
 	var target_pos = Vector2( middle_point + (relative_x * movable_distance)/100, 
 	                          relative_y )
 # warning-ignore:return_value_discarded
-
 	var res            = Vector2(target_pos.x, position.y) - position
 	var wheel_distance = ( $Whell1.position + $Whell2.position ) / 2.0
 	
@@ -108,7 +104,6 @@ func process_move(delta):
 
 	if is_jumping : switch_wheels(true)
 	else: on_floor = wheel_on_floor()
-
 	bakcground_speed_multipler = 1 + ( relative_x/200 )
 
 func switch_wheels( is_gravity_reverted ):
@@ -157,6 +152,7 @@ func play_animation_if_not_player( anim_name ):
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Idle" : return
+	elif anim_name =="Jump" :return
 	else:
 		lives -= 1
 		get_tree().call_group("Control", "update_lives", lives)
