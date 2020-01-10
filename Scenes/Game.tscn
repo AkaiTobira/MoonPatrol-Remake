@@ -578,9 +578,9 @@ script = ExtResource( 5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -9.30804
-margin_top = 2.79447
+margin_top = 1.93705
 margin_right = -9.30811
-margin_bottom = 2.79431
+margin_bottom = 1.93689
 script = ExtResource( 6 )
 
 [node name="Distance" type="Control" parent="GUI/Control"]
@@ -694,9 +694,9 @@ anchor_top = 0.253
 anchor_right = 0.881
 anchor_bottom = 0.387
 margin_left = 614.641
-margin_top = 8.4032
+margin_top = 9.48393
 margin_right = 614.737
-margin_bottom = 27.1466
+margin_bottom = 28.2273
 rect_scale = Vector2( 1.4, 1.4 )
 custom_fonts/font = SubResource( 7 )
 text = "0"
@@ -857,7 +857,7 @@ texture = ExtResource( 3 )
 [node name="Base" type="Sprite" parent="."]
 position = Vector2( 808.997, 885.727 )
 scale = Vector2( 0.769885, 1 )
-z_index = -72
+z_index = 102
 z_as_relative = false
 texture = ExtResource( 17 )
 script = ExtResource( 18 )
