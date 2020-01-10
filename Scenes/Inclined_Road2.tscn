@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Inclined_Road.gd" type="Script" id=1]
-[ext_resource path="res://Textures/Placeholders_new/road urban slope.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Placeholders_new/TAKA_KURWA.png" type="Texture" id=2]
 [ext_resource path="res://Textures/Placeholders_new/Slope_placeholder_city.png" type="Texture" id=3]
 [ext_resource path="res://Textures/Placeholders_new/road urban big.png" type="Texture" id=4]
 
