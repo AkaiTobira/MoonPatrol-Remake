@@ -13,7 +13,7 @@
 [ext_resource path="res://Sounds/LaserShot.wav" type="AudioStream" id=11]
 [ext_resource path="res://Sounds/atari_boom5.wav" type="AudioStream" id=12]
 [ext_resource path="res://Sounds/plant_growth.wav" type="AudioStream" id=13]
-[ext_resource path="res://Sounds/snd_boss_jump_t2.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Sounds/snd_boss_jump_t2.wav" type="AudioStream" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Roll"
@@ -599,6 +599,7 @@ position = Vector2( -0.397217, -15.5665 )
 polygon = PoolVector2Array( 6.43019, -31.2936, 8.23421, -23.2992, 8.81818, -8.11574, 25.1696, 14.3674, 48.5373, 42.0213, 48.1967, 4.90001, 67.0339, -4.11128, 116.65, 17.1603, 63.8626, -14.1715, 2.90231, -36.8719 )
 
 [node name="Wheel1" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( 9.85728, -24.7882 )
 rotation = -0.125664
 scale = Vector2( 0.147166, 0.13689 )
@@ -612,6 +613,7 @@ scale = Vector2( 1.0033, 0.98794 )
 texture = ExtResource( 5 )
 
 [node name="Wheel2" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( -89.6509, -42.9937 )
 rotation = 0.125664
 scale = Vector2( 0.147, 0.137 )
@@ -625,6 +627,7 @@ scale = Vector2( 1.0033, 0.98794 )
 texture = ExtResource( 5 )
 
 [node name="Whell1" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 61, 14 )
 collision_layer = 2
 collision_mask = 2
@@ -639,6 +642,7 @@ position = Vector2( 18.3483, -0.891861 )
 shape = SubResource( 2 )
 
 [node name="Whell2" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 7 )
