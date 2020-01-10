@@ -34,6 +34,8 @@ func load_bakcground_fill( b_name ):
 	$Back2/Sprite.texture = back_info["back1"]
 	$Back3/Sprite.texture = back_info["road"]
 	inclined_road_name    = back_info["inclined_name"]
+	
+	if has_node( "Back4" ): $Back4.set_sprites( back_info["road"], back_info["road_L"], back_info["road_R"] )
 
 func get_backgoround_info():
 	return [ $Back1.motion_offset.x, $Back2.motion_offset.x, $Back3.motion_offset.x, $Back4.get_info() if has_node( "Back4" ) else null  ]

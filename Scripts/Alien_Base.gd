@@ -253,7 +253,9 @@ func _on_Area2D_body_entered(body):
 
 	if hit_with_player or hit_with_floor:
 		stop()
-		if hit_with_floor  : on_delete()
+		if hit_with_floor  : 
+			set_physics_process(false)
+			on_delete()
 		if hit_with_player : on_destroy()
 
 func play_animation_if_not_player( anim_name ):
