@@ -138,20 +138,21 @@ func process_path(delta):
 	if path_index == (path.size() - 1): 
 		is_following_fixed_path = false
 		return
-	
+
 	var temp_distance = move_speed
-	while( temp_distance > 0 ):
+	while( temp_distance > 0 ) and path_index != (path.size() - 1):
+#	print( temp_distance )
 		var target          = path[path_index]
 		var target_distance = (target - position).length()
 		var direction       = (target - position).normalized()
-
-		if temp_distance > target_distance:
-# warning-ignore:return_value_discarded
+		
+		if temp_distance * delta >= target_distance:
+		# warning-ignore:return_value_discarded
 			move_and_slide( direction * target_distance )
-			path_index = min(  path_index + 1, path.size() - 1 )
-			temp_distance -= target_distance 
+			path_index     = min(  path_index + 1, path.size() - 1 )
+			temp_distance -= target_distance * delta
 		else:
-# warning-ignore:return_value_discarded
+		# warning-ignore:return_value_discarded
 			move_and_slide( direction * temp_distance )
 			temp_distance = 0
 
