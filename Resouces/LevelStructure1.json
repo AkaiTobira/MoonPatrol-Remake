@@ -1,10 +1,10 @@
 {
 	"start_segment"     : "0",
 	"end_segment"       : "E",
-	"avr_time"          : 100,
+	"avr_time"          : 20,
 	"additional_points" : 1000,
 	"fixed_segment"     : false,
-	"background"        : "dessert",
+	"background"        : "town",
 	"level_structure"   : {
 		"0" : {
 			"0" :{
@@ -12,33 +12,34 @@
 					"5"    : "RockS",
 					"7"    : "RockS",
 					"11"   : "Hole",
-					"15"   : "@A"
+					"20"   : "@A"
 			}
 		},
 	  "C" : {
 		  "0" :{
-					"3.5" : "^Rise",
+					"5.5" : "^Rise",
 					"3"   : "!Round",
-					"8.7" : "RoundS",
-					"9.5" : "Round",
+					"10.7" : "RoundS",
+					"15.5" : "Round",
 					"10"  : "RoundS",
-					"5"   : "2_ef_Alien2",
+					"6"   : "1_f_Alien2",
 					"0.5" : "RockS",
-					"10.01"  : "3_egf_Alien1",
-					"23"  : "@D"
+					"15.01"  : "1_e_Alien1",
+					"30"  : "@D"
 		  }
 	  },
 	  "B" : {
 		  "0" :{
 					"2"    : "HoleB",
 					"6"    : "Hole",
-					"19"   : "HoleB",
 					"12"   : "HoleB",
-					"15"   : "HoleB",
-					"0.5"   : "2_ij_Alien1",					
+					"15"   : "HoleB",				
 					"5.5"  : "2_ij_Alien1",
+					"20"   : "Hole",
+					"23"   : "Hole",
+					"27"   : "HoleB",
 					"17.7" : "Hole",
-					"20"   : "@C"
+					"30"   : "@C"
 		  },
 		  "1" : {
 					"0.5"  : "RockS",
@@ -49,33 +50,37 @@
 					"9.8"  : "RockB",
 					"12.5" : "RockB",
 					"15.5" : "RockB",
-					"20"   : "@C"
+					"30"   : "@C"
 		  }
 	  },
 	  "A" : {
 		  "0" :{
-					"2"  : "RockS",
-					"10" : "2_ab_Alien1",			  
+					"2"  : "RockS",			  
 					"5"  : "HoleB",
 					"9"  : "RockB",
 					"12" : "RockS",
 					"15" : "RockB",
+					"18" : "RockB",
+					"10" : "3_abc_Alien1",
 					"17" : "RockS",
-					"20" : "@B"
+					"24" : "RockB",
+					"26" : "RockS",
+					"30" : "@B"
 		  }
 	  },
 	  "D" : {
 		  "0" :{
-					"3"   : "RockS",
-					"7.5" : "RockB",
-					"10"   : "RockB",
-					"1.999"  : "!Bomber",
-					"2"    : "2_ac_Bomber", 
-					"13.5" : "RockB",			  
-					"15.7" : "Mine",	
-					"18"   : "RockB",
-					"19.3" : "Mine", 	
-					"21"   : "@E"
+					"2"   : "RockS",
+					"6.5" : "RockB",
+					"9"   : "RockB",
+					"0.999"  : "!Bomber",
+					"1"    : "1_A_Bomber", 
+					"1.1"  : "1_C_Bomber",
+					"12.5" : "RockB",			  
+					"14.7" : "Mine",	
+					"17"   : "RockB",
+					"18.3" : "Mine", 	
+					"30"   : "@E"
 		  }
 	  }
 	}
