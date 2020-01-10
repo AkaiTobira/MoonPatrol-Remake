@@ -33,6 +33,7 @@ func _on_Area2D_body_entered(body):
 		play_animation( $Area2D/AnimationPlayer, "Dead" )
 		get_parent().points += points_destroy
 		body.on_delete()
+		$DoubleRockDead.play()
 
 func _on_Area2D2_body_entered(body):
 	if body.is_in_group("missle"):
@@ -40,7 +41,8 @@ func _on_Area2D2_body_entered(body):
 		get_parent().points += points_destroy
 		play_animation( $Area2D2/AnimationPlayer, "Dead" )
 		body.on_delete()
-
+		$DoubleRockDead.play()
+		
 func play_animation( animator, anim_name ):
 	if animator == null: return
 	if animator.current_animation == anim_name: return

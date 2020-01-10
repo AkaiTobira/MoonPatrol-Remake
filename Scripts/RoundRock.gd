@@ -39,6 +39,7 @@ func _on_Area2D_body_entered(body):
 		speed_multipler = 0
 		body.on_delete()
 		play_if_not_played( "Dead" )
+		$RoundDead.play()
 
 func play_if_not_played( anim_name ):
 	if $AnimationPlayer.current_animation == anim_name : return

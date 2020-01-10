@@ -27,14 +27,17 @@ func _physics_process(delta):
 	if add_points : grant_points()
 	if position.x < -100 : call_deferred("queue_free")
 
-func on_delete(): play_animation_if_not_played("Dead")
+func on_delete(): 
+	play_animation_if_not_played("Dead")
+	
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("missle"):
 		get_parent().points += points_destroy
 		body.on_delete()
 		play_animation_if_not_played("Dead")
-
+		$RockDead.play()
+		
 func play_animation_if_not_played(anim_name):
 	if $Area2D/AnimationPlayer.current_animation != anim_name:
 		$Area2D/AnimationPlayer.play(anim_name)
