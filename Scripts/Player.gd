@@ -118,20 +118,24 @@ func wheel_on_floor():
 
 func on_dead():
 	if not player_good_mode: 
-		controller.set_process(false)
-		Flow.stop_BGM_music()
-		$ExplosionSound.play()
-		Flow.pause_world(10)
+		set_dead_sequence()
 		play_animation_if_not_player("Dead")
+
+func set_dead_sequence():
+	controller.set_process(false)
+	Flow.stop_BGM_music()
+	play_explosion_sound()
+	Flow.pause_world(10)
 
 func on_hole_dead( anim_name, target ):
 	if not player_good_mode: 
-		controller.set_process(false)
-		Flow.stop_BGM_music()
-		$ExplosionSound.play()
-		Flow.pause_world(10)
+		set_dead_sequence()
 		correct_anim(anim_name, target )
 		play_animation_if_not_player(anim_name)
+		
+func play_explosion_sound():
+	if $AnimationPlayer.current_animation == "Idle":
+		$ExplosionSound.play()
 		
 func correct_anim(anim_name, target ):
 	var anim  = $AnimationPlayer.get_animation( anim_name )
