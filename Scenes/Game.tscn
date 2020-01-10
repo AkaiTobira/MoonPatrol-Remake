@@ -646,8 +646,6 @@ custom_fonts/font = SubResource( 5 )
 text = "Distance:"
 
 [node name="DistanceBar" type="ProgressBar" parent="GUI/Control/Distance"]
-modulate = Color( 0.909804, 0.854902, 0.0509804, 1 )
-self_modulate = Color( 0.992157, 0.980392, 0.980392, 1 )
 anchor_left = 0.207
 anchor_top = 0.632
 anchor_right = 0.805
@@ -657,7 +655,6 @@ margin_top = 87.1427
 margin_right = 238.849
 margin_bottom = 105.783
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0.937255, 0.8, 0.0666667, 1 )
 
 [node name="TextureProgress" type="TextureProgress" parent="GUI/Control/Distance"]
 margin_right = 40.0
@@ -767,8 +764,8 @@ align = 1
 valign = 1
 
 [node name="ShortDistanceBar" type="ProgressBar" parent="GUI/Control/Warnings"]
-modulate = Color( 0.992157, 1, 0, 1 )
-self_modulate = Color( 0.996078, 0.996078, 0.996078, 1 )
+modulate = Color( 1, 0, 0, 1 )
+self_modulate = Color( 1, 0.105882, 0.105882, 1 )
 anchor_left = 0.149
 anchor_top = 0.644
 anchor_right = 0.842
@@ -777,7 +774,7 @@ margin_left = 57.04
 margin_top = 137.24
 margin_right = 305.32
 margin_bottom = 163.92
-custom_colors/font_color = Color( 0.988235, 0.988235, 0.984314, 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.00784314, 0.00784314, 0.00784314, 1 )
 
 [node name="ObstacleWorm" type="TextureRect" parent="GUI/Control/Warnings"]
@@ -858,9 +855,9 @@ texture = ExtResource( 3 )
 [node name="ParallaxBackground" parent="." instance=ExtResource( 16 )]
 
 [node name="Base" type="Sprite" parent="."]
-position = Vector2( 808.997, 887.234 )
+position = Vector2( 808.997, 885.727 )
 scale = Vector2( 0.769885, 1 )
-z_index = -75
+z_index = -72
 z_as_relative = false
 texture = ExtResource( 17 )
 script = ExtResource( 18 )
@@ -915,7 +912,6 @@ position = Vector2( 294.981, 377.636 )
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 28 )
-volume_db = -5.0
 autoplay = true
 
 [node name="BonusPoints" parent="." instance=ExtResource( 29 )]

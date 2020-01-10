@@ -578,12 +578,14 @@ script = ExtResource( 1 )
 Friction = 300.0
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -30 )
+position = Vector2( 0, -20 )
 scale = Vector2( 0.561, 0.421 )
 texture = ExtResource( 2 )
 
 [node name="Explosion" type="Sprite" parent="."]
-position = Vector2( -10.4779, -40.4779 )
+visible = false
+position = Vector2( -33.7971, -20.9401 )
+rotation = -18.8496
 scale = Vector2( 1.67361, 1.20941 )
 texture = ExtResource( 3 )
 vframes = 2
@@ -599,7 +601,8 @@ position = Vector2( -0.397217, -15.5665 )
 polygon = PoolVector2Array( 6.43019, -31.2936, 8.23421, -23.2992, 8.81818, -8.11574, 25.1696, 14.3674, 48.5373, 42.0213, 48.1967, 4.90001, 67.0339, -4.11128, 116.65, 17.1603, 63.8626, -14.1715, 2.90231, -36.8719 )
 
 [node name="Wheel1" type="Sprite" parent="."]
-position = Vector2( -46.009, -48.1511 )
+position = Vector2( 8.8216, -22.4852 )
+rotation = -0.15708
 scale = Vector2( 0.147166, 0.13689 )
 texture = ExtResource( 4 )
 centered = false
@@ -611,7 +614,8 @@ scale = Vector2( 1.0033, 0.98794 )
 texture = ExtResource( 5 )
 
 [node name="Wheel2" type="Sprite" parent="."]
-position = Vector2( -92.0509, -42.9937 )
+position = Vector2( -89.0509, -42.9937 )
+rotation = 0.15708
 scale = Vector2( 0.147, 0.137 )
 texture = ExtResource( 6 )
 centered = false

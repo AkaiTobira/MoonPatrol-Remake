@@ -76,11 +76,3 @@ res6={
 2d_physics/layer_4="enemy_missle"
 2d_physics/layer_5="alien"
 2d_physics/layer_6="obstacle"
-
-[logging]
-
-file_logging/enable_file_logging=true
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"
