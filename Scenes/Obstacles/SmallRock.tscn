@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Rock.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_new/rock1.png" type="Texture" id=2]
 [ext_resource path="res://Resouces/Dead_RockD.tres" type="Animation" id=3]
 [ext_resource path="res://Textures/Placeholders_old/BakuhatsuNoGenjutsuDa.png" type="Texture" id=4]
+[ext_resource path="res://Sounds/Hit1.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -46,5 +47,9 @@ visible = false
 texture = ExtResource( 4 )
 vframes = 2
 hframes = 3
+
+[node name="RockDead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -5.0
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_finished" from="Area2D/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
