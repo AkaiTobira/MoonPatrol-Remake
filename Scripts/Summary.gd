@@ -6,7 +6,7 @@ var texts = {
 	"ATime"  : "Average time",
 	"Ttime"  : "Top time",
 	"Bonus"  : "Good Bonus Point",
-	"NBonus" : "Sory no bonus for you",
+	"NBonus" : "Sorry, no bonus for you",
 	"Record" : "You have broken the record"
 }
 
