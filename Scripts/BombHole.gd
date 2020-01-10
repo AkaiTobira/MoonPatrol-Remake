@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Area2D
 
 export var SPEED = 130
 
@@ -30,7 +30,8 @@ func on_delete():
 func _physics_process(delta):
 	if Flow.world_is_paused: return 
 # warning-ignore:return_value_discarded
-	move_and_slide( Vector2(-1, 0 ) * SPEED * speed_multipler )
+	position += Vector2(-1, 0 ) * SPEED * speed_multipler * delta
+#	move_and_slide( Vector2(-1, 0 ) * SPEED * speed_multipler )
 	position.y = fixed_y_pos
 	
 	if add_points : grant_points()

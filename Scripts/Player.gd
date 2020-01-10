@@ -212,3 +212,13 @@ func calculate_side( position_hole ):
 
 func _on_Sound_finished():
 	Flow.summarize()
+
+func _on_Player_area_entered(body):
+	if body.is_in_group("alien") : print( "KAmikaze" )
+
+	var is_killed = body.is_in_group("alien") or body.is_in_group("enemy_missle")
+	var hit_smt   = body.is_in_group("obstalces") 
+	if hit_smt:     body.on_delete()
+	var side = calculate_side( body.position ) if body.is_in_group("hole") else "None"
+	if is_killed or hit_smt: fall_in_hole(side , body.position)
+	pass # Replace with function body.
