@@ -87,24 +87,27 @@ __meta__ = {
 }
 
 [node name="Alien1" type="Node2D" parent="."]
-visible = false
 
 [node name="a" type="Path2D" parent="Alien1"]
+visible = false
 position = Vector2( 238.615, 70.0829 )
 scale = Vector2( 0.479262, 0.744375 )
 curve = SubResource( 1 )
 
 [node name="b" type="Path2D" parent="Alien1"]
+visible = false
 position = Vector2( 163.435, 44.098 )
 scale = Vector2( 0.586919, 0.777262 )
 curve = SubResource( 2 )
 
 [node name="c" type="Path2D" parent="Alien1"]
+visible = false
 position = Vector2( 353.07, 114.663 )
 scale = Vector2( 0.158435, 0.46267 )
 curve = SubResource( 3 )
 
 [node name="d" type="Path2D" parent="Alien1"]
+visible = false
 position = Vector2( 172.197, 144.364 )
 scale = Vector2( 0.544873, 0.470404 )
 curve = SubResource( 4 )
@@ -126,16 +129,19 @@ scale = Vector2( -0.61021, 0.45871 )
 curve = SubResource( 5 )
 
 [node name="j" type="Path2D" parent="Alien1"]
+visible = false
 position = Vector2( 99.4639, 71.0722 )
 scale = Vector2( 0.470266, 0.463562 )
 curve = SubResource( 5 )
 
 [node name="h" type="Path2D" parent="Alien1"]
+visible = false
 position = Vector2( 161.723, 76.1017 )
 scale = Vector2( 0.514871, 0.337662 )
 curve = SubResource( 6 )
 
 [node name="i" type="Path2D" parent="Alien1"]
+visible = false
 position = Vector2( 152.775, 33.6031 )
 scale = Vector2( 0.600043, 0.46637 )
 curve = SubResource( 7 )
@@ -186,6 +192,7 @@ scale = Vector2( 0.479262, 0.744375 )
 curve = SubResource( 1 )
 
 [node name="Bomber" type="Node2D" parent="."]
+visible = false
 position = Vector2( 0, -1 )
 
 [node name="a" type="Path2D" parent="Bomber"]

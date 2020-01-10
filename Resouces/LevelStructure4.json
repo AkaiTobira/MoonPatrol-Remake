@@ -1,7 +1,7 @@
 {
 	"start_segment"     : "O",
 	"end_segment"       : "T",
-	"avr_time"          : 20,
+	"avr_time"          : 100,
 	"additional_points" : 1000,
 	"background"        : "hills",
 	"fixed_segment"     : false,

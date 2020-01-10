@@ -67,6 +67,3 @@ func register_player( node ):
 
 func get_instance( object_name ):
 	return objects[object_name].instance()
-
-func get_segment_texture(): pass
-#	return level_jsons[sqgment_id]["bakcground"]

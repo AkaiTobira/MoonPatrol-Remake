@@ -3,13 +3,12 @@ extends Control
 var sum_of_segments = 0
 
 func _ready():
-	$Distance/LifeLabel.text           = "2"
-	$Warnings/Checkpoint.text          = ""
-	$Warnings/ShortDistanceBar.visible = false
-	$Distance/LifeLabel.visible        = true
-	$Distance/TextureRect.visible      = true
-	$Distance/XLabel.visible           = true
-	$Warnings/WarnBase.visible         = true
+	$Distance/LifeLabel.text      = "2"
+	$Warnings/Checkpoint.text     = ""
+	$Distance/LifeLabel.visible   = true
+	$Distance/TextureRect.visible = true
+	$Distance/XLabel.visible      = true
+	$Warnings/WarnBase.visible    = true
 
 func update_timer(time_past):
 	$ScoreBoard/GTime.text = str( max (0, int(time_past)))
@@ -30,31 +29,28 @@ func update_lives(lives_left):
 
 
 func update_drived_distance(drived_road):
-	$Warnings/ShortDistanceBar.value  = int(drived_road)
-	$Distance/DistanceBar.value = sum_of_segments + drived_road
+	$Warnings/ShortDistanceBar.value = int(drived_road)
+	$Distance/DistanceBar.value      = sum_of_segments + drived_road
 	
 var to_travel = 3.625
 func get_segment_end_distance():
 	var max_value = (LevelParser.get_letter_time() + to_travel) * Utilities.PIXOMETR
 	$Warnings/ShortDistanceBar.max_value = max_value
 	sum_of_segments += $Warnings/ShortDistanceBar.value
-	print(sum_of_segments," ", max_value) 
 	reset_distance_bar()
 	
 func update_main_distance():
 	pass	
 
+var NUMBER_OF_LETTERS = 25
 func get_end_of_main_distance():
-	var end_of_distance = (LevelParser.get_whole_distance() + 30 * to_travel) * Utilities.PIXOMETR
+	var end_of_distance = (LevelParser.get_whole_distance() + NUMBER_OF_LETTERS * to_travel) * Utilities.PIXOMETR
 	$Distance/DistanceBar.max_value = end_of_distance
-	print(end_of_distance)
 	
 func reset_distance_bar():
 	$Warnings/ShortDistanceBar.value = 0
 
 func show_warning(obstacle):
-	print(obstacle)
-	
 	match obstacle:
 		"!Mine" :
 			if $Warnings/AnimationPlayer.current_animation != "mine":

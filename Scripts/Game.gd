@@ -23,9 +23,9 @@ func _ready():
 	background_backup = $ParallaxBackground.get_backgoround_info()
 	reload_background()
 	get_tree().call_group("Control", "update_hi_score", Flow.high_score )
+	get_tree().call_group("Control", "get_segment_end_distance" )
 	Flow.pause_world(2)
 	$GUI/Control.get_end_of_main_distance()
-	
 
 func process_intro():
 	if not play_intro : return

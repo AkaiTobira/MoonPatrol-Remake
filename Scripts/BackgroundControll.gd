@@ -1,6 +1,6 @@
 extends ParallaxBackground
 
-export var SPEED             = 60.0
+export var SPEED             = 60.0 
 export var SPEDD_MULTIPLER_0 = 0.25
 export var SPEDD_MULTIPLER_1 = 1.0
 export var SPEDD_MULTIPLER_2 = 2.0

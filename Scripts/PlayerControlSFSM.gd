@@ -113,7 +113,6 @@ class Shoot extends State:
 	func update(delta):
 		if can_shoot_forward()    : Utilities.player.shoot_forward()
 		if can_shoot_up():
-			Utilities.player.fire_up_missles += 1
 			Utilities.player.shoot_up()
 		is_over = true
 		

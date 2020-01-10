@@ -30,6 +30,8 @@ func is_sqaut_special_active( squat_id ):
 func bomber_destroyed( squat_id, numer_id ):
 	if len(active_squats) <= squat_id: return
 	bomber_squats[squat_id][numer_id] = null
+	for bomber in bomber_squats[squat_id]: 
+		if bomber: bomber.lider = null
 
 func fill_squat( index, squat, valid ):
 	if valid != "Bomber": return

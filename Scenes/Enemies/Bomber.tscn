@@ -28,8 +28,8 @@ radius = 34.7102
 height = 387.737
 
 [node name="Bomber" type="KinematicBody2D" groups=[
-"alien",
 "obstalces",
+"alien",
 ]]
 scale = Vector2( 0.2, 0.2 )
 collision_layer = 0

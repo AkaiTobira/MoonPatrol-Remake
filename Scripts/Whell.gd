@@ -21,5 +21,5 @@ func _physics_process(delta):
 		if collision.collider.is_in_group("floor"): on_floor = true
 		else : on_floor = false
 	else: on_floor = false
-#	if abs( position.y - base_y ) > 10 : 
+
 	if abs( position.x - base_x ) > 10 : position.x = base_x

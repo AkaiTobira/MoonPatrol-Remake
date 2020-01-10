@@ -1,7 +1,7 @@
 {
 	"start_segment"     : "0",
 	"end_segment"       : "E",
-	"avr_time"          : 20,
+	"avr_time"          : 100,
 	"additional_points" : 1000,
 	"fixed_segment"     : false,
 	"background"        : "dessert",
@@ -17,7 +17,7 @@
 		},
 	  "C" : {
 		  "0" :{
-					"5.5" : "^Rise",
+					"3.5" : "^Rise",
 					"3"   : "!Round",
 					"8.7" : "RoundS",
 					"9.5" : "Round",
@@ -25,7 +25,7 @@
 					"5"   : "2_ef_Alien2",
 					"0.5" : "RockS",
 					"10.01"  : "3_egf_Alien1",
-					"20"  : "@D"
+					"23"  : "@D"
 		  }
 	  },
 	  "B" : {
@@ -35,7 +35,7 @@
 					"19"   : "HoleB",
 					"12"   : "HoleB",
 					"15"   : "HoleB",
-					".5"   : "2_ij_Alien1",					
+					"0.5"   : "2_ij_Alien1",					
 					"5.5"  : "2_ij_Alien1",
 					"17.7" : "Hole",
 					"20"   : "@C"
@@ -66,17 +66,16 @@
 	  },
 	  "D" : {
 		  "0" :{
-					"2"   : "RockS",
-					"6.5" : "RockB",
-					"9"   : "RockB",
-					"0.999"  : "!Bomber",
-					"1"    : "1_A_Bomber", 
-					"1.1"  : "1_C_Bomber",
-					"12.5" : "RockB",			  
-					"14.7" : "Mine",	
-					"17"   : "RockB",
-					"18.3" : "Mine", 	
-					"20"   : "@E"
+					"3"   : "RockS",
+					"7.5" : "RockB",
+					"10"   : "RockB",
+					"1.999"  : "!Bomber",
+					"2"    : "2_ac_Bomber", 
+					"13.5" : "RockB",			  
+					"15.7" : "Mine",	
+					"18"   : "RockB",
+					"19.3" : "Mine", 	
+					"21"   : "@E"
 		  }
 	  }
 	}

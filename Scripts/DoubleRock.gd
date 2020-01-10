@@ -29,12 +29,14 @@ func _physics_process(delta):
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("missle"):
+		print( "Area2D" )
 		play_animation( $Area2D/AnimationPlayer, "Dead" )
 		get_parent().points += points_destroy
 		body.on_delete()
 
 func _on_Area2D2_body_entered(body):
 	if body.is_in_group("missle"):
+		print( "Area2D2" )
 		get_parent().points += points_destroy
 		play_animation( $Area2D2/AnimationPlayer, "Dead" )
 		body.on_delete()

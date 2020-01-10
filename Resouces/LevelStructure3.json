@@ -1,7 +1,7 @@
 {
 	"start_segment"     : "J",
 	"end_segment"       : "O",
-	"avr_time"          : 20,
+	"avr_time"          : 100,
 	"additional_points" : 1000,
 	"fixed_segment"     : false,
 	"background"        : "dessert",

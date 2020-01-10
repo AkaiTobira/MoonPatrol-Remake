@@ -38,7 +38,6 @@ var LIFE_TIME  = 12
 var is_dead    = false
 var enemy_destroyed = 0
 
-
 var path = null
 var is_following_fixed_path = false
 
@@ -86,7 +85,8 @@ func on_delete():
 
 func process_shooting():
 	update_precision()
-	#if not randi() % SHOOT_PROBABILITY == 0  : return
+	if life_timer > LIFE_TIME: return
+	if not randi() % SHOOT_PROBABILITY == 0  : return
 	if is_far_from_player(): return 
 	if SquatController.missle_active(squat_id) : return
 	create_missle()
@@ -128,7 +128,7 @@ func process_move(delta):
 	if is_following_fixed_path: 
 		process_path(delta)
 		return
-	
+
 	if not avoid: move_to_target_pos(delta)
 	else: move_avoiding(delta)
 

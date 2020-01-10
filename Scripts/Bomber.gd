@@ -18,7 +18,7 @@ func _ready():
 	SHOOT_PROBABILITY      = 1
 	POINTS_FOR_DESTROY     = 200
 	KAMIKAZE_ENABLED       = false
-	LIFE_TIME              = 12
+	LIFE_TIME              = 6
 	
 # warning-ignore:unused_variable
 	for i in range(76): move_log.append(Vector2(0,0))
@@ -37,6 +37,7 @@ func _physics_process(delta):
 	update_move_log()
 
 func follow_lider(delta):
+	if lider == null : return
 	target_move_point = lider.move_log[ number_in_squat * 15 ] 
 	move_to_target_pos(delta)
 	avoid = false

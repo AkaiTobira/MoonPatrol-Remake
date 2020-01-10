@@ -1,7 +1,7 @@
 {
 	"start_segment"     : "E",
 	"end_segment"       : "J",
-	"avr_time"          : 20,
+	"avr_time"          : 100,
 	"additional_points" : 1000,
 	"fixed_segment"     : false,
 	"background"        : "dessert",
@@ -29,7 +29,7 @@
 					"5"    : "2_ef_Alien2",
 					"0.5"  : "RockS",
 					"10"   : "3_egf_Alien1",
-					"12.5" : "^Fall",
+					"9.6"  : "^Fall",
 					"20"   : "@G"
 		  }
 	  },

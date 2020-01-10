@@ -5,7 +5,7 @@ var squat_id  = -1
 var SPEED     = 0
 
 func _physics_process(delta):
-	SPEED = min ( SPEED + 150*delta, 200 )
+	SPEED = min ( SPEED + 150*delta, 300 )
 	position += direction * SPEED * delta
 
 func on_delete(): 

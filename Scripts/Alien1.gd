@@ -9,7 +9,7 @@ func _ready():
 	PRECISION_UPDATE  = 0
 	SHOOT_PROBABILITY = 320
 	KAMIKAZE_ENABLED  = true
-	LIFE_TIME         = 12
+	LIFE_TIME         = 8
 	
 func _physics_process(delta):
 	if Flow.world_is_paused : return

@@ -1,8 +1,8 @@
 {
 	"start_segment"     : "T",
 	"end_segment"       : "Z",
-	"avr_time"          : 20,
-	"additional_points" : 1000,
+	"avr_time"          : 100,
+	"additional_points" : 5000,
 	"background"        : "hills",
 	"fixed_segment"     : false,
 	"level_structure"   : {

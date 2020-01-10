@@ -9,7 +9,6 @@ func load_json():
 	load_structure("LevelStructure3", 2 )
 	load_structure("LevelStructure4", 3 )
 	load_structure("LevelStructure5", 4 )
-#	load_structure("LevelStructure6", 5 )
 
 func _ready():
 	load_json()
@@ -74,7 +73,7 @@ func reset():
 
 func on_json_change( letter ):
 	Flow.stop_BGM_music()
-	if current_active_index == max_segments-1: 
+	if current_active_index == max_segments -1: 
 		Flow.show_congratulation()
 		Flow.play_end_game_music()
 	else: Flow.play_checkpoint_music()
@@ -87,8 +86,8 @@ func on_json_change( letter ):
 func reached_next_letter( letter ):
 	if json_levels[current_active_index]["fixed_segment"] : return
 	if json_levels[current_active_index]["end_segment"] == letter:
-		reached_next_segment( current_active_letter )
 		on_json_change( letter )
+		reached_next_segment( current_active_letter )
 		return
 	current_active_letter = letter
 	get_tree().call_group("Control", "update_checkpoint", current_active_letter)

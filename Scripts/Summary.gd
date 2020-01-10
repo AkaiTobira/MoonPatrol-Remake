@@ -27,7 +27,7 @@ func start_typing_sequences( letter, tims ):
 	set_process(true)
 
 var timer   = 0.0
-var seconds = 0.15
+var seconds = 0.1
 var aditonal_points = 0 
 
 var states = [ "Reach", "YTime", "ATime", "Ttime", "Bonus", "Record", "NRecord" ]
@@ -35,7 +35,7 @@ var states = [ "Reach", "YTime", "ATime", "Ttime", "Bonus", "Record", "NRecord" 
 func reset():
 	$BonusPoint.visible = true
 	texts["Reach"] = "Time to reach point " + '"' + reached_letter + '"'
-	seconds = 0.15
+	seconds = 0.1
 	if timers["takes_time"] < timers["average_time"]: 
 		states          = [ "Reach", "YTime", "ATime", "Ttime", "Bonus", "Record" ]
 		aditonal_points = 1000
@@ -62,7 +62,7 @@ func _process(delta):
 			letter_index = 0
 		if state_index == len( states ) : 
 			update_score()
-			seconds = 0.5
+			seconds = 0.1
 			timer   = 0
 			is_over = true
 			
@@ -81,7 +81,7 @@ func update_score():
 		$TopRecord.text   = ": " + ("%03d" % timers["top_time"])
 		$BonusPoint.text  = ": " + ("%04d" % aditonal_points)
 		
-		if timers["takes_time"] == timers["average_time"]: seconds = 2
+		if timers["takes_time"] == timers["average_time"]: seconds = 1
 		return
 	get_parent().get_parent().points += aditonal_points
 	Flow.play_world()

@@ -99,7 +99,7 @@ func summarize( ):
 	main_node.get_node("Summary/V").start_typing_sequences( saved_record["letter"] , 
 	   { "takes_time"   : saved_record["time"],
 		 "top_time"     : saved_record["top"],
-		 "average_time" : saved_record["time"] } 
+		 "average_time" : saved_record["avg"] } 
 		)
 	main_node.timer_summary = 0
 	clean_scene()

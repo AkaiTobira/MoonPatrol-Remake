@@ -63,6 +63,8 @@ func shoot_forward():
 	get_parent().call_deferred("add_child", forward_missle)  
 
 func shoot_up():
+	fire_up_missles      += 1
+	fire_up_missles      = max( min( fire_up_missles, 4), 0 )
 	var up_missle        = Utilities.get_instance("PUmissle")
 	up_missle.position   = position + Vector2(-75,-30)
 	up_missle.life_range = 600 
