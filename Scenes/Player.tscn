@@ -51,7 +51,7 @@ tracks/0/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "Fall_back"
 length = 3.0
 tracks/0/type = "value"
@@ -211,7 +211,7 @@ tracks/12/keys = {
 "values": [ true, false, false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
@@ -370,7 +370,7 @@ tracks/12/keys = {
 "values": [ true, false, false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Whell1:visible")
@@ -575,7 +575,7 @@ script = ExtResource( 1 )
 Friction = 300.0
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -30 )
+position = Vector2( 0, -22 )
 scale = Vector2( 0.561, 0.421 )
 texture = ExtResource( 2 )
 
@@ -587,7 +587,7 @@ scale = Vector2( 1.67361, 1.20941 )
 texture = ExtResource( 3 )
 vframes = 2
 hframes = 3
-frame = 5
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 0.233032, -16.1967 )
@@ -598,7 +598,8 @@ position = Vector2( -0.397217, -15.5665 )
 polygon = PoolVector2Array( 6.43019, -31.2936, 8.23421, -23.2992, 8.81818, -8.11574, 25.1696, 14.3674, 48.5373, 42.0213, 48.1967, 4.90001, 67.0339, -4.11128, 116.65, 17.1603, 63.8626, -14.1715, 2.90231, -36.8719 )
 
 [node name="Wheel1" type="Sprite" parent="."]
-position = Vector2( 14, -34 )
+position = Vector2( 9.85728, -24.7882 )
+rotation = -0.125664
 scale = Vector2( 0.147166, 0.13689 )
 texture = ExtResource( 4 )
 centered = false
@@ -610,7 +611,8 @@ scale = Vector2( 1.0033, 0.98794 )
 texture = ExtResource( 5 )
 
 [node name="Wheel2" type="Sprite" parent="."]
-position = Vector2( -92.0509, -42.9937 )
+position = Vector2( -89.6509, -42.9937 )
+rotation = 0.125664
 scale = Vector2( 0.147, 0.137 )
 texture = ExtResource( 6 )
 centered = false
@@ -651,9 +653,9 @@ shape = SubResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
 anims/Dead = ExtResource( 8 )
-anims/Fall_back = SubResource( 5 )
-anims/Fall_front = SubResource( 6 )
-anims/Idle = SubResource( 7 )
+anims/Fall_back = SubResource( 4 )
+anims/Fall_front = SubResource( 5 )
+anims/Idle = SubResource( 6 )
 
 [node name="DeadSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
