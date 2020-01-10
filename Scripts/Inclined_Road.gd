@@ -31,6 +31,12 @@ func set_info( info ):
 	$ParallaxBackground.offset.x                    = info[3]
 	$ParallaxBackground/ParallaxLayer.motion_offset = info[4]
 
+func set_sprites( straight, left, right ):
+	$ParallaxBackground/Sprite.texture        = left
+	$ParallaxBackground/Sprite5.texture       = left
+	$ParallaxBackground/Sprite3.texture       = right
+	$ParallaxBackground/ParallaxLayer/Sprite2.texture = straight
+
 func get_info( ): 
 	var road_motion = $ParallaxBackground/ParallaxLayer.motion_offset
 	var reducer = 250

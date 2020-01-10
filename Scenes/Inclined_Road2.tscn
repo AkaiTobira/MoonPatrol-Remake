@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Inclined_Road.gd" type="Script" id=1]
-[ext_resource path="res://Textures/Placeholders_new/TAKA_KURWA.png" type="Texture" id=2]
-[ext_resource path="res://Textures/Placeholders_new/Slope_placeholder_city.png" type="Texture" id=3]
-[ext_resource path="res://Textures/Placeholders_new/road urban big.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Placeholders_new/road_2L.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Placeholders_new/road_2R.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Placeholders_new/road_2.png" type="Texture" id=4]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -48,7 +48,7 @@ z_as_relative = false
 texture = ExtResource( 2 )
 
 [node name="Sprite3" type="Sprite" parent="ParallaxBackground"]
-position = Vector2( 8917, 1090 )
+position = Vector2( 8917, 1084.57 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 120
 texture = ExtResource( 3 )

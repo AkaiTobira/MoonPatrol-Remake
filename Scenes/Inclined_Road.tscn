@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Inclined_Road.gd" type="Script" id=1]
-[ext_resource path="res://Textures/Placeholders_new/road desert slope.png" type="Texture" id=2]
-[ext_resource path="res://Textures/Placeholders_new/Slope_placeholder.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Placeholders_new/road_1L.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Placeholders_new/road_1R.png" type="Texture" id=3]
 [ext_resource path="res://Textures/Placeholders_new/road_1.png" type="Texture" id=4]
 
 [sub_resource type="GDScript" id=1]
@@ -58,7 +58,7 @@ flip_h = true
 motion_mirroring = Vector2( 1000, 0 )
 
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 7074, 1070 )
+position = Vector2( 7074, 1062.61 )
 scale = Vector2( 0.6, 0.6 )
 z_index = 10
 texture = ExtResource( 4 )

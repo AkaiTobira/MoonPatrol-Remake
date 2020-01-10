@@ -31,21 +31,27 @@ var objects = {
 
 var background = {
 	"1" : {
-		"road"  : preload("res://Textures/Placeholders_new/road_1.png" ),
-		"back1" : preload("res://Textures/Placeholders_new/hill_1.png" ),
-		"back2" : preload("res://Textures/Placeholders_new/hill_3.png" ),
+		"road"   : preload("res://Textures/Placeholders_new/road_1.png" ),
+		"back1"  : preload("res://Textures/Placeholders_new/hill_1.png" ),
+		"back2"  : preload("res://Textures/Placeholders_new/hill_3.png" ),
+		"road_L" : preload("res://Textures/Placeholders_new/road_1L.png"),
+		"road_R" : preload("res://Textures/Placeholders_new/road_1R.png"),
 		"inclined_name" : "IRoad1"
 		},
 	"2" : {
 		"road"  : preload("res://Textures/Placeholders_new/road_1.png" ),
 		"back1" : preload("res://Textures/Placeholders_new/hill_2.png" ),
 		"back2" : preload("res://Textures/Placeholders_new/hill_4.png" ),
+		"road_L" : preload("res://Textures/Placeholders_new/road_1L.png"),
+		"road_R" : preload("res://Textures/Placeholders_new/road_1R.png"),
 		"inclined_name" : "IRoad1"
 		},
 	"3" : {
-		"road"  : preload("res://Textures/Placeholders_new/road urban big.png" ),
+		"road"  : preload("res://Textures/Placeholders_new/road_2.png" ),
 		"back1" : preload("res://Textures/Placeholders_new/night_city_1.png" ),
 		"back2" : preload("res://Textures/Placeholders_new/night_city_2.png" ),
+		"road_L" : preload("res://Textures/Placeholders_new/road_2L.png"),
+		"road_R" : preload("res://Textures/Placeholders_new/road_2R.png"),
 		"inclined_name" : "IRoad2"
 		}
 }
