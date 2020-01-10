@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Placeholders_new/rover2_wer2.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Sounds/LaserShot.wav" type="AudioStream" id=11]
 [ext_resource path="res://Sounds/atari_boom5.wav" type="AudioStream" id=12]
 [ext_resource path="res://Sounds/plant_growth.wav" type="AudioStream" id=13]
+[ext_resource path="res://Sounds/snd_boss_jump_t2.ogg" type="AudioStream" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Roll"
@@ -672,6 +673,9 @@ stream = ExtResource( 12 )
 
 [node name="LoseLifeSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="finished" from="VictorySound" to="." method="_on_Sound_finished"]

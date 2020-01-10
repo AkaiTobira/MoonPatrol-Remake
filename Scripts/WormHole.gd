@@ -18,7 +18,7 @@ func grant_points():
 	if Utilities.player.position.x > position.x:
 		get_parent().points += points_jump_over
 		add_points = false
-	
+
 # warning-ignore:unused_argument
 func _physics_process(delta):
 	if Flow.world_is_paused: return
@@ -54,4 +54,3 @@ func _on_AnimationPlayer2_animation_finished(anim_name):
 	if anim_name != "Dead" : return
 	$AnimationPlayer.call_deferred("queue_free")
 	$Worm.call_deferred("queue_free")
-

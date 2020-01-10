@@ -59,6 +59,7 @@ class JumpRight extends State:
 	var target_hight  = 0 
 	
 	func _init(s_stack).(s_stack):
+		Utilities.player.play_jump_sound()
 		target_hight = Utilities.player.position.y - 30 - (Utilities.player.MaxJump + (Utilities.player.relative_x * Utilities.player.MaxJump/200))
 		Utilities.player.is_jumping = true
 		Utilities.player.on_floor   = false
@@ -81,6 +82,7 @@ class JumpLeft extends State:
 	var target_hight  = 0 
 	
 	func _init(s_stack).(s_stack):
+		Utilities.player.play_jump_sound()
 		target_hight = Utilities.player.position.y - 30 - (Utilities.player.MaxJump + (Utilities.player.relative_x * Utilities.player.MaxJump/200))
 		Utilities.player.is_jumping = true
 		Utilities.player.on_floor   = false
@@ -111,9 +113,8 @@ class Shoot extends State:
 
 # warning-ignore:unused_argument
 	func update(delta):
-		if can_shoot_forward()    : Utilities.player.shoot_forward()
-		if can_shoot_up():
-			Utilities.player.shoot_up()
+		if can_shoot_forward() : Utilities.player.shoot_forward()
+		if can_shoot_up()      : Utilities.player.shoot_up()
 		is_over = true
 		
 	func handle_input(): pass
@@ -123,6 +124,7 @@ class JumpIdle extends State:
 	var target_hight  = 0 
 	
 	func _init(s_stack).(s_stack):
+		Utilities.player.play_jump_sound()
 		target_hight = Utilities.player.position.y - 30 - (Utilities.player.MaxJump + (Utilities.player.relative_x * Utilities.player.MaxJump/200))
 		Utilities.player.is_jumping = true
 		Utilities.player.on_floor   = false

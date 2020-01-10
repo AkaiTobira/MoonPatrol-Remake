@@ -112,6 +112,8 @@ func switch_wheels( is_gravity_reverted ):
 	$Whell1.reverse_gravity = is_gravity_reverted
 	$Whell2.reverse_gravity = is_gravity_reverted
 
+
+
 func wheel_on_floor():
 	switch_wheels(false)
 	return $Whell1.on_floor or $Whell2.on_floor
@@ -126,6 +128,9 @@ func set_dead_sequence():
 	Flow.stop_BGM_music()
 	play_explosion_sound()
 	Flow.pause_world(10)
+
+func play_jump_sound():
+	$JumpSound.play()
 
 func on_hole_dead( anim_name, target ):
 	if not player_good_mode: 
