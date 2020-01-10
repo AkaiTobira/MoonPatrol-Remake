@@ -4,7 +4,7 @@
 	"avr_time"          : 100,
 	"additional_points" : 1000,
 	"fixed_segment"     : false,
-	"background"        : "dessert",
+	"background"        : "town",
 	"level_structure"   : {
 		"E" : {
 			"0" :{
@@ -14,7 +14,6 @@
 					"11"   : "Mine",
 					"15.5" : "Mine",
 					"15"   : "Mine",
-					"17"   : "Mine",
 					"18.5" : "Mine",					
 					"20"   : "@F"
 			}
@@ -66,7 +65,7 @@
 					"9"    : "RockB",
 					"12"   : "RockS",
 					"6.1"  : "!Bomber",	
-					"12.1" : "2_de_Bomber",
+					"12.1" : "2_ab_Bomber",
 					"12.2" : "2_ab_Alien1",	
 					"15"   : "RockS",
 					"17"   : "RockS",

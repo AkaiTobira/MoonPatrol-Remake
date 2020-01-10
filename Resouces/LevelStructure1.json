@@ -4,7 +4,7 @@
 	"avr_time"          : 20,
 	"additional_points" : 1000,
 	"fixed_segment"     : false,
-	"background"        : "town",
+	"background"        : "dessert",
 	"level_structure"   : {
 		"0" : {
 			"0" :{
