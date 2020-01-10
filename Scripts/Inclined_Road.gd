@@ -19,7 +19,8 @@ func set_info( info ):
 		return
 
 	if state != "High" :
-		get_parent().get_node("Back3/StaticBody2D").position.y = parent_collider_y
+		var node = get_parent().get_node("Back3/StaticBody2D")
+		if node: node.position.y = parent_collider_y
 
 	if info[0] == "Rise" and state == "High" : 
 		get_parent().get_node("Back3/StaticBody2D").position.y = parent_collider_y
