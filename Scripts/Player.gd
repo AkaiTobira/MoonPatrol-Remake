@@ -53,7 +53,6 @@ func reset():
 	is_jumping      = false
 	on_floor        = true
 
-
 func shoot_forward():
 	forward_missle            = Utilities.get_instance("PFmissle")
 	forward_missle.position   = position + Vector2(100,-20)
@@ -111,8 +110,6 @@ func process_move(delta):
 func switch_wheels( is_gravity_reverted ):
 	$Whell1.reverse_gravity = is_gravity_reverted
 	$Whell2.reverse_gravity = is_gravity_reverted
-
-
 
 func wheel_on_floor():
 	switch_wheels(false)
