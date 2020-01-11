@@ -72,7 +72,7 @@ func _process(delta):
 
 var is_frozed = false
 func process_cheat():
-	if Input.is_action_just_pressed("ui_down"): reload_from_checkpoint()
+	#if Input.is_action_just_pressed("ui_down"): reload_from_checkpoint()
 	if Input.is_action_just_pressed("ui_page_down"): $Player.player_good_mode = !$Player.player_good_mode 
 
 	if Input.is_action_just_pressed("ui_home"): 
