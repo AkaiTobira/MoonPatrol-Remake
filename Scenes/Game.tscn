@@ -15,7 +15,7 @@
 [ext_resource path="res://Textures/Placeholders_new/landmine_new2.png" type="Texture" id=13]
 [ext_resource path="res://Textures/Placeholders_new/boulder_big_new.png" type="Texture" id=14]
 [ext_resource path="res://Textures/Placeholders_new/bomber_warn.png" type="Texture" id=15]
-[ext_resource path="res://Textures/Placeholders_old/Base_small.png" type="Texture" id=16]
+[ext_resource path="res://Textures/Placeholders_new/arrow.png" type="Texture" id=16]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Textures/Placeholders_new/start_point_test.png" type="Texture" id=18]
 [ext_resource path="res://Scripts/Base.gd" type="Script" id=19]
@@ -667,7 +667,6 @@ script = ExtResource( 6 )
 [node name="Control" type="Control" parent="GUI" groups=[
 "Control",
 ]]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -8.5343
@@ -930,10 +929,9 @@ anims/round = SubResource( 16 )
 anims/worm = SubResource( 17 )
 
 [node name="WarnBase" type="Sprite" parent="GUI/Control/Warnings"]
-position = Vector2( 218.168, 99.4595 )
-scale = Vector2( 0.25, 0.275 )
+position = Vector2( 210.668, 100.46 )
+scale = Vector2( 0.164444, 0.159444 )
 texture = ExtResource( 16 )
-flip_h = true
 
 [node name="Black_Holder_Left" type="Sprite" parent="GUI"]
 position = Vector2( 222.929, 545.587 )
