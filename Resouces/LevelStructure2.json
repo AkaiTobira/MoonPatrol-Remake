@@ -1,7 +1,7 @@
 {
 	"start_segment"     : "E",
 	"end_segment"       : "J",
-	"avr_time"          : 100,
+	"avr_time"          : 80,
 	"additional_points" : 1000,
 	"fixed_segment"     : false,
 	"background"        : "town",
