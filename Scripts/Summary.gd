@@ -81,7 +81,7 @@ func update_score():
 		$TopRecord.text   = ": " + ("%03d" % timers["top_time"])
 		$BonusPoint.text  = ": " + ("%04d" % aditonal_points)
 		
-		if timers["takes_time"] == timers["average_time"]: seconds = 1
+		if timers["takes_time"] == timers["average_time"]: seconds = 3
 		return
 	get_parent().get_parent().points += aditonal_points
 	Flow.play_world()

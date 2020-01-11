@@ -36,7 +36,7 @@
 					"15"   : "HoleB",				
 					"5.5"  : "2_ij_Alien1",
 					"20"   : "Hole",
-					"23"   : "Hole",
+					"23"   : "Rock2",
 					"27"   : "HoleB",
 					"17.7" : "Hole",
 					"30"   : "@C"
@@ -74,8 +74,7 @@
 					"6.5" : "RockB",
 					"9"   : "RockB",
 					"0.999"  : "!Bomber",
-					"1"    : "1_A_Bomber", 
-					"1.1"  : "1_C_Bomber",
+					"1"    : "2_AC_Bomber", 
 					"12.5" : "RockB",			  
 					"14.7" : "Mine",	
 					"17"   : "RockB",
