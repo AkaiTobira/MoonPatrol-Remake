@@ -685,8 +685,8 @@ stream = ExtResource( 13 )
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
-volume_db = -80.0
-pitch_scale = 19.09
+volume_db = -5.0
+pitch_scale = 0.94
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
