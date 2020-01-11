@@ -929,8 +929,8 @@ anims/round = SubResource( 16 )
 anims/worm = SubResource( 17 )
 
 [node name="WarnBase" type="Sprite" parent="GUI/Control/Warnings"]
-position = Vector2( 210.668, 100.46 )
-scale = Vector2( 0.164444, 0.159444 )
+position = Vector2( 205.168, 103.96 )
+scale = Vector2( 0.123333, 0.133888 )
 texture = ExtResource( 16 )
 
 [node name="Black_Holder_Left" type="Sprite" parent="GUI"]
