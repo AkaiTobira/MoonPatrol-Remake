@@ -30,6 +30,7 @@ texture = ExtResource( 2 )
 visible = false
 position = Vector2( -10, 33.3333 )
 scale = Vector2( 2.5, 2.5 )
+z_index = 101
 texture = ExtResource( 3 )
 vframes = 2
 hframes = 3
