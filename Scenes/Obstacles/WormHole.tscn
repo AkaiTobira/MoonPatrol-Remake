@@ -32,7 +32,19 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.9, 3.9 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -2.21238, -13.1952 ), Vector2( -0.39171, -48.6981 ), Vector2( -1.86977, -15.7793 ) ]
+"values": [ Vector2( -2.21238, -13.1952 ), Vector2( -1.66622, -12.8748 ), Vector2( -1.86977, -15.7793 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Worm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.9, 3.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 16.3164, 142.093 ), Vector2( 19.9577, 39.1801 ), Vector2( 18.5188, 143.491 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -40,8 +52,8 @@ resource_name = "Idle"
 loop = true
 
 [node name="WormHole" type="KinematicBody2D" groups=[
-"hole",
 "obstalces",
+"hole",
 ]]
 scale = Vector2( 0.85, 1 )
 z_index = 1
@@ -62,12 +74,11 @@ playback_speed = 2.0
 anims/GoUp = SubResource( 1 )
 
 [node name="Worm" type="Sprite" parent="."]
-position = Vector2( 14.4957, 87.1547 )
+position = Vector2( 16.3164, 142.093 )
 rotation = 3.14159
 scale = Vector2( 5, 2.7 )
 texture = ExtResource( 3 )
 hframes = 39
-frame = 10
 
 [node name="Area2D" type="Area2D" parent="Worm"]
 position = Vector2( 7.35094, 51.0663 )
@@ -75,7 +86,7 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Worm/Area2D"]
-position = Vector2( -2.52205, -13.7492 )
+position = Vector2( -2.21238, -13.1952 )
 polygon = PoolVector2Array( -23.2787, 33.1635, 13.7169, -40.4117, 11.6876, 26.5293 )
 
 [node name="Explosion" type="Sprite" parent="Worm"]

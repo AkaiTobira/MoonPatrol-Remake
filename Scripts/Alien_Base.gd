@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 onready var previous_player_position = Vector2(0,0)
 var operative_space = { "LT" : Vector2(450, 300),
-                        "RD" : Vector2(750, 450) }
+						"RD" : Vector2(750, 450) }
 
 #kamikaze variables
 var KAMIKAZE_PROBABILITY = 5
@@ -51,7 +51,7 @@ func _ready():
 
 func get_start_point():
 	return Vector2( randi() % int( operative_space["RD"].x - operative_space["LT"].x ) + int(operative_space["LT"].x),
-	                randi() % int( operative_space["RD"].y - operative_space["LT"].y ) + int(operative_space["LT"].y) )
+					randi() % int( operative_space["RD"].y - operative_space["LT"].y ) + int(operative_space["LT"].y) )
 
 func update_times(delta):
 	life_timer             += delta

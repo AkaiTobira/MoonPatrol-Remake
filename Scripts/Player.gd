@@ -95,7 +95,7 @@ func process_move(delta):
 	var middle_point     = ( move_borders.x + move_borders.y )/2
 	var movable_distance = move_borders.y - move_borders.x
 	var target_pos = Vector2( middle_point + (relative_x * movable_distance)/100, 
-	                          relative_y )
+							  relative_y )
 # warning-ignore:return_value_discarded
 	var res            = Vector2(target_pos.x, position.y) - position
 	var wheel_distance = ( $Whell1.position + $Whell2.position ) / 2.0
